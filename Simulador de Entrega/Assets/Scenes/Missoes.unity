@@ -1224,6 +1224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missaoObject: {fileID: 11400000, guid: c8a046d8aca6fdf4490b9768d2b6cd5d, type: 2}
+  visualizarMissaoAtual:
+    submissoes: []
+    indiceSubAtual: 0
 --- !u!4 &580166849
 Transform:
   m_ObjectHideFlags: 0

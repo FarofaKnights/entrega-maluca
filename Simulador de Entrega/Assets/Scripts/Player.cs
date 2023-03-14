@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         cargaAtual = new List<Carga>();
         missaoAtual = missao;
 
+        GameManager.instance.VisualizarMissao(missaoAtual);
         AlterarDisponibilidadeDeMissoes(false);
     }
 

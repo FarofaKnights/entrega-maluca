@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public MissaoObject missaoObject;
 
+    public Missao visualizarMissaoAtual;
+
     void Start() {
         instance = this;
     }
@@ -23,5 +25,9 @@ public class GameManager : MonoBehaviour {
         
         Missao missao = Missao.GerarMissao(missaoObject);
         Player.instance.AdicionarMissao(missao);
+    }
+
+    public void VisualizarMissao(Missao missao) {
+        visualizarMissaoAtual = missao;
     }
 }

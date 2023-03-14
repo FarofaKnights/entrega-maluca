@@ -5,7 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class Missao {
     public SubMissao[] submissoes; // Lista de submissoes
+
+    [SerializeField]
     int indiceSubAtual = 0; // Indice da submissao ativa
+    
     public DestinoComecar destinoComecar; // Destino para comecar a missao
 
     // Construtores
@@ -36,6 +39,7 @@ public class Missao {
         }
 
         submissoes[indiceSubAtual].Interromper();
+        indiceSubAtual = 0;
     }
 
     public void ProximaSubMissao() {
@@ -55,6 +59,7 @@ public class Missao {
         Player.instance.FinalizarMissao();
 
         UIController.instance.MissaoConcluida();
+        indiceSubAtual = 0;
 
         // Gera nova missao no final
         Missao novaMissao = GerarMissaoAleatoria();

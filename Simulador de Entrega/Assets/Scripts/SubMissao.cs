@@ -9,6 +9,8 @@ public class SubMissao {
 
     public Destino[] destinos;
     public bool sequencial = true;
+    
+    [SerializeField]
     int indice = 0; // No sequencial, a posição do destino atual, no nao sequencial, a quantidade de destinos concluidos
 
     public SubMissao(Missao missao, Destino[] destinos, bool sequencial = true) {
@@ -35,6 +37,7 @@ public class SubMissao {
     }
 
     public void Finalizar() {
+        indice = 0;
         missao.ProximaSubMissao();
     }
 
