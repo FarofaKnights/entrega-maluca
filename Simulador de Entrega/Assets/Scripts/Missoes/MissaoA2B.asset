@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc9d33e72acd00469abeb1c040ec27c, type: 3}
+  m_Name: MissaoA2B
+  m_EditorClassIdentifier: 
+  nome: 
+  descricao: 
+  destinoComecar:
+    endereco: Predio 4
+    cargas:
+    - peso: 1
+      fragilidade: 1
+      tipo: 0
+      destinatario: Predio 2
+    permiteReceber: 0
+  submissoes:
+  - destinos:
+    - endereco: Predio 2
+      cargas: []
+      permiteReceber: 1
+    sequencial: 0

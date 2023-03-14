@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Endereco : MonoBehaviour {
     public static Dictionary<string, Endereco> ListaEnderecos = new Dictionary<string, Endereco>();
 
@@ -34,5 +35,9 @@ public class Endereco : MonoBehaviour {
         if (other.gameObject.tag == "Player" && destino != null) {
             destino.HandleDestinoTrigger(false);
         }
+    }
+
+    public static Endereco GetEndereco(string nome) {
+        return ListaEnderecos[nome];
     }
 }

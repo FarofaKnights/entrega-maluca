@@ -2,78 +2,67 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Missao {
-    public Destino destinoInicial, destinoAtual;
+    public SubMissao[] submissoes; // Lista de submissoes
+    int indiceSubAtual = 0; // Indice da submissao ativa
+    public DestinoComecar destinoComecar; // Destino para comecar a missao
 
-    // Destino para chegar onde começa a missão
-    public DestinoComecar destinoComecar; 
+    // Construtores
+    public Missao(DestinoComecar destinoComecar, SubMissao[] submissoes) {
+        this.destinoComecar = destinoComecar;
+        destinoComecar.missao = this;
 
-    bool disponivel = false;
-    // Missao[] liberaMissoes;
-
-    public Missao(Destino destinoInicial) {
-        this.destinoInicial = destinoInicial;
-        destinoComecar = new DestinoComecar(destinoInicial.endereco);
+        this.submissoes = submissoes;
+        foreach (SubMissao sub in submissoes) sub.missao = this;
     }
 
-    public void DefinirDisponibilidade(bool disponivel) {
-        // Caso não houve alterações na disponibilidade
-        if (this.disponivel == disponivel)
-            return;
-
-        if (disponivel) {
-            destinoComecar.Iniciar(this);
-        } else {
-            destinoComecar.Interromper();
-        }
-
-        this.disponivel = disponivel;
+    public Missao(Endereco enderecoComecar, SubMissao[] submissoes) {
+        this.destinoComecar = new DestinoComecar(enderecoComecar, this);
+        this.submissoes = submissoes;
+        foreach (SubMissao sub in submissoes) sub.missao = this;
     }
 
-    public bool Iniciar() {
-        Debug.Log("chegou aq");
-        if (!disponivel) return false;
-        
+    // Metodos
+    public void Iniciar() {
         Player.instance.ComecarMissao(this);
-
-        // O primeiro destino sempre será o mesmo que o destino de inicio da missão, então é automaticamente concluido
-        destinoAtual = destinoInicial;
-        destinoAtual.Iniciar(this);
-        destinoAtual.Concluir();
-        Debug.Log("concluiu destino inicial");
-        return true;
+        indiceSubAtual = 0;
+        submissoes[indiceSubAtual].Iniciar();
     }
 
     public void Interromper() {
         if (Player.instance.missaoAtual == this) {
             Player.instance.missaoAtual = null;
-            destinoAtual.Interromper();
         }
+
+        submissoes[indiceSubAtual].Interromper();
     }
 
-    public void ProximoDestino() {
-        Debug.Log("proximo!!");
-        destinoAtual = destinoAtual.proximo;
+    public void ProximaSubMissao() {
+        Debug.Log("Proxima SubMissao!");
+        indiceSubAtual++;
 
-        // Quando chegou no final 
-        if (destinoAtual == null) {
+        if (indiceSubAtual >= submissoes.Length) {
             Concluir();
-            return;
+        } else {
+            submissoes[indiceSubAtual].Iniciar();
         }
-
-        destinoAtual.Iniciar(this);
     }
 
     void Concluir() {
-        Debug.Log("ACABOU!");
+        Debug.Log("Concluiu!");
         Player.instance.dinheiro += 100;
-        Player.instance.missoesDisponiveis.Remove(this.destinoComecar);
         Player.instance.FinalizarMissao();
 
+        UIController.instance.MissaoConcluida();
+
+        // Gera nova missao no final
         Missao novaMissao = GerarMissaoAleatoria();
         Player.instance.AdicionarMissao(novaMissao);
     }
 
+    #region Aleatoria
+    // Gera uma missão A->B aleatoria
     public static Missao GerarMissaoAleatoria() {
         int a, b;
         a = Random.Range(1,6); // de 1 a 5
@@ -96,9 +85,113 @@ public class Missao {
         }
 
         // Define padrão de destino de A a B
-        Destino final = new DestinoEntrega(destinatario);
-        Destino inicio = new DestinoRecebimento(remetente, cargas, final);
+        Destino final = new Destino(destinatario);
+        final.permiteReceber = true;
 
-        return new Missao(inicio);
+        DestinoComecar inicio = new DestinoComecar(remetente, cargas);
+
+        Destino[] destinos = new Destino[1] {final};
+        SubMissao submissao = new SubMissao(null, destinos, true);
+        return new Missao(inicio, new SubMissao[1] {submissao});
     }
+    
+    // Gera uma missão de 3 pontos aleatoria
+    public static Missao GerarMissaoMultiplosPontos() {
+        int[] nums = XNumerosAleatorioSemRepetir(4, 1, 5);
+        Destino[] destinos = new Destino[3];
+        SubMissao submissao = new SubMissao(null, destinos, false);
+        List<Carga> cargas = new List<Carga>();
+
+        for (int i = 0; i < nums.Length - 1; i++) {
+            Endereco endereco = Endereco.ListaEnderecos["Predio " + nums[i+1]];
+            destinos[i] = new Destino(endereco, submissao);
+            destinos[i].permiteReceber = true;
+
+            Carga carga = new Carga(1, 1, endereco);
+            cargas.Add(carga);
+        }
+
+        DestinoComecar inicio = new DestinoComecar(Endereco.ListaEnderecos["Predio " + nums[0]], cargas);
+
+        return new Missao(inicio, new SubMissao[1] {submissao});
+    }
+    
+    // Gera um array de numeros aleatorios sem repetir
+    public static int[] XNumerosAleatorioSemRepetir(int quant, int min, int max) {
+        int[] arr = new int[quant];
+        bool repete;
+
+        for (int i=0; i < arr.Length; i++) {
+            int rand;
+            do {
+                repete = false;
+                rand = Random.Range(min, max + 1);
+
+                for (int j = 0; j < i; j++) {
+                    if (rand == arr[j]){
+                        repete = true;
+                        break;
+                    }
+                }
+            } while (repete);
+
+            arr[i] = rand;
+            Debug.Log(rand);
+        }
+
+        return arr;
+    }
+    #endregion
+
+    #region Conversoes
+    // Converte objeto MissaoObject em uma Missao
+    public static Missao GerarMissao(MissaoObject missaoObject) {
+        // Gera o destino inicial da missão
+        Destino comecar = GerarDestino(missaoObject.destinoComecar);
+        DestinoComecar destinoComecar = new DestinoComecar(comecar.endereco, comecar.cargas);
+
+        SubMissao[] submissoes = new SubMissao[missaoObject.submissoes.Length];
+
+        for (int i = 0; i < missaoObject.submissoes.Length; i++) {
+            SubMissaoObject submissaoObject = missaoObject.submissoes[i];
+            Destino[] destinos = new Destino[submissaoObject.destinos.Length];
+
+            for (int j = 0; j < submissaoObject.destinos.Length; j++) {
+                DestinoObject destinoObject = submissaoObject.destinos[j];
+                Destino destino = GerarDestino(destinoObject);
+                destinos[j] = destino;
+            }
+
+            SubMissao submissao = new SubMissao(null, destinos, submissaoObject.sequencial);
+            submissoes[i] = submissao;
+        }
+
+        return new Missao(destinoComecar, submissoes);
+    }
+
+    // Converte objeto DestinoObject em um Destino
+    public static Destino GerarDestino(DestinoObject destinoObject) {
+        Endereco endereco = Endereco.GetEndereco(destinoObject.endereco);
+        List<Carga> cargas = null;
+
+        if (destinoObject.cargas != null) {
+            cargas  = new List<Carga>();
+            foreach (CargaObject cargaObject in destinoObject.cargas) {
+                Carga carga = GerarCarga(cargaObject);
+                cargas.Add(carga);
+            }
+        }
+
+        Destino destino = new Destino(endereco, cargas);
+        destino.permiteReceber = destinoObject.permiteReceber;
+        return destino;
+    }
+
+    // Converte objeto CargaObject em uma Carga
+    public static Carga GerarCarga(CargaObject cargaObject) {
+        Endereco endereco = Endereco.GetEndereco(cargaObject.destinatario);
+        Carga carga = new Carga(cargaObject.peso, cargaObject.fragilidade, endereco, cargaObject.tipo);
+        return carga;
+    }
+    #endregion
 }

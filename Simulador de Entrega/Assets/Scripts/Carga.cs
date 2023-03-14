@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum TipoCarga { Normal, Rara, Importante, Especial };
 
+[System.Serializable]
 public class Carga {
     public float peso, fragilidade;
     public TipoCarga tipo;

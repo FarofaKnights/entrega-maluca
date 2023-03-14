@@ -2,35 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Destino {
     public Endereco endereco;
-    public Destino proximo;
-    public Missao missao;
+    public List<Carga> cargas;
+    public bool permiteReceber = false;
 
-    public Destino(Endereco endereco, Destino proximo = null) {
+    [System.NonSerialized]
+    public SubMissao pai;
+
+    public Destino(Endereco endereco, SubMissao pai = null) {
         this.endereco = endereco;
-        this.proximo = proximo;
+        this.pai = pai;
     }
 
-    // Handle genérico de um Destino do tipo Vazio, que irá para o próximo caso jogador entre em trigger
+    public Destino(Endereco endereco, List<Carga> cargas, SubMissao pai = null) {
+        this.endereco = endereco;
+        this.pai = pai;
+        this.cargas = cargas;
+    }
+
+    // Chamada quando o Player entrou/saiu do trigger do endereço
     public virtual void HandleDestinoTrigger(bool estado) {
-        Finalizar();
+        if ((cargas != null && cargas.Count > 0) || permiteReceber) // Se houver carga para receber, chama o Handle de recebimento
+            UIController.instance.PlayerNaAreaDeAcao(this, estado);
+        else
+            Finalizar();
     }
 
     // Chamada quando o destino se torna ativo, ou seja, é o próximo destino do jogador
-    public void Iniciar(Missao missao) {
-        this.missao = missao;
+    public void Iniciar() {
         endereco.DefinirComoDestino(this);
     }
 
     public virtual void Concluir() {
+        if (permiteReceber)
+            Player.instance.RemoverCarga(endereco);
+        
+        if (cargas != null)
+            Player.instance.AdicionarCarga(cargas);
+        
         Finalizar();
     }
 
-    // Deve ser chamada quando destino for concluído, seja chegando no destino, recebendo/entregando carga, etc
+    // Deve ser chamada quando destino for concluido, seja chegando no destino, recebendo/entregando carga, etc
     public void Finalizar() {
         endereco.RemoverDestino();
-        missao.ProximoDestino();
+
+        if (pai != null)
+            pai.DestinoConcluido(this);
     }
 
     // Deve ser chamada caso a missão seja interrompida
@@ -39,42 +59,17 @@ public class Destino {
     }
 }
 
-public class DestinoRecebimento : Destino {
-    public List<Carga> cargas;
+public class DestinoComecar : Destino {
+    public Missao missao;
 
-    public DestinoRecebimento(Endereco endereco, List<Carga> cargas, Destino proximo = null) : base(endereco, proximo) {
+    public DestinoComecar(Endereco endereco, Missao missao = null) : base(endereco, null) {
+        this.missao = missao;
+    }
+
+    public DestinoComecar(Endereco endereco, List<Carga> cargas, Missao missao = null) : base(endereco, null) {
+        this.missao = missao;
         this.cargas = cargas;
     }
-
-    public override void HandleDestinoTrigger(bool estado) {
-        UIController.instance.PlayerNaAreaDeReceber(this, estado);
-    }
-
-    // Chamada ao clicar no botão de receber carga, adiciona a carga ao player e finaliza o destino
-    public override void Concluir() {
-        Player.instance.AdicionarCarga(cargas);
-        Finalizar();
-    }
-}
-
-public class DestinoEntrega : Destino {
-    // Construtor vazio porque aparentemente a questão de herança e construtor em C# é algo bem feio mesmo (mapeando os parametros para a base)
-    public DestinoEntrega(Endereco endereco, Destino proximo = null) : base(endereco, proximo) { }
-
-    public override void HandleDestinoTrigger(bool estado) {
-        UIController.instance.PlayerNaAreaDeEntrega(this, estado);
-    }
-
-    // Chamada ao clicar no botão de entregar carga, remove do player e finaliza o destino
-    public override void Concluir() {
-        List<Carga> entregues = Player.instance.RemoverCarga(endereco);
-        // ... Valor da carga
-        Finalizar();
-    }
-}
-
-public class DestinoComecar : Destino {
-    public DestinoComecar(Endereco endereco) : base(endereco, null) { }
 
     public override void HandleDestinoTrigger(bool estado) {
         UIController.instance.PlayerNaAreaDeIniciarMissao(this, estado);
@@ -83,6 +78,10 @@ public class DestinoComecar : Destino {
     // Chamada ao clicar no botão de iniciar missão
     public override void Concluir() {
         missao.Iniciar();
+
+        if (cargas != null) 
+            Player.instance.AdicionarCarga(cargas);
+    
         endereco.RemoverDestino();
     }
 }

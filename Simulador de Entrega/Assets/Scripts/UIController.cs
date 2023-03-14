@@ -6,32 +6,31 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
     public static UIController instance;
 
-    public Button botaoEntrega, botaoReceber, botaoIniciarMissao, botaoInterromperMissao;
+    public Button botaoAcao, botaoIniciarMissao, botaoInterromperMissao;
+    public Text textoMissaoConcluida;
+
     Destino destino;
 
     void Start() {
         instance = this;
 
-        botaoEntrega.gameObject.SetActive(false);
-        botaoEntrega.onClick.AddListener(delegate { HandleBotaoEntregar();});
-        botaoReceber.gameObject.SetActive(false);
-        botaoReceber.onClick.AddListener(delegate { HandleBotaoReceber();});
+        textoMissaoConcluida.gameObject.SetActive(false);
+
+        botaoAcao.gameObject.SetActive(false);
+        botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao();});
+
         botaoIniciarMissao.gameObject.SetActive(false);
         botaoIniciarMissao.onClick.AddListener(delegate { HandleBotaoIniciarMissao();});
+
+        botaoInterromperMissao.gameObject.SetActive(false);
         botaoInterromperMissao.onClick.AddListener(delegate { HandleBotaoInterromperMissao();});
 
     }
 
-    // Chamado quando player entra/sai em uma área de Entregar Carga
-    public void PlayerNaAreaDeEntrega(Destino destino, bool estado) {
+    // Chamado quando player entra/sai em uma área de Acao
+    public void PlayerNaAreaDeAcao(Destino destino, bool estado) {
         this.destino = destino;
-        botaoEntrega.gameObject.SetActive(estado);
-    }
-
-    // Chamado quando player entra/sai em uma área de Receber Carga
-    public void PlayerNaAreaDeReceber(Destino destino, bool estado) {
-        this.destino = destino;
-        botaoReceber.gameObject.SetActive(estado);
+        botaoAcao.gameObject.SetActive(estado);
     }
 
     // Chamado quando player entra/sai em uma área de Iniciar Missão
@@ -40,23 +39,35 @@ public class UIController : MonoBehaviour {
         botaoIniciarMissao.gameObject.SetActive(estado);
     }
 
-    // Handle do clique no botão "Receber Carga"
-    void HandleBotaoReceber() {
+    // Handle do clique no botão "Fazer Ação"
+    void HandleBotaoAcao() {
         destino.Concluir();
-    }
-
-    // Handle do clique no botão "Entregar Carga"
-    void HandleBotaoEntregar() {
-        destino.Concluir();
+        botaoAcao.gameObject.SetActive(false);
     }
 
     // Handle do clique no botão "Iniciar Missão"
     void HandleBotaoIniciarMissao() {
         destino.Concluir();
+        botaoInterromperMissao.gameObject.SetActive(true);
+        botaoIniciarMissao.gameObject.SetActive(false);
     }
 
     // Handle do clique no botão "Interromper Missão"
     void HandleBotaoInterromperMissao() {
         Player.instance.InterromperMissao();
+        botaoInterromperMissao.gameObject.SetActive(false);
+    }
+
+    public void MissaoConcluida() {
+        botaoInterromperMissao.gameObject.SetActive(false);
+        textoMissaoConcluida.gameObject.SetActive(true);
+
+        // Espera 2 segundos e esconde o texto
+        StartCoroutine(EsconderTextoMissaoConcluida());
+    }
+
+    IEnumerator EsconderTextoMissaoConcluida() {
+        yield return new WaitForSeconds(2);
+        textoMissaoConcluida.gameObject.SetActive(false);
     }
 }
