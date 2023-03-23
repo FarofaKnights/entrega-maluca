@@ -14,9 +14,12 @@ public class Player : MonoBehaviour
     public Missao missaoAtual = null;
     public List<Missao> missoesDisponiveis = new List<Missao>();
 
-
-    void Start() {
+    private void Awake()
+    {
         instance = this;
+        
+    }
+    void Start() {
 
         foreach (KeyValuePair<string, Endereco> entry in Endereco.ListaEnderecos) {
             entry.Value.gameObject.SetActive(false);
@@ -32,7 +35,10 @@ public class Player : MonoBehaviour
         if (missaoAtual != null) {
             missaoAtual.Interromper();
         }
-
+        foreach (Carga carga in cargaAtual)
+        {
+            carga.cx.Remover();
+        }
         cargaAtual = new List<Carga>();
         missaoAtual = missao;
 
@@ -46,6 +52,10 @@ public class Player : MonoBehaviour
         }
 
         missaoAtual = null;
+        foreach(Carga carga in cargaAtual)
+        {
+            carga.cx.Remover();
+        }
         cargaAtual = new List<Carga>();
 
         AlterarDisponibilidadeDeMissoes(true);
@@ -56,6 +66,10 @@ public class Player : MonoBehaviour
         RemoverMissao(missaoAtual);
 
         missaoAtual = null;
+        foreach (Carga carga in cargaAtual)
+        {
+            carga.cx.Remover();
+        }
         cargaAtual = new List<Carga>();
 
         AlterarDisponibilidadeDeMissoes(true);
@@ -86,6 +100,7 @@ public class Player : MonoBehaviour
     #region SistemaDeCarga
     public void AdicionarCarga(List<Carga> cargas) {
         cargaAtual.AddRange(cargas);
+        StartDrag.sd.changeCass();
     }
 
     public List<Carga> RemoverCarga(Endereco endereco) {
@@ -95,6 +110,7 @@ public class Player : MonoBehaviour
         for (int i = cargaAtual.Count-1; i >= 0; i--) {
             Carga carga = cargaAtual[i];
             if (carga.destinatario == endereco) {
+                carga.cx.Remover();
                 cargas.Add(carga);
                 cargaAtual.Remove(carga);
             }

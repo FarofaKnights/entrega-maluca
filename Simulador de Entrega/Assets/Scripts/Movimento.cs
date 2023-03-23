@@ -6,7 +6,6 @@ public class Movimento : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     Rigidbody rb;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();

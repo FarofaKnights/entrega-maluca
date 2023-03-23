@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
     public static UIController instance;
 
-    public Button botaoAcao, botaoIniciarMissao, botaoInterromperMissao;
+    public Button botaoAcao, botaoIniciarMissao, botaoInterromperMissao, botaoConfirm;
     public Text textoMissaoConcluida;
 
     Destino destino;
@@ -24,6 +24,9 @@ public class UIController : MonoBehaviour {
 
         botaoInterromperMissao.gameObject.SetActive(false);
         botaoInterromperMissao.onClick.AddListener(delegate { HandleBotaoInterromperMissao();});
+
+        botaoConfirm.gameObject.SetActive(false);
+        botaoConfirm.onClick.AddListener(delegate { Confirm(); });
 
     }
 
@@ -69,5 +72,14 @@ public class UIController : MonoBehaviour {
     IEnumerator EsconderTextoMissaoConcluida() {
         yield return new WaitForSeconds(2);
         textoMissaoConcluida.gameObject.SetActive(false);
+    }
+    public void Confirm()
+    {
+        if (StartDrag.sd.completed)
+        {
+            StartDrag.sd.Confirm();
+            destino.Finalizar();
+            botaoConfirm.gameObject.SetActive(false);
+        }
     }
 }

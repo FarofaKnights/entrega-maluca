@@ -9,6 +9,7 @@ public class Carga {
     public float peso, fragilidade;
     public TipoCarga tipo;
     public Endereco destinatario;
+    public Caixas cx;
 
     public Carga(float peso, float fragilidade, Endereco destinatario, TipoCarga tipo = TipoCarga.Normal) {
         this.peso = peso;
