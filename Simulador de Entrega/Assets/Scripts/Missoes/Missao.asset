@@ -16,7 +16,11 @@ MonoBehaviour:
   descricao: "Apenas uma miss\xE3o de teste"
   destinoComecar:
     endereco: Predio 1
-    cargas: []
+    cargas:
+    - peso: 3
+      fragilidade: 0
+      tipo: 0
+      destinatario: Predio 5
     permiteReceber: 0
   submissoes:
   - destinos:

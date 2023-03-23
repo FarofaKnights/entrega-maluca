@@ -39,7 +39,7 @@ public class Destino {
         if (permiteReceber)
             Player.instance.RemoverCarga(endereco);
         
-        if (cargas != null)
+        if (cargas != null && cargas.Count > 0)
             Player.instance.AdicionarCarga(cargas);
         
         Finalizar();
@@ -79,9 +79,7 @@ public class DestinoComecar : Destino {
     public override void Concluir() {
         missao.Iniciar();
 
-        if (cargas != null) 
+        if (cargas != null && cargas.Count > 0) 
             Player.instance.AdicionarCarga(cargas);
-    
-        endereco.RemoverDestino();
     }
 }
