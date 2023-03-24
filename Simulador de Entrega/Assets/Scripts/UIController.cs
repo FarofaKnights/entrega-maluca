@@ -58,6 +58,7 @@ public class UIController : MonoBehaviour {
     // Handle do clique no botão "Interromper Missão"
     void HandleBotaoInterromperMissao() {
         Player.instance.InterromperMissao();
+        StartDrag.sd.Confirm();
         botaoInterromperMissao.gameObject.SetActive(false);
     }
 

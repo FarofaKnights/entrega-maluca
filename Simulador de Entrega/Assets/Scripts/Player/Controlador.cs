@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class AxleInfo
@@ -56,5 +57,7 @@ public class Controlador : MonoBehaviour
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
+        if (Input.GetKeyDown(KeyCode.M)) Application.Quit();
+        //if (Input.GetKeyDown(KeyCode.P)) SceneManager.LoadScene("Missoes");
     }
 }

@@ -17,16 +17,16 @@ public class Caixas : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cx = this;
         rb.mass = Random.Range(0, 21);
-        vaiculo = GameObject.Find("Veiculo");
-        v = vaiculo.transform;
+       /* vaiculo = GameObject.Find("Veiculo");
+        v = vaiculo.transform;*/
     }
     private void Update()
     {
-        if(StartDrag.sd.makechild)
+       /* if(StartDrag.sd.makechild)
         {
             gameObject.transform.parent = v;
             Destroy(rb);
-        }
+        }*/
     }
     public void Remover()
     {
