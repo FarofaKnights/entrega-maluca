@@ -5,31 +5,34 @@ using UnityEngine.UI;
 
 public class StartDrag : MonoBehaviour
 {
-    public Camera principal, cassamba;
+    public Camera [] cams;
+    public Camera currCam;
     public Rigidbody rb;
     public Transform p1;
     public GameObject[] cargas;
-    public GameObject player;
     float f = 0;
     int u = 0;
     //rampa pra poder colocar os itens na caçamba; parede da parte de trás da caçamba, paredes invisiveis pra não arrastar os objetos pra fora da camera
-    public GameObject rampa, parederetratil, pinvis; 
+    public GameObject parederetratil, player, paredeSide, rampa; 
     public static StartDrag sd;
-    public bool completed = false, makechild = false;
+    public bool completed = false, canRotate = false;
     int i = 0, load;
     void Start()
     {
         sd = this;
-        rampa.SetActive(false);
         parederetratil.SetActive(true);
-        pinvis.SetActive(false);
         rb = Player.instance.GetComponent<Rigidbody>();
+        currCam = cams[0];
+        rampa.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            ChangeCam();
+        }
     }
    // Entra no mode de colocar na caçamba
    public void changeCass()
@@ -37,12 +40,12 @@ public class StartDrag : MonoBehaviour
         //spawna a primeira caixa
         f = 0;
         u = 0;
-        makechild = false;
-        principal.gameObject.SetActive(false);
+        canRotate = false;
+        cams[0].gameObject.SetActive(false);
         Debug.Log(Player.instance.cargaAtual.Count);
-        cassamba.gameObject.SetActive(true);
+        cams[1].gameObject.SetActive(true);
+        currCam = cams[1];
         UIController.instance.botaoConfirm.gameObject.SetActive(true);
-        pinvis.SetActive(true);
         rb.isKinematic = true;
         rampa.SetActive(true);
         parederetratil.SetActive(false);
@@ -78,12 +81,38 @@ public class StartDrag : MonoBehaviour
     }
     public void Confirm()
     {
-       principal.gameObject.SetActive(true);
-       cassamba.gameObject.SetActive(false);
-       pinvis.SetActive(false);
-       rb.isKinematic = false;
-       rampa.SetActive(false);
+       cams[0].gameObject.SetActive(true);
+       cams[1].gameObject.SetActive(false);
+       cams[2].gameObject.SetActive(false);
+       cams[3].gameObject.SetActive(false);
+       currCam = cams[0];
+        rampa.SetActive(false);
+        rb.isKinematic = false;
        parederetratil.SetActive(true);
-       makechild = true;
+       canRotate = true;
+       paredeSide.GetComponent<MeshRenderer>().enabled = true;
+    }
+    void ChangeCam()
+    {
+        if(currCam == cams[1])
+        {
+            paredeSide.GetComponent<MeshRenderer>().enabled = false;
+            cams[1].gameObject.SetActive(false);
+            cams[2].gameObject.SetActive(true);
+            currCam = cams[2];
+        }
+       else if (currCam == cams[2])
+        {
+            cams[2].gameObject.SetActive(false);
+            cams[3].gameObject.SetActive(true);
+            currCam = cams[3];
+        }
+        else if (currCam == cams[3])
+        {
+            paredeSide.GetComponent<MeshRenderer>().enabled = true;
+            cams[3].gameObject.SetActive(false);
+            cams[1].gameObject.SetActive(true);
+            currCam = cams[1];
+        }
     }
 }

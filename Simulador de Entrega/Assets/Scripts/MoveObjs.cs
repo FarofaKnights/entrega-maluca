@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MoveObjs : MonoBehaviour
 {
-    public float forceAmount = 500;
+    public float forceAmount = 2000;
 
     Rigidbody selectedRigidbody;
+    public Transform pR, pL;
     Camera targetCamera;
     Vector3 originalScreenTargetPosition;
     Vector3 originalRigidbodyPos;
@@ -44,7 +45,7 @@ public class MoveObjs : MonoBehaviour
             selectedRigidbody.velocity = (originalRigidbodyPos + mousePositionOffset - selectedRigidbody.transform.position) * forceAmount * Time.deltaTime;
         }
     }
-
+    
     Rigidbody GetRigidbodyFromMouseClick()
     {
         RaycastHit hitInfo = new RaycastHit();
@@ -57,6 +58,7 @@ public class MoveObjs : MonoBehaviour
                 selectionDistance = Vector3.Distance(ray.origin, hitInfo.point);
                 originalScreenTargetPosition = targetCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, selectionDistance));
                 originalRigidbodyPos = hitInfo.collider.transform.position;
+                Debug.Log("!");
                 return hitInfo.collider.gameObject.GetComponent<Rigidbody>();
             }
         }

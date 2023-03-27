@@ -5,53 +5,60 @@ using UnityEngine;
 public class Caixas : MonoBehaviour
 {
     public static Caixas cx;
-    bool selcted = false;
-    public float spinspeed = 5f;
-    GameObject vaiculo;
-    Transform v;
+    bool selcted = false, isCarrying;
+    public float speed = 5f;
+    public Transform v;
     Rigidbody rb;
-    Vector3 angularVelocity;
+    public Vector3 angularVelocity;
     Carga carga;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         cx = this;
         rb.mass = Random.Range(0, 21);
-       /* vaiculo = GameObject.Find("Veiculo");
-        v = vaiculo.transform;*/
+        v = GameObject.Find("Veiculo").transform;
+        gameObject.transform.SetParent(v);
+        isCarrying = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
     private void Update()
     {
-       /* if(StartDrag.sd.makechild)
+        if (StartDrag.sd.canRotate)
         {
-            gameObject.transform.parent = v;
-            Destroy(rb);
-        }*/
+            rb.constraints = RigidbodyConstraints.None;
+            gameObject.transform.SetParent(null);
+            isCarrying = false;
+        }
+        if(selcted)
+        {
+            float h = Input.GetAxis("Horizontal") * speed;
+            float v = Input.GetAxis("Vertical") * speed;
+            angularVelocity = new Vector3(0, h, v);
+            Quaternion deltaRotation = Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
+            rb.MoveRotation(rb.rotation * deltaRotation);
+        }
+        if (isCarrying)
+        {
+            if (transform.localPosition.x >= 0.56f) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.x <= -0.56f) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.z >= -0.122f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f));
+            if (transform.localPosition.z <= -0.78f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f));
+        }
     }
     public void Remover()
     {
         Destroy(this.gameObject);
     }
-
-    //MEIO BUGADO AINDA!!!
-
-    /*   private void OnMouseDown()
-       {
-           selcted = true;
-       }
-       private void OnMouseUp()
-       {
-           selcted = false;
-       }
-       void Update()
-       {
-           float h = Input.GetAxis("Horizontal") * spinspeed;
-           float v = Input.GetAxis("Vertical") * spinspeed;
-           angularVelocity = new Vector3(v, h, 0f);
-           Quaternion deltaRotation = Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
-           if (selcted)
-           {
-               rb.MoveRotation(rb.rotation * deltaRotation);
-           }
-       }*/
+  private void OnMouseDown()
+  {
+    selcted = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.useGravity = false;
+  }
+  private void OnMouseUp()
+  {
+    selcted = false;
+    rb.useGravity = true;
+    rb.constraints = RigidbodyConstraints.None;
+  }
 }
