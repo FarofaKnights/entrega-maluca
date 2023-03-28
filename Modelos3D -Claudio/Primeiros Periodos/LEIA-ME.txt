@@ -1,2 +1,0 @@
-Como esses modelos foram feitos nos primeiros periodos, eles estão horrivelmente otimizados e são bem feios, então não é pra usar na entrega final;
-Eu ja estou criando modelos 3D para substitui-los, mas por enquanto pra entrega da build, eles devem servir pra alguma coisa

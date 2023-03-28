@@ -1,63 +1,54 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-
-[System.Serializable]
-public class AxleInfo
-{
-    public WheelCollider leftWheel;
-    public WheelCollider rightWheel;
-    public bool motor;
-    public bool steering;
-}
 
 public class Controlador : MonoBehaviour
 {
-    public List<AxleInfo> axleInfos;
-    public float maxMotorTorque;
-    public float maxSteeringAngle;
+    public WheelCollider frontLeftWheel;
+    public WheelCollider frontRightWheel;
+    public WheelCollider rearLeftWheel;
+    public WheelCollider rearRightWheel;
 
-    // finds the corresponding visual wheel
-    // correctly applies the transform
-    public void ApplyLocalPositionToVisuals(WheelCollider collider)
+    public float maxTorque = 200f;
+    public float maxSteerAngle = 30f;
+    public float brakeTorque = 1000f;
+
+    void FixedUpdate()
     {
-        if (collider.transform.childCount == 0)
-        {
-            return;
-        }
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        Transform visualWheel = collider.transform.GetChild(0);
-
-        Vector3 position;
-        Quaternion rotation;
-        collider.GetWorldPose(out position, out rotation);
-
-        visualWheel.transform.position = position;
-        visualWheel.transform.rotation = rotation;
+        ApplySteering(horizontalInput);
+        ApplyAcceleration(verticalInput);
+        ApplyBraking();
     }
 
-    public void FixedUpdate()
+    private void ApplySteering(float steer)
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+        float steerAngle = maxSteerAngle * steer;
+        frontLeftWheel.steerAngle = steerAngle;
+        frontRightWheel.steerAngle = steerAngle;
+    }
 
-        foreach (AxleInfo axleInfo in axleInfos)
+    private void ApplyAcceleration(float throttle)
+    {
+        float torque = maxTorque * throttle;
+
+        rearLeftWheel.motorTorque = torque;
+        rearRightWheel.motorTorque = torque;
+    }
+
+    private void ApplyBraking()
+    {
+        bool isBraking = Input.GetKey(KeyCode.Space);
+
+        if (isBraking)
         {
-            if (axleInfo.steering)
-            {
-                axleInfo.leftWheel.steerAngle = steering;
-                axleInfo.rightWheel.steerAngle = steering;
-            }
-            if (axleInfo.motor)
-            {
-                axleInfo.leftWheel.motorTorque = motor;
-                axleInfo.rightWheel.motorTorque = motor;
-            }
-            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
-            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
+            rearLeftWheel.brakeTorque = brakeTorque;
+            rearRightWheel.brakeTorque = brakeTorque;
         }
-        if (Input.GetKeyDown(KeyCode.M)) Application.Quit();
-        //if (Input.GetKeyDown(KeyCode.P)) SceneManager.LoadScene("Missoes");
+        else
+        {
+            rearLeftWheel.brakeTorque = 0;
+            rearRightWheel.brakeTorque = 0;
+        }
     }
 }
