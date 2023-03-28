@@ -8,7 +8,7 @@ public class StartDrag : MonoBehaviour
     public Camera [] cams;
     public Camera currCam;
     public Rigidbody rb;
-    public Transform p1;
+    public Transform p1, p2;
     public GameObject[] cargas;
     float f = 0;
     int u = 0;
@@ -33,11 +33,12 @@ public class StartDrag : MonoBehaviour
         {
             ChangeCam();
         }
+        p1.localRotation = player.transform.rotation;
+        p2.localRotation = player.transform.rotation;
     }
    // Entra no mode de colocar na caçamba
    public void changeCass()
     {
-        //spawna a primeira caixa
         f = 0;
         u = 0;
         canRotate = false;
@@ -52,9 +53,21 @@ public class StartDrag : MonoBehaviour
         //Spawna o resto das caixas com base na posição da caixa anterior
         foreach(Carga carga in Player.instance.cargaAtual)
         {
-          GameObject caixa = Instantiate(cargas[Random.Range(0, cargas.Length)], new Vector3(p1.position.x, p1.position.y, p1.position.z + f), Quaternion.identity);
-            carga.cx = caixa.GetComponent<Caixas>();
-           f -= 0.2f;
+            int p = Random.Range(0, cargas.Length);
+            if (u < 7)
+            {
+                GameObject caixa = Instantiate(cargas[p], new Vector3(p1.localPosition.x, p1.position.y, p1.localPosition.z + f), cargas[p].transform.rotation);
+                carga.cx = caixa.GetComponent<Caixas>();
+                f -= 0.2f;
+            }
+            else
+            {
+                GameObject caixa = Instantiate(cargas[p], new Vector3(p2.localPosition.x, p2.position.y, p2.localPosition.z + f), cargas[p].transform.rotation);
+            }
+            if (u == 7)
+            {
+                f = 0;
+            }
            u++;
         }
     }

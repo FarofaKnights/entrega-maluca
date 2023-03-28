@@ -32,10 +32,10 @@ public class Caixas : MonoBehaviour
         if(selcted)
         {
             float h = Input.GetAxis("Horizontal") * speed;
-            float v = Input.GetAxis("Vertical") * speed;
-            angularVelocity = new Vector3(0, h, v);
+            float z = Input.GetAxis("Vertical") * speed;
+            angularVelocity = new Vector3(h, 0, z);
             Quaternion deltaRotation = Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
-            rb.MoveRotation(rb.rotation * deltaRotation);
+            rb.MoveRotation(transform.rotation * deltaRotation);
         }
         if (isCarrying)
         {
