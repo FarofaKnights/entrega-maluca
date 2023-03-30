@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
     public Missao visualizarMissaoAtual;
 
-    void Start() {
+    void Awake() {
         instance = this;
     }
 
