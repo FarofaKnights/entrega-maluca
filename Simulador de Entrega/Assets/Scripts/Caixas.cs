@@ -23,6 +23,7 @@ public class Caixas : MonoBehaviour
     }
     private void Update()
     {
+        float mZero;
         if (StartDrag.sd.canRotate)
         {
             rb.constraints = RigidbodyConstraints.None;
@@ -31,11 +32,16 @@ public class Caixas : MonoBehaviour
         }
         if(selcted)
         {
+            Vector3 mover;
             float h = Input.GetAxis("Horizontal") * speed;
             float z = Input.GetAxis("Vertical") * speed;
-            angularVelocity = new Vector3(h, 0, z);
-            Quaternion deltaRotation = Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
-            rb.MoveRotation(transform.rotation * deltaRotation);
+            if (transform.localPosition.y >= 0f && transform.localPosition.y <= 0.3f) mZero = Input.mouseScrollDelta.y;
+            else mZero = 0f;
+            if (StartDrag.sd.currCam == StartDrag.sd.cams[2]) mover = new Vector3(-z, mZero * speed, h);
+            else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero * speed, -h);
+            else mover = new Vector3(h, mZero * speed, z);
+            transform.localPosition += (mover * Time.deltaTime);
+
         }
         if (isCarrying)
         {
@@ -51,7 +57,7 @@ public class Caixas : MonoBehaviour
     }
   private void OnMouseDown()
   {
-    selcted = true;
+        selcted = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = false;
   }

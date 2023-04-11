@@ -12,7 +12,7 @@ public class StartDrag : MonoBehaviour
     public GameObject[] cargas;
     int u = 0;
     //rampa pra poder colocar os itens na caçamba; parede da parte de trás da caçamba, paredes invisiveis pra não arrastar os objetos pra fora da camera
-    public GameObject parederetratil, player, paredeSide, rampa; 
+    public GameObject parederetratil, player, paredeSide; 
     public static StartDrag sd;
     public bool completed = false, canRotate = false;
     int i = 0, load;
@@ -22,16 +22,12 @@ public class StartDrag : MonoBehaviour
         parederetratil.SetActive(true);
         rb = Player.instance.GetComponent<Rigidbody>();
         currCam = cams[0];
-        rampa.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
             ChangeCam();
-        }
     }
    // Entra no mode de colocar na caçamba
    public void changeCass()
@@ -44,7 +40,6 @@ public class StartDrag : MonoBehaviour
         currCam = cams[1];
         UIController.instance.botaoConfirm.gameObject.SetActive(true);
         rb.isKinematic = true;
-        rampa.SetActive(true);
         parederetratil.SetActive(false);
         //Spawna o resto das caixas com base na posição da caixa anterior
         foreach(Carga carga in Player.instance.cargaAtual)
@@ -82,34 +77,50 @@ public class StartDrag : MonoBehaviour
        cams[1].gameObject.SetActive(false);
        cams[2].gameObject.SetActive(false);
        cams[3].gameObject.SetActive(false);
+       cams[4].gameObject.SetActive(false);
        currCam = cams[0];
-        rampa.SetActive(false);
-        rb.isKinematic = false;
+       rb.isKinematic = false;
        parederetratil.SetActive(true);
        canRotate = true;
        paredeSide.GetComponent<MeshRenderer>().enabled = true;
     }
     void ChangeCam()
     {
-        if(currCam == cams[1])
+        if(Input.GetKeyDown(KeyCode.T))
         {
-            paredeSide.GetComponent<MeshRenderer>().enabled = false;
+            cams[1].gameObject.SetActive(true);
+            cams[2].gameObject.SetActive(false);
+            cams[3].gameObject.SetActive(false);
+            cams[4].gameObject.SetActive(false);
+            currCam = cams[1];
+            paredeSide.GetComponent<MeshRenderer>().enabled = true;
+        }
+       else if (Input.GetKeyDown(KeyCode.H))
+        {
             cams[1].gameObject.SetActive(false);
             cams[2].gameObject.SetActive(true);
+            cams[3].gameObject.SetActive(false);
+            cams[4].gameObject.SetActive(false);
             currCam = cams[2];
+            paredeSide.GetComponent<MeshRenderer>().enabled = false;
         }
-       else if (currCam == cams[2])
+        else if (Input.GetKeyDown(KeyCode.F))
         {
+            cams[1].gameObject.SetActive(false);
             cams[2].gameObject.SetActive(false);
             cams[3].gameObject.SetActive(true);
+            cams[4].gameObject.SetActive(false);
             currCam = cams[3];
+            paredeSide.GetComponent<MeshRenderer>().enabled = false;
         }
-        else if (currCam == cams[3])
+        else if (Input.GetKeyDown(KeyCode.G))
         {
-            paredeSide.GetComponent<MeshRenderer>().enabled = true;
+            cams[1].gameObject.SetActive(false);
+            cams[2].gameObject.SetActive(false);
             cams[3].gameObject.SetActive(false);
-            cams[1].gameObject.SetActive(true);
-            currCam = cams[1];
+            cams[4].gameObject.SetActive(true);
+            currCam = cams[4];
+            paredeSide.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }
