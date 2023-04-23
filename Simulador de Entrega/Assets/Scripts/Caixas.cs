@@ -6,7 +6,7 @@ public class Caixas : MonoBehaviour
 {
     public static Caixas cx;
     bool selcted = false, isCarrying;
-    public float speed = 5f;
+    public float speed = 5f, scrollSpeed;
     public Transform v;
     Rigidbody rb;
     public Vector3 angularVelocity;
@@ -15,7 +15,7 @@ public class Caixas : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cx = this;
-        rb.mass = Random.Range(0, 21);
+        rb.mass = 1;
         v = GameObject.Find("Veiculo").transform;
         gameObject.transform.SetParent(v);
         isCarrying = true;
@@ -24,31 +24,37 @@ public class Caixas : MonoBehaviour
     private void Update()
     {
         float mZero;
+        Debug.Log(Input.mouseScrollDelta.y);
         if (StartDrag.sd.canRotate)
         {
             rb.constraints = RigidbodyConstraints.None;
             gameObject.transform.SetParent(null);
             isCarrying = false;
         }
-        if(selcted)
+        if(selcted && isCarrying)
         {
             Vector3 mover;
             float h = Input.GetAxis("Horizontal") * speed;
             float z = Input.GetAxis("Vertical") * speed;
-            if (transform.localPosition.y >= 0f && transform.localPosition.y <= 0.3f) mZero = Input.mouseScrollDelta.y;
-            else mZero = 0f;
-            if (StartDrag.sd.currCam == StartDrag.sd.cams[2]) mover = new Vector3(-z, mZero * speed, h);
-            else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero * speed, -h);
-            else mover = new Vector3(h, mZero * speed, z);
-            transform.localPosition += (mover * Time.deltaTime);
-
+            mZero = Mathf.Clamp(Input.mouseScrollDelta.y, -1, 1);
+            if (StartDrag.sd.currCam == StartDrag.sd.cams[2]) mover = new Vector3(-z, mZero, h);
+            else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero, -h);
+            else mover = new Vector3(h, mZero, z);
+            //rb.AddForceAtPosition(mover, transform.position);
+            /*if (transform.localPosition.x <= 0.52f && Input.GetKeyDown(KeyCode.D)) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.x >= -0.52f && Input.GetKeyDown(KeyCode.A)) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.z <= -0.122f && Input.GetKeyDown(KeyCode.W)) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f));
+            if (transform.localPosition.z >= -0.78f && Input.GetKeyDown(KeyCode.S)) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f));
+            */
+            rb.MovePosition(transform.position + mover * Time.deltaTime);
         }
         if (isCarrying)
         {
-            if (transform.localPosition.x >= 0.56f) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
-            if (transform.localPosition.x <= -0.56f) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.x >= 0.52f) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.x <= -0.52f) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
             if (transform.localPosition.z >= -0.122f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f));
             if (transform.localPosition.z <= -0.78f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f));
+            if (transform.localPosition.y >= 0.33f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z));
         }
     }
     public void Remover()
@@ -65,6 +71,6 @@ public class Caixas : MonoBehaviour
   {
     selcted = false;
     rb.useGravity = true;
-    rb.constraints = RigidbodyConstraints.None;
+    rb.constraints &= ~RigidbodyConstraints.FreezeRotation;
   }
 }

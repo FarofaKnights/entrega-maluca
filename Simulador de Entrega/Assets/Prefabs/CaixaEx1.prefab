@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  scrollSpeed: 40
   v: {fileID: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &7730735995895067645
