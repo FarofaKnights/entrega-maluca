@@ -11,6 +11,8 @@ public class Missao {
     
     public DestinoComecar destinoComecar; // Destino para comecar a missao
 
+    List<Carga> cargasEntregues = new List<Carga>(); // Lista de cargas entregues
+
     // Construtores
     public Missao(DestinoComecar destinoComecar, SubMissao[] submissoes) {
         this.destinoComecar = destinoComecar;
@@ -43,7 +45,6 @@ public class Missao {
     }
 
     public void ProximaSubMissao() {
-        Debug.Log("Proxima SubMissao!");
         indiceSubAtual++;
 
         if (indiceSubAtual >= submissoes.Length) {
@@ -54,8 +55,13 @@ public class Missao {
     }
 
     void Concluir() {
-        Debug.Log("Concluiu!");
-        Player.instance.dinheiro += 100;
+        float dinheiro = 0;
+
+        foreach (Carga carga in cargasEntregues) {
+            dinheiro += carga.GetValor();
+        }
+
+        Player.instance.AdicionarDinheiro(dinheiro);
         Player.instance.FinalizarMissao();
 
         UIController.instance.MissaoConcluida();
@@ -64,6 +70,10 @@ public class Missao {
         // Gera nova missao no final
         Missao novaMissao = GerarMissaoAleatoria();
         Player.instance.AdicionarMissao(novaMissao);
+    }
+
+    public void CargaEntregue(Carga carga) {
+        cargasEntregues.Add(carga);
     }
 
     #region Aleatoria

@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    public float dinheiro;
+    float dinheiro;
     public List<Carga> cargaAtual = new List<Carga>(); // Sistema temporario
 
     [System.NonSerialized]
@@ -118,5 +118,26 @@ public class Player : MonoBehaviour
 
         return cargas;
     }
+    #endregion
+
+    #region SistemaDeDinheiro
+
+    public void AdicionarDinheiro(float valor) {
+        dinheiro += valor;
+    }
+
+    public bool RemoverDinheiro(float valor) {
+        if (dinheiro >= valor) {
+            dinheiro -= valor;
+            return true;
+        }
+
+        return false;
+    }
+
+    public float GetDinheiro() {
+        return dinheiro;
+    }
+
     #endregion
 }
