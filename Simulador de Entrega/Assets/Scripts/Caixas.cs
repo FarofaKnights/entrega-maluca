@@ -37,6 +37,7 @@ public class Caixas : MonoBehaviour
             float h = Input.GetAxis("Horizontal") * speed;
             float z = Input.GetAxis("Vertical") * speed;
             mZero = Mathf.Clamp(Input.mouseScrollDelta.y, -1, 1);
+            mZero *= speed;
             if (StartDrag.sd.currCam == StartDrag.sd.cams[2]) mover = new Vector3(-z, mZero, h);
             else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero, -h);
             else mover = new Vector3(h, mZero, z);
@@ -50,11 +51,12 @@ public class Caixas : MonoBehaviour
         }
         if (isCarrying)
         {
-            if (transform.localPosition.x >= 0.52f) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
-            if (transform.localPosition.x <= -0.52f) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
-            if (transform.localPosition.z >= -0.122f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f));
-            if (transform.localPosition.z <= -0.78f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f));
-            if (transform.localPosition.y >= 0.33f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z));
+            /*if (transform.localPosition.x >= 2.62f) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.x <= -2.62f) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
+            if (transform.localPosition.z >= -3f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f));
+            if (transform.localPosition.z <= -3f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f));
+            if (transform.localPosition.y >= 2.3f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z));
+            */
         }
     }
     public void Remover()
