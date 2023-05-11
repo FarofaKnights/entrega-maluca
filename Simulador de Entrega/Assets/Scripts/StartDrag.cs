@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class StartDrag : MonoBehaviour
 {
+    public enum State { Dirigindo, Tetris}
+    public State currentState;
     public Camera [] cams;
     public Camera currCam;
     public Rigidbody rb;
@@ -12,13 +14,17 @@ public class StartDrag : MonoBehaviour
     public GameObject[] cargas;
     int u = 0;
     //rampa pra poder colocar os itens na caçamba; parede da parte de trás da caçamba, paredes invisiveis pra não arrastar os objetos pra fora da camera
-    public GameObject parederetratil, player, paredeSide; 
+    public GameObject parederetratil, player, paredeSide, SelectedObj; 
     public static StartDrag sd;
-    public bool completed = false, canRotate = false;
+    public bool completed = false;
     int i = 0, load;
-    void Start()
+    private void Awake()
     {
         sd = this;
+        currentState = State.Dirigindo;
+    }
+    void Start()
+    {
         parederetratil.SetActive(true);
         rb = Player.instance.GetComponent<Rigidbody>();
         currCam = cams[0];
@@ -33,7 +39,6 @@ public class StartDrag : MonoBehaviour
    public void changeCass()
     {
         u = 0;
-        canRotate = false;
         cams[0].gameObject.SetActive(false);
         Debug.Log(Player.instance.cargaAtual.Count);
         cams[1].gameObject.SetActive(true);
@@ -41,8 +46,10 @@ public class StartDrag : MonoBehaviour
         UIController.instance.botaoConfirm.gameObject.SetActive(true);
         rb.isKinematic = true;
         parederetratil.SetActive(false);
+        paredeSide.SetActive(false);
+        currentState = State.Tetris;
         //Spawna o resto das caixas com base na posição da caixa anterior
-        foreach(Carga carga in Player.instance.cargaAtual)
+        foreach (Carga carga in Player.instance.cargaAtual)
         {
            int p = Random.Range(0, cargas.Length);
            GameObject caixa = Instantiate(cargas[p], pontos[u].position, cargas[p].transform.rotation);
@@ -81,8 +88,9 @@ public class StartDrag : MonoBehaviour
        currCam = cams[0];
        rb.isKinematic = false;
        parederetratil.SetActive(true);
-       canRotate = true;
-       paredeSide.GetComponent<MeshRenderer>().enabled = true;
+       paredeSide.SetActive(true);
+       currentState = State.Dirigindo;
+        SelectedObj = null;
     }
     void ChangeCam()
     {
@@ -93,7 +101,6 @@ public class StartDrag : MonoBehaviour
             cams[3].gameObject.SetActive(false);
             cams[4].gameObject.SetActive(false);
             currCam = cams[1];
-            paredeSide.GetComponent<MeshRenderer>().enabled = true;
         }
        else if (Input.GetKeyDown(KeyCode.H))
         {
@@ -102,7 +109,6 @@ public class StartDrag : MonoBehaviour
             cams[3].gameObject.SetActive(false);
             cams[4].gameObject.SetActive(false);
             currCam = cams[2];
-            paredeSide.GetComponent<MeshRenderer>().enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.F))
         {
@@ -111,7 +117,6 @@ public class StartDrag : MonoBehaviour
             cams[3].gameObject.SetActive(true);
             cams[4].gameObject.SetActive(false);
             currCam = cams[3];
-            paredeSide.GetComponent<MeshRenderer>().enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
@@ -120,7 +125,6 @@ public class StartDrag : MonoBehaviour
             cams[3].gameObject.SetActive(false);
             cams[4].gameObject.SetActive(true);
             currCam = cams[4];
-            paredeSide.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }

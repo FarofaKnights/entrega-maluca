@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class Caixas : MonoBehaviour
 {
-    public static Caixas cx;
-    bool selcted = false, isCarrying;
-    public float speed = 5f, scrollSpeed;
+    bool isCarrying;
+    public float speed = 5f;
     public Transform v;
     Rigidbody rb;
-    public Vector3 angularVelocity;
+    Vector3 mover;
     Carga carga;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        cx = this;
-        rb.mass = 1;
         v = GameObject.Find("Veiculo").transform;
-        gameObject.transform.SetParent(v);
+        transform.rotation = v.rotation;
         isCarrying = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
@@ -25,39 +22,25 @@ public class Caixas : MonoBehaviour
     {
         float mZero;
         Debug.Log(Input.mouseScrollDelta.y);
-        if (StartDrag.sd.canRotate)
+        if (StartDrag.sd.currentState == StartDrag.State.Dirigindo)
         {
             rb.constraints = RigidbodyConstraints.None;
-            gameObject.transform.SetParent(null);
-            isCarrying = false;
         }
-        if(selcted && isCarrying)
+        if(StartDrag.sd.SelectedObj == this.gameObject)
         {
-            Vector3 mover;
-            float h = Input.GetAxis("Horizontal") * speed;
-            float z = Input.GetAxis("Vertical") * speed;
+            float h = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
             mZero = Mathf.Clamp(Input.mouseScrollDelta.y, -1, 1);
-            mZero *= speed;
             if (StartDrag.sd.currCam == StartDrag.sd.cams[2]) mover = new Vector3(-z, mZero, h);
             else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero, -h);
             else mover = new Vector3(h, mZero, z);
-            //rb.AddForceAtPosition(mover, transform.position);
-            /*if (transform.localPosition.x <= 0.52f && Input.GetKeyDown(KeyCode.D)) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
-            if (transform.localPosition.x >= -0.52f && Input.GetKeyDown(KeyCode.A)) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
-            if (transform.localPosition.z <= -0.122f && Input.GetKeyDown(KeyCode.W)) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f));
-            if (transform.localPosition.z >= -0.78f && Input.GetKeyDown(KeyCode.S)) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f));
-            */
-            rb.MovePosition(transform.position + mover * Time.deltaTime);
+            Mover();
         }
-        if (isCarrying)
-        {
-            /*if (transform.localPosition.x >= 2.62f) rb.MovePosition(new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z));
-            if (transform.localPosition.x <= -2.62f) rb.MovePosition(new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z));
-            if (transform.localPosition.z >= -3f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f));
-            if (transform.localPosition.z <= -3f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f));
-            if (transform.localPosition.y >= 2.3f) rb.MovePosition(new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z));
-            */
-        }
+    }
+    void Mover()
+    {
+        Vector3 moveVector = transform.TransformDirection(mover) * speed;
+        rb.velocity = moveVector;
     }
     public void Remover()
     {
@@ -65,14 +48,11 @@ public class Caixas : MonoBehaviour
     }
   private void OnMouseDown()
   {
-        selcted = true;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.useGravity = false;
-  }
-  private void OnMouseUp()
-  {
-    selcted = false;
-    rb.useGravity = true;
-    rb.constraints &= ~RigidbodyConstraints.FreezeRotation;
+        if (StartDrag.sd.currentState == StartDrag.State.Tetris)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            rb.useGravity = false;
+            StartDrag.sd.SelectedObj = this.gameObject;
+        }
   }
 }
