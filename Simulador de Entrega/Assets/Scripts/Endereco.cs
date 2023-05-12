@@ -9,31 +9,31 @@ public class Endereco : MonoBehaviour {
     public string nome;
     // public GameObject colisor;
 
-    Destino destino;
+    Objetivo objetivo;
 
     void Awake() {
         ListaEnderecos.Add(nome, this);
     }
 
-    public void DefinirComoDestino(Destino destino) {
-        this.destino = destino;
+    public void DefinirComoObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
         gameObject.SetActive(true);
     }
 
-    public void RemoverDestino() {
-        this.destino = null;
+    public void RemoverObjetivo() {
+        this.objetivo = null;
         gameObject.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player" && destino != null) {
-            destino.HandleDestinoTrigger(true);
+        if (other.gameObject.tag == "Player" && objetivo != null) {
+            objetivo.HandleObjetivoTrigger(true);
         }
     }
 
     void OnTriggerExit(Collider other) {
-        if (other.gameObject.tag == "Player" && destino != null) {
-            destino.HandleDestinoTrigger(false);
+        if (other.gameObject.tag == "Player" && objetivo != null) {
+            objetivo.HandleObjetivoTrigger(false);
         }
     }
 

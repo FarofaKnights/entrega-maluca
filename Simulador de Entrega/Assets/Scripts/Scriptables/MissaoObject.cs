@@ -7,7 +7,7 @@ public class MissaoObject : ScriptableObject {
     public string nome;
     public string descricao;
 
-    public DestinoObject destinoComecar;
+    public ObjetivoObject objetivoInicial;
 
-    public SubMissaoObject[] submissoes;
+    public ConjuntoObject[] conjuntos;
 }

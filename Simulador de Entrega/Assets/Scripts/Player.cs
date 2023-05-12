@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public Missao missaoAtual = null;
     public List<Missao> missoesDisponiveis = new List<Missao>();
 
+    public List<Diretriz> diretrizes = new List<Diretriz>();
+
     private void Awake()
     {
         instance = this;
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour
         missoesDisponiveis.Add(missao);
 
         if (missaoAtual == null)
-            missao.destinoComecar.Iniciar();
+            missao.objetivoInicial.Iniciar();
     }
 
     public void RemoverMissao(Missao missao) {
@@ -89,8 +91,8 @@ public class Player : MonoBehaviour
     void AlterarDisponibilidadeDeMissoes(bool disponiveis) {
         // Define se os chamados de missão estarao disponiveis para o jogador
         foreach (Missao missao in missoesDisponiveis) {
-            if (disponiveis) missao.destinoComecar.Iniciar();
-            else missao.destinoComecar.Interromper();
+            if (disponiveis) missao.objetivoInicial.Iniciar();
+            else missao.objetivoInicial.Interromper();
         }
     }
 

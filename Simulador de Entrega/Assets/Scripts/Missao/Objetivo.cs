@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Destino {
+public class Objetivo: Iniciavel {
     public Endereco endereco;
     public List<Carga> cargas;
     public bool permiteReceber = false;
 
     [System.NonSerialized]
-    public SubMissao pai;
+    public Conjunto pai;
 
-    public Destino(Endereco endereco, SubMissao pai = null) {
+    public Diretriz diretriz = null;
+
+
+    public Objetivo(Endereco endereco, Conjunto pai = null) {
         this.endereco = endereco;
         this.pai = pai;
     }
 
-    public Destino(Endereco endereco, List<Carga> cargas, SubMissao pai = null) {
+    public Objetivo(Endereco endereco, List<Carga> cargas, Conjunto pai = null) {
         this.endereco = endereco;
         this.pai = pai;
         this.cargas = cargas;
     }
 
     // Chamada quando o Player entrou/saiu do trigger do endereço
-    public virtual void HandleDestinoTrigger(bool estado) {
+    public virtual void HandleObjetivoTrigger(bool estado) {
         if ((cargas != null && cargas.Count > 0) || permiteReceber) // Se houver carga para receber, chama o Handle de recebimento
             UIController.instance.PlayerNaAreaDeAcao(this, estado);
         else
@@ -32,7 +35,8 @@ public class Destino {
 
     // Chamada quando o destino se torna ativo, ou seja, é o próximo destino do jogador
     public void Iniciar() {
-        endereco.DefinirComoDestino(this);
+        endereco.DefinirComoObjetivo(this);
+        if (diretriz != null) diretriz.Iniciar();
     }
 
     public virtual void Concluir() {
@@ -47,31 +51,34 @@ public class Destino {
 
     // Deve ser chamada quando destino for concluido, seja chegando no destino, recebendo/entregando carga, etc
     public void Finalizar() {
-        endereco.RemoverDestino();
+        endereco.RemoverObjetivo();
 
-        if (pai != null)
-            pai.DestinoConcluido(this);
+        if (diretriz != null) diretriz.Finalizar();
+        if (pai != null) pai.ObjetivoConcluido(this);
     }
 
     // Deve ser chamada caso a missão seja interrompida
     public void Interromper() {
-        endereco.RemoverDestino();
+        endereco.RemoverObjetivo();
+
+        if (diretriz != null) diretriz.Interromper();
+        if (pai != null) pai.Interromper();
     }
 }
 
-public class DestinoComecar : Destino {
+public class ObjetivoInicial : Objetivo {
     public Missao missao;
 
-    public DestinoComecar(Endereco endereco, Missao missao = null) : base(endereco, null) {
+    public ObjetivoInicial(Endereco endereco, Missao missao = null) : base(endereco, null) {
         this.missao = missao;
     }
 
-    public DestinoComecar(Endereco endereco, List<Carga> cargas, Missao missao = null) : base(endereco, null) {
+    public ObjetivoInicial(Endereco endereco, List<Carga> cargas, Missao missao = null) : base(endereco, null) {
         this.missao = missao;
         this.cargas = cargas;
     }
 
-    public override void HandleDestinoTrigger(bool estado) {
+    public override void HandleObjetivoTrigger(bool estado) {
         UIController.instance.PlayerNaAreaDeIniciarMissao(this, estado);
     }
 
@@ -81,5 +88,7 @@ public class DestinoComecar : Destino {
 
         if (cargas != null && cargas.Count > 0) 
             Player.instance.AdicionarCarga(cargas);
+        
+        if (diretriz != null) diretriz.Finalizar();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class DestinoObject {
+public class ObjetivoObject {
     public string endereco;
     public List<CargaObject> cargas;
     public bool permiteReceber = false;

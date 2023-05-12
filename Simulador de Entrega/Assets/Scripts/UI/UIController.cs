@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour {
     public Button botaoAcao, botaoIniciarMissao, botaoInterromperMissao, botaoConfirm;
     public Text textoMissaoConcluida;
 
-    Destino destino;
+    Objetivo objetivo;
 
     void Start() {
         instance = this;
@@ -31,26 +31,26 @@ public class UIController : MonoBehaviour {
     }
 
     // Chamado quando player entra/sai em uma área de Acao
-    public void PlayerNaAreaDeAcao(Destino destino, bool estado) {
-        this.destino = destino;
+    public void PlayerNaAreaDeAcao(Objetivo objetivo, bool estado) {
+        this.objetivo = objetivo;
         botaoAcao.gameObject.SetActive(estado);
     }
 
     // Chamado quando player entra/sai em uma área de Iniciar Missão
-    public void PlayerNaAreaDeIniciarMissao(Destino destino, bool estado) {
-        this.destino = destino;
+    public void PlayerNaAreaDeIniciarMissao(Objetivo objetivo, bool estado) {
+        this.objetivo = objetivo;
         botaoIniciarMissao.gameObject.SetActive(estado);
     }
 
     // Handle do clique no botão "Fazer Ação"
     void HandleBotaoAcao() {
-        destino.Concluir();
+        objetivo.Concluir();
         botaoAcao.gameObject.SetActive(false);
     }
 
     // Handle do clique no botão "Iniciar Missão"
     void HandleBotaoIniciarMissao() {
-        destino.Concluir();
+        objetivo.Concluir();
         botaoInterromperMissao.gameObject.SetActive(true);
         botaoIniciarMissao.gameObject.SetActive(false);
     }
@@ -79,7 +79,7 @@ public class UIController : MonoBehaviour {
         if (StartDrag.sd.completed)
         {
             StartDrag.sd.Confirm();
-            destino.Finalizar();
+            objetivo.Finalizar();
             botaoConfirm.gameObject.SetActive(false);
         }
     }

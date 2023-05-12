@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1441,10 +1441,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38faf3e7eacce4045b29c935d4978d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missaoObject: {fileID: 11400000, guid: c8a046d8aca6fdf4490b9768d2b6cd5d, type: 2}
+  missoesIniciais:
+  - {fileID: 11400000, guid: 36d3e232232f5be4784fde8d03331c6a, type: 2}
+  - {fileID: 11400000, guid: c8a046d8aca6fdf4490b9768d2b6cd5d, type: 2}
   visualizarMissaoAtual:
-    submissoes: []
-    indiceSubAtual: 0
+    conjuntos: []
+    indiceConjunto: 0
 --- !u!4 &580166849
 Transform:
   m_ObjectHideFlags: 0
@@ -3390,6 +3392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cargaAtual: []
   missoesDisponiveis: []
+  diretrizes: []
 --- !u!4 &1142167201
 Transform:
   m_ObjectHideFlags: 0
@@ -5673,6 +5676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d19e0a10af63a4296742415f83145f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   cams:
   - {fileID: 963194227}
   - {fileID: 1207394297}
@@ -5705,8 +5709,8 @@ MonoBehaviour:
   parederetratil: {fileID: 45345381914982301}
   player: {fileID: 1142167197}
   paredeSide: {fileID: 416332888669596018}
+  SelectedObj: {fileID: 0}
   completed: 0
-  canRotate: 0
 --- !u!1 &1964481697
 GameObject:
   m_ObjectHideFlags: 0

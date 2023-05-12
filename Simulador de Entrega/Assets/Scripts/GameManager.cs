@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
-    public MissaoObject missaoObject;
+    public MissaoObject[] missoesIniciais;
 
     public Missao visualizarMissaoAtual;
 
@@ -23,8 +23,10 @@ public class GameManager : MonoBehaviour {
         Player.instance.AdicionarMissao(missaoMultiplos);
         */
         
-        Missao missao = Missao.GerarMissao(missaoObject);
-        Player.instance.AdicionarMissao(missao);
+        foreach (MissaoObject missaoObject in missoesIniciais) {
+            Missao missao = Missao.GerarMissao(missaoObject);
+            Player.instance.AdicionarMissao(missao);
+        }
     }
 
     public void VisualizarMissao(Missao missao) {

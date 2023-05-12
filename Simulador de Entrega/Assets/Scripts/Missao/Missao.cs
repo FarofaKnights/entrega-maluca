@@ -3,36 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Missao {
-    public SubMissao[] submissoes; // Lista de submissoes
+public class Missao: Iniciavel {
+    public Conjunto[] conjuntos; // Lista de conjuntos
 
     [SerializeField]
-    int indiceSubAtual = 0; // Indice da submissao ativa
+    int indiceConjunto = 0; // Indice do conjunto ativo
     
-    public DestinoComecar destinoComecar; // Destino para comecar a missao
+    public ObjetivoInicial objetivoInicial; // Objetivo para comecar a missao
 
     List<Carga> cargasEntregues = new List<Carga>(); // Lista de cargas entregues
 
     // Construtores
-    public Missao(DestinoComecar destinoComecar, SubMissao[] submissoes) {
-        this.destinoComecar = destinoComecar;
-        destinoComecar.missao = this;
+    public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos) {
+        this.objetivoInicial = objetivoInicial;
+        this.conjuntos = conjuntos;
 
-        this.submissoes = submissoes;
-        foreach (SubMissao sub in submissoes) sub.missao = this;
+        objetivoInicial.missao = this;
+        foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
 
-    public Missao(Endereco enderecoComecar, SubMissao[] submissoes) {
-        this.destinoComecar = new DestinoComecar(enderecoComecar, this);
-        this.submissoes = submissoes;
-        foreach (SubMissao sub in submissoes) sub.missao = this;
+    public Missao(Endereco enderecoComecar, Conjunto[] conjuntos) {
+        this.objetivoInicial = new ObjetivoInicial(enderecoComecar, this);
+        this.conjuntos = conjuntos;
+
+        foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
 
-    // Metodos
+    // Metodos Iniciavel
     public void Iniciar() {
         Player.instance.ComecarMissao(this);
-        indiceSubAtual = 0;
-        submissoes[indiceSubAtual].Iniciar();
+
+        indiceConjunto = 0;
+        conjuntos[indiceConjunto].Iniciar();
     }
 
     public void Interromper() {
@@ -40,21 +42,11 @@ public class Missao {
             Player.instance.missaoAtual = null;
         }
 
-        submissoes[indiceSubAtual].Interromper();
-        indiceSubAtual = 0;
+        conjuntos[indiceConjunto].Interromper();
+        indiceConjunto = 0;
     }
 
-    public void ProximaSubMissao() {
-        indiceSubAtual++;
-
-        if (indiceSubAtual >= submissoes.Length) {
-            Concluir();
-        } else {
-            submissoes[indiceSubAtual].Iniciar();
-        }
-    }
-
-    void Concluir() {
+    public void Finalizar() {
         float dinheiro = 0;
 
         foreach (Carga carga in cargasEntregues) {
@@ -65,11 +57,22 @@ public class Missao {
         Player.instance.FinalizarMissao();
 
         UIController.instance.MissaoConcluida();
-        indiceSubAtual = 0;
+        indiceConjunto = 0;
 
         // Gera nova missao no final
         Missao novaMissao = GerarMissaoAleatoria();
         Player.instance.AdicionarMissao(novaMissao);
+    }
+
+    // Metodos Missao
+    public void ProximoConjunto() {
+        indiceConjunto++;
+
+        if (indiceConjunto >= conjuntos.Length) {
+            Finalizar();
+        } else {
+            conjuntos[indiceConjunto].Iniciar();
+        }
     }
 
     public void CargaEntregue(Carga carga) {
@@ -99,36 +102,36 @@ public class Missao {
             cargas.Add(carga);
         }
 
-        // Define padrão de destino de A a B
-        Destino final = new Destino(destinatario);
+        // Define padrão de objetivo de A a B
+        Objetivo final = new Objetivo(destinatario);
         final.permiteReceber = true;
 
-        DestinoComecar inicio = new DestinoComecar(remetente, cargas);
+        ObjetivoInicial inicio = new ObjetivoInicial(remetente, cargas);
 
-        Destino[] destinos = new Destino[1] {final};
-        SubMissao submissao = new SubMissao(null, destinos, true);
-        return new Missao(inicio, new SubMissao[1] {submissao});
+        Objetivo[] objetivos = new Objetivo[1] {final};
+        Conjunto conjunto = new Conjunto(null, objetivos, true);
+        return new Missao(inicio, new Conjunto[1] {conjunto});
     }
     
     // Gera uma missão de 3 pontos aleatoria
     public static Missao GerarMissaoMultiplosPontos() {
         int[] nums = XNumerosAleatorioSemRepetir(4, 1, 5);
-        Destino[] destinos = new Destino[3];
-        SubMissao submissao = new SubMissao(null, destinos, false);
+        Objetivo[] objetivos = new Objetivo[3];
+        Conjunto conjunto = new Conjunto(null, objetivos, false);
         List<Carga> cargas = new List<Carga>();
 
         for (int i = 0; i < nums.Length - 1; i++) {
             Endereco endereco = Endereco.ListaEnderecos["Predio " + nums[i+1]];
-            destinos[i] = new Destino(endereco, submissao);
-            destinos[i].permiteReceber = true;
+            objetivos[i] = new Objetivo(endereco, conjunto);
+            objetivos[i].permiteReceber = true;
 
             Carga carga = new Carga(1, 1, endereco);
             cargas.Add(carga);
         }
 
-        DestinoComecar inicio = new DestinoComecar(Endereco.ListaEnderecos["Predio " + nums[0]], cargas);
+        ObjetivoInicial inicio = new ObjetivoInicial(Endereco.ListaEnderecos["Predio " + nums[0]], cargas);
 
-        return new Missao(inicio, new SubMissao[1] {submissao});
+        return new Missao(inicio, new Conjunto[1] {conjunto});
     }
     
     // Gera um array de numeros aleatorios sem repetir
@@ -161,45 +164,45 @@ public class Missao {
     #region Conversoes
     // Converte objeto MissaoObject em uma Missao
     public static Missao GerarMissao(MissaoObject missaoObject) {
-        // Gera o destino inicial da missão
-        Destino comecar = GerarDestino(missaoObject.destinoComecar);
-        DestinoComecar destinoComecar = new DestinoComecar(comecar.endereco, comecar.cargas);
+        // Gera o objetivo inicial da missão
+        Objetivo comecar = GerarObjetivo(missaoObject.objetivoInicial);
+        ObjetivoInicial objetivoInicial = new ObjetivoInicial(comecar.endereco, comecar.cargas);
 
-        SubMissao[] submissoes = new SubMissao[missaoObject.submissoes.Length];
+        Conjunto[] conjuntos = new Conjunto[missaoObject.conjuntos.Length];
 
-        for (int i = 0; i < missaoObject.submissoes.Length; i++) {
-            SubMissaoObject submissaoObject = missaoObject.submissoes[i];
-            Destino[] destinos = new Destino[submissaoObject.destinos.Length];
+        for (int i = 0; i < missaoObject.conjuntos.Length; i++) {
+            ConjuntoObject conjuntoObject = missaoObject.conjuntos[i];
+            Objetivo[] objetivos = new Objetivo[conjuntoObject.objetivos.Length];
 
-            for (int j = 0; j < submissaoObject.destinos.Length; j++) {
-                DestinoObject destinoObject = submissaoObject.destinos[j];
-                Destino destino = GerarDestino(destinoObject);
-                destinos[j] = destino;
+            for (int j = 0; j < conjuntoObject.objetivos.Length; j++) {
+                ObjetivoObject objetivoObject = conjuntoObject.objetivos[j];
+                Objetivo objetivo = GerarObjetivo(objetivoObject);
+                objetivos[j] = objetivo;
             }
 
-            SubMissao submissao = new SubMissao(null, destinos, submissaoObject.sequencial);
-            submissoes[i] = submissao;
+            Conjunto conjunto = new Conjunto(null, objetivos, conjuntoObject.sequencial);
+            conjuntos[i] = conjunto;
         }
 
-        return new Missao(destinoComecar, submissoes);
+        return new Missao(objetivoInicial, conjuntos);
     }
 
-    // Converte objeto DestinoObject em um Destino
-    public static Destino GerarDestino(DestinoObject destinoObject) {
-        Endereco endereco = Endereco.GetEndereco(destinoObject.endereco);
+    // Converte objeto ObjetivoObject em um Objetivo
+    public static Objetivo GerarObjetivo(ObjetivoObject objetivoObject) {
+        Endereco endereco = Endereco.GetEndereco(objetivoObject.endereco);
         List<Carga> cargas = null;
 
-        if (destinoObject.cargas != null) {
+        if (objetivoObject.cargas != null) {
             cargas  = new List<Carga>();
-            foreach (CargaObject cargaObject in destinoObject.cargas) {
+            foreach (CargaObject cargaObject in objetivoObject.cargas) {
                 Carga carga = GerarCarga(cargaObject);
                 cargas.Add(carga);
             }
         }
 
-        Destino destino = new Destino(endereco, cargas);
-        destino.permiteReceber = destinoObject.permiteReceber;
-        return destino;
+        Objetivo objetivo = new Objetivo(endereco, cargas);
+        objetivo.permiteReceber = objetivoObject.permiteReceber;
+        return objetivo;
     }
 
     // Converte objeto CargaObject em uma Carga
