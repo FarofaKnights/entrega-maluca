@@ -103,7 +103,10 @@ public class Player : MonoBehaviour
     public void AdicionarCarga(List<Carga> cargas) {
         cargaAtual.AddRange(cargas);
         StartDrag.sd.changeCass();
+        // StartDrag.sd.Confirm();
     }
+
+
 
     public List<Carga> RemoverCarga(Endereco endereco) {
         List<Carga> cargas = new List<Carga>();

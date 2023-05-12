@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -508,10 +508,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38faf3e7eacce4045b29c935d4978d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missaoObject: {fileID: 11400000, guid: c8a046d8aca6fdf4490b9768d2b6cd5d, type: 2}
+  missoesIniciais:
+  - {fileID: 11400000, guid: 36d3e232232f5be4784fde8d03331c6a, type: 2}
+  - {fileID: 11400000, guid: c8a046d8aca6fdf4490b9768d2b6cd5d, type: 2}
   visualizarMissaoAtual:
-    submissoes: []
-    indiceSubAtual: 0
+    conjuntos: []
+    indiceConjunto: 0
 --- !u!4 &217905372
 Transform:
   m_ObjectHideFlags: 0
@@ -2694,7 +2696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439021705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.643, y: -0.651, z: 0}
+  m_LocalPosition: {x: -0.643, y: -0.33, z: 0}
   m_LocalScale: {x: 0.48735, y: 0.48735, z: 0.48735}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3306,6 +3308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cargaAtual: []
   missoesDisponiveis: []
+  diretrizes: []
 --- !u!4 &1708662279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3401488337619429693, guid: a41129d1d3742a64f812dd81d8d8c380,
