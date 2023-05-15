@@ -52,7 +52,7 @@ public class Rodas : MonoBehaviour
         {
             inerciaRoda = massaRoda * Mathf.Pow(raioRoda, 2) / 2;
 
-            torqueResultante = (Input.GetAxis("Vertical") * torqueNaRoda) + (-forcaAtritoLongitudinal * raioRoda);
+            torqueResultante = (Input.GetAxis("Vertical") * torqueNaRoda * 3) + (-forcaAtritoLongitudinal * raioRoda);
             acelAngular = torqueResultante / inerciaRoda;
             veloAngularRoda += acelAngular * Time.fixedDeltaTime;
             veloAngularRoda = Mathf.Clamp(veloAngularRoda, -100, 450);
