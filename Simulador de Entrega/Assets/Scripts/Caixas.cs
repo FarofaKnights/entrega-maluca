@@ -21,7 +21,6 @@ public class Caixas : MonoBehaviour
     private void Update()
     {
         float mZero;
-        Debug.Log(Input.mouseScrollDelta.y);
         if (StartDrag.sd.currentState == StartDrag.State.Dirigindo)
         {
             rb.constraints = RigidbodyConstraints.None;

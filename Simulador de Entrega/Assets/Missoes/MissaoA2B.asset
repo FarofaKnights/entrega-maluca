@@ -22,9 +22,15 @@ MonoBehaviour:
       tipo: 0
       destinatario: Predio 5
     permiteReceber: 0
+    diretriz:
+      texto: 
   conjuntos:
   - objetivos:
     - endereco: Predio 5
       cargas: []
       permiteReceber: 1
+      diretriz:
+        texto: "Leve a caixa ao Pr\xE9dio 5"
     sequencial: 0
+    diretriz:
+      texto: 

@@ -6,21 +6,26 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
     public static UIController instance;
 
-    public Button botaoAcao, botaoIniciarMissao, botaoInterromperMissao, botaoConfirm;
-    public Text textoMissaoConcluida;
+    public Button botaoAcao, botaoInterromperMissao, botaoConfirm;
+    public Text textoMissaoConcluida, textoDiretriz;
+
+    public GameObject missaoPanel, diretrizPanel;
 
     Objetivo objetivo;
+
+    List<Diretriz> diretrizes = new List<Diretriz>();
 
     void Start() {
         instance = this;
 
         textoMissaoConcluida.gameObject.SetActive(false);
 
+        diretrizPanel.SetActive(false);
+
         botaoAcao.gameObject.SetActive(false);
         botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao();});
 
-        botaoIniciarMissao.gameObject.SetActive(false);
-        botaoIniciarMissao.onClick.AddListener(delegate { HandleBotaoIniciarMissao();});
+        missaoPanel.SetActive(false);
 
         botaoInterromperMissao.gameObject.SetActive(false);
         botaoInterromperMissao.onClick.AddListener(delegate { HandleBotaoInterromperMissao();});
@@ -37,26 +42,34 @@ public class UIController : MonoBehaviour {
     }
 
     // Chamado quando player entra/sai em uma área de Iniciar Missão
-    public void PlayerNaAreaDeIniciarMissao(Objetivo objetivo, bool estado) {
+    public void PlayerNaAreaDeIniciarMissao(ObjetivoInicial objetivo, bool estado) {
         this.objetivo = objetivo;
-        botaoIniciarMissao.gameObject.SetActive(estado);
+        missaoPanel.SetActive(estado);
+
+        if (estado) {
+            Text titulo = missaoPanel.transform.Find("Titulo").GetComponent<Text>();
+            Text descricao = missaoPanel.transform.Find("Descricao").GetComponent<Text>();
+
+            titulo.text = objetivo.missao.titulo;
+            descricao.text = objetivo.missao.descricao;
+        }
     }
 
     // Handle do clique no botão "Fazer Ação"
-    void HandleBotaoAcao() {
+    public void HandleBotaoAcao() {
         objetivo.Concluir();
         botaoAcao.gameObject.SetActive(false);
     }
 
     // Handle do clique no botão "Iniciar Missão"
-    void HandleBotaoIniciarMissao() {
+    public void HandleBotaoIniciarMissao() {
         objetivo.Concluir();
         botaoInterromperMissao.gameObject.SetActive(true);
-        botaoIniciarMissao.gameObject.SetActive(false);
+        missaoPanel.SetActive(false);
     }
 
     // Handle do clique no botão "Interromper Missão"
-    void HandleBotaoInterromperMissao() {
+    public void HandleBotaoInterromperMissao() {
         Player.instance.InterromperMissao();
         StartDrag.sd.Confirm();
         botaoInterromperMissao.gameObject.SetActive(false);
@@ -82,5 +95,29 @@ public class UIController : MonoBehaviour {
             objetivo.Finalizar();
             botaoConfirm.gameObject.SetActive(false);
         }
+    }
+
+    public void AdicionarDiretriz(Diretriz diretriz) {
+        diretrizes.Add(diretriz);
+        diretrizPanel.SetActive(true);
+
+        AtualizaTextoDiretrizes();
+    }
+
+    public void RemoverDiretriz(Diretriz diretriz) {
+        diretrizes.Remove(diretriz);
+
+        if (diretrizes.Count == 0)
+            diretrizPanel.SetActive(false);
+        
+        AtualizaTextoDiretrizes();
+    }
+
+    void AtualizaTextoDiretrizes() {
+        string text = "";
+        foreach (Diretriz d in diretrizes) {
+            text += d.texto + "\n";
+        }
+        textoDiretriz.text = text;
     }
 }

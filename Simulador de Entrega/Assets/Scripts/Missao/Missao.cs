@@ -13,18 +13,25 @@ public class Missao: Iniciavel {
 
     List<Carga> cargasEntregues = new List<Carga>(); // Lista de cargas entregues
 
+    public string titulo, descricao;
+    public Diretriz diretriz = null;
+
     // Construtores
-    public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos) {
+    public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos, string titulo, string descricao) {
         this.objetivoInicial = objetivoInicial;
         this.conjuntos = conjuntos;
+        this.titulo = titulo;
+        this.descricao = descricao;
 
         objetivoInicial.missao = this;
         foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
 
-    public Missao(Endereco enderecoComecar, Conjunto[] conjuntos) {
+    public Missao(Endereco enderecoComecar, Conjunto[] conjuntos, string titulo, string descricao) {
         this.objetivoInicial = new ObjetivoInicial(enderecoComecar, this);
         this.conjuntos = conjuntos;
+        this.titulo = titulo;
+        this.descricao = descricao;
 
         foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
@@ -61,7 +68,7 @@ public class Missao: Iniciavel {
 
         // Gera nova missao no final
         Missao novaMissao = GerarMissaoAleatoria();
-        Player.instance.AdicionarMissao(novaMissao);
+        GameManager.instance.AdicionarMissao(novaMissao);
     }
 
     // Metodos Missao
@@ -110,7 +117,7 @@ public class Missao: Iniciavel {
 
         Objetivo[] objetivos = new Objetivo[1] {final};
         Conjunto conjunto = new Conjunto(null, objetivos, true);
-        return new Missao(inicio, new Conjunto[1] {conjunto});
+        return new Missao(inicio, new Conjunto[1] {conjunto}, "Missão Aleatória", "Entregue as cargas no prédio " + b + ".");
     }
     
     // Gera uma missão de 3 pontos aleatoria
@@ -131,7 +138,7 @@ public class Missao: Iniciavel {
 
         ObjetivoInicial inicio = new ObjetivoInicial(Endereco.ListaEnderecos["Predio " + nums[0]], cargas);
 
-        return new Missao(inicio, new Conjunto[1] {conjunto});
+        return new Missao(inicio, new Conjunto[1] {conjunto}, "Missão Aleatória", "Entregue as cargas nos prédios " + nums[1] + ", " + nums[2] + " e " + nums[3] + ".");
     }
     
     // Gera um array de numeros aleatorios sem repetir
@@ -158,58 +165,6 @@ public class Missao: Iniciavel {
         }
 
         return arr;
-    }
-    #endregion
-
-    #region Conversoes
-    // Converte objeto MissaoObject em uma Missao
-    public static Missao GerarMissao(MissaoObject missaoObject) {
-        // Gera o objetivo inicial da missão
-        Objetivo comecar = GerarObjetivo(missaoObject.objetivoInicial);
-        ObjetivoInicial objetivoInicial = new ObjetivoInicial(comecar.endereco, comecar.cargas);
-
-        Conjunto[] conjuntos = new Conjunto[missaoObject.conjuntos.Length];
-
-        for (int i = 0; i < missaoObject.conjuntos.Length; i++) {
-            ConjuntoObject conjuntoObject = missaoObject.conjuntos[i];
-            Objetivo[] objetivos = new Objetivo[conjuntoObject.objetivos.Length];
-
-            for (int j = 0; j < conjuntoObject.objetivos.Length; j++) {
-                ObjetivoObject objetivoObject = conjuntoObject.objetivos[j];
-                Objetivo objetivo = GerarObjetivo(objetivoObject);
-                objetivos[j] = objetivo;
-            }
-
-            Conjunto conjunto = new Conjunto(null, objetivos, conjuntoObject.sequencial);
-            conjuntos[i] = conjunto;
-        }
-
-        return new Missao(objetivoInicial, conjuntos);
-    }
-
-    // Converte objeto ObjetivoObject em um Objetivo
-    public static Objetivo GerarObjetivo(ObjetivoObject objetivoObject) {
-        Endereco endereco = Endereco.GetEndereco(objetivoObject.endereco);
-        List<Carga> cargas = null;
-
-        if (objetivoObject.cargas != null) {
-            cargas  = new List<Carga>();
-            foreach (CargaObject cargaObject in objetivoObject.cargas) {
-                Carga carga = GerarCarga(cargaObject);
-                cargas.Add(carga);
-            }
-        }
-
-        Objetivo objetivo = new Objetivo(endereco, cargas);
-        objetivo.permiteReceber = objetivoObject.permiteReceber;
-        return objetivo;
-    }
-
-    // Converte objeto CargaObject em uma Carga
-    public static Carga GerarCarga(CargaObject cargaObject) {
-        Endereco endereco = Endereco.GetEndereco(cargaObject.destinatario);
-        Carga carga = new Carga(cargaObject.peso, cargaObject.fragilidade, endereco, cargaObject.tipo);
-        return carga;
     }
     #endregion
 }

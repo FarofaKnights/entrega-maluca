@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     [System.NonSerialized]
     public Missao missaoAtual = null;
-    public List<Missao> missoesDisponiveis = new List<Missao>();
+    
 
     public List<Diretriz> diretrizes = new List<Diretriz>();
 
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         missaoAtual = missao;
 
         GameManager.instance.VisualizarMissao(missaoAtual);
-        AlterarDisponibilidadeDeMissoes(false);
+        GameManager.instance.AlterarDisponibilidadeDeMissoes(false);
     }
 
     public void InterromperMissao() {
@@ -60,12 +60,12 @@ public class Player : MonoBehaviour
         }
         cargaAtual = new List<Carga>();
 
-        AlterarDisponibilidadeDeMissoes(true);
+        GameManager.instance.AlterarDisponibilidadeDeMissoes(true);
     }
 
     // Chamada pela propria missao ao ser finalizada
     public void FinalizarMissao() {
-        RemoverMissao(missaoAtual);
+        GameManager.instance.RemoverMissao(missaoAtual);
 
         missaoAtual = null;
         foreach (Carga carga in cargaAtual)
@@ -74,28 +74,8 @@ public class Player : MonoBehaviour
         }
         cargaAtual = new List<Carga>();
 
-        AlterarDisponibilidadeDeMissoes(true);
+        GameManager.instance.AlterarDisponibilidadeDeMissoes(true);
     }
-
-    public void AdicionarMissao(Missao missao) {
-        missoesDisponiveis.Add(missao);
-
-        if (missaoAtual == null)
-            missao.objetivoInicial.Iniciar();
-    }
-
-    public void RemoverMissao(Missao missao) {
-        missoesDisponiveis.Remove(missao);
-    }
-
-    void AlterarDisponibilidadeDeMissoes(bool disponiveis) {
-        // Define se os chamados de missão estarao disponiveis para o jogador
-        foreach (Missao missao in missoesDisponiveis) {
-            if (disponiveis) missao.objetivoInicial.Iniciar();
-            else missao.objetivoInicial.Interromper();
-        }
-    }
-
     #endregion
 
 
