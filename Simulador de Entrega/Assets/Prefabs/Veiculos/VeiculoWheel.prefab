@@ -2907,7 +2907,6 @@ GameObject:
   - component: {fileID: 7623625842613595147}
   - component: {fileID: 7623625842613595145}
   - component: {fileID: 5113851466717600566}
-  - component: {fileID: 3368091986333921513}
   - component: {fileID: 9221753370729204711}
   m_Layer: 8
   m_Name: VeiculoWheel
@@ -2975,20 +2974,6 @@ BoxCollider:
   m_Size: {x: 2.5725513, y: 2.1866586, z: 5.893929}
   m_Center: {x: 0, y: 1.3907315, z: -3.0937083}
 --- !u!114 &5113851466717600566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7623625842613595146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfeaca95c31d5144aa70c16b4720e27d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cargaAtual: []
-  diretrizes: []
---- !u!114 &3368091986333921513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -7291,7 +7291,7 @@ PrefabInstance:
     - target: {fileID: 7623625842613595146, guid: 54448a84921b49d4e8ce7288a01f6045,
         type: 3}
       propertyPath: m_Name
-      value: VeiculoWheel
+      value: Veiculo
       objectReference: {fileID: 0}
     - target: {fileID: 7623625842613595147, guid: 54448a84921b49d4e8ce7288a01f6045,
         type: 3}

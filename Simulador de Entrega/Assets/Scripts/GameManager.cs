@@ -23,16 +23,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void CarregarMissaoInicial() {
-        /*
-        Missao novaMissao = Missao.GerarMissaoAleatoria();
-        Missao novaMissao2 = Missao.GerarMissaoAleatoria();
-        Player.instance.AdicionarMissao(novaMissao);
-        Player.instance.AdicionarMissao(novaMissao2);
-        
-        Missao missaoMultiplos = Missao.GerarMissaoMultiplosPontos();
-        Player.instance.AdicionarMissao(missaoMultiplos);
-        */
-        
         foreach (MissaoObject missaoObject in missoesIniciais) {
             Missao missao = missaoObject.Convert();
             AdicionarMissao(missao);
@@ -52,6 +42,9 @@ public class GameManager : MonoBehaviour {
 
     public void RemoverMissao(Missao missao) {
         missoesDisponiveis.Remove(missao);
+
+        if (mostrandoMissoes)
+            missao.objetivoInicial.Interromper();
     }
 
     public void AlterarDisponibilidadeDeMissoes(bool disponiveis) {
