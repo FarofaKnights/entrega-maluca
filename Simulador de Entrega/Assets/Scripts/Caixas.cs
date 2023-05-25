@@ -25,7 +25,7 @@ public class Caixas : MonoBehaviour
     private void Update()
     {
         float mZero;
-        if(StartDrag.sd.SelectedObj == this.gameObject)
+        if (StartDrag.sd.SelectedObj == this.gameObject)
         {
             float h = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
@@ -41,6 +41,7 @@ public class Caixas : MonoBehaviour
             else mover = new Vector3(h, mZero, z);
             Mover();
         }
+        else rb.useGravity = true;
     }
     void Mover()
     {
