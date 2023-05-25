@@ -11,13 +11,13 @@ public class StartDrag : MonoBehaviour
     public Camera currCam;
     public Rigidbody rb;
     public Transform[] pontos;
-    public GameObject[] cargas;
+    public GameObject[] cargas, caixasNoCarro;
     int u = 0;
     //rampa pra poder colocar os itens na caçamba; parede da parte de trás da caçamba, paredes invisiveis pra não arrastar os objetos pra fora da camera
     public GameObject parederetratil, player, paredeSide, SelectedObj; 
     public static StartDrag sd;
     public bool completed = false;
-    int i = 0, load;
+    [SerializeField] int i = 0, load;
     private void Awake()
     {
         sd = this;
@@ -39,6 +39,7 @@ public class StartDrag : MonoBehaviour
    public void changeCass()
     {
         u = 0;
+        i = 0;
         cams[0].gameObject.SetActive(false);
         Debug.Log(Player.instance.cargaAtual.Count);
         cams[1].gameObject.SetActive(true);
@@ -61,8 +62,12 @@ public class StartDrag : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Entrega"))
         {
-            i += 1;
-            Debug.Log(i);
+           load = 0;
+           i++;
+            while (caixasNoCarro[load] != null)
+                load++;
+           caixasNoCarro[load] = other.transform.parent.gameObject;
+            Debug.Log(caixasNoCarro.Length);
             if(i >= Player.instance.cargaAtual.Count)
             {
                 completed = true;
@@ -73,8 +78,17 @@ public class StartDrag : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Entrega"))
         {
+            GameObject ligma = other.gameObject.transform.parent.gameObject;
+            for (int j = 0; j < caixasNoCarro.Length; j++)
+            {
+                Debug.Log(j);
+                if (ligma == caixasNoCarro[j])
+                {
+                    caixasNoCarro[j] = null;
+                }
+                else Debug.Log(other.gameObject.name);
+            }
             i -= 1;
-            Debug.Log(i);
             completed = false;
         }
     }
@@ -90,7 +104,8 @@ public class StartDrag : MonoBehaviour
        parederetratil.SetActive(true);
        paredeSide.SetActive(true);
        currentState = State.Dirigindo;
-        SelectedObj = null;
+       SelectedObj = null;
+       MudarCaixas();
     }
     void ChangeCam()
     {
@@ -125,6 +140,19 @@ public class StartDrag : MonoBehaviour
             cams[3].gameObject.SetActive(false);
             cams[4].gameObject.SetActive(true);
             currCam = cams[4];
+        }
+    }
+    void MudarCaixas()
+    {
+        for (int h = 0; h < caixasNoCarro.Length; h++)
+        {
+            if(caixasNoCarro[h] == null)
+            {
+               break;
+            }
+            Rigidbody rb = caixasNoCarro[h].GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.None;
+            rb.useGravity = true;
         }
     }
 }
