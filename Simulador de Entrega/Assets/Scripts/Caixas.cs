@@ -7,6 +7,7 @@ public class Caixas : MonoBehaviour
     bool isCarrying;
     public float speed = 5f, rotateSpeed;
     public Transform v;
+    public GameObject Gizmos;
     Rigidbody rb;
     Vector3 mover, rodar;
     Carga carga;
@@ -20,7 +21,8 @@ public class Caixas : MonoBehaviour
         filho = this.gameObject.transform.GetChild(0);
         transform.rotation = v.rotation;
         isCarrying = true;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        Gizmos = Instantiate(Gizmos, transform.position, refdrot.transform.rotation);
+        Gizmos.SetActive(false);
     }
     private void Update()
     {
@@ -41,15 +43,21 @@ public class Caixas : MonoBehaviour
             else mover = new Vector3(h, mZero, z);
             Mover();
         }
-        else rb.useGravity = true;
+        else
+        {
+            rb.useGravity = true;
+            this.gameObject.isStatic = true;
+            Gizmos.SetActive(false);
+        }
     }
     void Mover()
     {
         Vector3 moveVector = v.TransformDirection(mover) * speed;
-        rb.velocity = moveVector;
-        Vector3 rotateVector = refdrot.TransformDirection(rodar) * speed;
+        rb.velocity = moveVector * Time.deltaTime;
+        Vector3 rotateVector = refdrot.TransformDirection(rodar) * rotateSpeed;
         Quaternion delta = Quaternion.Euler(rotateVector * Time.deltaTime);
         rb.MoveRotation(delta * rb.rotation);
+        Gizmos.transform.position = transform.position;
     }
     public void Remover()
     {
@@ -59,9 +67,11 @@ public class Caixas : MonoBehaviour
   {
         if (StartDrag.sd.currentState == StartDrag.State.Tetris)
         {
+            this.gameObject.isStatic = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
             rb.useGravity = false;
             StartDrag.sd.SelectedObj = this.gameObject;
+            Gizmos.SetActive(true);
         }
   }
 }
