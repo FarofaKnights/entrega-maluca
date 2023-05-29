@@ -7,8 +7,8 @@ public class StartDrag : MonoBehaviour
 {
     public enum State { Dirigindo, Tetris}
     public State currentState;
-    public Camera [] cams;
-    public Camera currCam;
+    public GameObject [] cams;
+    public GameObject currCam;
     public Rigidbody rb;
     public Transform[] pontos;
     public GameObject[] cargas, caixasNoCarro;
