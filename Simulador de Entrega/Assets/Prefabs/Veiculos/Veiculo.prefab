@@ -788,9 +788,9 @@ MonoBehaviour:
   traseiraEsqCollider: {fileID: 6085919818797023743}
   CarRb: {fileID: 2154091221713120510}
   centroDeMassa: {fileID: 2154091221883544732}
-  forca: 500
+  forca: 1000
   maxAngle: 30
-  aceleracao: 3
+  aceleracao: 1
   maxRe: 50
   freio: 5000
 --- !u!1 &2154091221750787068
