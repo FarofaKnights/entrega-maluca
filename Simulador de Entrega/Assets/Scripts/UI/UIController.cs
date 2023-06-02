@@ -10,6 +10,9 @@ public class UIController : MonoBehaviour {
     public Text textoMissaoConcluida, textoDiretriz;
 
     public GameObject missaoPanel, diretrizPanel;
+    public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel;
+
+    public Text dinheiro;
 
     Objetivo objetivo;
 
@@ -33,6 +36,7 @@ public class UIController : MonoBehaviour {
         botaoConfirm.gameObject.SetActive(false);
         botaoConfirm.onClick.AddListener(delegate { Confirm(); });
 
+        AtualizarDinheiro();
     }
 
     // Chamado quando player entra/sai em uma área de Acao
@@ -119,5 +123,23 @@ public class UIController : MonoBehaviour {
             text += d.texto + "\n";
         }
         textoDiretriz.text = text;
+    }
+
+    public void EntrarOficina() {
+        refOficinaPanel.SetActive(true);
+        refMissaoPanel.SetActive(false);
+        refEncaixePanel.SetActive(false);
+
+        refOficinaPanel.GetComponent<OficinaUI>().HandleMostrarGrid();
+    }
+
+    public void SairOficina() {
+        refOficinaPanel.SetActive(false);
+        refMissaoPanel.SetActive(true);
+        refEncaixePanel.SetActive(true);
+    }
+
+    public void AtualizarDinheiro() {
+        dinheiro.text = Player.instance.GetDinheiro().ToString("C2");
     }
 }

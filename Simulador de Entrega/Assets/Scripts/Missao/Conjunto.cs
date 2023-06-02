@@ -52,14 +52,14 @@ public class Conjunto: Iniciavel {
         if (diretriz != null) diretriz.Interromper();
     }
 
-    public void Finalizar() {
+    void Finalizar() {
         if (!ativo) return;
         ativo = false;
         
         indice = 0;
         missao.ProximoConjunto();
 
-        if (diretriz != null) diretriz.Finalizar();
+        if (diretriz != null) diretriz.Interromper();
     }
 
     // Chamado quando um objetivo foi concluido, recebendo como parametro o proprio objetivo

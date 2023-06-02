@@ -36,6 +36,7 @@ MonoBehaviour:
     permiteReceber: 0
     diretriz:
       texto: 
+      limitacoes: []
   conjuntos:
   - objetivos:
     - endereco: Predio 1
@@ -43,24 +44,30 @@ MonoBehaviour:
       permiteReceber: 1
       diretriz:
         texto: 
+        limitacoes: []
     - endereco: Predio 2
       cargas: []
       permiteReceber: 1
       diretriz:
         texto: 
+        limitacoes: []
     - endereco: Predio 4
       cargas: []
       permiteReceber: 1
       diretriz:
         texto: 
+        limitacoes: []
     - endereco: Predio 5
       cargas: []
       permiteReceber: 1
       diretriz:
         texto: 
+        limitacoes: []
     sequencial: 0
     diretriz:
       texto: Entregue a todos os outros
+      limitacoes:
+      - {fileID: 11400000, guid: d520c372cc9fa4d469095c48d9cce2bc, type: 2}
   - objetivos:
     - endereco: Predio 3
       cargas:
@@ -71,6 +78,7 @@ MonoBehaviour:
       permiteReceber: 0
       diretriz:
         texto: "Receba no Pr\xE9dio 3"
+        limitacoes: []
     - endereco: Predio 1
       cargas:
       - peso: 0
@@ -80,16 +88,20 @@ MonoBehaviour:
       permiteReceber: 0
       diretriz:
         texto: "Receba no Pr\xE9dio 1"
+        limitacoes: []
     - endereco: Predio 2
       cargas: []
       permiteReceber: 1
       diretriz:
         texto: "Entregue no Pr\xE9dio 2"
+        limitacoes: []
     - endereco: Predio 1
       cargas: []
       permiteReceber: 1
       diretriz:
         texto: "Entregue no Pr\xE9dio 1"
+        limitacoes: []
     sequencial: 1
     diretriz:
       texto: 
+      limitacoes: []

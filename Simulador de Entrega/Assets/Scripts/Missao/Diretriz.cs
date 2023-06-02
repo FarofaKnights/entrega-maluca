@@ -6,6 +6,7 @@ using UnityEngine;
 public class Diretriz: Iniciavel {
     public string texto;
     public Iniciavel pai;
+    public Limitacao[] limitacoes;
 
     public Diretriz(string texto) {
         this.texto = texto;
@@ -13,20 +14,15 @@ public class Diretriz: Iniciavel {
     }
     
     public void Iniciar() {
-        // Debug.Log("Diretriz: " + texto);
-
         UIController.instance.AdicionarDiretriz(this);
     }
 
     public void Interromper() {
-        // Debug.Log("Diretriz interrompida: " + texto);
-
         UIController.instance.RemoverDiretriz(this);
     }
 
-    public void Finalizar() {
-        // Debug.Log("Diretriz finalizada: " + texto);
-
-        UIController.instance.RemoverDiretriz(this);
+    public void Falhar() {
+        Interromper();
+        pai.Interromper();
     }
 }

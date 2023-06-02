@@ -47,8 +47,12 @@ public class Objetivo: Iniciavel {
     }
 
     public virtual void Concluir() {
-        if (permiteReceber)
-            Player.instance.RemoverCarga(endereco);
+        if (permiteReceber){
+            foreach (Carga carga in Player.instance.RemoverCarga(endereco)) {
+                pai.missao.CargaEntregue(carga);
+            }
+        }
+            
         
         if (cargas != null && cargas.Count > 0)
             Player.instance.AdicionarCarga(cargas);
@@ -63,7 +67,7 @@ public class Objetivo: Iniciavel {
         ativo = false;
         endereco.RemoverObjetivo();
 
-        if (diretriz != null) diretriz.Finalizar();
+        if (diretriz != null) diretriz.Interromper();
         if (pai != null) pai.ObjetivoConcluido(this);
     }
 
@@ -106,6 +110,6 @@ public class ObjetivoInicial : Objetivo {
         if (cargas != null && cargas.Count > 0) 
             Player.instance.AdicionarCarga(cargas);
         
-        if (diretriz != null) diretriz.Finalizar();
+        if (diretriz != null) diretriz.Interromper();
     }
 }
