@@ -5,6 +5,13 @@ using UnityEngine;
 public class WhellControler : MonoBehaviour
 {
     public float velocidade;
+    public int maxVelocidade;
+    public float aceleracao;  
+    public int maxRe;
+    public int freio;
+    public float forca;
+    public float maxAngulo;
+   
     public Transform rodaFrenteDir;
     public Transform rodaFrenteEsq;
     public Transform rodaTraseiraDir;
@@ -16,14 +23,8 @@ public class WhellControler : MonoBehaviour
     public WheelCollider traseiraEsqCollider;
 
     public Rigidbody CarRb;
-    public Transform centroDeMassa;
+    public Transform centroDeMassa;  
 
-    public float forca;
-    public float maxAngle;
-    public float aceleracao;    
- 
-    public int maxRe;
-    public int freio;
      void Start()
     {
         CarRb = GetComponent<Rigidbody>();
@@ -32,8 +33,17 @@ public class WhellControler : MonoBehaviour
 
     void FixedUpdate()
      {
-        traseiraDirCollider.motorTorque = aceleracao*  forca * Input.GetAxis("Vertical");
-        traseiraEsqCollider.motorTorque = aceleracao* forca * Input.GetAxis("Vertical");
+        velocidade = CarRb.velocity.magnitude * 3.6f;   
+        if(velocidade < maxspeed)
+        {
+            traseiraDirCollider.motorTorque = aceleracao*  forca * Input.GetAxis("Vertical");
+            traseiraEsqCollider.motorTorque = aceleracao* forca * Input.GetAxis("Vertical");
+        }
+        else
+        {
+            traseiraDirCollider.motorTorque = 0;
+            traseiraEsqCollider.motorTorque = 0;
+        }
 
         frenteDirCollider.steerAngle = maxAngle * Input.GetAxis("Horizontal");
         frenteEsqCollider.steerAngle = maxAngle * Input.GetAxis("Horizontal");
@@ -53,7 +63,8 @@ public class WhellControler : MonoBehaviour
         RotacaoRoda(traseiraDirCollider, rodaTraseiraDir);
         RotacaoRoda(frenteEsqCollider,   rodaFrenteEsq);
         RotacaoRoda(frenteDirCollider,   rodaFrenteDir);
-        velocidade = CarRb.velocity.magnitude * 3.6f;    
+         
+
     }
     
     private void RotacaoRoda(WheelCollider coll, Transform transform)
