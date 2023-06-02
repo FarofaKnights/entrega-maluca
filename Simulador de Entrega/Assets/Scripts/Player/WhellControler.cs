@@ -21,8 +21,7 @@ public class WhellControler : MonoBehaviour
     public float forca;
     public float maxAngle;
     public float aceleracao;    
-    float KMP;
-
+ 
     public int maxRe;
     public int freio;
      void Start()
@@ -32,7 +31,7 @@ public class WhellControler : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+     {
         traseiraDirCollider.motorTorque = aceleracao*  forca * Input.GetAxis("Vertical");
         traseiraEsqCollider.motorTorque = aceleracao* forca * Input.GetAxis("Vertical");
 
@@ -54,8 +53,7 @@ public class WhellControler : MonoBehaviour
         RotacaoRoda(traseiraDirCollider, rodaTraseiraDir);
         RotacaoRoda(frenteEsqCollider,   rodaFrenteEsq);
         RotacaoRoda(frenteDirCollider,   rodaFrenteDir);
-        KMP = CarRb.velocity.magnitude * 3.6f;
-        velocidade = KMP;
+        velocidade = CarRb.velocity.magnitude * 3.6f;    
     }
     
     private void RotacaoRoda(WheelCollider coll, Transform transform)
