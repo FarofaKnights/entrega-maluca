@@ -34,7 +34,7 @@ public class WhellControler : MonoBehaviour
     void FixedUpdate()
      {
         velocidade = CarRb.velocity.magnitude * 3.6f;   
-        if(velocidade < maxspeed)
+        if(velocidade < maxVelocidade)
         {
             traseiraDirCollider.motorTorque = aceleracao*  forca * Input.GetAxis("Vertical");
             traseiraEsqCollider.motorTorque = aceleracao* forca * Input.GetAxis("Vertical");
@@ -45,8 +45,8 @@ public class WhellControler : MonoBehaviour
             traseiraEsqCollider.motorTorque = 0;
         }
 
-        frenteDirCollider.steerAngle = maxAngle * Input.GetAxis("Horizontal");
-        frenteEsqCollider.steerAngle = maxAngle * Input.GetAxis("Horizontal");
+        frenteDirCollider.steerAngle = maxAngulo * Input.GetAxis("Horizontal");
+        frenteEsqCollider.steerAngle = maxAngulo * Input.GetAxis("Horizontal");
 
         if (Input.GetKey(KeyCode.Space))
         {
