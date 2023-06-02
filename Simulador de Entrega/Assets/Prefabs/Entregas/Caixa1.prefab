@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1980992046339147343}
   - component: {fileID: 1942516361650771946}
   - component: {fileID: 2876863578752007659}
+  - component: {fileID: 5081300716754360578}
   m_Layer: 7
   m_Name: Caixa1
   m_TagString: Entrega
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f60c9063cb61542b5671204af99930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cnoCarro: {fileID: 5081300716754360578}
   speed: 500
   rotateSpeed: 500
   v: {fileID: 0}
@@ -66,6 +68,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5081300716754360578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384330550075591027}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeac8a01867325d4a95202bc0620d87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6494684861778499021
 GameObject:
   m_ObjectHideFlags: 0
