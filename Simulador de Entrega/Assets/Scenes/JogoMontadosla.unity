@@ -18423,6 +18423,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 851864323081145106, guid: 2d460a89629b4c74d8f39e09e9082d07,
+        type: 3}
+      propertyPath: maxAngulo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 851864323081145106, guid: 2d460a89629b4c74d8f39e09e9082d07,
+        type: 3}
+      propertyPath: maxVelocidade
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2154091221713120509, guid: 2d460a89629b4c74d8f39e09e9082d07,
         type: 3}
       propertyPath: m_RootOrder
