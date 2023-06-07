@@ -12,17 +12,17 @@ public class Caixas : MonoBehaviour
     Rigidbody rb;
     Vector3 mover, rodar;
     Carga carga;
-    Transform filho, refdrot;
+    Transform refdrot;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         v = GameObject.Find("Veiculo").transform;
         refdrot = GameObject.Find("RefDRot").transform;
         refdrot.rotation = v.rotation;
-        filho = this.gameObject.transform.GetChild(0);
         transform.rotation = v.rotation;
         Gizmos = Instantiate(Gizmos, transform.position, refdrot.transform.rotation);
         Gizmos.SetActive(false);
+        transform.SetParent(v);
         cnoCarro = GetComponent<CaixasNoCarro>();
     }
     private void Update()
@@ -32,7 +32,7 @@ public class Caixas : MonoBehaviour
         {
             float h = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
-            mZero = Input.mouseScrollDelta.y;
+            mZero = Mathf.Clamp(Input.mouseScrollDelta.y, -1, 1);
             rodar = new Vector3(mZero, h, z);
             if (StartDrag.sd.currCam == StartDrag.sd.cams[2]) mover = new Vector3(-z, mZero, h);
             else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero, -h);
@@ -55,8 +55,11 @@ public class Caixas : MonoBehaviour
         else
         {
             rb.useGravity = true;
-            this.gameObject.isStatic = true;
             Gizmos.SetActive(false);
+        }
+        if(rb.velocity != Vector3.zero)
+        {
+            Checar();
         }
     }
     void Mover()
@@ -64,6 +67,7 @@ public class Caixas : MonoBehaviour
         if (!rotating)
         {
             Vector3 moveVector = v.TransformDirection(mover) * speed;
+            Debug.Log(v.transform.position.z - transform.position.z);
             rb.velocity = moveVector * Time.deltaTime;
             Gizmos.transform.position = transform.position;
         }
@@ -74,13 +78,22 @@ public class Caixas : MonoBehaviour
             rb.MoveRotation(delta * rb.rotation);
         }
     }
+    void Checar()
+    {
+        if (transform.localPosition.x > 7.2f && transform.localPosition.z > -6.5f) transform.localPosition = new Vector3(-7.2f, transform.localPosition.y, transform.localPosition.z);
+        else if (transform.localPosition.x > 5f && transform.localPosition.z < -6.5f) transform.localPosition = new Vector3(-6f, transform.localPosition.y, transform.localPosition.z);
+        if (transform.localPosition.x < -7.2f && transform.localPosition.z > -6.5f) transform.localPosition = new Vector3(7.2f, transform.localPosition.y, transform.localPosition.z);
+        else if (transform.localPosition.x < -5f && transform.localPosition.z < -6.5f) transform.localPosition = new Vector3(6f, transform.localPosition.y, transform.localPosition.z);
+        if (transform.localPosition.z < -7.5f) transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 3f);
+        if (transform.localPosition.z > 3f) transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -7.5f);
+        if (transform.localPosition.y > 4f) StartDrag.sd.SelectedObj = null;
+    }
     public void Remover()
     {
         Destroy(this.gameObject);
     }
     private void OnMouseDown()
     { 
-        this.gameObject.isStatic = false;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = false;
         StartDrag.sd.SelectedObj = this.gameObject;

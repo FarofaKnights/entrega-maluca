@@ -24,6 +24,7 @@ MonoBehaviour:
     permiteReceber: 0
     diretriz:
       texto: 
+      limitacoes: []
   conjuntos:
   - objetivos:
     - endereco: Predio 5
@@ -31,6 +32,8 @@ MonoBehaviour:
       permiteReceber: 1
       diretriz:
         texto: "Leve a caixa ao Pr\xE9dio 5"
+        limitacoes: []
     sequencial: 0
     diretriz:
       texto: 
+      limitacoes: []
