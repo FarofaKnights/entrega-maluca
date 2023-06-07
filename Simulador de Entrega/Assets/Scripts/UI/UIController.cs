@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
     public static UIController instance;
 
-    public Button botaoAcao, botaoInterromperMissao, botaoConfirm;
+    public Button botaoAcao, botaoConfirm;
     public Text textoMissaoConcluida, textoDiretriz;
 
     public GameObject missaoPanel, diretrizPanel;
-    public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel;
+    public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel, refPausaPanel;
 
     public Text dinheiro;
 
@@ -29,9 +29,6 @@ public class UIController : MonoBehaviour {
         botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao();});
 
         missaoPanel.SetActive(false);
-
-        botaoInterromperMissao.gameObject.SetActive(false);
-        botaoInterromperMissao.onClick.AddListener(delegate { HandleBotaoInterromperMissao();});
 
         botaoConfirm.gameObject.SetActive(false);
         botaoConfirm.onClick.AddListener(delegate { Confirm(); });
@@ -68,19 +65,10 @@ public class UIController : MonoBehaviour {
     // Handle do clique no botão "Iniciar Missão"
     public void HandleBotaoIniciarMissao() {
         objetivo.Concluir();
-        botaoInterromperMissao.gameObject.SetActive(true);
         missaoPanel.SetActive(false);
     }
 
-    // Handle do clique no botão "Interromper Missão"
-    public void HandleBotaoInterromperMissao() {
-        Player.instance.InterromperMissao();
-        StartDrag.sd.Confirm();
-        botaoInterromperMissao.gameObject.SetActive(false);
-    }
-
     public void MissaoConcluida() {
-        botaoInterromperMissao.gameObject.SetActive(false);
         textoMissaoConcluida.gameObject.SetActive(true);
 
         // Espera 2 segundos e esconde o texto
@@ -100,6 +88,8 @@ public class UIController : MonoBehaviour {
             botaoConfirm.gameObject.SetActive(false);
         }
     }
+
+    #region Diretriz
 
     public void AdicionarDiretriz(Diretriz diretriz) {
         diretrizes.Add(diretriz);
@@ -125,6 +115,8 @@ public class UIController : MonoBehaviour {
         textoDiretriz.text = text;
     }
 
+    #endregion
+
     public void EntrarOficina() {
         refOficinaPanel.SetActive(true);
         refMissaoPanel.SetActive(false);
@@ -141,5 +133,14 @@ public class UIController : MonoBehaviour {
 
     public void AtualizarDinheiro() {
         dinheiro.text = Player.instance.GetDinheiro().ToString("C2");
+    }
+
+    public void EntrarPausa() {
+        refPausaPanel.SetActive(true);
+        refPausaPanel.GetComponent<MenuPauseController>().OpenMenu();
+    }
+
+    public void SairPausa() {
+        refPausaPanel.SetActive(false);
     }
 }

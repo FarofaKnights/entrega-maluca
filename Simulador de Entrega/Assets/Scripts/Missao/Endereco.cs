@@ -40,4 +40,8 @@ public class Endereco : MonoBehaviour {
     public static Endereco GetEndereco(string nome) {
         return ListaEnderecos[nome];
     }
+
+    void OnDestroy() {
+        ListaEnderecos.Remove(nome);
+    }
 }

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
-    public MissaoObject[] missoesIniciais;
 
+    public enum Estado { Jogando, Pausado };
+    public Estado estadoAtual = Estado.Jogando;
+
+    public MissaoObject[] missoesIniciais;
     public Missao visualizarMissaoAtual;
 
     public List<Missao> missoesDisponiveis = new List<Missao>();
@@ -20,8 +24,17 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.P)) {
             StartDrag.sd.Confirm();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (estadoAtual == Estado.Jogando) {
+                Pausar();
+            } else {
+                Despausar();
+            }
+        }
     }
 
+    #region Missao
     public void CarregarMissaoInicial() {
         foreach (MissaoObject missaoObject in missoesIniciais) {
             Missao missao = missaoObject.Convert();
@@ -54,5 +67,25 @@ public class GameManager : MonoBehaviour {
             if (mostrandoMissoes) missao.objetivoInicial.Iniciar();
             else missao.objetivoInicial.Interromper();
         }
+    }
+    #endregion
+
+    public void Pausar() {
+        estadoAtual = Estado.Pausado;
+        Time.timeScale = 0;
+
+        UIController.instance.EntrarPausa();
+    }
+
+    public void Despausar() {
+        estadoAtual = Estado.Jogando;
+        Time.timeScale = 1;
+
+        UIController.instance.SairPausa();
+    }
+
+    public void VoltarMenu() {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
     }
 }

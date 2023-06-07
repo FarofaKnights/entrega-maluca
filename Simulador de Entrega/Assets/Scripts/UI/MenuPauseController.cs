@@ -1,0 +1,93 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class MenuPauseController : MonoBehaviour {
+    public GameObject missaoPanel, menuPanel;
+    public GameObject missaoDetails, missaoList, missaoItemPrefab;
+
+    public GameObject interromperMissaoBtn;
+
+    void Start() {
+        
+    }
+
+    // Update is called once per frame
+    void Update() {
+    }
+
+    public void OpenMissao() {
+        missaoPanel.SetActive(true);
+        menuPanel.SetActive(false);
+        GenerateMissaoList();
+    }
+
+    public void OpenMenu() {
+        missaoPanel.SetActive(false);
+        menuPanel.SetActive(true);
+        
+        UpdateBotaoInterromperMissao();
+    }
+
+    void UpdateBotaoInterromperMissao() {
+        // Se jogador estiver em uma missão, mostra o botão de interromper
+        interromperMissaoBtn.SetActive(Player.instance.missaoAtual != null);
+
+        // Por algum motivo a unity não atualiza o layout automaticamente nesse caso, esta é a solução que encontrei
+        Canvas.ForceUpdateCanvases();
+        interromperMissaoBtn.transform.parent.GetComponent<VerticalLayoutGroup>().enabled = false;
+        interromperMissaoBtn.transform.parent.GetComponent<VerticalLayoutGroup>().enabled = true;
+    }
+
+    public void HandleBotaoInterromperMissao() {
+        Player.instance.InterromperMissao();
+        StartDrag.sd.Confirm();
+
+        UpdateBotaoInterromperMissao();
+    }
+
+    public void GenerateMissaoList() {
+        List<Missao> missoes = GameManager.instance.missoesDisponiveis;
+        ToggleGroup toggleGroup = missaoList.GetComponent<ToggleGroup>();
+
+        // Limpa a lista
+        foreach (Transform child in missaoList.transform) {
+            Destroy(child.gameObject);
+        }
+
+        // Gera a lista
+        foreach (Missao missao in missoes) {
+            GameObject missaoItem = Instantiate(missaoItemPrefab, missaoList.transform);
+            missaoItem.GetComponent<RefMissao>().missao = missao;
+            missaoItem.GetComponentInChildren<Text>().text = missao.titulo;
+
+            Toggle toggle = missaoItem.GetComponent<Toggle>();
+            toggle.group = toggleGroup;
+            toggle.onValueChanged.AddListener(delegate { HandleMissaoItemClick(toggle); });
+        }
+    }
+
+    public void HandleMissaoItemClick(Toggle toggle) {
+        RefMissao refMissao = toggle.GetComponent<RefMissao>();
+        Missao missao = refMissao.missao;
+
+        if (toggle.isOn) UpdateMissaoDetails(missao);
+        else UpdateMissaoDetails(null);
+    }
+
+    public void UpdateMissaoDetails(Missao missao) {
+        if (missao == null) {
+            missaoDetails.SetActive(false);
+            return;
+        }
+
+        missaoDetails.SetActive(true);
+
+        Text titulo = missaoDetails.transform.Find("Titulo").GetComponent<Text>();
+        Text descricao = missaoDetails.transform.Find("Descricao").GetComponent<Text>();
+
+        titulo.text = missao.titulo;
+        descricao.text = missao.descricao;
+    }
+}
