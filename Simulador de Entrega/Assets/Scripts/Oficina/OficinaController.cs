@@ -15,6 +15,8 @@ public class OficinaController : MonoBehaviour {
 
     // Solução temporária, talvez teremos que ver uma reestruturação geral do código (GameManager e Player)
     Dictionary<Renderer, Material[]> materiaisVeiculo = new Dictionary<Renderer, Material[]>();
+    int defaultMaxSpeed;
+    float defaultAcelleration;
 
     void Start() {
         instance = this;
@@ -22,10 +24,14 @@ public class OficinaController : MonoBehaviour {
         trigger = transform.Find("Trigger").gameObject;
         cameraOficina = transform.Find("Camera").GetComponent<Camera>();
 
+        // Relativo aos Upgrades
         Renderer[] rends = Player.instance.GetComponentsInChildren<Renderer>();
         foreach (Renderer rend in rends) {
             materiaisVeiculo.Add(rend, rend.materials);
         }
+
+        defaultMaxSpeed = Player.instance.GetComponent<WhellControler>().maxVelocidade;
+        defaultAcelleration = Player.instance.GetComponent<WhellControler>().aceleracao;
     }
 
     public void EntrarOficina() {
@@ -72,6 +78,8 @@ public class OficinaController : MonoBehaviour {
         naOficina = false;
     }
 
+    #region Upgrades
+
     public void SetMaterial(Material material) {
         Renderer[] rends = Player.instance.GetComponentsInChildren<Renderer>();
 
@@ -80,4 +88,14 @@ public class OficinaController : MonoBehaviour {
             else rend.materials = materiaisVeiculo[rend];
         }
     }
+
+    public void SetMotor(int maxSpeed, float acelleration) {
+        if (maxSpeed < 0) maxSpeed = defaultMaxSpeed;
+        if (acelleration < 0) acelleration = defaultAcelleration;
+
+        Player.instance.GetComponent<WhellControler>().maxVelocidade = maxSpeed;
+        Player.instance.GetComponent<WhellControler>().aceleracao = acelleration;
+    }
+
+    #endregion
 }

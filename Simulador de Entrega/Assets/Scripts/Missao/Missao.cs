@@ -16,6 +16,9 @@ public class Missao: Iniciavel {
     public string titulo, descricao;
     public Diretriz diretriz = null;
 
+    bool iniciada = false;
+    bool finalizada = false;
+
     // Construtores
     public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos, string titulo, string descricao) {
         this.objetivoInicial = objetivoInicial;
@@ -39,6 +42,7 @@ public class Missao: Iniciavel {
     // Metodos Iniciavel
     public void Iniciar() {
         Player.instance.ComecarMissao(this);
+        iniciada = true;
 
         indiceConjunto = 0;
         conjuntos[indiceConjunto].Iniciar();
@@ -48,6 +52,8 @@ public class Missao: Iniciavel {
         if (Player.instance.missaoAtual == this) {
             Player.instance.missaoAtual = null;
         }
+        
+        iniciada = false;
 
         conjuntos[indiceConjunto].Interromper();
         indiceConjunto = 0;
@@ -61,6 +67,8 @@ public class Missao: Iniciavel {
         }
 
         Player.instance.AdicionarDinheiro(dinheiro);
+
+        finalizada = true;
         Player.instance.FinalizarMissao();
 
         UIController.instance.MissaoConcluida();
@@ -84,6 +92,14 @@ public class Missao: Iniciavel {
 
     public void CargaEntregue(Carga carga) {
         cargasEntregues.Add(carga);
+    }
+
+    public bool FoiFinalizada() {
+        return finalizada;
+    }
+
+    public bool FoiIniciada() {
+        return iniciada;
     }
 
     #region Aleatoria
