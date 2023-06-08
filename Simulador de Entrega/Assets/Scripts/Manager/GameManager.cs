@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public Missao visualizarMissaoAtual;
 
     public List<Missao> missoesDisponiveis = new List<Missao>();
+    public List<Missao> missoesConcluidas = new List<Missao>();
     bool mostrandoMissoes = true;
 
     void Awake() {
@@ -55,6 +56,9 @@ public class GameManager : MonoBehaviour {
 
     public void RemoverMissao(Missao missao) {
         missoesDisponiveis.Remove(missao);
+
+        if (missao.FoiFinalizada())
+            missoesConcluidas.Add(missao);
 
         if (mostrandoMissoes)
             missao.objetivoInicial.Interromper();

@@ -47,9 +47,25 @@ public class MenuPauseController : MonoBehaviour {
         UpdateBotaoInterromperMissao();
     }
 
+    GameObject GenerateMissaoItem(Missao missao) {
+        ToggleGroup toggleGroup = missaoList.GetComponent<ToggleGroup>();
+
+        GameObject missaoItem = Instantiate(missaoItemPrefab, missaoList.transform);
+        missaoItem.GetComponent<RefMissao>().missao = missao;
+        missaoItem.GetComponentInChildren<Text>().text = missao.titulo;
+
+        Toggle toggle = missaoItem.GetComponent<Toggle>();
+        toggle.group = toggleGroup;
+        toggle.onValueChanged.AddListener(delegate { HandleMissaoItemClick(toggle); });
+
+        return missaoItem;
+    }
+
     public void GenerateMissaoList() {
         List<Missao> missoes = GameManager.instance.missoesDisponiveis;
-        ToggleGroup toggleGroup = missaoList.GetComponent<ToggleGroup>();
+        List<Missao> missoesConcluidas = GameManager.instance.missoesConcluidas;
+
+        
 
         // Limpa a lista
         foreach (Transform child in missaoList.transform) {
@@ -58,13 +74,12 @@ public class MenuPauseController : MonoBehaviour {
 
         // Gera a lista
         foreach (Missao missao in missoes) {
-            GameObject missaoItem = Instantiate(missaoItemPrefab, missaoList.transform);
-            missaoItem.GetComponent<RefMissao>().missao = missao;
-            missaoItem.GetComponentInChildren<Text>().text = missao.titulo;
+            GenerateMissaoItem(missao);
+        }
 
-            Toggle toggle = missaoItem.GetComponent<Toggle>();
-            toggle.group = toggleGroup;
-            toggle.onValueChanged.AddListener(delegate { HandleMissaoItemClick(toggle); });
+        // Gera a lista de missões concluidas
+        foreach (Missao missao in missoesConcluidas) {
+            GenerateMissaoItem(missao);
         }
     }
 

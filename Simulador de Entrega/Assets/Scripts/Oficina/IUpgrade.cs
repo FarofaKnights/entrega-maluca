@@ -9,6 +9,8 @@ public abstract class IUpgrade: MonoBehaviour {
     public bool comprado = false;
     public bool ativo = false;
 
+    public int id = 0;
+
     public void Comprar() {
         if (comprado) {
             Ativar();

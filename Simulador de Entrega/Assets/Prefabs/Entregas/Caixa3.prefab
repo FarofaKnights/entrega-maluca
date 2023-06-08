@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cnoCarro: {fileID: 5081300716754360578, guid: 9a722d1928294ac41a81c31e722741d6,
     type: 3}
-  speed: 500
+  speed: 200
   rotateSpeed: 500
   v: {fileID: 0}
   Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
