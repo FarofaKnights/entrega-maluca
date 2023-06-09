@@ -48,6 +48,7 @@ public class Caixas : MonoBehaviour
                 else
                 {
                     rotating = true;
+                    rb.velocity = Vector3.zero;
                     Gizmos.SetActive(true);
                 }
             }
