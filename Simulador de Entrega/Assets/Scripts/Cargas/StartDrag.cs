@@ -151,6 +151,7 @@ public class StartDrag : MonoBehaviour
                break;
             }
             Rigidbody rb = caixasNoCarro[h].GetComponent<Rigidbody>();
+            caixasNoCarro[h].transform.SetParent(null);
             Caixas c = caixasNoCarro[h].GetComponent<Caixas>();
             c.cnoCarro.enabled = true;
             rb.constraints = RigidbodyConstraints.None;
