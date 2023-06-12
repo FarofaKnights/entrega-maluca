@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour {
     public Text textoMissaoConcluida, textoDiretriz;
 
     public GameObject missaoPanel, diretrizPanel;
-    public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel, refPausaPanel;
+    public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel, refPausaPanel, refMinimapaPanel;
 
     public Text dinheiro;
 
@@ -66,6 +66,7 @@ public class UIController : MonoBehaviour {
     public void HandleBotaoIniciarMissao() {
         objetivo.Concluir();
         missaoPanel.SetActive(false);
+        refMinimapaPanel.SetActive(false);
     }
 
     public void MissaoConcluida() {
@@ -86,6 +87,7 @@ public class UIController : MonoBehaviour {
             StartDrag.sd.Confirm();
             objetivo.Finalizar();
             botaoConfirm.gameObject.SetActive(false);
+            refMinimapaPanel.SetActive(true);
         }
     }
 
@@ -121,6 +123,7 @@ public class UIController : MonoBehaviour {
         refOficinaPanel.SetActive(true);
         refMissaoPanel.SetActive(false);
         refEncaixePanel.SetActive(false);
+        refMinimapaPanel.SetActive(false);
 
         refOficinaPanel.GetComponent<OficinaUI>().HandleMostrarGrid();
     }
@@ -129,6 +132,7 @@ public class UIController : MonoBehaviour {
         refOficinaPanel.SetActive(false);
         refMissaoPanel.SetActive(true);
         refEncaixePanel.SetActive(true);
+        refMinimapaPanel.SetActive(true);
     }
 
     public void AtualizarDinheiro() {

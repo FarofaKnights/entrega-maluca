@@ -10,19 +10,27 @@ public class Endereco : MonoBehaviour {
     // public GameObject colisor;
 
     Objetivo objetivo;
+    IncluiMinimapa icone;
 
     void Awake() {
         ListaEnderecos.Add(nome, this);
+        icone = GetComponent<IncluiMinimapa>();
     }
 
     public void DefinirComoObjetivo(Objetivo objetivo) {
         this.objetivo = objetivo;
         gameObject.SetActive(true);
+
+        if (icone != null) icone.AtivarIcone();
     }
 
     public void RemoverObjetivo() {
+        Objetivo objetivo = this.objetivo;
+
         this.objetivo = null;
         gameObject.SetActive(false);
+
+        if (icone != null) icone.DesativarIcone();
     }
 
     void OnTriggerEnter(Collider other) {

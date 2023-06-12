@@ -106,16 +106,16 @@ public class Missao: Iniciavel {
     // Gera uma missão A->B aleatoria
     public static Missao GerarMissaoAleatoria() {
         int a, b;
-        a = Random.Range(1,6); // de 1 a 5
+        a = Random.Range(1,4); // de 1 a 3
 
         // Gera numero aleatorio diferente de a
         do {
-            b = Random.Range(1,6);
+            b = Random.Range(1,4);
         } while (a == b);
 
         // Pega objetos do tipo Endereco
-        Endereco remetente = Endereco.ListaEnderecos["Predio " + a];
-        Endereco destinatario = Endereco.ListaEnderecos["Predio " + b];
+        Endereco remetente = Endereco.ListaEnderecos["Predio" + a];
+        Endereco destinatario = Endereco.ListaEnderecos["Predio" + b];
 
         // Gera quantidade aleatoria de cargas
         List<Carga> cargas = new List<Carga>();
@@ -138,13 +138,13 @@ public class Missao: Iniciavel {
     
     // Gera uma missão de 3 pontos aleatoria
     public static Missao GerarMissaoMultiplosPontos() {
-        int[] nums = XNumerosAleatorioSemRepetir(4, 1, 5);
+        int[] nums = XNumerosAleatorioSemRepetir(3, 1, 3);
         Objetivo[] objetivos = new Objetivo[3];
         Conjunto conjunto = new Conjunto(null, objetivos, false);
         List<Carga> cargas = new List<Carga>();
 
         for (int i = 0; i < nums.Length - 1; i++) {
-            Endereco endereco = Endereco.ListaEnderecos["Predio " + nums[i+1]];
+            Endereco endereco = Endereco.ListaEnderecos["Predio" + nums[i+1]];
             objetivos[i] = new Objetivo(endereco, conjunto);
             objetivos[i].permiteReceber = true;
 
@@ -152,7 +152,7 @@ public class Missao: Iniciavel {
             cargas.Add(carga);
         }
 
-        ObjetivoInicial inicio = new ObjetivoInicial(Endereco.ListaEnderecos["Predio " + nums[0]], cargas);
+        ObjetivoInicial inicio = new ObjetivoInicial(Endereco.ListaEnderecos["Predio" + nums[0]], cargas);
 
         return new Missao(inicio, new Conjunto[1] {conjunto}, "Missão Aleatória", "Entregue as cargas nos prédios " + nums[1] + ", " + nums[2] + " e " + nums[3] + ".");
     }

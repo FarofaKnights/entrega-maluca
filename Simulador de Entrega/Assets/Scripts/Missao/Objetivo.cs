@@ -43,6 +43,8 @@ public class Objetivo: Iniciavel {
 
         ativo = true;
         endereco.DefinirComoObjetivo(this);
+        Player.instance.AdicionarObjetivoAtivo(this);
+
         if (diretriz != null) diretriz.Iniciar();
     }
 
@@ -66,6 +68,7 @@ public class Objetivo: Iniciavel {
 
         ativo = false;
         endereco.RemoverObjetivo();
+        Player.instance.RemoverObjetivoAtivo(this);
 
         if (diretriz != null) diretriz.Interromper();
         if (pai != null) pai.ObjetivoConcluido(this);
@@ -77,6 +80,7 @@ public class Objetivo: Iniciavel {
 
         ativo = false;
         endereco.RemoverObjetivo();
+        Player.instance.RemoverObjetivoAtivo(this);
 
         if (diretriz != null) diretriz.Interromper();
         if (pai != null) pai.Interromper();

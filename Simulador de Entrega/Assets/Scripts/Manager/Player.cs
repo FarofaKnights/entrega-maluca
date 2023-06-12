@@ -12,15 +12,13 @@ public class Player : MonoBehaviour
 
     [System.NonSerialized]
     public Missao missaoAtual = null;
-    
 
-    public List<Diretriz> diretrizes = new List<Diretriz>();
+    public List<Objetivo> objetivosAtivos = new List<Objetivo>();
 
-    private void Awake()
-    {
+    void Awake() {
         instance = this;
-        
     }
+
     void Start() {
 
         foreach (KeyValuePair<string, Endereco> entry in Endereco.ListaEnderecos) {
@@ -76,8 +74,20 @@ public class Player : MonoBehaviour
 
         GameManager.instance.AlterarDisponibilidadeDeMissoes(true);
     }
-    #endregion
 
+    public void AdicionarObjetivoAtivo(Objetivo objetivo) {
+        if (objetivo is ObjetivoInicial) return;
+
+        objetivosAtivos.Add(objetivo);
+    }
+
+    public void RemoverObjetivoAtivo(Objetivo objetivo) {
+        if (!objetivosAtivos.Contains(objetivo)) return;
+
+        objetivosAtivos.Remove(objetivo);
+    }
+
+    #endregion
 
     #region SistemaDeCarga
     public void AdicionarCarga(List<Carga> cargas) {
