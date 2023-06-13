@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2008165092124268852}
   - component: {fileID: 770384805922743850}
   - component: {fileID: 5848202272839827027}
-  - component: {fileID: 7648556471400925582}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Entrega
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7648556471400925582
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873160976574210616}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.99999994, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8945529338682589028
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +95,7 @@ GameObject:
   - component: {fileID: 7153409452789102956}
   - component: {fileID: 6182363309294341049}
   - component: {fileID: 7003221966302657266}
+  - component: {fileID: 8682982756661070210}
   m_Layer: 7
   m_Name: Caixa2
   m_TagString: Entrega
@@ -150,6 +137,12 @@ MonoBehaviour:
   rotateSpeed: 500
   v: {fileID: 0}
   Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
+  carga:
+    peso: 5
+    fragilidade: 100
+    tipo: 0
+    destinatario: {fileID: 0}
+    cx: {fileID: 0}
 --- !u!54 &6182363309294341049
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -178,3 +171,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeac8a01867325d4a95202bc0620d87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  carga:
+    peso: 0
+    fragilidade: 0
+    tipo: 0
+    destinatario: {fileID: 0}
+    cx: {fileID: 0}
+  inCarro: 1
+  multiplicadorDano: 0
+--- !u!65 &8682982756661070210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945529338682589028}
+  m_Material: {fileID: 13400000, guid: bf35326eb7470ca4faabffc94100b8e9, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

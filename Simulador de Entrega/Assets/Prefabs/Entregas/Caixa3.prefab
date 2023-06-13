@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 901830695093726819}
   - component: {fileID: 112238025252840069}
   - component: {fileID: 8508249225935260432}
-  - component: {fileID: 3339665250497001448}
+  - component: {fileID: 7116503009516556226}
+  - component: {fileID: -4849776668469827709}
   m_Layer: 7
   m_Name: Caixa3
   m_TagString: Entrega
@@ -53,6 +54,12 @@ MonoBehaviour:
   rotateSpeed: 500
   v: {fileID: 0}
   Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
+  carga:
+    peso: 10
+    fragilidade: 150
+    tipo: 0
+    destinatario: {fileID: 0}
+    cx: {fileID: 0}
 --- !u!54 &8508249225935260432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69,18 +76,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3339665250497001448
+--- !u!65 &7116503009516556226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240624705749833600}
+  m_Material: {fileID: 13400000, guid: bf35326eb7470ca4faabffc94100b8e9, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Center: {x: 0.0000038146973, y: 0, z: 0}
+--- !u!114 &-4849776668469827709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240624705749833600}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aeac8a01867325d4a95202bc0620d87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  carga:
+    peso: 0
+    fragilidade: 0
+    tipo: 0
+    destinatario: {fileID: 0}
+    cx: {fileID: 0}
+  inCarro: 1
+  multiplicadorDano: 0
 --- !u!1 &7514374493473257535
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +121,6 @@ GameObject:
   - component: {fileID: 2962797294252254498}
   - component: {fileID: 2475240247652249296}
   - component: {fileID: 5266749967530516677}
-  - component: {fileID: 814829644003397097}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Entrega
@@ -165,16 +193,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &814829644003397097
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7514374493473257535}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.0000001, z: 1.0000001}
-  m_Center: {x: 0.0000038146973, y: 0, z: 0}

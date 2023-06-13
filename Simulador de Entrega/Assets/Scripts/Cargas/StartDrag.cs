@@ -41,7 +41,6 @@ public class StartDrag : MonoBehaviour
         u = 0;
         i = 0;
         cams[0].gameObject.SetActive(false);
-        Debug.Log(Player.instance.cargaAtual.Count);
         cams[1].gameObject.SetActive(true);
         currCam = cams[1];
         UIController.instance.botaoConfirm.gameObject.SetActive(true);
@@ -63,14 +62,16 @@ public class StartDrag : MonoBehaviour
         if(other.gameObject.CompareTag("Entrega"))
         {
            load = 0;
-           i++;
             while (caixasNoCarro[load] != null)
                 load++;
-           caixasNoCarro[load] = other.transform.parent.gameObject;
-            Debug.Log(caixasNoCarro.Length);
-            if(i >= Player.instance.cargaAtual.Count)
+            caixasNoCarro[load] = other.gameObject;
+            if (currentState == State.Tetris)
             {
-                completed = true;
+                i++;
+                if (i >= Player.instance.cargaAtual.Count)
+                {
+                    completed = true;
+                }
             }
         }
     }
@@ -78,18 +79,20 @@ public class StartDrag : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Entrega"))
         {
-            GameObject ligma = other.gameObject.transform.parent.gameObject;
+            GameObject ligma = other.gameObject;
+            CaixasNoCarro cnc = ligma.GetComponent<CaixasNoCarro>();
             for (int j = 0; j < caixasNoCarro.Length; j++)
             {
-                Debug.Log(j);
                 if (ligma == caixasNoCarro[j])
                 {
                     caixasNoCarro[j] = null;
                 }
-                else Debug.Log(other.gameObject.name);
             }
-            i -= 1;
-            completed = false;
+            if (currentState == State.Tetris)
+            {
+                i -= 1;
+                completed = false;
+            }
         }
     }
     public void Confirm()

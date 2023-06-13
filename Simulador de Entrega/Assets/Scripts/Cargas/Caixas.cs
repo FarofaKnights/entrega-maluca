@@ -11,7 +11,7 @@ public class Caixas : MonoBehaviour
     public GameObject Gizmos;
     Rigidbody rb;
     Vector3 mover, rodar;
-    Carga carga;
+    public Carga carga;
     Transform refdrot;
     void Start()
     {
@@ -24,6 +24,8 @@ public class Caixas : MonoBehaviour
         Gizmos.SetActive(false);
         transform.SetParent(v);
         cnoCarro = GetComponent<CaixasNoCarro>();
+        cnoCarro.carga = carga;
+        cnoCarro.rb = rb;
     }
     private void Update()
     {
@@ -68,7 +70,6 @@ public class Caixas : MonoBehaviour
         if (!rotating)
         {
             Vector3 moveVector = v.TransformDirection(mover) * speed;
-            Debug.Log(v.transform.position.z - transform.position.z);
             rb.velocity = moveVector * Time.deltaTime;
             Gizmos.transform.position = transform.position;
         }

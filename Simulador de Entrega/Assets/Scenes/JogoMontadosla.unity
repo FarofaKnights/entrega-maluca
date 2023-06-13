@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15456,6 +15456,7 @@ MonoBehaviour:
   refEncaixePanel: {fileID: 4747569516188360485}
   refOficinaPanel: {fileID: 4747569516444558692}
   refPausaPanel: {fileID: 4747569516356267303}
+  refMinimapaPanel: {fileID: 0}
   dinheiro: {fileID: 4747569515152523703}
 --- !u!223 &4747569515265786096
 Canvas:
@@ -22713,6 +22714,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384615943481009779, guid: 420e5eee29e01f144bf6b72680da9c72,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.20199203
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384615943481009779, guid: 420e5eee29e01f144bf6b72680da9c72,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.780344
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 420e5eee29e01f144bf6b72680da9c72, type: 3}
