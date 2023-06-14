@@ -8,9 +8,15 @@ public class IncluiMinimapa : MonoBehaviour {
     public float escala = 1;
 
     bool ativo = false;
-    GameObject icon;
+    GameObject icon = null;
 
     void Start() {
+        GeraIcone();
+    }
+
+    public void GeraIcone() {
+        if (this.icon != null) return;
+
         MinimapManager minimapManager = MinimapManager.instance;
         GameObject icon = Instantiate(minimapManager.iconPrefab, minimapManager.transform);
         icon.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -25,6 +31,7 @@ public class IncluiMinimapa : MonoBehaviour {
 
     public void AtivarIcone() {
         if (ativo) return;
+        if(icon == null) GeraIcone();
         ativo = true;
 
         icon.SetActive(true);
@@ -32,6 +39,7 @@ public class IncluiMinimapa : MonoBehaviour {
 
     public void DesativarIcone() {
         if (!ativo) return;
+        if(icon == null) GeraIcone();
         ativo = false;
 
         icon.SetActive(false);
