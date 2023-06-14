@@ -84,7 +84,7 @@ public class StartDrag : MonoBehaviour
             for (int j = 0; j < caixasNoCarro.Length; j++)
             {
                 if (ligma == caixasNoCarro[j])
-                {
+                { 
                     caixasNoCarro[j] = null;
                 }
             }
