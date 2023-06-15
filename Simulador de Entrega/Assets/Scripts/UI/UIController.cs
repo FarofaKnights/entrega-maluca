@@ -111,8 +111,15 @@ public class UIController : MonoBehaviour {
 
     void AtualizaTextoDiretrizes() {
         string text = "";
+        int i = 0;
+
         foreach (Diretriz d in diretrizes) {
-            text += d.texto + "\n";
+            text += d.texto;
+
+            if (i < diretrizes.Count - 1)
+                text += "\n";
+            
+            i++;
         }
         textoDiretriz.text = text;
     }

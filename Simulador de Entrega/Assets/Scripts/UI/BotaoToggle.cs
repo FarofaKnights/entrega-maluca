@@ -12,7 +12,7 @@ public class BotaoToggle : MonoBehaviour {
         HandleChange();
     }
 
-    void UpdateValues() {
+    public void UpdateValues() {
         toggle = GetComponent<Toggle>();
         corPadrao = toggle.colors.normalColor;
         corAtiva = toggle.colors.pressedColor;
