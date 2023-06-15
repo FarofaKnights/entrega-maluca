@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6817001317616413652}
   - component: {fileID: 8611203256122248581}
+  - component: {fileID: 7885995481173010541}
   m_Layer: 0
   m_Name: PontoDeOnibusGrande
   m_TagString: Untagged
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 97721746903686685}
   m_Enabled: 1
+--- !u!65 &7885995481173010541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629521460681342228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.480421, y: 3.8576093, z: 1.238308}
+  m_Center: {x: -0.36636066, y: 0.7510388, z: 0.41224098}
 --- !u!1001 &1628817388300714649
 PrefabInstance:
   m_ObjectHideFlags: 0

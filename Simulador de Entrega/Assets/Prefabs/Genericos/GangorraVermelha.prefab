@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6318775791797043377}
   - component: {fileID: 1519875114363993355}
+  - component: {fileID: 4430448829611000984}
   m_Layer: 0
   m_Name: GangorraVermelha
   m_TagString: Untagged
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8020856527576076090}
   m_Enabled: 1
+--- !u!65 &4430448829611000984
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034076232282397406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5793686, y: 0.60952425, z: 1.3436203}
+  m_Center: {x: -0.008886337, y: 0.19523787, z: -0.046855927}
 --- !u!1001 &569027215386237615
 PrefabInstance:
   m_ObjectHideFlags: 0

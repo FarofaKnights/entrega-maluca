@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913918451401419435}
   - component: {fileID: 164585513482981719}
+  - component: {fileID: 1694321612483419320}
   m_Layer: 0
   m_Name: MaquinaDeSoda
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539058508047090837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.297647, y: 6.356295, z: 44.72424}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6998415318309911360}
   m_Enabled: 1
+--- !u!65 &1694321612483419320
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539058508047090837}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.294694, y: 2.053191, z: 0.7509732}
+  m_Center: {x: -0.2640139, y: 1.0010954, z: -0.030971035}
 --- !u!1001 &7072745468303384848
 PrefabInstance:
   m_ObjectHideFlags: 0

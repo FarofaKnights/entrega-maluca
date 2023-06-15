@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4239554354397704240}
   - component: {fileID: 7111558078718451679}
+  - component: {fileID: 3419783596248373856}
   m_Layer: 0
   m_Name: SemaforoTransito
   m_TagString: Untagged
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7561681499491164012}
   m_Enabled: 1
+--- !u!65 &3419783596248373856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239554354397704243}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5348358, y: 3.6320238, z: 0.72735214}
+  m_Center: {x: -0.036917686, y: 1.1405437, z: 0.0151462555}
 --- !u!1001 &5144724197017602838
 PrefabInstance:
   m_ObjectHideFlags: 0
