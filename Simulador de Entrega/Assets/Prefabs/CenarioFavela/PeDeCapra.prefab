@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7845978493617015010}
   - component: {fileID: 6579011712042305351}
   - component: {fileID: 8982903356762256269}
+  - component: {fileID: 1415229267154250362}
   m_Layer: 0
   m_Name: PeDeCapra
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7469593207569240664}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1513.8915, y: 0.5311192, z: 2019.6888}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1415229267154250362
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7469593207569240664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5772705, y: 1.1822896, z: 0.17578125}
+  m_Center: {x: -0.07635498, y: 0.06002748, z: -0.034301758}

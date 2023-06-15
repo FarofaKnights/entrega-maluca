@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6817001317616413652}
-  - component: {fileID: 8611203256122248581}
   - component: {fileID: 7885995481173010541}
   m_Layer: 0
   m_Name: PontoDeOnibusGrande
@@ -36,33 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &8611203256122248581
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8629521460681342228}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.09354802
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 7712636685727493423}
-  - screenRelativeHeight: 0.06254309
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2757463147336681986}
-  - screenRelativeHeight: 0.029455567
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 97721746903686685}
-  m_Enabled: 1
 --- !u!65 &7885995481173010541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -150,12 +122,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d27bba69d50788e419337b2cfbbb6ad7, type: 3}
---- !u!23 &97721746903686685 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d27bba69d50788e419337b2cfbbb6ad7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1628817388300714649}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1229484577707894130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d27bba69d50788e419337b2cfbbb6ad7,
@@ -236,12 +202,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de862231d3f32f749be91d991db53a5a, type: 3}
---- !u!23 &2757463147336681986 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: de862231d3f32f749be91d991db53a5a,
-    type: 3}
-  m_PrefabInstance: {fileID: 3568521881778214534}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3895427601944293741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de862231d3f32f749be91d991db53a5a,
@@ -322,12 +282,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adcaa94f5c6ad4b4ebf7433a5d7d8172, type: 3}
---- !u!23 &7712636685727493423 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: adcaa94f5c6ad4b4ebf7433a5d7d8172,
-    type: 3}
-  m_PrefabInstance: {fileID: 8991823212174930347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8882196805927900736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: adcaa94f5c6ad4b4ebf7433a5d7d8172,

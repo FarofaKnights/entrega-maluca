@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 290765511202627360}
   - component: {fileID: 2588996909213035498}
   - component: {fileID: 4043509656508904994}
+  - component: {fileID: 4689612786962107455}
+  - component: {fileID: 2802178209419529444}
+  - component: {fileID: 5028378780529171435}
   m_Layer: 0
   m_Name: CasaComCagragemFechadaAmaranha
   m_TagString: Untagged
@@ -28,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4101946419073878591}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1496.7701, y: 0.17052087, z: 1942.6688}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,5 +98,44 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.049561, y: 12.252961, z: 5.359253}
-  m_Center: {x: 2.668457, y: 5.955932, z: -0.27166748}
+  m_Size: {x: 4.562378, y: 11.198707, z: 5.359253}
+  m_Center: {x: -0.07513428, y: 5.428805, z: -0.27166748}
+--- !u!65 &4689612786962107455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101946419073878591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.109619, y: 4.0219874, z: 0.48266602}
+  m_Center: {x: 4.477295, y: 2.0491202, z: 2.1264648}
+--- !u!65 &2802178209419529444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101946419073878591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5020752, y: 3.1194346, z: 4.391968}
+  m_Center: {x: 6.960022, y: 1.5728451, z: -0.109680176}
+--- !u!65 &5028378780529171435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101946419073878591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.4068165, y: 0.67977214, z: 5.1379395}
+  m_Center: {x: 5.4709864, y: 0.16933757, z: -0.32495117}

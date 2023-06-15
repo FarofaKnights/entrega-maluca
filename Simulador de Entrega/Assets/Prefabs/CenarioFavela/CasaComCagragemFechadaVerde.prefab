@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 1713299553256665060}
   - component: {fileID: 3468382578415901486}
   - component: {fileID: 8241573388004626594}
+  - component: {fileID: 4781075181329502992}
+  - component: {fileID: 5230825825852669204}
+  - component: {fileID: 2619748855394394695}
   m_Layer: 0
   m_Name: CasaComCagragemFechadaVerde
   m_TagString: Untagged
@@ -28,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3108284067579017979}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1523.7935, y: 0.17051038, z: 1945.4948}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,5 +98,44 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.598755, y: 12.252961, z: 5.0302734}
-  m_Center: {x: 2.4246216, y: 5.955932, z: -0.09448242}
+  m_Size: {x: 4.3876953, y: 12.252961, z: 5.0302734}
+  m_Center: {x: -0.1809082, y: 5.955932, z: -0.09448242}
+--- !u!65 &4781075181329502992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108284067579017979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.572876, y: 4.3560967, z: 4.678833}
+  m_Center: {x: 6.991394, y: 2.0075, z: 0.04449463}
+--- !u!65 &5230825825852669204
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108284067579017979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9610596, y: 4.8229094, z: 0.7528076}
+  m_Center: {x: 4.4766235, y: 2.2409062, z: 1.9649048}
+--- !u!65 &2619748855394394695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108284067579017979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.119263, y: 0.5334481, z: 6.641947}
+  m_Center: {x: 2.6530151, y: 0.09617552, z: -0.040802002}

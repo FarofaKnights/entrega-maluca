@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7907311663115635031}
   - component: {fileID: 5357204766401199517}
   - component: {fileID: 2126053994495719242}
+  - component: {fileID: 9068190243835625262}
+  - component: {fileID: 5258209262234554946}
   m_Layer: 0
   m_Name: CasaComCagragemAbertaAzulCaro
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5861541747048373320}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1475.2441, y: 3.45586, z: 1975.8588}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,5 +97,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.803589, y: 9.5079565, z: 6.407959}
-  m_Center: {x: 2.7383423, y: 1.2981181, z: -0.3503418}
+  m_Size: {x: 6.268921, y: 8.836162, z: 6.407959}
+  m_Center: {x: 0.4710083, y: 0.96222067, z: -0.3503418}
+--- !u!65 &9068190243835625262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861541747048373320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51342773, y: 5.3419466, z: 6.2608643}
+  m_Center: {x: 7.95105, y: -0.78488684, z: -0.37042236}
+--- !u!65 &5258209262234554946
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861541747048373320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.7026367, y: 0.17587614, z: 6.53}
+  m_Center: {x: 6.031494, y: -3.3485096, z: -0.32889366}

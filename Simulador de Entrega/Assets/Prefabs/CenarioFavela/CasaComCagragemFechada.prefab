@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 2424691225562166326}
   - component: {fileID: 451147880388051196}
   - component: {fileID: 324462593099231665}
+  - component: {fileID: 680787850139809920}
+  - component: {fileID: 8376425304076006906}
+  - component: {fileID: 8866660489933858676}
   m_Layer: 0
   m_Name: CasaComCagragemFechada
   m_TagString: Untagged
@@ -28,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2108301363201761577}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1493.3628, y: 0.17049035, z: 1967.7952}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,5 +98,44 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.822388, y: 12.252961, z: 5.35083}
-  m_Center: {x: 2.4242554, y: 5.955932, z: -0.20825195}
+  m_Size: {x: 4.5914917, y: 12.252961, z: 5.35083}
+  m_Center: {x: -0.19119263, y: 5.955932, z: -0.20825195}
+--- !u!65 &680787850139809920
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108301363201761577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9122314, y: 4.797221, z: 0.4307251}
+  m_Center: {x: 4.489502, y: 2.2280622, z: 2.0971985}
+--- !u!65 &8376425304076006906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108301363201761577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.59765625, y: 4.6383924, z: 4.5683594}
+  m_Center: {x: 6.9818115, y: 2.1486478, z: -0.091796875}
+--- !u!65 &8866660489933858676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108301363201761577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.048218, y: 0.21, z: 6.641947}
+  m_Center: {x: 2.5681763, y: 0.03172964, z: -0.040802002}
