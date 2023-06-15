@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5515302497931935728}
   - component: {fileID: 8873659117089173589}
   - component: {fileID: 6683736271683142815}
+  - component: {fileID: 3209594286113928518}
   m_Layer: 0
   m_Name: CasaTortaAmarelo
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3209594286113928518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170584039853057354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5723877, y: 17.6633, z: 7.858329}
+  m_Center: {x: -0.10467529, y: 1.5582619, z: -0.2498773}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3227563449186332054}
   - component: {fileID: 1974054715570659891}
   - component: {fileID: 4359967158769735417}
+  - component: {fileID: 3820750921797725283}
   m_Layer: 0
   m_Name: Casinhafofa
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3820750921797725283
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846639417512785708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.715739, y: 9.145981, z: 7.912094}
+  m_Center: {x: 0.11883545, y: 0.4623941, z: 0.17154631}

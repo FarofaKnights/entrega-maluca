@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7063795902795005259}
   - component: {fileID: 6172323373595210478}
   - component: {fileID: 8236107549769418276}
+  - component: {fileID: 7109254562892271768}
   m_Layer: 0
   m_Name: fafelaPequena 1
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7109254562892271768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587567420181899249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.615555, y: 7.5000477, z: 3.4495392}
+  m_Center: {x: 0.6317215, y: 3.6483274, z: 0.20770645}

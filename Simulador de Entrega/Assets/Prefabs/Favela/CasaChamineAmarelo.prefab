@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5346094722871125140}
   - component: {fileID: 9051952977616431921}
   - component: {fileID: 6519532275121332219}
+  - component: {fileID: 6427419354000771614}
   m_Layer: 0
   m_Name: CasaChamineAmarelo
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6427419354000771614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718352389258788398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.5769997, y: 12.872425, z: 5.783876}
+  m_Center: {x: -0.469656, y: 1.3098323, z: -0.5495403}
