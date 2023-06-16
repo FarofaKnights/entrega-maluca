@@ -91,6 +91,13 @@ public class UIController : MonoBehaviour {
         }
     }
 
+    public void InterromperTetris() {
+        // Solução temporária para o caos do startdrag
+        StartDrag.sd.Confirm();
+        botaoConfirm.gameObject.SetActive(false);
+        refMinimapaPanel.SetActive(true);
+    }
+
     #region Diretriz
 
     public void AdicionarDiretriz(Diretriz diretriz) {

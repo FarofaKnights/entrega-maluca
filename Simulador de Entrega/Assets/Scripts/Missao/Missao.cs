@@ -57,6 +57,9 @@ public class Missao: Iniciavel {
 
         conjuntos[indiceConjunto].Interromper();
         indiceConjunto = 0;
+
+        if(StartDrag.sd.currentState == StartDrag.State.Tetris)
+            UIController.instance.InterromperTetris();
     }
 
     public void Finalizar() {
@@ -121,7 +124,7 @@ public class Missao: Iniciavel {
         List<Carga> cargas = new List<Carga>();
         int quant = Random.Range(1, 4);
         for (int i = 0; i < quant; i++) {
-            Carga carga = new Carga(1, 1, remetente);
+            Carga carga = new Carga(1, 1, destinatario);
             cargas.Add(carga);
         }
 
@@ -129,10 +132,13 @@ public class Missao: Iniciavel {
         Objetivo final = new Objetivo(destinatario);
         final.permiteReceber = true;
 
+        Diretriz dir = new Diretriz("Entregue as cargas no prédio " + b + ".");
         ObjetivoInicial inicio = new ObjetivoInicial(remetente, cargas);
 
         Objetivo[] objetivos = new Objetivo[1] {final};
         Conjunto conjunto = new Conjunto(null, objetivos, true);
+        conjunto.diretriz = dir;
+
         return new Missao(inicio, new Conjunto[1] {conjunto}, "Missão Aleatória", "Entregue as cargas no prédio " + b + ".");
     }
     
@@ -152,7 +158,9 @@ public class Missao: Iniciavel {
             cargas.Add(carga);
         }
 
+        Diretriz dir = new Diretriz("Entregue as cargas nos prédios " + nums[1] + ", " + nums[2] + " e " + nums[3] + ".");
         ObjetivoInicial inicio = new ObjetivoInicial(Endereco.ListaEnderecos["Predio" + nums[0]], cargas);
+        conjunto.diretriz = dir;
 
         return new Missao(inicio, new Conjunto[1] {conjunto}, "Missão Aleatória", "Entregue as cargas nos prédios " + nums[1] + ", " + nums[2] + " e " + nums[3] + ".");
     }

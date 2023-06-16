@@ -126,7 +126,8 @@ public class OficinaUI : MonoBehaviour {
             case "padrao":
                 return a.id < b.id;
             case "preco":
-                return a.custo < b.custo;
+                if (a.custo == b.custo) return a.nome.CompareTo(b.nome) < 0;
+                else return a.custo < b.custo;
             case "nome":
                 return a.nome.CompareTo(b.nome) < 0;
             default:
