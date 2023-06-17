@@ -3,7 +3,12 @@ guid: 9a7f1a0cea6993548b818d70255d34cc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Orelhao
+    second: {fileID: 2100000, guid: b54df59e9804b34439e2ac6f7bb8ef51, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

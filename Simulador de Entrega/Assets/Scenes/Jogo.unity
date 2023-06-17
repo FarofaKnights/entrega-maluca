@@ -3084,6 +3084,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hoteu
       objectReference: {fileID: 0}
+    - target: {fileID: 6109451903476264428, guid: f327309feafc44245b7b2a66479bef9b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f327309feafc44245b7b2a66479bef9b, type: 3}
 --- !u!4 &186255407 stripped
