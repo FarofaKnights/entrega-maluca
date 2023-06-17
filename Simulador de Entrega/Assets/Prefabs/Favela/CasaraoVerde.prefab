@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2095053044571726037}
   - component: {fileID: 3079551962585460592}
   - component: {fileID: 961575112934661050}
+  - component: {fileID: 3037847862307113908}
   m_Layer: 0
   m_Name: CasaraoVerde
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4221496875445173407, guid: d7526b73e2d6bcd468bc3141f66b8cf8, type: 3}
+  - {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3037847862307113908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610264501158689391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.7779713, y: 13.530254, z: 10.753551}
+  m_Center: {x: -0.5450818, y: 2.3329742, z: -0.37851143}

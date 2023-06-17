@@ -91,6 +91,13 @@ public class UIController : MonoBehaviour {
         }
     }
 
+    public void InterromperTetris() {
+        // Solução temporária para o caos do startdrag
+        StartDrag.sd.Confirm();
+        botaoConfirm.gameObject.SetActive(false);
+        refMinimapaPanel.SetActive(true);
+    }
+
     #region Diretriz
 
     public void AdicionarDiretriz(Diretriz diretriz) {
@@ -111,8 +118,15 @@ public class UIController : MonoBehaviour {
 
     void AtualizaTextoDiretrizes() {
         string text = "";
+        int i = 0;
+
         foreach (Diretriz d in diretrizes) {
-            text += d.texto + "\n";
+            text += d.texto;
+
+            if (i < diretrizes.Count - 1)
+                text += "\n";
+            
+            i++;
         }
         textoDiretriz.text = text;
     }

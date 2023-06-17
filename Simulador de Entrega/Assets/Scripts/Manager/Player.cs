@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
         GameManager.instance.VisualizarMissao(missaoAtual);
         GameManager.instance.AlterarDisponibilidadeDeMissoes(false);
+        OficinaController.instance.DesativarOficina();
     }
 
     public void InterromperMissao() {
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
         cargaAtual = new List<Carga>();
 
         GameManager.instance.AlterarDisponibilidadeDeMissoes(true);
+        OficinaController.instance.AtivarOficina();
     }
 
     // Chamada pela propria missao ao ser finalizada
@@ -73,6 +75,7 @@ public class Player : MonoBehaviour
         cargaAtual = new List<Carga>();
 
         GameManager.instance.AlterarDisponibilidadeDeMissoes(true);
+        OficinaController.instance.AtivarOficina();
     }
 
     public void AdicionarObjetivoAtivo(Objetivo objetivo) {

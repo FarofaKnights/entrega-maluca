@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9178774996475448793}
   - component: {fileID: 447273142337189617}
+  - component: {fileID: 2417168237744873053}
   m_Layer: 0
   m_Name: Hidrante
   m_TagString: Untagged
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7050327254936380866}
   m_Enabled: 1
+--- !u!65 &2417168237744873053
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386819381522366381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23641841, y: 0.56557196, z: 0.22605392}
+  m_Center: {x: 0.0026601157, y: 0.12778036, z: 0.018918376}
 --- !u!1001 &3738134500431534420
 PrefabInstance:
   m_ObjectHideFlags: 0

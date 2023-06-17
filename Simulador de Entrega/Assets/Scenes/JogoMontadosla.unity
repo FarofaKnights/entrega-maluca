@@ -5543,6 +5543,12 @@ Transform:
   m_Father: {fileID: 1964582098}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &816943400 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2781921212497536650, guid: 420e5eee29e01f144bf6b72680da9c72,
+    type: 3}
+  m_PrefabInstance: {fileID: 6384615943345626375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &833988639
 GameObject:
   m_ObjectHideFlags: 0
@@ -6088,6 +6094,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1964582098}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &890398338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 890398339}
+  m_Layer: 2
+  m_Name: relocateCaixas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &890398339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890398338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.63, y: 3.31, z: -0.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 816943400}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &900886176
 PrefabInstance:
@@ -7673,6 +7710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlacaSemaforo (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291843069451484150, guid: 5399521b4f21d0e4fbc7dbd9b34b30fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7960679757328998732, guid: 5399521b4f21d0e4fbc7dbd9b34b30fa,
         type: 3}

@@ -25,10 +25,12 @@ public class Caixas : MonoBehaviour
         transform.SetParent(v);
         cnoCarro = GetComponent<CaixasNoCarro>();
         cnoCarro.carga = carga;
+        cnoCarro.carro = GameObject.Find("Veiculo");
         cnoCarro.rb = rb;
+        cnoCarro.spawnPosition = GameObject.Find("Veiculo/Caçamba/relocateCaixas");
     }
     private void Update()
-    {
+    {   
         float mZero;
         if (StartDrag.sd.SelectedObj == this.gameObject)
         {

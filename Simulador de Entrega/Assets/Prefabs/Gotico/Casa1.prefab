@@ -508,6 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3705807399641163516}
+  - component: {fileID: 123017266895479867}
   m_Layer: 0
   m_Name: Casa1
   m_TagString: Untagged
@@ -538,6 +539,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &123017266895479867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046058335551650886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1008453, y: 8, z: 4.867424}
+  m_Center: {x: -0.05042267, y: 3.87, z: 0.066287994}
 --- !u!1 &5408842814990179781
 GameObject:
   m_ObjectHideFlags: 0

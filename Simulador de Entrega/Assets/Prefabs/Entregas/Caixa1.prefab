@@ -55,7 +55,7 @@ MonoBehaviour:
   Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
   carga:
     peso: 20
-    fragilidade: 200
+    fragilidade: 20
     tipo: 0
     destinatario: {fileID: 0}
     cx: {fileID: 0}
@@ -94,6 +94,8 @@ MonoBehaviour:
     tipo: 0
     destinatario: {fileID: 0}
     cx: {fileID: 0}
+  spawnPosition: {fileID: 0}
+  carro: {fileID: 0}
   inCarro: 1
   multiplicadorDano: 0
 --- !u!65 &4544207618702831648

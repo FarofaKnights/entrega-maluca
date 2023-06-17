@@ -8,6 +8,7 @@ public class MenuPauseController : MonoBehaviour {
     public GameObject missaoDetails, missaoList, missaoItemPrefab;
 
     public GameObject interromperMissaoBtn;
+    public GameObject missaoJaFoiConcluida, missaoAtual;
 
     void Start() {
         
@@ -99,8 +100,11 @@ public class MenuPauseController : MonoBehaviour {
 
         missaoDetails.SetActive(true);
 
-        Text titulo = missaoDetails.transform.Find("Titulo").GetComponent<Text>();
-        Text descricao = missaoDetails.transform.Find("Descricao").GetComponent<Text>();
+        Text titulo = missaoDetails.transform.Find("Conteudo").Find("Titulo").GetComponent<Text>();
+        Text descricao = missaoDetails.transform.Find("Conteudo").Find("Descricao").GetComponent<Text>();
+
+        missaoJaFoiConcluida.SetActive(missao.FoiFinalizada());
+        missaoAtual.SetActive(missao == Player.instance.missaoAtual);
 
         titulo.text = missao.titulo;
         descricao.text = missao.descricao;

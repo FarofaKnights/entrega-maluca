@@ -46,6 +46,7 @@ public class CargaEspecial: Carga {
     public CargaEspecial(float peso, float fragilidade, Endereco destinatario) : base(peso, fragilidade, destinatario, TipoCarga.Especial) { }
 
     public override float GetValor() {
-        return 40 + 10 * fragilidade;
+        if(fragilidade <= 0) return 0;
+        else return 40 + 10 * fragilidade;
     }
 }

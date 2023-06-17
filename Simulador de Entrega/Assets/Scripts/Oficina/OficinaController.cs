@@ -8,6 +8,8 @@ public class OficinaController : MonoBehaviour {
     public GameObject veiculoHolder, sairRef;
     bool naOficina = false;
 
+    public bool oficinaDisponivel = true;
+
     GameObject trigger;
     Camera cameraOficina;
 
@@ -17,6 +19,16 @@ public class OficinaController : MonoBehaviour {
     Dictionary<Renderer, Material[]> materiaisVeiculo = new Dictionary<Renderer, Material[]>();
     int defaultMaxSpeed;
     float defaultAcelleration;
+
+    public void DesativarOficina() {
+        oficinaDisponivel = false;
+        trigger.SetActive(false);
+    }
+
+    public void AtivarOficina() {
+        oficinaDisponivel = true;
+        trigger.SetActive(true);
+    }
 
     void Start() {
         instance = this;

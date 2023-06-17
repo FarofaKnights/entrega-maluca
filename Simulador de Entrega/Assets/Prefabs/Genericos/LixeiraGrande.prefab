@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598607555402162661}
   - component: {fileID: 6236756087015577127}
+  - component: {fileID: 4687800001591709822}
   m_Layer: 0
   m_Name: LixeiraGrande
   m_TagString: Untagged
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1717999430234017794}
   m_Enabled: 1
+--- !u!65 &4687800001591709822
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8490978376501144347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.281952, y: 1.5679626, z: 1.1060103}
+  m_Center: {x: 0.008234501, y: 0.04670334, z: -0.000000059604645}
 --- !u!1001 &6221865480522886
 PrefabInstance:
   m_ObjectHideFlags: 0

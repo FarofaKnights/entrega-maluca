@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2768812512579456737}
   - component: {fileID: 1279892945045782852}
   - component: {fileID: 3902334527760725390}
+  - component: {fileID: 1082877257960277070}
   m_Layer: 0
   m_Name: CasaraoAmarelo
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4221496875445173407, guid: 2b9c7e3c54665a64daa103ee0d204c00, type: 3}
+  - {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1082877257960277070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3253601021095892059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.743663, y: 13.530254, z: 10.661807}
+  m_Center: {x: -0.29908752, y: 2.3329742, z: -0.20487341}
