@@ -48,12 +48,15 @@ public class Caixas : MonoBehaviour
                 {
                     rotating = false;
                     Gizmos.SetActive(false);
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
                 }
                 else
                 {
                     rotating = true;
                     rb.velocity = Vector3.zero;
                     Gizmos.SetActive(true);
+                    rb.constraints = RigidbodyConstraints.FreezePosition;
                 }
             }
         }
@@ -61,6 +64,7 @@ public class Caixas : MonoBehaviour
         {
             rb.useGravity = true;
             Gizmos.SetActive(false);
+            rotating = false;
         }
         if(rb.velocity != Vector3.zero)
         {
