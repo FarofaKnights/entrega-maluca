@@ -15,7 +15,19 @@ public class MissaoObject : ScriptableObject {
 
     public ConjuntoObject[] conjuntos;
 
+    public MissaoObject[] missoesDesbloqueadas;
+
     public Missao Convert() {
+        if (this.GetType() == typeof(MissaoTimeline)) {
+            MissaoTimeline timeline = (MissaoTimeline)this;
+            if (timeline.CheckValidade()) {
+                timeline.TimelineToMissao();
+            } else {
+                Debug.LogError("MissaoTimeline " + this.name + " não é válida");
+                return null;
+            }
+        }
+
         ObjetivoInicial objetivoInicial = new ObjetivoInicial(this.objetivoInicial.Convert());
         Conjunto[] conjuntos = new Conjunto[this.conjuntos.Length];
 
@@ -23,7 +35,7 @@ public class MissaoObject : ScriptableObject {
             conjuntos[i] = this.conjuntos[i].Convert();
         }
 
-        return new Missao(objetivoInicial, conjuntos, nome, descricao);
+        return new Missao(objetivoInicial, conjuntos, nome, descricao, missoesDesbloqueadas);
     }
 
 
@@ -96,6 +108,17 @@ public class MissaoObject : ScriptableObject {
             }
         }
 
+        foreach (MissaoObject missao in missoesDesbloqueadas) {
+            if (missao.GetType() == typeof(MissaoTimeline)) {
+                MissaoTimeline timelineMissao = (MissaoTimeline)missao;
+                if (timelineMissao.CheckValidade()) {
+                    timelineMissao.TimelineToMissao();
+                } else {
+                    Debug.LogError("MissaoTimeline " + missao.name + " não é válida");
+                }
+            }
+        }
+
         string path = AssetDatabase.GetAssetPath(this.GetInstanceID());
         string[] pathSplit = path.Split('/');
         string[] pathSplit2 = pathSplit[pathSplit.Length - 1].Split('.');
@@ -108,6 +131,7 @@ public class MissaoObject : ScriptableObject {
         asset.timeline = timeline;
         asset.nome = nome;
         asset.descricao = descricao;
+        asset.missoesDesbloqueadas = missoesDesbloqueadas;
         
         AssetDatabase.CreateAsset(asset, path);
         AssetDatabase.SaveAssets();

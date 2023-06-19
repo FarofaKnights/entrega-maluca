@@ -25549,6 +25549,7 @@ MonoBehaviour:
   missao:
     conjuntos: []
     indiceConjunto: 0
+    missoesDesbloqueadas: []
     titulo: 
     descricao: 
     diretriz:
@@ -35988,6 +35989,7 @@ MonoBehaviour:
   visualizarMissaoAtual:
     conjuntos: []
     indiceConjunto: 0
+    missoesDesbloqueadas: []
     titulo: 
     descricao: 
     diretriz:

@@ -190,6 +190,13 @@ public class MissaoObjectEditor : Editor {
             elementRemove.Clear();
         }
 
+        GUILayout.Space(padding);
+        GUILayout.Space(padding);
+        SerializedProperty m_missoesDesbloqueadas = serializedObject.FindProperty("missoesDesbloqueadas");
+        EditorGUILayout.PropertyField(m_missoesDesbloqueadas, new GUIContent("Desbloquear missões ao finalizar"), true);
+
+        serializedObject.ApplyModifiedProperties();
+
         // Save changes
         if (EditorGUI.EndChangeCheck()){
             EditorUtility.SetDirty(missaoObject);
@@ -425,14 +432,15 @@ public class MissaoObjectEditor : Editor {
         objetivo.objetivo.permiteReceber = EditorGUILayout.Toggle(objetivo.objetivo.permiteReceber);
         EditorGUILayout.EndHorizontal();
 
-        List<CargaObject> cargas = objetivo.objetivo.cargas;
-        if (cargas == null) cargas = new List<CargaObject>();
+        if (objetivo.objetivo.cargas == null) objetivo.objetivo.cargas = new List<CargaObject>();
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Cargas:");
         if (GUILayout.Button("+", GUILayout.Width(20), GUILayout.Height(20))) {
-            cargas.Add(new CargaObject());
+            objetivo.objetivo.cargas.Add(new CargaObject());
         }
+
+        List<CargaObject> cargas = objetivo.objetivo.cargas;
 
         if (cargas.Count > 0 && GUILayout.Button("...", GUILayout.Width(20), GUILayout.Height(20))) {
             GenericMenu menu = new GenericMenu();

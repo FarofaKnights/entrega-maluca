@@ -13,6 +13,8 @@ public class Missao: Iniciavel {
 
     List<Carga> cargasEntregues = new List<Carga>(); // Lista de cargas entregues
 
+    public MissaoObject[] missoesDesbloqueadas; // Lista de missoes desbloqueadas ao finalizar
+
     public string titulo, descricao;
     public Diretriz diretriz = null;
 
@@ -20,21 +22,23 @@ public class Missao: Iniciavel {
     bool finalizada = false;
 
     // Construtores
-    public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos, string titulo, string descricao) {
+    public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos, string titulo, string descricao, MissaoObject[] missoesDesbloqueadas = null) {
         this.objetivoInicial = objetivoInicial;
         this.conjuntos = conjuntos;
         this.titulo = titulo;
         this.descricao = descricao;
+        this.missoesDesbloqueadas = missoesDesbloqueadas;
 
         objetivoInicial.missao = this;
         foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
 
-    public Missao(Endereco enderecoComecar, Conjunto[] conjuntos, string titulo, string descricao) {
+    public Missao(Endereco enderecoComecar, Conjunto[] conjuntos, string titulo, string descricao, MissaoObject[] missoesDesbloqueadas = null) {
         this.objetivoInicial = new ObjetivoInicial(enderecoComecar, this);
         this.conjuntos = conjuntos;
         this.titulo = titulo;
         this.descricao = descricao;
+        this.missoesDesbloqueadas = missoesDesbloqueadas;
 
         foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
@@ -77,9 +81,15 @@ public class Missao: Iniciavel {
         UIController.instance.MissaoConcluida();
         indiceConjunto = 0;
 
-        // Gera nova missao no final
-        Missao novaMissao = GerarMissaoAleatoria();
-        GameManager.instance.AdicionarMissao(novaMissao);
+        if (missoesDesbloqueadas != null && missoesDesbloqueadas.Length > 0) {
+            foreach (MissaoObject missaoObject in missoesDesbloqueadas) {
+                Missao missao = missaoObject.Convert();
+                GameManager.instance.AdicionarMissao(missao);
+            }
+        } else {
+            Missao novaMissao = GerarMissaoAleatoria();
+            GameManager.instance.AdicionarMissao(novaMissao);
+        }
     }
 
     // Metodos Missao

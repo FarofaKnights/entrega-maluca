@@ -51,6 +51,7 @@ MonoBehaviour:
     diretriz:
       texto: Entregue no Predio1 e Predio2
       limitacoes: []
+  missoesDesbloqueadas: []
   timeline:
   - tipo: 0
     objetivo:
@@ -87,7 +88,7 @@ MonoBehaviour:
     diretriz:
       texto: 
       limitacoes: []
-    mostrandoFilhos: 1
+    mostrandoFilhos: 0
   - tipo: 1
     objetivo:
       endereco: 
