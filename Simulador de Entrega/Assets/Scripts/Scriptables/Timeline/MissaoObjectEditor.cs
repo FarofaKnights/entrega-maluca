@@ -64,6 +64,8 @@ public class MissaoObjectEditor : Editor {
 
         Queue<TimelineElement> comecoNaoSequencial = new Queue<TimelineElement>();
 
+        if (missaoObject.timeline == null) missaoObject.timeline = new List<TimelineElement>();
+
         // Draw each element of the timeline
         int counter = 0;
         foreach (TimelineElement element in missaoObject.timeline) {
