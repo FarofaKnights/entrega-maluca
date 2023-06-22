@@ -65,9 +65,7 @@ public class Conjunto: Iniciavel {
     // Chamado quando um objetivo foi concluido, recebendo como parametro o proprio objetivo
     public void ObjetivoConcluido(Objetivo objetivo) {
         if (sequencial) {
-            Debug.Log("Sequencial");
             if (indice >= objetivos.Length - 1) {
-                Debug.Log("Finalizar");
                 Finalizar();
                 return;
             }
@@ -75,7 +73,6 @@ public class Conjunto: Iniciavel {
             indice++;
             objetivos[indice].Iniciar();
         } else {
-            Debug.Log("Não Sequencial");
             indice++;
             if (indice >= objetivos.Length) {
                 Finalizar();

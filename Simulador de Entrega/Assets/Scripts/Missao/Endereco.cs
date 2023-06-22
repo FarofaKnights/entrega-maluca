@@ -10,11 +10,10 @@ public class Endereco : MonoBehaviour {
     // public GameObject colisor;
 
     Objetivo objetivo;
-    IncluiMinimapa icone;
+    public IncluiMinimapa icone;
 
     void Awake() {
         ListaEnderecos.Add(nome, this);
-        icone = GetComponent<IncluiMinimapa>();
     }
 
     public void DefinirComoObjetivo(Objetivo objetivo) {
@@ -33,15 +32,9 @@ public class Endereco : MonoBehaviour {
         if (icone != null) icone.DesativarIcone();
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player" && objetivo != null) {
-            objetivo.HandleObjetivoTrigger(true);
-        }
-    }
-
-    void OnTriggerExit(Collider other) {
-        if (other.gameObject.tag == "Player" && objetivo != null) {
-            objetivo.HandleObjetivoTrigger(false);
+    public void HandleTrigger(bool entrou) {
+        if (objetivo != null) {
+            objetivo.HandleObjetivoTrigger(entrou);
         }
     }
 
