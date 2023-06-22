@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6318775791797043377}
-  - component: {fileID: 1519875114363993355}
   - component: {fileID: 4430448829611000984}
   m_Layer: 0
   m_Name: GangorraVermelha
@@ -36,33 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &1519875114363993355
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5034076232282397406}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.20790723
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1163057477135287851}
-  - screenRelativeHeight: 0.10584387
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 8570421413135775378}
-  - screenRelativeHeight: 0.030430084
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 8020856527576076090}
-  m_Enabled: 1
 --- !u!65 &4430448829611000984
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -156,12 +128,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 569027215386237615}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1163057477135287851 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 3f1ba017b8eacaf47a5ab8e4f34787e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 569027215386237615}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7003613640531733014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,12 +208,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7003613640531733014}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &8570421413135775378 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 77c26076276196342bc26cedfdf6d3e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7003613640531733014}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8686980933538616254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,12 +282,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 327085d2877f2be41b419b6da824516f, type: 3}
---- !u!23 &8020856527576076090 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 327085d2877f2be41b419b6da824516f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8686980933538616254}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9152689241792476245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 327085d2877f2be41b419b6da824516f,

@@ -508,6 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3041616897215745791}
   - component: {fileID: 4529971403970332274}
+  - component: {fileID: 4989790045676746780}
   m_Layer: 0
   m_Name: Casa9
   m_TagString: Untagged
@@ -563,8 +564,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.5017395, y: 9.512335, z: 10.328584}
-  m_Center: {x: -3.711999, y: 4.9169426, z: 2.4876227}
+  m_Size: {x: 5.0696683, y: 9.512335, z: 10.328584}
+  m_Center: {x: -1.9959633, y: 4.9169426, z: 2.4876227}
+--- !u!65 &4989790045676746780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413417987641873477}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.929081, y: 6.1623096, z: 4.994253}
+  m_Center: {x: -6.1571026, y: 3.2385612, z: 2.5805178}
 --- !u!1 &2669258669102248660
 GameObject:
   m_ObjectHideFlags: 0

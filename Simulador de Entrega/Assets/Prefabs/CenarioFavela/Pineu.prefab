@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2223647045243096012}
   - component: {fileID: 4125029515369856774}
   - component: {fileID: 7710325009978534756}
+  - component: {fileID: 442126379301281965}
   m_Layer: 0
   m_Name: Pineu
   m_TagString: Untagged
@@ -95,5 +96,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.460022, y: 1.7790287, z: 1.182373}
-  m_Center: {x: 0.26156616, y: 0.19661176, z: 0.20214844}
+  m_Size: {x: 0.62927246, y: 1.7790287, z: 1.399292}
+  m_Center: {x: -0.1538086, y: 0.19661176, z: 0.093688965}
+--- !u!65 &442126379301281965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467955059735961299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.92077637, y: 0.54216474, z: 0.75512695}
+  m_Center: {x: 0.6364746, y: -0.44116393, z: 0.47564697}
