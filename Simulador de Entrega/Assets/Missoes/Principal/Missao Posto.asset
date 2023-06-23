@@ -21,14 +21,20 @@ MonoBehaviour:
       fragilidade: 0
       tipo: 0
       destinatario: Posto
+      prefab: {fileID: 1384330550075591027, guid: fc43cf3520536ea48aceaa96fb762f4e,
+        type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 0
       destinatario: Posto
+      prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+        type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 0
       destinatario: Posto
+      prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
+        type: 3}
     permiteReceber: 0
     diretriz:
       texto: 
@@ -45,3 +51,4 @@ MonoBehaviour:
     diretriz:
       texto: Entregue no Posto
       limitacoes: []
+  missoesDesbloqueadas: []

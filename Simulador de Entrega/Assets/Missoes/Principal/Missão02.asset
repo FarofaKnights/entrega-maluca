@@ -22,10 +22,14 @@ MonoBehaviour:
       fragilidade: 0
       tipo: 2
       destinatario: Parque
+      prefab: {fileID: 8945529338682589028, guid: 3439585f0f94424499814759c3154aed,
+        type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 2
       destinatario: Parque
+      prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+        type: 3}
     permiteReceber: 0
     diretriz:
       texto: 
@@ -42,3 +46,4 @@ MonoBehaviour:
     diretriz:
       texto: "Entregue no parque de divers\xE3o"
       limitacoes: []
+  missoesDesbloqueadas: []

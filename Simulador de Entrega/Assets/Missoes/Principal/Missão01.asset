@@ -21,6 +21,8 @@ MonoBehaviour:
       fragilidade: 0
       tipo: 0
       destinatario: Mecanica
+      prefab: {fileID: 240624705749833600, guid: 43cec92accc309942b9c79abb11a6d33,
+        type: 3}
     permiteReceber: 0
     diretriz:
       texto: 
@@ -37,3 +39,4 @@ MonoBehaviour:
     diretriz:
       texto: "Entregue na Mec\xE2nica"
       limitacoes: []
+  missoesDesbloqueadas: []

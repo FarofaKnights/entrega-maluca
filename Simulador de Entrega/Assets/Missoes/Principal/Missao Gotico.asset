@@ -22,10 +22,14 @@ MonoBehaviour:
       fragilidade: 0
       tipo: 3
       destinatario: Predio2
+      prefab: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
+        type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 3
       destinatario: Predio2
+      prefab: {fileID: 1384330550075591027, guid: 357a105dab05c7a4abd8b0ad6c6fa7a1,
+        type: 3}
     permiteReceber: 0
     diretriz:
       texto: 
@@ -42,3 +46,4 @@ MonoBehaviour:
     diretriz:
       texto: "Entregue em alguma casa g\xF3tica"
       limitacoes: []
+  missoesDesbloqueadas: []

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     public List<Missao> missoesConcluidas = new List<Missao>();
     bool mostrandoMissoes = true;
 
+    public GameObject prefabGenerico;
     void Awake() {
         instance = this;
     }

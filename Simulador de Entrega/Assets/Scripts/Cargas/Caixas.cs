@@ -29,7 +29,7 @@ public class Caixas : MonoBehaviour
         cnoCarro.rb = rb;
         cnoCarro.spawnPosition = GameObject.Find("Veiculo/Caçamba/relocateCaixas");
     }
-    private void Update()
+    private void FixedUpdate()
     {   
         float mZero;
         if (StartDrag.sd.SelectedObj == this.gameObject)
@@ -42,6 +42,22 @@ public class Caixas : MonoBehaviour
             else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero, -h);
             else mover = new Vector3(h, mZero, z);
             Mover();
+        }
+        else
+        {
+            rb.useGravity = true;
+            Gizmos.SetActive(false);
+            rotating = false;
+        }
+        if(rb.velocity != Vector3.zero)
+        {
+            Checar();
+        }
+    }
+    private void Update()
+    {
+        if (StartDrag.sd.SelectedObj == this.gameObject)
+        {
             if (Input.GetKeyDown(KeyCode.R))
             {
                 if (rotating)
@@ -60,29 +76,19 @@ public class Caixas : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            rb.useGravity = true;
-            Gizmos.SetActive(false);
-            rotating = false;
-        }
-        if(rb.velocity != Vector3.zero)
-        {
-            Checar();
-        }
     }
     void Mover()
     {
         if (!rotating)
         {
             Vector3 moveVector = v.TransformDirection(mover) * speed;
-            rb.velocity = moveVector * Time.deltaTime;
+            rb.velocity = moveVector * Time.fixedDeltaTime;
             Gizmos.transform.position = transform.position;
         }
         else 
         {
             Vector3 rotateVector = refdrot.TransformDirection(rodar) * rotateSpeed;
-            Quaternion delta = Quaternion.Euler(rotateVector * Time.deltaTime);
+            Quaternion delta = Quaternion.Euler(rotateVector * Time.fixedDeltaTime);
             rb.MoveRotation(delta * rb.rotation);
         }
     }

@@ -10,11 +10,23 @@ public class Carga {
     public TipoCarga tipo;
     public Endereco destinatario;
     public Caixas cx;
+    public GameObject prefab;
+    public bool dentroCarro;
 
-    public Carga(float peso, float fragilidade, Endereco destinatario, TipoCarga tipo = TipoCarga.Normal) {
+    public Carga(float peso, float fragilidade, Endereco destinatario, GameObject prefab, TipoCarga tipo = TipoCarga.Normal) {
         this.peso = peso;
         this.fragilidade = fragilidade;
         this.destinatario = destinatario;
+        this.prefab = prefab;
+        this.tipo = tipo;
+    }
+
+    public Carga(float peso, float fragilidade, Endereco destinatario, TipoCarga tipo = TipoCarga.Normal)
+    {
+        this.peso = peso;
+        this.fragilidade = fragilidade;
+        this.destinatario = destinatario;
+        this.prefab = GameManager.instance.prefabGenerico;
         this.tipo = tipo;
     }
 
@@ -43,10 +55,10 @@ public class Carga {
 
 // Exemplo de carga especial
 public class CargaEspecial: Carga {
-    public CargaEspecial(float peso, float fragilidade, Endereco destinatario) : base(peso, fragilidade, destinatario, TipoCarga.Especial) { }
+    public CargaEspecial(float peso, float fragilidade, Endereco destinatario, GameObject prefab) : base(peso, fragilidade, destinatario, prefab, TipoCarga.Especial) { }
 
     public override float GetValor() {
-        if(fragilidade <= 0) return 0;
+        if(!dentroCarro) return 0;
         else return 40 + 10 * fragilidade;
     }
 }

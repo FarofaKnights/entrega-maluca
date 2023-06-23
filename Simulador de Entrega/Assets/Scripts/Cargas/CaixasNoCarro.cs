@@ -18,6 +18,7 @@ public class CaixasNoCarro : MonoBehaviour
                 Debug.Log(carga.fragilidade);
                 float velocity = rb.velocity.magnitude;
                 carga.fragilidade -= velocity;
+                carga.dentroCarro = false;
                 StartCoroutine(wait());
                 if(carga.fragilidade <= 0)
                 {
@@ -31,6 +32,7 @@ public class CaixasNoCarro : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
         transform.position = spawnPosition.transform.position;
         inCarro = true;
+        carga.dentroCarro = true;
     }
     private void Update()
     {

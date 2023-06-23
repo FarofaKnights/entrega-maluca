@@ -51,8 +51,7 @@ public class StartDrag : MonoBehaviour
         //Spawna o resto das caixas com base na posição da caixa anterior
         foreach (Carga carga in Player.instance.cargaAtual)
         {
-           int p = Random.Range(0, cargas.Length);
-           GameObject caixa = Instantiate(cargas[p], pontos[u].position, cargas[p].transform.rotation);
+           GameObject caixa = Instantiate(carga.prefab, pontos[u].position, carga.prefab.transform.rotation);
            carga.cx = caixa.GetComponent<Caixas>();
            u++;
         }
