@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2868474830827778170}
   - component: {fileID: 11867994304251056}
   - component: {fileID: 5663546843560853368}
+  - component: {fileID: 7040041015900460710}
+  - component: {fileID: 7368493755731262438}
   m_Layer: 0
   m_Name: CASA02
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1957611806626948453}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,5 +97,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15150705, y: 0.15840304, z: 0.1280386}
-  m_Center: {x: -0.021130648, y: -0.017137403, z: 0.06320082}
+  m_Size: {x: 0.11378977, y: 0.14232422, z: 0.1280386}
+  m_Center: {x: -0.0022720837, y: -0.009097934, z: 0.06320082}
+--- !u!65 &7040041015900460710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957611806626948453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020724034, y: 0.1522074, z: 0.1280386}
+  m_Center: {x: 0.0037804055, y: -0.026091907, z: 0.06320082}
+--- !u!65 &7368493755731262438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957611806626948453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1564922, y: 0.03931734, z: 0.1280386}
+  m_Center: {x: -0.021825356, y: -0.008193992, z: 0.06320082}

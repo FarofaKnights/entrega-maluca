@@ -18,7 +18,7 @@ public class FollowPlayer : MonoBehaviour {
 
         if (rotate) {
             // Transform player Y rotation into camera Z rotation
-            transform.rotation = Quaternion.Euler(90, player.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Euler(89, player.eulerAngles.y, 0);
         }
     }
 }
