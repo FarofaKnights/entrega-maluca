@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6363759546976938040}
   - component: {fileID: 8070246032337840029}
   - component: {fileID: 5195941534231450455}
-  - component: {fileID: 8047694918791669925}
   m_Layer: 0
   m_Name: CaminhaoNarigudoAzul
   m_TagString: Untagged
@@ -86,16 +85,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8047694918791669925
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5988465049532887682}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.732028, y: 3.9038796, z: 9.994006}
-  m_Center: {x: -0.04335308, y: 1.3361828, z: 0.22107744}

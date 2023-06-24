@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8217759964246960672}
   - component: {fileID: 5018279579778999685}
   - component: {fileID: 7079788328450658639}
+  - component: {fileID: 2912135945115463426}
   m_Layer: 0
   m_Name: PedraAltaHPAreiosa
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8737134499758715034}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 38.816967, y: 3.43717, z: 68.02658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a279c61e8983264294232e7a1acf007, type: 2}
+  - {fileID: 2100000, guid: 779b981964fd02b498856454e0004401, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2912135945115463426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8737134499758715034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4433842, y: 2.062181, z: 1.7385688}
+  m_Center: {x: -0.097800374, y: 0.2173166, z: -0.01625672}
