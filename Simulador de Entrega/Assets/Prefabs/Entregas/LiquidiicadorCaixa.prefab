@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5081300716754360578}
   - component: {fileID: 4544207618702831648}
   - component: {fileID: 8916266831847827497}
-  - component: {fileID: 6480811903729868563}
   m_Layer: 7
   m_Name: LiquidiicadorCaixa
   m_TagString: Entrega
@@ -62,6 +61,7 @@ MonoBehaviour:
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
+    dentroCarro: 0
 --- !u!54 &2876863578752007659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
+    dentroCarro: 0
   spawnPosition: {fileID: 0}
   carro: {fileID: 0}
   inCarro: 1
@@ -113,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35623413, y: 0.11086488, z: 0.30318832}
-  m_Center: {x: 0.0068323873, y: -0.11425316, z: -0.0021190643}
+  m_Size: {x: 0.30340672, y: 0.11086488, z: 0.2543869}
+  m_Center: {x: 0.0027489662, y: -0.11425316, z: 0.009269714}
 --- !u!65 &8916266831847827497
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,21 +127,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.21709919, y: 0.28459787, z: 0.18440628}
-  m_Center: {x: -0.00032901764, y: 0.08365774, z: 0.0016956329}
---- !u!65 &6480811903729868563
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384330550075591027}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07246733, y: 0.16360378, z: 0.04538457}
-  m_Center: {x: -0.13536572, y: 0.07607269, z: 0}
+  m_Size: {x: 0.23743153, y: 0.26832962, z: 0.15512085}
+  m_Center: {x: -0.010495186, y: 0.075523615, z: 0.0033226013}
 --- !u!1001 &7102816349577828742
 PrefabInstance:
   m_ObjectHideFlags: 0

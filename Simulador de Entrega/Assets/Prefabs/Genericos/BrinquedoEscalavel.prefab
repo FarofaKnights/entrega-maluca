@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1347651793970165067}
   - component: {fileID: 2429268260644408682}
+  - component: {fileID: 113696074182820057}
   m_Layer: 0
   m_Name: BrinquedoEscalavel
   m_TagString: Untagged
@@ -44,8 +45,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4854536, y: 1.7929399, z: 0.66897774}
-  m_Center: {x: 0.07427263, y: 0.8166503, z: -0.1491518}
+  m_Size: {x: 0.09597206, y: 1.7929397, z: 0.66448593}
+  m_Center: {x: 1.2690134, y: 0.8166504, z: -0.1469059}
+--- !u!65 &113696074182820057
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551594246681160779}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.106831074, y: 1.8253331, z: 0.6789646}
+  m_Center: {x: -1.1701643, y: 0.8309865, z: -0.14624882}
 --- !u!1001 &4103124210377364323
 PrefabInstance:
   m_ObjectHideFlags: 0

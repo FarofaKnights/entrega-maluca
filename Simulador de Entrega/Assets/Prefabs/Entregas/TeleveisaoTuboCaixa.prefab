@@ -62,6 +62,7 @@ MonoBehaviour:
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
+    dentroCarro: 0
 --- !u!54 &2876863578752007659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
+    dentroCarro: 0
   spawnPosition: {fileID: 0}
   carro: {fileID: 0}
   inCarro: 1
@@ -113,8 +115,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.69003654, y: 0.6919055, z: 0.41563034}
-  m_Center: {x: -0.02335988, y: 0.042024612, z: -0.121393204}
+  m_Size: {x: 0.69003654, y: 0.66127443, z: 0.38499832}
+  m_Center: {x: -0.02335988, y: 0.057340145, z: -0.106077194}
 --- !u!65 &1355803547889260061
 BoxCollider:
   m_ObjectHideFlags: 0
