@@ -398,6 +398,11 @@ public class MissaoObjectEditor : Editor {
         GUILayout.Label("Destinatario:");
         cargas[i].destinatario = DrawEnderecoField(cargas[i].destinatario, "Carga" + conjuntoId + "_" + i);
         EditorGUILayout.EndHorizontal();
+        
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Prefab:");
+        cargas[i].prefab = (GameObject)EditorGUILayout.ObjectField(cargas[i].prefab, typeof(GameObject), false);
+        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Tipo:");

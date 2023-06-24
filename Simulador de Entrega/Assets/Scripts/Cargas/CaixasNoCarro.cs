@@ -19,10 +19,13 @@ public class CaixasNoCarro : MonoBehaviour
                 float velocity = rb.velocity.magnitude;
                 carga.fragilidade -= velocity;
                 carga.dentroCarro = false;
-                StartCoroutine(wait());
+                
                 if(carga.fragilidade <= 0)
                 {
                     gameObject.SetActive(false);
+                } else 
+                {
+                    StartCoroutine(wait());
                 }
             }
         }
