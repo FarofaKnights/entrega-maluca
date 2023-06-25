@@ -96,18 +96,21 @@ public class StartDrag : MonoBehaviour
     }
     public void Confirm()
     {
-       cams[0].gameObject.SetActive(true);
-       cams[1].gameObject.SetActive(false);
-       cams[2].gameObject.SetActive(false);
-       cams[3].gameObject.SetActive(false);
-       cams[4].gameObject.SetActive(false);
-       currCam = cams[0];
-       rb.isKinematic = false;
-       parederetratil.SetActive(true);
-       paredeSide.SetActive(true);
-       currentState = State.Dirigindo;
-       SelectedObj = null;
-       MudarCaixas();
+        if (completed)
+        {
+            cams[0].gameObject.SetActive(true);
+            cams[1].gameObject.SetActive(false);
+            cams[2].gameObject.SetActive(false);
+            cams[3].gameObject.SetActive(false);
+            cams[4].gameObject.SetActive(false);
+            currCam = cams[0];
+            rb.isKinematic = false;
+            parederetratil.SetActive(true);
+            paredeSide.SetActive(true);
+            currentState = State.Dirigindo;
+            SelectedObj = null;
+            MudarCaixas();
+        }
     }
     void ChangeCam()
     {
