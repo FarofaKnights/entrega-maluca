@@ -10,37 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: Missao Timeline
+  m_Name: Missao Timeline 1
   m_EditorClassIdentifier: 
-  nome: Mudando de casa
-  descricao: "Estou me mudando para um novo bairro, me ajude a levar esse arm\xE1rio
-    e aquelas coisas ali tamb\xE9m."
+  nome: Me ajude a vender
+  descricao: Estou vendendo essas coisas, me ajude a entregar elas.
   objetivoInicial:
-    endereco: Predio3
+    endereco: PredioPraia
     cargas:
     - peso: 50
-      fragilidade: 10
-      tipo: 3
-      destinatario: Predio1
-      prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+      fragilidade: 5
+      tipo: 0
+      destinatario: Predio3
+      prefab: {fileID: 1384330550075591027, guid: fc43cf3520536ea48aceaa96fb762f4e,
         type: 3}
     - peso: 50
-      fragilidade: 10
-      tipo: 3
-      destinatario: Predio1
-      prefab: {fileID: 8945529338682589028, guid: 3439585f0f94424499814759c3154aed,
-        type: 3}
-    - peso: 80
-      fragilidade: 20
-      tipo: 3
-      destinatario: Predio1
-      prefab: {fileID: 1384330550075591027, guid: 9a722d1928294ac41a81c31e722741d6,
+      fragilidade: 5
+      tipo: 0
+      destinatario: Predio3
+      prefab: {fileID: 240624705749833600, guid: 43cec92accc309942b9c79abb11a6d33,
         type: 3}
     - peso: 30
-      fragilidade: 20
-      tipo: 3
-      destinatario: Predio1
+      fragilidade: 8
+      tipo: 0
+      destinatario: Predio3
       prefab: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
+        type: 3}
+    - peso: 25
+      fragilidade: 16
+      tipo: 0
+      destinatario: Predio3
+      prefab: {fileID: 1384330550075591027, guid: 357a105dab05c7a4abd8b0ad6c6fa7a1,
         type: 3}
     permiteReceber: 0
     diretriz:
@@ -48,7 +47,7 @@ MonoBehaviour:
       limitacoes: []
   conjuntos:
   - objetivos:
-    - endereco: Predio1
+    - endereco: Predio3
       cargas: []
       permiteReceber: 1
       diretriz:
@@ -56,38 +55,38 @@ MonoBehaviour:
         limitacoes: []
     sequencial: 0
     diretriz:
-      texto: Entregue no outro Bairro
+      texto: Entregue essas vendas
       limitacoes: []
   missoesDesbloqueadas: []
   gerarAleatoriaNoFinal: 0
   timeline:
   - tipo: 0
     objetivo:
-      endereco: Predio3
+      endereco: PredioPraia
       cargas:
       - peso: 50
-        fragilidade: 10
-        tipo: 3
-        destinatario: Predio1
-        prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+        fragilidade: 5
+        tipo: 0
+        destinatario: Predio3
+        prefab: {fileID: 1384330550075591027, guid: fc43cf3520536ea48aceaa96fb762f4e,
           type: 3}
       - peso: 50
-        fragilidade: 10
-        tipo: 3
-        destinatario: Predio1
-        prefab: {fileID: 8945529338682589028, guid: 3439585f0f94424499814759c3154aed,
-          type: 3}
-      - peso: 80
-        fragilidade: 20
-        tipo: 3
-        destinatario: Predio1
-        prefab: {fileID: 1384330550075591027, guid: 9a722d1928294ac41a81c31e722741d6,
+        fragilidade: 5
+        tipo: 0
+        destinatario: Predio3
+        prefab: {fileID: 240624705749833600, guid: 43cec92accc309942b9c79abb11a6d33,
           type: 3}
       - peso: 30
-        fragilidade: 20
-        tipo: 3
-        destinatario: Predio1
+        fragilidade: 8
+        tipo: 0
+        destinatario: Predio3
         prefab: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
+          type: 3}
+      - peso: 25
+        fragilidade: 16
+        tipo: 0
+        destinatario: Predio3
+        prefab: {fileID: 1384330550075591027, guid: 357a105dab05c7a4abd8b0ad6c6fa7a1,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -120,13 +119,13 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Entregue no outro Bairro
+      texto: Entregue essas vendas
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Predio1
+      endereco: Predio3
       cargas: []
       permiteReceber: 1
       diretriz:

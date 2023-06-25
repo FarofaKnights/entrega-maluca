@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    float dinheiro = 200;
+    float dinheiro = 300;
     public List<Carga> cargaAtual = new List<Carga>(); // Sistema temporario
 
     [System.NonSerialized]
