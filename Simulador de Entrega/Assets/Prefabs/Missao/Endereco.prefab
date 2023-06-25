@@ -344,7 +344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   scale: {x: 1, y: 1, z: 1}
-  debugScale: {x: 0, y: 0, z: 0}
   variation: 0.25
 --- !u!1 &7588484848611455175
 GameObject:
@@ -365,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1354144187706677719
 Transform:
   m_ObjectHideFlags: 0
