@@ -17,6 +17,8 @@ public class MissaoObject : ScriptableObject {
 
     public MissaoObject[] missoesDesbloqueadas;
 
+    public bool gerarAleatoriaNoFinal = false;
+
     public Missao Convert() {
         if (this.GetType() == typeof(MissaoTimeline)) {
             MissaoTimeline timeline = (MissaoTimeline)this;
@@ -35,7 +37,7 @@ public class MissaoObject : ScriptableObject {
             conjuntos[i] = this.conjuntos[i].Convert();
         }
 
-        return new Missao(objetivoInicial, conjuntos, nome, descricao, missoesDesbloqueadas);
+        return new Missao(objetivoInicial, conjuntos, nome, descricao, missoesDesbloqueadas, gerarAleatoriaNoFinal);
     }
 
 
@@ -132,6 +134,7 @@ public class MissaoObject : ScriptableObject {
         asset.nome = nome;
         asset.descricao = descricao;
         asset.missoesDesbloqueadas = missoesDesbloqueadas;
+        asset.gerarAleatoriaNoFinal = gerarAleatoriaNoFinal;
         
         AssetDatabase.CreateAsset(asset, path);
         AssetDatabase.SaveAssets();

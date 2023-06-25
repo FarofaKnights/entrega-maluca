@@ -16,14 +16,14 @@ public class Endereco : MonoBehaviour {
         ListaEnderecos.Add(nome, this);
     }
 
-    public void DefinirComoObjetivo(Objetivo objetivo) {
+    public virtual void DefinirComoObjetivo(Objetivo objetivo) {
         this.objetivo = objetivo;
         gameObject.SetActive(true);
 
         if (icone != null) icone.AtivarIcone();
     }
 
-    public void RemoverObjetivo() {
+    public virtual void RemoverObjetivo() {
         Objetivo objetivo = this.objetivo;
 
         this.objetivo = null;
@@ -40,6 +40,19 @@ public class Endereco : MonoBehaviour {
 
     public static Endereco GetEndereco(string nome) {
         return ListaEnderecos[nome];
+    }
+
+    public static Endereco GetRandomEndereco() {
+        Endereco endereco;
+
+        do {
+            int random = Random.Range(0, ListaEnderecos.Count);
+            List<string> keyList = new List<string>(ListaEnderecos.Keys);
+            string nome = keyList[random];
+            endereco = ListaEnderecos[nome];
+        } while (endereco.GetType() == typeof(EnderecoFalso));
+        
+        return endereco;
     }
 
     void OnDestroy() {

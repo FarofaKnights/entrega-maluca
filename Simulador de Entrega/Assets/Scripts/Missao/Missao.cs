@@ -18,27 +18,31 @@ public class Missao: Iniciavel {
     public string titulo, descricao;
     public Diretriz diretriz = null;
 
+    public bool gerarAleatoriaNoFinal = false;
+
     bool iniciada = false;
     bool finalizada = false;
 
     // Construtores
-    public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos, string titulo, string descricao, MissaoObject[] missoesDesbloqueadas = null) {
+    public Missao(ObjetivoInicial objetivoInicial, Conjunto[] conjuntos, string titulo, string descricao, MissaoObject[] missoesDesbloqueadas = null, bool gerarAleatoriaNoFinal = false) {
         this.objetivoInicial = objetivoInicial;
         this.conjuntos = conjuntos;
         this.titulo = titulo;
         this.descricao = descricao;
         this.missoesDesbloqueadas = missoesDesbloqueadas;
+        this.gerarAleatoriaNoFinal = gerarAleatoriaNoFinal;
 
         objetivoInicial.missao = this;
         foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
 
-    public Missao(Endereco enderecoComecar, Conjunto[] conjuntos, string titulo, string descricao, MissaoObject[] missoesDesbloqueadas = null) {
+    public Missao(Endereco enderecoComecar, Conjunto[] conjuntos, string titulo, string descricao, MissaoObject[] missoesDesbloqueadas = null, bool gerarAleatoriaNoFinal = false) {
         this.objetivoInicial = new ObjetivoInicial(enderecoComecar, this);
         this.conjuntos = conjuntos;
         this.titulo = titulo;
         this.descricao = descricao;
         this.missoesDesbloqueadas = missoesDesbloqueadas;
+        this.gerarAleatoriaNoFinal = gerarAleatoriaNoFinal;
 
         foreach (Conjunto conjunto in conjuntos) conjunto.missao = this;
     }
@@ -86,7 +90,7 @@ public class Missao: Iniciavel {
                 Missao missao = missaoObject.Convert();
                 GameManager.instance.AdicionarMissao(missao);
             }
-        } else {
+        } else if (gerarAleatoriaNoFinal) {
             Missao novaMissao = GerarMissaoAleatoria();
             GameManager.instance.AdicionarMissao(novaMissao);
         }
@@ -118,17 +122,13 @@ public class Missao: Iniciavel {
     #region Aleatoria
     // Gera uma missão A->B aleatoria
     public static Missao GerarMissaoAleatoria() {
-        int a, b;
-        a = Random.Range(1,4); // de 1 a 3
-
-        // Gera numero aleatorio diferente de a
-        do {
-            b = Random.Range(1,4);
-        } while (a == b);
-
         // Pega objetos do tipo Endereco
-        Endereco remetente = Endereco.ListaEnderecos["Predio" + a];
-        Endereco destinatario = Endereco.ListaEnderecos["Predio" + b];
+        Endereco remetente = Endereco.GetRandomEndereco();
+        Endereco destinatario;
+
+        do {
+            destinatario = Endereco.GetRandomEndereco();
+        } while (remetente == destinatario);
 
         // Gera quantidade aleatoria de cargas
         List<Carga> cargas = new List<Carga>();
@@ -142,14 +142,14 @@ public class Missao: Iniciavel {
         Objetivo final = new Objetivo(destinatario);
         final.permiteReceber = true;
 
-        Diretriz dir = new Diretriz("Entregue as cargas no prédio " + b + ".");
+        Diretriz dir = new Diretriz("Entregue as cargas no " + destinatario.nome + ".");
         ObjetivoInicial inicio = new ObjetivoInicial(remetente, cargas);
 
         Objetivo[] objetivos = new Objetivo[1] {final};
         Conjunto conjunto = new Conjunto(null, objetivos, true);
         conjunto.diretriz = dir;
 
-        return new Missao(inicio, new Conjunto[1] {conjunto}, "Missão Aleatória", "Entregue as cargas no prédio " + b + ".");
+        return new Missao(inicio, new Conjunto[1] {conjunto}, "Missão Aleatória", "Entregue as cargas no " + destinatario.nome + ".", null, true);
     }
     
     // Gera uma missão de 3 pontos aleatoria

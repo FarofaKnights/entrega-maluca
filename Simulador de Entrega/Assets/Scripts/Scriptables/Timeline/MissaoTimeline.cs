@@ -83,6 +83,12 @@ public class MissaoTimeline : MissaoObject {
             } else if (element.tipo == TimelineElementType.Diretriz) {
                 if (ultimoElemento == "conjunto") conjunto.diretriz = element.diretriz;
                 else if (ultimoElemento == "objetivo") ultimoObjetivo.diretriz = element.diretriz;
+            } else if (element.tipo == TimelineElementType.Cutscene) {
+                CutscenesObject cutscenesObject = new CutscenesObject();
+                cutscenesObject.cutscenes = element.cutscenes.ToArray();
+
+                if (objetivoInicial == null) objetivoInicial = cutscenesObject;
+                else objetivos.Add(cutscenesObject);
             }
         }
 

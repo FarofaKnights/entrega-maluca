@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
     public List<Missao> missoesConcluidas = new List<Missao>();
     bool mostrandoMissoes = true;
 
+    float timeScaleAntigo = 1;
+
     public GameObject prefabGenerico;
     void Awake() {
         instance = this;
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour {
 
     public void Pausar() {
         estadoAtual = Estado.Pausado;
+        timeScaleAntigo = Time.timeScale;
         Time.timeScale = 0;
 
         UIController.instance.EntrarPausa();
@@ -84,7 +87,7 @@ public class GameManager : MonoBehaviour {
 
     public void Despausar() {
         estadoAtual = Estado.Jogando;
-        Time.timeScale = 1;
+        Time.timeScale = timeScaleAntigo;
 
         UIController.instance.SairPausa();
     }

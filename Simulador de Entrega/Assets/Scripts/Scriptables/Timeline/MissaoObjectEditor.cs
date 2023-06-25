@@ -20,6 +20,8 @@ public class MissaoObjectEditor : Editor {
     List<TimelineElement> elementMoveDown = new List<TimelineElement>();
     List<TimelineElement> elementRemove = new List<TimelineElement>();
 
+    GUIStyle textAreaStyle;
+
     string chamouPicker = "";
 
 
@@ -53,8 +55,13 @@ public class MissaoObjectEditor : Editor {
         EditorGUI.BeginChangeCheck();
         missaoObject.nome = EditorGUILayout.TextField("Nome:", missaoObject.nome);
         
+        textAreaStyle = new GUIStyle(EditorStyles.textArea);
+        textAreaStyle.wordWrap = true;
+
         EditorGUILayout.LabelField("Descrição:");
-        missaoObject.descricao = EditorGUILayout.TextArea(missaoObject.descricao, GUILayout.Height(40));
+        missaoObject.descricao = EditorGUILayout.TextArea(missaoObject.descricao, textAreaStyle, GUILayout.Height(60));
+
+        GUILayout.Space(padding);
 
         EditorGUILayout.LabelField("Timeline:");
 
@@ -114,6 +121,9 @@ public class MissaoObjectEditor : Editor {
                 case TimelineElementType.FimNaoSequencial:
                     DrawNaoSequencialFim(element);
                     break;
+                case TimelineElementType.Cutscene:
+                    DrawCutscene(element);
+                    break;
             }
 
             GUILayout.Space(padding);
@@ -130,6 +140,7 @@ public class MissaoObjectEditor : Editor {
             menu.AddItem(new GUIContent("Objetivo"), false, AddObjetivo);
             menu.AddItem(new GUIContent("Diretriz"), false, AddDiretriz);
             menu.AddItem(new GUIContent("Não Sequencial"), false, AddNaoSequencial);
+            menu.AddItem(new GUIContent("Cutscene"), false, AddCutscene);
             menu.ShowAsContext();
 
         }
@@ -194,6 +205,13 @@ public class MissaoObjectEditor : Editor {
         GUILayout.Space(padding);
         SerializedProperty m_missoesDesbloqueadas = serializedObject.FindProperty("missoesDesbloqueadas");
         EditorGUILayout.PropertyField(m_missoesDesbloqueadas, new GUIContent("Desbloquear missões ao finalizar"), true);
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Gerar missão aleatória no final:");
+        missaoObject.gerarAleatoriaNoFinal = EditorGUILayout.Toggle(missaoObject.gerarAleatoriaNoFinal);
+        EditorGUILayout.EndHorizontal();
+
+        
 
         serializedObject.ApplyModifiedProperties();
 
@@ -532,6 +550,77 @@ public class MissaoObjectEditor : Editor {
         if (GUI.backgroundColor == Color.red) GUI.backgroundColor = Color.cyan;
     }
 
+    void DrawCutscene(TimelineElement cutscene) {
+        if (cutscene.cutscenes == null) return;
+
+        int paddingCut = 2;
+
+        DrawHeader(cutscene, "Cutscene");
+
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Cutscenes:");
+        if (GUILayout.Button("+", GUILayout.Width(20), GUILayout.Height(20))) {
+            cutscene.cutscenes.Add(new CutsceneObject());
+        }
+
+        List<CutsceneObject> cutList = cutscene.cutscenes;
+
+        EditorGUILayout.EndHorizontal();
+
+        GUILayout.BeginVertical("box");
+        GUILayout.Space(paddingCut);
+
+        List<CutsceneObject> cutRemover = new List<CutsceneObject>();
+
+        for (int i = 0; i < cutList.Count; i++) {
+            Color oldColor = GUI.backgroundColor;
+            if (oldColor != Color.red) {
+                GUI.backgroundColor = Color.green;
+            }
+            GUILayout.BeginVertical("HelpBox");
+            GUILayout.Space(paddingCut);
+            
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Cutscene " + i, EditorStyles.boldLabel);
+            if (GUILayout.Button("-", GUILayout.Width(20), GUILayout.Height(20))) {
+                cutRemover.Add(cutList[i]);
+            }
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Nome:");
+            cutList[i].nome = EditorGUILayout.TextField(cutList[i].nome);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.LabelField("Descrição:");
+            cutList[i].texto = EditorGUILayout.TextArea(cutList[i].texto, textAreaStyle, GUILayout.Height(60));
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Imagem:");
+            cutList[i].imagem = (Sprite)EditorGUILayout.ObjectField(cutList[i].imagem, typeof(Sprite), false);
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.Space(paddingCut);
+            GUILayout.EndVertical();
+            GUILayout.Space(paddingCut/2);
+
+            if (GUI.backgroundColor == Color.green) {
+                GUI.backgroundColor = oldColor;
+            }
+        }
+
+        foreach (CutsceneObject cut in cutRemover) {
+            cutList.Remove(cut);
+        }
+
+
+        GUILayout.Space(paddingCut/2);
+        GUILayout.EndVertical();
+
+        DrawFooter(cutscene);
+    }
+
     void AddObjetivo() {
         TimelineElement objetivo = new TimelineElement();
         objetivo.tipo = TimelineElementType.Objetivo;
@@ -579,6 +668,14 @@ public class MissaoObjectEditor : Editor {
 
         missaoObject.timeline.Add(naoSequencialInicio);
         missaoObject.timeline.Add(naoSequencialFim);
+    }
+
+    void AddCutscene() {
+        TimelineElement cutscene = new TimelineElement();
+        cutscene.tipo = TimelineElementType.Cutscene;
+        cutscene.cutscenes = new List<CutsceneObject>();
+
+        missaoObject.timeline.Add(cutscene);
     }
 }
 

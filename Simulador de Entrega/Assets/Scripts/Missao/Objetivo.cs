@@ -38,7 +38,7 @@ public class Objetivo: Iniciavel {
     }
 
     // Chamada quando o destino se torna ativo, ou seja, é o próximo destino do jogador
-    public void Iniciar() {
+    public virtual void Iniciar() {
         if (ativo) return;
 
         ativo = true;
