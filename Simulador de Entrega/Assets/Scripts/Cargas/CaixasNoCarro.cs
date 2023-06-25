@@ -9,6 +9,7 @@ public class CaixasNoCarro : MonoBehaviour
     public GameObject spawnPosition, carro;
     public bool inCarro = true;
     public float multiplicadorDano;
+   public AudioSource bater;
     private void OnCollisionEnter(Collision collision)
     {
         if (StartDrag.sd.currentState == StartDrag.State.Dirigindo)
@@ -19,6 +20,7 @@ public class CaixasNoCarro : MonoBehaviour
                 float velocity = rb.velocity.magnitude;
                 carga.fragilidade -= velocity;
                 carga.dentroCarro = false;
+                bater.Play();
                 
                 if(carga.fragilidade <= 0)
                 {

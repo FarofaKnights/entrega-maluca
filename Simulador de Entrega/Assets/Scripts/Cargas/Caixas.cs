@@ -28,6 +28,7 @@ public class Caixas : MonoBehaviour
         cnoCarro.carro = GameObject.Find("Veiculo");
         cnoCarro.rb = rb;
         cnoCarro.spawnPosition = GameObject.Find("Veiculo/Caçamba/relocateCaixas");
+        cnoCarro.bater = GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {   
