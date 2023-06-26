@@ -15834,7 +15834,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 419429399}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
 --- !u!1001 &420353103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15999,8 +15998,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420986477}
   m_CullTransparentMesh: 1
-=======
->>>>>>> Stashed changes
 --- !u!4 &421790154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6907914330290556280, guid: 07d7889a1bffbd24caa6361998ca0bea,
@@ -27389,7 +27386,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee23558b9e0d5c54e833b63ba5ebf919, type: 3}
-<<<<<<< Updated upstream
 --- !u!1 &640483886
 GameObject:
   m_ObjectHideFlags: 0
@@ -27535,8 +27531,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f9678368406db4cbbf6bcfbdbf14de, type: 3}
-=======
->>>>>>> Stashed changes
 --- !u!4 &641981184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7066117363865672116, guid: fd0afa3e66aac364a82c9d3eefdf069f,
@@ -34888,7 +34882,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 198961618}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
 --- !u!1 &810217201
 GameObject:
   m_ObjectHideFlags: 0
@@ -35102,8 +35095,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f9678368406db4cbbf6bcfbdbf14de, type: 3}
-=======
->>>>>>> Stashed changes
 --- !u!1001 &811574473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42925,7 +42916,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a73c501d3d4ecd4f94687c778fbf0cd, type: 3}
-<<<<<<< Updated upstream
 --- !u!1001 &1005174469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43042,8 +43032,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
->>>>>>> Stashed changes
 --- !u!1001 &1005601788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58033,7 +58021,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: c791c4c5fee949945bed2c688486e07c, type: 3}
   comecaAtivo: 1
   escala: 1.5
-<<<<<<< Updated upstream
 --- !u!1001 &1373298373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58193,8 +58180,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373366475}
   m_CullTransparentMesh: 1
-=======
->>>>>>> Stashed changes
 --- !u!4 &1374923495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2102409735661197189, guid: baaf29577e523e54abe86b1862ebdad2,
@@ -64281,7 +64266,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507116622}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
 --- !u!1 &1511181615
 GameObject:
   m_ObjectHideFlags: 0
@@ -64362,7 +64346,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511181615}
   m_CullTransparentMesh: 1
-=======
 --- !u!1001 &1507836993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64432,7 +64415,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e08d1802049a51409779fc59718bee2, type: 3}
->>>>>>> Stashed changes
 --- !u!1001 &1512630510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70756,7 +70738,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1755974009}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
 --- !u!1 &1650359526
 GameObject:
   m_ObjectHideFlags: 0
@@ -70834,7 +70815,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650359526}
   m_CullTransparentMesh: 1
-=======
 --- !u!1001 &1650930310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70904,7 +70884,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c431150f635b546bf840ab568defd0, type: 3}
->>>>>>> Stashed changes
 --- !u!1001 &1652679811
 PrefabInstance:
   m_ObjectHideFlags: 0
