@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.14014357, g: 0.15329759, b: 0.1495287, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8d06fab3802ac79408fd435cf304f3a8,
+    type: 2}
   m_LightingSettings: {fileID: 1031326351}
 --- !u!196 &4
 NavMeshSettings:
@@ -12162,6 +12163,8 @@ MonoBehaviour:
   refOficinaPanel: {fileID: 2052917098}
   refPausaPanel: {fileID: 645954587}
   refMinimapaPanel: {fileID: 705877546}
+  tutorialEncaixeMovimento: {fileID: 0}
+  tutorialEncaixeRotacao: {fileID: 0}
   dinheiro: {fileID: 1943139061}
 --- !u!114 &789028325
 MonoBehaviour:
