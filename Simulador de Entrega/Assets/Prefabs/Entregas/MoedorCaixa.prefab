@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f60c9063cb61542b5671204af99930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotating: 0
   cnoCarro: {fileID: 5081300716754360578}
   speed: 200
   rotateSpeed: 500
@@ -126,7 +127,8 @@ AudioSource:
   m_GameObject: {fileID: 1384330550075591027}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7617388792649863208, guid: e5168e026c62c86468a3623a4ce1673b,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: b485a707717fa9646ae0f1340a2f9527, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.403

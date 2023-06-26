@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class UIController : MonoBehaviour {
     public static UIController instance;
@@ -14,6 +15,9 @@ public class UIController : MonoBehaviour {
 
     public GameObject tutorialEncaixeMovimento, tutorialEncaixeRotacao;
     bool estaNoEncaixe = false; // Solucao temporaria
+
+    public AudioMixer audioMixer;
+    public Slider efeitoSlider, carroSlider, geralSlider;
 
     public Text dinheiro;
 
@@ -188,5 +192,36 @@ public class UIController : MonoBehaviour {
 
     public void SairPausa() {
         refPausaPanel.SetActive(false);
+    }
+
+    public void SetVolumeEfeito(float volume) {
+        audioMixer.SetFloat("Efeitos", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetVolumeCarro(float volume) {
+        audioMixer.SetFloat("Carro", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetVolumeGeral(float volume) {
+        audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+
+        Debug.Log("Volume geral: " + volume);
+        Debug.Log("Volume geral (log): " + Mathf.Log10(volume));
+        Debug.Log("Volume geral (log) * 20: " + Mathf.Log10(volume) * 20);
+
+        audioMixer.GetFloat("Master", out volume);
+        Debug.Log("Volume geral (log) * 20 (int): " + volume);
+    }
+
+    public void UpdateSliders() {
+        float volume;
+        audioMixer.GetFloat("Efeitos", out volume);
+        efeitoSlider.value = Mathf.Pow(10, volume / 20);
+
+        audioMixer.GetFloat("Carro", out volume);
+        carroSlider.value = Mathf.Pow(10, volume / 20);
+
+        audioMixer.GetFloat("Master", out volume);
+        geralSlider.value = Mathf.Pow(10, volume / 20);
     }
 }
