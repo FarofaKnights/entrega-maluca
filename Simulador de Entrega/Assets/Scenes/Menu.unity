@@ -643,8 +643,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 614753551}
-        m_TargetAssemblyTypeName: TrocaCena, Assembly-CSharp
-        m_MethodName: Troca
+        m_TargetAssemblyTypeName: EscolherJogoTutorial, Assembly-CSharp
+        m_MethodName: HandleClique
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -701,10 +701,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 614753546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b47a5a6763ac2d48a01f41866950701, type: 3}
+  m_Script: {fileID: 11500000, guid: 70ae5f7cfe568d94e9d26c049ba37d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rota: Tutorial
 --- !u!1 &722872500
 GameObject:
   m_ObjectHideFlags: 0
