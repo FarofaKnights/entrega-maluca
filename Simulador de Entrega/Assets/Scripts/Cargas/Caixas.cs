@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Caixas : MonoBehaviour
 {
-    bool rotating;
+    public bool rotating;
     public CaixasNoCarro cnoCarro;
     public float speed = 5f, rotateSpeed;
     public Transform v;
@@ -27,7 +27,7 @@ public class Caixas : MonoBehaviour
         cnoCarro.carga = carga;
         cnoCarro.carro = GameObject.Find("Veiculo");
         cnoCarro.rb = rb;
-        cnoCarro.spawnPosition = GameObject.Find("Veiculo/Caçamba/relocateCaixas");
+        cnoCarro.spawnPosition = GameObject.Find("Veiculo/Caï¿½amba/relocateCaixas");
         cnoCarro.bater = GetComponent<AudioSource>();
     }
     private void FixedUpdate()

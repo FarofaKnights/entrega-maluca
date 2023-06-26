@@ -13,7 +13,7 @@ public class StartDrag : MonoBehaviour
     public Transform[] pontos;
     public GameObject[] cargas, caixasNoCarro;
     int u = 0;
-    //rampa pra poder colocar os itens na caçamba; parede da parte de trás da caçamba, paredes invisiveis pra não arrastar os objetos pra fora da camera
+    //rampa pra poder colocar os itens na caï¿½amba; parede da parte de trï¿½s da caï¿½amba, paredes invisiveis pra nï¿½o arrastar os objetos pra fora da camera
     public GameObject parederetratil, player, paredeSide, SelectedObj; 
     public static StartDrag sd;
     public bool completed = false;
@@ -35,7 +35,7 @@ public class StartDrag : MonoBehaviour
     {
             ChangeCam();
     }
-   // Entra no mode de colocar na caçamba
+   // Entra no mode de colocar na caï¿½amba
    public void changeCass()
     {
         u = 0;
@@ -43,12 +43,12 @@ public class StartDrag : MonoBehaviour
         cams[0].gameObject.SetActive(false);
         cams[1].gameObject.SetActive(true);
         currCam = cams[1];
-        UIController.instance.botaoConfirm.gameObject.SetActive(true);
+        UIController.instance.MostrarTelaEncaixe();
         rb.isKinematic = true;
         parederetratil.SetActive(false);
         paredeSide.SetActive(false);
         currentState = State.Tetris;
-        //Spawna o resto das caixas com base na posição da caixa anterior
+        //Spawna o resto das caixas com base na posiï¿½ï¿½o da caixa anterior
         foreach (Carga carga in Player.instance.cargaAtual)
         {
            GameObject caixa = Instantiate(carga.prefab, pontos[u].position, carga.prefab.transform.rotation);
