@@ -33789,6 +33789,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.34
       objectReference: {fileID: 0}
+    - target: {fileID: 778030595588332111, guid: 8ca2f919f4f731e49bea8286a0916b76,
+        type: 3}
+      propertyPath: m_Name
+      value: Cacamba
+      objectReference: {fileID: 0}
     - target: {fileID: 956636453264337192, guid: 8ca2f919f4f731e49bea8286a0916b76,
         type: 3}
       propertyPath: m_RootOrder
