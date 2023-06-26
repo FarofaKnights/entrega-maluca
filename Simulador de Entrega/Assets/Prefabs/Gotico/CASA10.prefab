@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4635369377142074176}
   - component: {fileID: 7471705609714671498}
   - component: {fileID: 8152503818379291978}
+  - component: {fileID: 481471369805737040}
+  - component: {fileID: 5116762946145548286}
   m_Layer: 0
   m_Name: CASA10
   m_TagString: Untagged
@@ -95,5 +97,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.076655954, y: 0.09171611, z: 0.18329059}
-  m_Center: {x: -0.015047757, y: -0.012040901, z: 0.09164528}
+  m_Size: {x: 0.044460524, y: 0.06648386, z: 0.10436526}
+  m_Center: {x: 0.0010499001, y: 0.0004630649, z: 0.052182853}
+--- !u!65 &481471369805737040
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8984726175452085855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03116115, y: 0.037284214, z: 0.099047996}
+  m_Center: {x: -0.03651339, y: 0.00005843818, z: 0.04952418}
+--- !u!65 &5116762946145548286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8984726175452085855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.031399317, y: 0.027998606, z: 0.07171154}
+  m_Center: {x: -0.000008010864, y: -0.043809433, z: 0.03585597}

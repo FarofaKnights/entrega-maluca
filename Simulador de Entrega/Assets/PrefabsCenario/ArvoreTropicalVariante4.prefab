@@ -220,6 +220,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArvoreTropicalVariante4LOD2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51287c3cc26645c428f150d2fc60d8e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51287c3cc26645c428f150d2fc60d8e1, type: 3}
 --- !u!4 &2544585241675835120 stripped
@@ -305,6 +310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ArvoreTropicalVariante4LOD1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cfb19779bfa02254c89910ae0dc75a65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfb19779bfa02254c89910ae0dc75a65, type: 3}

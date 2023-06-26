@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    float dinheiro = 200;
+    float dinheiro = 300;
     public List<Carga> cargaAtual = new List<Carga>(); // Sistema temporario
 
     [System.NonSerialized]
@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     void Start() {
 
         foreach (KeyValuePair<string, Endereco> entry in Endereco.ListaEnderecos) {
-            entry.Value.gameObject.SetActive(false);
+            if (entry.Value.GetType() != typeof(EnderecoFalso))
+                entry.Value.gameObject.SetActive(false);
         }
 
         GameManager.instance.CarregarMissaoInicial();
@@ -44,7 +45,9 @@ public class Player : MonoBehaviour
 
         GameManager.instance.VisualizarMissao(missaoAtual);
         GameManager.instance.AlterarDisponibilidadeDeMissoes(false);
-        OficinaController.instance.DesativarOficina();
+
+        if (OficinaController.instance != null)
+            OficinaController.instance.DesativarOficina();
     }
 
     public void InterromperMissao() {
@@ -60,7 +63,9 @@ public class Player : MonoBehaviour
         cargaAtual = new List<Carga>();
 
         GameManager.instance.AlterarDisponibilidadeDeMissoes(true);
-        OficinaController.instance.AtivarOficina();
+
+        if (OficinaController.instance != null)
+            OficinaController.instance.AtivarOficina();
     }
 
     // Chamada pela propria missao ao ser finalizada
@@ -75,7 +80,9 @@ public class Player : MonoBehaviour
         cargaAtual = new List<Carga>();
 
         GameManager.instance.AlterarDisponibilidadeDeMissoes(true);
-        OficinaController.instance.AtivarOficina();
+
+        if (OficinaController.instance != null)
+            OficinaController.instance.AtivarOficina();
     }
 
     public void AdicionarObjetivoAtivo(Objetivo objetivo) {

@@ -14,11 +14,13 @@ public class Diretriz: Iniciavel {
     }
     
     public void Iniciar() {
-        UIController.instance.AdicionarDiretriz(this);
+        if (this.texto != null && this.texto != "")
+            UIController.instance.AdicionarDiretriz(this);
     }
 
     public void Interromper() {
-        UIController.instance.RemoverDiretriz(this);
+        if (this.texto != null && this.texto != "")
+            UIController.instance.RemoverDiretriz(this);
     }
 
     public void Falhar() {

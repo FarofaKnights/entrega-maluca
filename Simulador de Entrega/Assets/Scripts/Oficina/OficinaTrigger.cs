@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OficinaTrigger : MonoBehaviour {
+    public OficinaController oficina;
+
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            transform.parent.GetComponent<OficinaController>().EntrarOficina();
+            oficina.EntrarOficina();
         }
     }
 }

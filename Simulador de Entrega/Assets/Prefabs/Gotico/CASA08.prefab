@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8111225852117047925}
   - component: {fileID: 6301709770872467135}
   - component: {fileID: 6624273645793521222}
+  - component: {fileID: 6368069084545076901}
   m_Layer: 0
   m_Name: CASA08
   m_TagString: Untagged
@@ -95,5 +96,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.11791645, y: 0.067533016, z: 0.11850582}
-  m_Center: {x: 0.00065039634, y: 0.000000004768371, z: 0.05925291}
+  m_Size: {x: 0.11791645, y: 0.034802258, z: 0.11850582}
+  m_Center: {x: 0.00065039634, y: -0.00046221315, z: 0.05925291}
+--- !u!65 &6368069084545076901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509265558922170218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04222966, y: 0.06587115, z: 0.11850582}
+  m_Center: {x: -0.00028589726, y: 0.00043064833, z: 0.05925291}

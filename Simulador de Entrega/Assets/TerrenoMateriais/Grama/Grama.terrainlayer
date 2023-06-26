@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Grama
-  m_DiffuseTexture: {fileID: 2800000, guid: c85fd307e00445d4a8fc89fcfa4bfc21, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: e48e5c0da5938554ba0acc5d7b8e8245, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 9a287245f69cee14bbbd3bb0ca499505, type: 3}
+  m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0

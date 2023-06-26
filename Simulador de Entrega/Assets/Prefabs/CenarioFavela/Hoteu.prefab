@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6109451903476264428}
   - component: {fileID: 7234740388073346271}
   - component: {fileID: 520721941725915448}
-  - component: {fileID: 7433172037611686883}
   m_Layer: 0
   m_Name: Hoteu
   m_TagString: Untagged
@@ -97,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.1989927, y: 11.96916, z: 11.361572}
-  m_Center: {x: 4.2558684, y: 5.30894, z: -0.026977539}
+  m_Size: {x: 4.598572, y: 11.96916, z: 11.361572}
+  m_Center: {x: 4.0556946, y: 5.30894, z: -0.026977539}
 --- !u!65 &520721941725915448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -110,18 +109,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.498535, y: 11.915288, z: 12.169619}
-  m_Center: {x: -4.067383, y: 5.282004, z: 0}
---- !u!65 &7433172037611686883
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5749370848346033209}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 13.71073, y: 6.474243, z: 12.169619}
-  m_Center: {x: 0, y: 7.948655, z: 0}
+  m_Size: {x: 4.46521, y: 11.915288, z: 11.335815}
+  m_Center: {x: -4.0840454, y: 5.282004, z: -0.050048828}

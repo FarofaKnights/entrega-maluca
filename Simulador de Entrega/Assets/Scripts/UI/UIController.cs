@@ -12,6 +12,9 @@ public class UIController : MonoBehaviour {
     public GameObject missaoPanel, diretrizPanel;
     public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel, refPausaPanel, refMinimapaPanel;
 
+    public GameObject tutorialEncaixeMovimento, tutorialEncaixeRotacao;
+    bool estaNoEncaixe = false; // Solucao temporaria
+
     public Text dinheiro;
 
     Objetivo objetivo;
@@ -30,10 +33,22 @@ public class UIController : MonoBehaviour {
 
         missaoPanel.SetActive(false);
 
-        botaoConfirm.gameObject.SetActive(false);
+        MostrarTelaMissao();
         botaoConfirm.onClick.AddListener(delegate { Confirm(); });
 
         AtualizarDinheiro();
+    }
+
+    void FixedUpdate() {
+        if (estaNoEncaixe && StartDrag.sd.SelectedObj != null) {
+            GameObject obj = StartDrag.sd.SelectedObj;
+            Caixas caixa = obj.GetComponent<Caixas>();
+            if (caixa != null) {
+                bool estaRodando = caixa.rotating;
+                tutorialEncaixeMovimento.SetActive(!estaRodando);
+                tutorialEncaixeRotacao.SetActive(estaRodando);
+            }
+        }
     }
 
     // Chamado quando player entra/sai em uma área de Acao
@@ -86,16 +101,29 @@ public class UIController : MonoBehaviour {
         {
             StartDrag.sd.Confirm();
             objetivo.Finalizar();
-            botaoConfirm.gameObject.SetActive(false);
-            refMinimapaPanel.SetActive(true);
+            MostrarTelaMissao();
         }
     }
 
     public void InterromperTetris() {
         // Solução temporária para o caos do startdrag
         StartDrag.sd.Confirm();
-        botaoConfirm.gameObject.SetActive(false);
+        MostrarTelaMissao();
+    }
+
+    public void MostrarTelaEncaixe() {
+        refEncaixePanel.SetActive(true);
+        refMinimapaPanel.SetActive(false);
+        estaNoEncaixe = true;
+
+        tutorialEncaixeMovimento.SetActive(true);
+        tutorialEncaixeRotacao.SetActive(false);
+    }
+
+    public void MostrarTelaMissao() {
+        refEncaixePanel.SetActive(false);
         refMinimapaPanel.SetActive(true);
+        estaNoEncaixe = false;
     }
 
     #region Diretriz

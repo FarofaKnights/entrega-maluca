@@ -9,7 +9,7 @@ public class ObjetivoObject {
     public bool permiteReceber = false;
     public DiretrizObject diretriz;
 
-    public Objetivo Convert() {
+    public virtual Objetivo Convert() {
         Endereco enderecoObj = Endereco.GetEndereco(endereco);
         Diretriz diretrizObj = diretriz != null ? diretriz.Convert() : null;
         if (diretrizObj != null && diretrizObj.texto == "") diretrizObj = null;

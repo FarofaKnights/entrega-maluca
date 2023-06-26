@@ -9,6 +9,7 @@ public class CaixasNoCarro : MonoBehaviour
     public GameObject spawnPosition, carro;
     public bool inCarro = true;
     public float multiplicadorDano;
+   public AudioSource bater;
     private void OnCollisionEnter(Collision collision)
     {
         if (StartDrag.sd.currentState == StartDrag.State.Dirigindo)
@@ -18,26 +19,45 @@ public class CaixasNoCarro : MonoBehaviour
                 Debug.Log(carga.fragilidade);
                 float velocity = rb.velocity.magnitude;
                 carga.fragilidade -= velocity;
-                inCarro = false;if(carga.fragilidade <= 0)
+                carga.dentroCarro = false;
+                bater.Play();
+                
+                if(carga.fragilidade <= 0)
                 {
                     gameObject.SetActive(false);
+                } else 
+                {
+                    StartCoroutine(wait());
                 }
             }
         }
     }
     void ChangePos()
     {
-        transform.position = spawnPosition.transform.position + carro.GetComponent<Rigidbody>().velocity/2;
+        rb.constraints = RigidbodyConstraints.None;
+        transform.position = spawnPosition.transform.position;
         inCarro = true;
+        carga.dentroCarro = true;
     }
     private void Update()
     {
         if (!inCarro)
         {
-            if (Vector3.Distance(transform.position, carro.transform.position) <= 5)
+            if (Vector3.Distance(transform.position, spawnPosition.transform.position) <= 6)
             {
-                ChangePos();
+                Debug.Log(carro.GetComponent<Rigidbody>().velocity.magnitude);
+                if (carro.GetComponent<Rigidbody>().velocity.magnitude <= 15)
+                {
+                    ChangePos();
+                }
+
             }
         }
+    }
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(3f);
+        inCarro = false;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

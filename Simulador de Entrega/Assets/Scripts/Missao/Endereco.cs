@@ -10,21 +10,20 @@ public class Endereco : MonoBehaviour {
     // public GameObject colisor;
 
     Objetivo objetivo;
-    IncluiMinimapa icone;
+    public IncluiMinimapa icone;
 
     void Awake() {
         ListaEnderecos.Add(nome, this);
-        icone = GetComponent<IncluiMinimapa>();
     }
 
-    public void DefinirComoObjetivo(Objetivo objetivo) {
+    public virtual void DefinirComoObjetivo(Objetivo objetivo) {
         this.objetivo = objetivo;
         gameObject.SetActive(true);
 
         if (icone != null) icone.AtivarIcone();
     }
 
-    public void RemoverObjetivo() {
+    public virtual void RemoverObjetivo() {
         Objetivo objetivo = this.objetivo;
 
         this.objetivo = null;
@@ -33,20 +32,27 @@ public class Endereco : MonoBehaviour {
         if (icone != null) icone.DesativarIcone();
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player" && objetivo != null) {
-            objetivo.HandleObjetivoTrigger(true);
-        }
-    }
-
-    void OnTriggerExit(Collider other) {
-        if (other.gameObject.tag == "Player" && objetivo != null) {
-            objetivo.HandleObjetivoTrigger(false);
+    public void HandleTrigger(bool entrou) {
+        if (objetivo != null) {
+            objetivo.HandleObjetivoTrigger(entrou);
         }
     }
 
     public static Endereco GetEndereco(string nome) {
         return ListaEnderecos[nome];
+    }
+
+    public static Endereco GetRandomEndereco() {
+        Endereco endereco;
+
+        do {
+            int random = Random.Range(0, ListaEnderecos.Count);
+            List<string> keyList = new List<string>(ListaEnderecos.Keys);
+            string nome = keyList[random];
+            endereco = ListaEnderecos[nome];
+        } while (endereco.GetType() == typeof(EnderecoFalso));
+        
+        return endereco;
     }
 
     void OnDestroy() {

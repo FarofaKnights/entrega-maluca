@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Caixas : MonoBehaviour
 {
-    bool rotating;
+    public bool rotating;
     public CaixasNoCarro cnoCarro;
     public float speed = 5f, rotateSpeed;
     public Transform v;
@@ -27,9 +27,10 @@ public class Caixas : MonoBehaviour
         cnoCarro.carga = carga;
         cnoCarro.carro = GameObject.Find("Veiculo");
         cnoCarro.rb = rb;
-        cnoCarro.spawnPosition = GameObject.Find("Veiculo/Caçamba/relocateCaixas");
+        cnoCarro.spawnPosition = GameObject.Find("Veiculo/Caï¿½amba/relocateCaixas");
+        cnoCarro.bater = GetComponent<AudioSource>();
     }
-    private void Update()
+    private void FixedUpdate()
     {   
         float mZero;
         if (StartDrag.sd.SelectedObj == this.gameObject)
@@ -42,29 +43,39 @@ public class Caixas : MonoBehaviour
             else if (StartDrag.sd.currCam == StartDrag.sd.cams[3]) mover = new Vector3(z, mZero, -h);
             else mover = new Vector3(h, mZero, z);
             Mover();
+        }
+        else
+        {
+            rb.useGravity = true;
+            Gizmos.SetActive(false);
+            rotating = false;
+        }
+        if(rb.velocity != Vector3.zero)
+        {
+            Checar();
+        }
+    }
+    private void Update()
+    {
+        if (StartDrag.sd.SelectedObj == this.gameObject)
+        {
             if (Input.GetKeyDown(KeyCode.R))
             {
                 if (rotating)
                 {
                     rotating = false;
                     Gizmos.SetActive(false);
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
                 }
                 else
                 {
                     rotating = true;
                     rb.velocity = Vector3.zero;
                     Gizmos.SetActive(true);
+                    rb.constraints = RigidbodyConstraints.FreezePosition;
                 }
             }
-        }
-        else
-        {
-            rb.useGravity = true;
-            Gizmos.SetActive(false);
-        }
-        if(rb.velocity != Vector3.zero)
-        {
-            Checar();
         }
     }
     void Mover()
@@ -72,13 +83,13 @@ public class Caixas : MonoBehaviour
         if (!rotating)
         {
             Vector3 moveVector = v.TransformDirection(mover) * speed;
-            rb.velocity = moveVector * Time.deltaTime;
+            rb.velocity = moveVector * Time.fixedDeltaTime;
             Gizmos.transform.position = transform.position;
         }
         else 
         {
             Vector3 rotateVector = refdrot.TransformDirection(rodar) * rotateSpeed;
-            Quaternion delta = Quaternion.Euler(rotateVector * Time.deltaTime);
+            Quaternion delta = Quaternion.Euler(rotateVector * Time.fixedDeltaTime);
             rb.MoveRotation(delta * rb.rotation);
         }
     }
