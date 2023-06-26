@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 778030595588332098}
   - component: {fileID: 778030595588332097}
   m_Layer: 2
-  m_Name: "Ca\xE7amba"
+  m_Name: Cacamba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
