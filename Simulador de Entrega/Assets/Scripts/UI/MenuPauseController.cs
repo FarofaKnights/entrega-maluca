@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuPauseController : MonoBehaviour {
-    public GameObject missaoPanel, menuPanel;
+    public GameObject missaoPanel, menuPanel, opcoesPanel;
     public GameObject missaoDetails, missaoList, missaoItemPrefab;
 
     public GameObject interromperMissaoBtn;
@@ -20,15 +20,25 @@ public class MenuPauseController : MonoBehaviour {
 
     public void OpenMissao() {
         missaoPanel.SetActive(true);
+        opcoesPanel.SetActive(false);
         menuPanel.SetActive(false);
         GenerateMissaoList();
     }
 
     public void OpenMenu() {
         missaoPanel.SetActive(false);
+        opcoesPanel.SetActive(false);
         menuPanel.SetActive(true);
         
         UpdateBotaoInterromperMissao();
+    }
+
+    public void OpenOpcoes() {
+        missaoPanel.SetActive(false);
+        opcoesPanel.SetActive(true);
+        menuPanel.SetActive(false);
+
+        UIController.instance.UpdateSliders();
     }
 
     void UpdateBotaoInterromperMissao() {

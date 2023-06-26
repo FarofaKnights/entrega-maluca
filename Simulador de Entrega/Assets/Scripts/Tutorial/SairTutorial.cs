@@ -34,6 +34,7 @@ public class SairTutorial : MonoBehaviour {
 
     public void HandleSairTutorial() {
         Time.timeScale = 1;
+        PlayerPrefs.SetInt("TerminouTutorial", 1);
         SceneManager.LoadScene(nomeCena);
     }
 
