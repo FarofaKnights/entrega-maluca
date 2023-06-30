@@ -9,13 +9,6 @@ public class GameManager : MonoBehaviour {
     public enum Estado { Jogando, Pausado };
     public Estado estadoAtual = Estado.Jogando;
 
-    public MissaoObject[] missoesIniciais;
-    public Missao visualizarMissaoAtual;
-
-    public List<Missao> missoesDisponiveis = new List<Missao>();
-    public List<Missao> missoesConcluidas = new List<Missao>();
-    bool mostrandoMissoes = true;
-
     float timeScaleAntigo = 1;
 
     public GameObject prefabGenerico;
@@ -24,11 +17,6 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        // CHEAT CODE
-        if (Input.GetKeyDown(KeyCode.P)) {
-            StartDrag.sd.Confirm();
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (estadoAtual == Estado.Jogando) {
                 Pausar();
@@ -37,45 +25,6 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-
-    #region Missao
-    public void CarregarMissaoInicial() {
-        foreach (MissaoObject missaoObject in missoesIniciais) {
-            Missao missao = missaoObject.Convert();
-            AdicionarMissao(missao);
-        }
-    }
-
-    public void VisualizarMissao(Missao missao) {
-        visualizarMissaoAtual = missao;
-    }
-
-    public void AdicionarMissao(Missao missao) {
-        missoesDisponiveis.Add(missao);
-
-        if (mostrandoMissoes)
-            missao.objetivoInicial.Iniciar();
-    }
-
-    public void RemoverMissao(Missao missao) {
-        missoesDisponiveis.Remove(missao);
-
-        if (missao.FoiFinalizada())
-            missoesConcluidas.Add(missao);
-
-        if (mostrandoMissoes)
-            missao.objetivoInicial.Interromper();
-    }
-
-    public void AlterarDisponibilidadeDeMissoes(bool disponiveis) {
-        mostrandoMissoes = disponiveis;
-        // Define se os chamados de missão estarao disponiveis para o jogador
-        foreach (Missao missao in missoesDisponiveis) {
-            if (mostrandoMissoes) missao.objetivoInicial.Iniciar();
-            else missao.objetivoInicial.Interromper();
-        }
-    }
-    #endregion
 
     public void Pausar() {
         estadoAtual = Estado.Pausado;

@@ -43,21 +43,21 @@ public class Objetivo: Iniciavel {
 
         ativo = true;
         endereco.DefinirComoObjetivo(this);
-        Player.instance.AdicionarObjetivoAtivo(this);
+        MissaoManager.instance.AddObjetivoAtivo(this);
 
         if (diretriz != null) diretriz.Iniciar();
     }
 
     public virtual void Concluir() {
         if (permiteReceber){
-            foreach (Carga carga in Player.instance.RemoverCarga(endereco)) {
+            foreach (Carga carga in MissaoManager.instance.RemoverCarga(endereco)) {
                 pai.missao.CargaEntregue(carga);
             }
         }
             
         
         if (cargas != null && cargas.Count > 0)
-            Player.instance.AdicionarCarga(cargas);
+            MissaoManager.instance.AdicionarCarga(cargas);
         
         Finalizar();
     }
@@ -68,7 +68,7 @@ public class Objetivo: Iniciavel {
 
         ativo = false;
         endereco.RemoverObjetivo();
-        Player.instance.RemoverObjetivoAtivo(this);
+        MissaoManager.instance.RemoveObjetivoAtivo(this);
 
         if (diretriz != null) diretriz.Interromper();
         if (pai != null) pai.ObjetivoConcluido(this);
@@ -80,7 +80,6 @@ public class Objetivo: Iniciavel {
 
         ativo = false;
         endereco.RemoverObjetivo();
-        Player.instance.RemoverObjetivoAtivo(this);
 
         if (diretriz != null) diretriz.Interromper();
         if (pai != null) pai.Interromper();
@@ -109,10 +108,12 @@ public class ObjetivoInicial : Objetivo {
 
     // Chamada ao clicar no botão de iniciar missão
     public override void Concluir() {
-        missao.Iniciar();
+        MissaoManager.instance.ComecarMissao(missao);
+
+        MissaoManager.instance.RemoveObjetivoAtivo(this);
 
         if (cargas != null && cargas.Count > 0) 
-            Player.instance.AdicionarCarga(cargas);
+            MissaoManager.instance.AdicionarCarga(cargas);
         
         if (diretriz != null) diretriz.Interromper();
     }

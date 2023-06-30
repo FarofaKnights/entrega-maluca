@@ -49,7 +49,7 @@ public class StartDrag : MonoBehaviour
         paredeSide.SetActive(false);
         currentState = State.Tetris;
         //Spawna o resto das caixas com base na posi��o da caixa anterior
-        foreach (Carga carga in Player.instance.cargaAtual)
+        foreach (Carga carga in MissaoManager.instance.cargaAtual)
         {
            GameObject caixa = Instantiate(carga.prefab, pontos[u].position, carga.prefab.transform.rotation);
            carga.cx = caixa.GetComponent<Caixas>();
@@ -67,7 +67,7 @@ public class StartDrag : MonoBehaviour
             if (currentState == State.Tetris)
             {
                 i++;
-                if (i >= Player.instance.cargaAtual.Count)
+                if (i >= MissaoManager.instance.cargaAtual.Count)
                 {
                     completed = true;
                 }

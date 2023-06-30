@@ -49,7 +49,6 @@ public class Missao: Iniciavel {
 
     // Metodos Iniciavel
     public void Iniciar() {
-        Player.instance.ComecarMissao(this);
         iniciada = true;
 
         indiceConjunto = 0;
@@ -57,8 +56,8 @@ public class Missao: Iniciavel {
     }
 
     public void Interromper() {
-        if (Player.instance.missaoAtual == this) {
-            Player.instance.missaoAtual = null;
+        if (MissaoManager.instance.missaoAtual == this) {
+            MissaoManager.instance.missaoAtual = null;
         }
         
         iniciada = false;
@@ -80,7 +79,7 @@ public class Missao: Iniciavel {
         Player.instance.AdicionarDinheiro(dinheiro);
 
         finalizada = true;
-        Player.instance.FinalizarMissao();
+        MissaoManager.instance.FinalizarMissao();
 
         UIController.instance.MissaoConcluida();
         indiceConjunto = 0;
@@ -88,11 +87,11 @@ public class Missao: Iniciavel {
         if (missoesDesbloqueadas != null && missoesDesbloqueadas.Length > 0) {
             foreach (MissaoObject missaoObject in missoesDesbloqueadas) {
                 Missao missao = missaoObject.Convert();
-                GameManager.instance.AdicionarMissao(missao);
+                MissaoManager.instance.AdicionarMissao(missao);
             }
         } else if (gerarAleatoriaNoFinal) {
             Missao novaMissao = GerarMissaoAleatoria();
-            GameManager.instance.AdicionarMissao(novaMissao);
+            MissaoManager.instance.AdicionarMissao(novaMissao);
         }
     }
 

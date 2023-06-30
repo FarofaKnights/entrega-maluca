@@ -43,7 +43,7 @@ public class MenuPauseController : MonoBehaviour {
 
     void UpdateBotaoInterromperMissao() {
         // Se jogador estiver em uma missão, mostra o botão de interromper
-        interromperMissaoBtn.SetActive(Player.instance.missaoAtual != null);
+        interromperMissaoBtn.SetActive(MissaoManager.instance.missaoAtual != null);
 
         // Por algum motivo a unity não atualiza o layout automaticamente nesse caso, esta é a solução que encontrei
         Canvas.ForceUpdateCanvases();
@@ -52,8 +52,7 @@ public class MenuPauseController : MonoBehaviour {
     }
 
     public void HandleBotaoInterromperMissao() {
-        Player.instance.InterromperMissao();
-        StartDrag.sd.Confirm();
+        MissaoManager.instance.InterromperMissao();
 
         UpdateBotaoInterromperMissao();
     }
@@ -73,8 +72,8 @@ public class MenuPauseController : MonoBehaviour {
     }
 
     public void GenerateMissaoList() {
-        List<Missao> missoes = GameManager.instance.missoesDisponiveis;
-        List<Missao> missoesConcluidas = GameManager.instance.missoesConcluidas;
+        List<Missao> missoes = MissaoManager.instance.missoesDisponiveis;
+        List<Missao> missoesConcluidas = MissaoManager.instance.missoesConcluidas;
 
         
 
@@ -114,7 +113,7 @@ public class MenuPauseController : MonoBehaviour {
         Text descricao = missaoDetails.transform.Find("Conteudo").Find("Descricao").GetComponent<Text>();
 
         missaoJaFoiConcluida.SetActive(missao.FoiFinalizada());
-        missaoAtual.SetActive(missao == Player.instance.missaoAtual);
+        missaoAtual.SetActive(missao == MissaoManager.instance.missaoAtual);
 
         titulo.text = missao.titulo;
         descricao.text = missao.descricao;
