@@ -1,0 +1,277 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1270173799942861214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7830893060910891140}
+  - component: {fileID: 6061091722014658322}
+  m_Layer: 0
+  m_Name: GangorraVermelha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7830893060910891140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270173799942861214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0068008304, y: 0.21243426, z: -0.06417036}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2582472313119185299}
+  - {fileID: 4666790336374641514}
+  - {fileID: 7959691399748350536}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &6061091722014658322
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270173799942861214}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3719379823523521276}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5803145171458189317}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 9096618117242849575}
+  m_Enabled: 1
+--- !u!1001 &2620094013612326520
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7830893060910891140}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
+    - target: {fileID: 919132149155446097, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+      propertyPath: m_Name
+      value: GangorraVermelhaLOD0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+--- !u!4 &2582472313119185299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+  m_PrefabInstance: {fileID: 2620094013612326520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3719379823523521276 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 277747e4759a4474b9b85b33f4a77be3, type: 3}
+  m_PrefabInstance: {fileID: 2620094013612326520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5136773639037482113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7830893060910891140}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
+    - target: {fileID: 919132149155446097, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+      propertyPath: m_Name
+      value: GangorraVermelhaLOD1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+--- !u!4 &4666790336374641514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+  m_PrefabInstance: {fileID: 5136773639037482113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5803145171458189317 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: bb57ca3485864db47b09481f66db01c6, type: 3}
+  m_PrefabInstance: {fileID: 5136773639037482113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7637041029946152355
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7830893060910891140}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
+    - target: {fileID: 919132149155446097, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+      propertyPath: m_Name
+      value: GangorraVermelhaLOD2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+--- !u!4 &7959691399748350536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+  m_PrefabInstance: {fileID: 7637041029946152355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9096618117242849575 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 324f8e38a2cd7ff4f8310023b749e254, type: 3}
+  m_PrefabInstance: {fileID: 7637041029946152355}
+  m_PrefabAsset: {fileID: 0}
