@@ -27,7 +27,7 @@ public class SairTutorial : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (!terminouTutorial && Player.instance.objetivosAtivos.Count > 0 && Player.instance.objetivosAtivos[0].endereco.nome == ultimoEndereco) {
+        if (!terminouTutorial && MissaoManager.instance.objetivosAtivos.Count > 0 && MissaoManager.instance.objetivosAtivos[0].endereco.nome == ultimoEndereco) {
             terminouTutorial = true;
         }
     }

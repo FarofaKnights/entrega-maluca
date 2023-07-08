@@ -38850,6 +38850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2068100762}
   - component: {fileID: 2068100761}
+  - component: {fileID: 2068100763}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -38872,17 +38873,6 @@ MonoBehaviour:
   estadoAtual: 0
   missoesIniciais:
   - {fileID: 11400000, guid: 8cb8fe646e982d04596c9fa4fafd5d3e, type: 2}
-  visualizarMissaoAtual:
-    conjuntos: []
-    indiceConjunto: 0
-    missoesDesbloqueadas: []
-    titulo: 
-    descricao: 
-    diretriz:
-      texto: 
-    gerarAleatoriaNoFinal: 0
-  missoesDisponiveis: []
-  missoesConcluidas: []
   prefabGenerico: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
     type: 3}
 --- !u!4 &2068100762
@@ -38900,6 +38890,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068100763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068100760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eba9e91a4cb7744c85515b67af01a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estado: 0
+  missoesIniciais:
+  - {fileID: 11400000, guid: 8cb8fe646e982d04596c9fa4fafd5d3e, type: 2}
+  missoesDisponiveis: []
+  missoesConcluidas: []
+  cargaAtual: []
+  objetivosAtivos: []
 --- !u!1001 &2082909042
 PrefabInstance:
   m_ObjectHideFlags: 0
