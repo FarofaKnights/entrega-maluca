@@ -3,9 +3,14 @@ guid: df16ff28b8ce6524d8fe3fbdb7af2839
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MapaDeCor
+    second: {fileID: 2100000, guid: 0b934fd9a758c6941a52a5374899107f, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
