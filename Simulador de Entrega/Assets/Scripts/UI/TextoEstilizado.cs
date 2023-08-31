@@ -9,30 +9,41 @@ public class TextoEstilizado : MonoBehaviour
     void CriarTexto()
     {
         Text texto = GetComponent<Text>();
+        texto.enabled = true;
 
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
+        // Delete all children
+        foreach (Transform child in transform) {
+            DestroyImmediate(child.gameObject);
+        }
+
+        // Make sure all children are deleted
+        if (transform.childCount > 0) {
+            foreach (Transform child in transform) {
+                DestroyImmediate(child.gameObject);
+            }
         }
         
-        GameObject sombra2 = ClonarTexto();
-        GameObject sombra1 = ClonarTexto();
-        GameObject textoPrincipal = ClonarTexto();
+        GameObject sombra2 = Instantiate(gameObject);
+        GameObject sombra1 = Instantiate(gameObject);
+        GameObject textoPrincipal = Instantiate(gameObject);
 
-        sombra2.GetComponent<Text>().color = new Color(49, 0, 72);
-        sombra1.GetComponent<Text>().color = new Color(220, 79, 0);
-        textoPrincipal.GetComponent<Text>().color = new Color(219, 255, 0);
+        sombra2.transform.position = new Vector3(-5f, 5f, 0);
+        sombra1.transform.position = new Vector3(-2.5f, 2.5f, 0);
+        textoPrincipal.transform.position = Vector3.zero;
+
+        sombra2.transform.SetParent(transform, false);
+        sombra1.transform.SetParent(transform, false);
+        textoPrincipal.transform.SetParent(transform, false);
+
+        // Melhorar isso
+        sombra2.GetComponent<Text>().color = new Color(0.192f, 0, 0.282f);
+        sombra1.GetComponent<Text>().color = new Color(0.863f, 0.31f, 0);
+        textoPrincipal.GetComponent<Text>().color = new Color(0.859f, 1, 0);
+
+        Outline outline = textoPrincipal.AddComponent<Outline>();
+        outline.effectColor = Color.black;
 
         texto.enabled = false;
-    }
-
-    GameObject ClonarTexto()
-    {
-        GameObject textPrincipal = Instantiate(gameObject);
-        textPrincipal.transform.SetParent(gameObject.transform);
-        textPrincipal.transform.position = transform.position;
-        textPrincipal.transform.localScale = new Vector3(1, 1, 1);
-        return textPrincipal;
     }
 
     [ContextMenu("Gerar texto")]
