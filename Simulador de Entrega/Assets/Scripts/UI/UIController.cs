@@ -8,7 +8,8 @@ public class UIController : MonoBehaviour {
     public static UIController instance;
 
     public Button botaoAcao, botaoConfirm;
-    public Text textoMissaoConcluida, textoDiretriz;
+    public Text textoDiretriz;
+    public GameObject textoMissaoConcluida;
 
     public GameObject missaoPanel, diretrizPanel;
     public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel, refPausaPanel, refMinimapaPanel;
@@ -28,7 +29,7 @@ public class UIController : MonoBehaviour {
     void Start() {
         instance = this;
 
-        textoMissaoConcluida.gameObject.SetActive(false);
+        textoMissaoConcluida.SetActive(false);
 
         diretrizPanel.SetActive(false);
 
@@ -89,7 +90,7 @@ public class UIController : MonoBehaviour {
     }
 
     public void MissaoConcluida() {
-        textoMissaoConcluida.gameObject.SetActive(true);
+        textoMissaoConcluida.SetActive(true);
 
         // Espera 2 segundos e esconde o texto
         StartCoroutine(EsconderTextoMissaoConcluida());
@@ -97,7 +98,7 @@ public class UIController : MonoBehaviour {
 
     IEnumerator EsconderTextoMissaoConcluida() {
         yield return new WaitForSeconds(2);
-        textoMissaoConcluida.gameObject.SetActive(false);
+        textoMissaoConcluida.SetActive(false);
     }
     public void Confirm()
     {
