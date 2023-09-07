@@ -7,12 +7,12 @@ public class CaixasNoCarro : MonoBehaviour
     public Rigidbody rb;
     public Carga carga;
     public GameObject spawnPosition, carro;
-    public bool inCarro = true;
+    public bool dentroDoCarro = true;
     public float multiplicadorDano;
    public AudioSource bater;
     private void OnCollisionEnter(Collision collision)
     {
-        if (StartDrag.sd.currentState == StartDrag.State.Dirigindo)
+        if (Cacamba.instance.currentState == Cacamba.State.Dirigindo)
         {
             if (collision.gameObject.name != "Veiculo" && collision.gameObject.tag != gameObject.tag)
             {
@@ -21,7 +21,6 @@ public class CaixasNoCarro : MonoBehaviour
                 carga.fragilidade -= velocity;
                 carga.dentroCarro = false;
                 bater.Play();
-                
                 if(carga.fragilidade <= 0)
                 {
                     gameObject.SetActive(false);
@@ -32,23 +31,23 @@ public class CaixasNoCarro : MonoBehaviour
             }
         }
     }
-    void ChangePos()
+    void VoltarParaCarroca()
     {
         rb.constraints = RigidbodyConstraints.None;
         transform.position = spawnPosition.transform.position;
-        inCarro = true;
+        dentroDoCarro = true;
         carga.dentroCarro = true;
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!inCarro)
+        if (!dentroDoCarro)
         {
             if (Vector3.Distance(transform.position, spawnPosition.transform.position) <= 6)
             {
                 Debug.Log(carro.GetComponent<Rigidbody>().velocity.magnitude);
                 if (carro.GetComponent<Rigidbody>().velocity.magnitude <= 15)
                 {
-                    ChangePos();
+                    VoltarParaCarroca();
                 }
 
             }
@@ -57,7 +56,7 @@ public class CaixasNoCarro : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3f);
-        inCarro = false;
+        dentroDoCarro = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }
