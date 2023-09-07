@@ -44,11 +44,11 @@ public class UIController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (estaNoEncaixe && StartDrag.sd.SelectedObj != null) {
-            GameObject obj = StartDrag.sd.SelectedObj;
+        if (estaNoEncaixe && Cacamba.instance.objSelecionado != null) {
+            GameObject obj = Cacamba.instance.objSelecionado;
             Caixas caixa = obj.GetComponent<Caixas>();
             if (caixa != null) {
-                bool estaRodando = caixa.rotating;
+                bool estaRodando = caixa.rodando;
                 tutorialEncaixeMovimento.SetActive(!estaRodando);
                 tutorialEncaixeRotacao.SetActive(estaRodando);
             }
@@ -101,9 +101,9 @@ public class UIController : MonoBehaviour {
     }
     public void Confirm()
     {
-        if (StartDrag.sd.completed)
+        if (Cacamba.instance.completed)
         {
-            StartDrag.sd.Confirm();
+            Cacamba.instance.FinalizarTetris();
             objetivo.Finalizar();
             MostrarTelaMissao();
         }
@@ -111,7 +111,7 @@ public class UIController : MonoBehaviour {
 
     public void InterromperTetris() {
         // Solução temporária para o caos do startdrag
-        StartDrag.sd.Confirm();
+        Cacamba.instance.FinalizarTetris();
         MostrarTelaMissao();
     }
 

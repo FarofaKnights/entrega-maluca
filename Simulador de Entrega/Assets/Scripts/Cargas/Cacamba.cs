@@ -3,52 +3,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartDrag : MonoBehaviour
+public class Cacamba : MonoBehaviour
 {
     public enum State { Dirigindo, Tetris}
     public State currentState;
-    public GameObject [] cams;
-    public GameObject currCam;
+    public GameObject [] cameras;
+    public GameObject cameraAtual;
     public Rigidbody rb;
     public Transform[] pontos;
     public GameObject[] cargas, caixasNoCarro;
     int u = 0;
-    //rampa pra poder colocar os itens na ca�amba; parede da parte de tr�s da ca�amba, paredes invisiveis pra n�o arrastar os objetos pra fora da camera
-    public GameObject parederetratil, player, paredeSide, SelectedObj; 
-    public static StartDrag sd;
+    public GameObject objSelecionado; 
+    public static Cacamba instance;
     public bool completed = false;
     [SerializeField] int i = 0, load;
     private void Awake()
     {
-        sd = this;
+        instance = this;
         currentState = State.Dirigindo;
     }
     void Start()
     {
-        parederetratil.SetActive(true);
         rb = Player.instance.GetComponent<Rigidbody>();
-        currCam = cams[0];
+        cameraAtual = cameras[0];
     }
 
-    // Update is called once per frame
     void Update()
     {
-            ChangeCam();
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if(currentState == State.Tetris)
+            {
+
+              cameras[1].gameObject.SetActive(true);
+              cameras[2].gameObject.SetActive(false);
+              cameras[3].gameObject.SetActive(false);
+              cameras[4].gameObject.SetActive(false);
+              cameraAtual = cameras[1];
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            if (currentState == State.Tetris)
+            {
+                cameras[1].gameObject.SetActive(false);
+                cameras[2].gameObject.SetActive(true);
+                cameras[3].gameObject.SetActive(false);
+                cameras[4].gameObject.SetActive(false);
+                cameraAtual = cameras[2];
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (currentState == State.Tetris)
+            {
+                cameras[1].gameObject.SetActive(false);
+                cameras[2].gameObject.SetActive(false);
+                cameras[3].gameObject.SetActive(true);
+                cameras[4].gameObject.SetActive(false);
+                cameraAtual = cameras[3];
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (currentState == State.Tetris)
+            {
+
+                cameras[1].gameObject.SetActive(false);
+                cameras[2].gameObject.SetActive(false);
+                cameras[3].gameObject.SetActive(false);
+                cameras[4].gameObject.SetActive(true);
+                cameraAtual = cameras[4];
+            }
+        }
     }
-   // Entra no mode de colocar na ca�amba
-   public void changeCass()
+   public void IniciarTetris()
     {
+        currentState = State.Tetris;
         u = 0;
         i = 0;
-        cams[0].gameObject.SetActive(false);
-        cams[1].gameObject.SetActive(true);
-        currCam = cams[1];
+        cameras[0].gameObject.SetActive(false);
+        cameras[1].gameObject.SetActive(true);
+        cameraAtual = cameras[1];
         UIController.instance.MostrarTelaEncaixe();
         rb.isKinematic = true;
-        parederetratil.SetActive(false);
-        paredeSide.SetActive(false);
-        currentState = State.Tetris;
-        //Spawna o resto das caixas com base na posi��o da caixa anterior
+        //Spawna o resto das caixas com base na posicao da caixa anterior
         foreach (Carga carga in MissaoManager.instance.cargaAtual)
         {
            GameObject caixa = Instantiate(carga.prefab, pontos[u].position, carga.prefab.transform.rotation);
@@ -94,59 +133,23 @@ public class StartDrag : MonoBehaviour
             }
         }
     }
-    public void Confirm()
+    public void FinalizarTetris()
     {
         if (completed)
         {
-            cams[0].gameObject.SetActive(true);
-            cams[1].gameObject.SetActive(false);
-            cams[2].gameObject.SetActive(false);
-            cams[3].gameObject.SetActive(false);
-            cams[4].gameObject.SetActive(false);
-            currCam = cams[0];
+            cameras[0].gameObject.SetActive(true);
+            cameras[1].gameObject.SetActive(false);
+            cameras[2].gameObject.SetActive(false);
+            cameras[3].gameObject.SetActive(false);
+            cameras[4].gameObject.SetActive(false);
+            cameraAtual = cameras[0];
             rb.isKinematic = false;
-            parederetratil.SetActive(true);
-            paredeSide.SetActive(true);
             currentState = State.Dirigindo;
-            SelectedObj = null;
+            objSelecionado = null;
             MudarCaixas();
         }
     }
-    void ChangeCam()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            cams[1].gameObject.SetActive(true);
-            cams[2].gameObject.SetActive(false);
-            cams[3].gameObject.SetActive(false);
-            cams[4].gameObject.SetActive(false);
-            currCam = cams[1];
-        }
-       else if (Input.GetKeyDown(KeyCode.H))
-        {
-            cams[1].gameObject.SetActive(false);
-            cams[2].gameObject.SetActive(true);
-            cams[3].gameObject.SetActive(false);
-            cams[4].gameObject.SetActive(false);
-            currCam = cams[2];
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            cams[1].gameObject.SetActive(false);
-            cams[2].gameObject.SetActive(false);
-            cams[3].gameObject.SetActive(true);
-            cams[4].gameObject.SetActive(false);
-            currCam = cams[3];
-        }
-        else if (Input.GetKeyDown(KeyCode.G))
-        {
-            cams[1].gameObject.SetActive(false);
-            cams[2].gameObject.SetActive(false);
-            cams[3].gameObject.SetActive(false);
-            cams[4].gameObject.SetActive(true);
-            currCam = cams[4];
-        }
-    }
+
     void MudarCaixas()
     {
         for (int h = 0; h < caixasNoCarro.Length; h++)
@@ -159,7 +162,7 @@ public class StartDrag : MonoBehaviour
             caixasNoCarro[h].transform.SetParent(null);
             Caixas c = caixasNoCarro[h].GetComponent<Caixas>();
             c.Gizmos.SetActive(false);
-            c.cnoCarro.enabled = true;
+            c.caixasnoCarro.enabled = true;
             rb.constraints = RigidbodyConstraints.None;
             rb.useGravity = true;
             c.enabled = false;
