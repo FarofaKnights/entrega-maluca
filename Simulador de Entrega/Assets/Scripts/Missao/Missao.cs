@@ -65,7 +65,7 @@ public class Missao: Iniciavel {
         conjuntos[indiceConjunto].Interromper();
         indiceConjunto = 0;
 
-        if(StartDrag.sd.currentState == StartDrag.State.Tetris)
+        if(Cacamba.instance.currentState == Cacamba.State.Tetris)
             UIController.instance.InterromperTetris();
     }
 

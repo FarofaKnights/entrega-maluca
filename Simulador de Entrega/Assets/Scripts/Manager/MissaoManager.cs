@@ -124,7 +124,7 @@ public class MissaoManager : MonoBehaviour {
     public void AdicionarCarga(List<Carga> cargas) {
         cargaAtual.AddRange(cargas);
 
-        StartDrag.sd.changeCass();
+        Cacamba.instance.IniciarTetris();
     }
 
     // Metodo chamado por um Objetivo que esta recebendo uma carga
