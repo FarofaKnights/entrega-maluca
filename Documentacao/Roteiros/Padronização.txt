@@ -1,0 +1,4 @@
+I: Fala no inicio das missões
+C: Fala na conclusão da missão iniciada anteriormente
+
+Fonte Vermelha: Fala quando vc falha na missão
