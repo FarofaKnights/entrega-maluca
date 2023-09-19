@@ -45,9 +45,8 @@ public class UIController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (estaNoEncaixe && Cacamba.instance.objSelecionado != null) {
-            GameObject obj = Cacamba.instance.objSelecionado;
-            Caixas caixa = obj.GetComponent<Caixas>();
+        if (estaNoEncaixe && Cacamba.instance.caixaAtual != null) {
+            Caixas caixa = Cacamba.instance.caixaAtual;
             if (caixa != null) {
                 bool estaRodando = caixa.rodando;
                 tutorialEncaixeMovimento.SetActive(!estaRodando);
