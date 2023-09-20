@@ -101,24 +101,28 @@ public class Cacamba : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                caixaAtual.rodando = false;
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.proxima;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                caixaAtual.rodando = false;
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.anterior;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+                caixaAtual.rodando = false;
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.proxima.proxima;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                caixaAtual.rodando = false;
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.anterior.anterior;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
@@ -126,6 +130,10 @@ public class Cacamba : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.X))
             {
                 CaixaSelecionada();
+            }
+            if(Input.GetKeyDown(KeyCode.T))
+            {
+                caixaAtual.ResetarPosicao();
             }
           float h = Input.GetAxis("Horizontal");
           float v = Input.GetAxis("Vertical");
@@ -139,6 +147,7 @@ public class Cacamba : MonoBehaviour
         if(caixaAtual.selecionado)
         {
             caixaRb.useGravity = true;
+            caixaAtual.rodando = false;
             caixaAtual.Gizmos.SetActive(false);
             caixaRb.constraints = RigidbodyConstraints.None;
             caixaAtual.selecionado = false;

@@ -11,14 +11,16 @@ public class Caixas : MonoBehaviour
     public GameObject Gizmos, spawnPosition;
     public AudioSource bater;
     Rigidbody rb;
-    Vector3 mover, rodar;
+    Vector3 posicaoInicial;
+    Quaternion rotacaoInicial;
     public Carga carga;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        veiculo = GameObject.Find("Veiculo").transform;
         Gizmos = Instantiate(Gizmos, transform.position, veiculo.transform.rotation);
         Gizmos.SetActive(false);
+        posicaoInicial = transform.localPosition;
+        rotacaoInicial = transform.localRotation;
         transform.rotation = veiculo.rotation;
         transform.SetParent(veiculo);
         spawnPosition = GameObject.Find("Veiculo/Cacamba/relocateCaixas");
@@ -98,5 +100,10 @@ public class Caixas : MonoBehaviour
         yield return new WaitForSeconds(3f);
         dentroDoCarro = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+    public void ResetarPosicao()
+    {
+        transform.rotation = rotacaoInicial;
+        transform.position = posicaoInicial;
     }
 }
