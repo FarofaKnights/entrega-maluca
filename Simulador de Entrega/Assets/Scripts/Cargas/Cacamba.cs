@@ -71,6 +71,7 @@ public class Cacamba : MonoBehaviour
             c[l].proxima = c[l + 1];
         }
         ultima = c[l];
+        ultima.anterior = c[1 - 1];
         primeira.anterior = ultima;
         ultima.proxima = primeira;
         currentState = State.Tetris;
@@ -100,24 +101,25 @@ public class Cacamba : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.proxima;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-
+                caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.anterior;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-
+                caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.proxima.proxima;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-
+                caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.anterior.anterior;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
             }
@@ -140,10 +142,13 @@ public class Cacamba : MonoBehaviour
             caixaAtual.Gizmos.SetActive(false);
             caixaRb.constraints = RigidbodyConstraints.None;
             caixaAtual.selecionado = false;
+            caixaAtual = caixaAtual.proxima;
+            caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
         }
         else
         {
             caixaRb.useGravity = false;
+            caixaRb.velocity = Vector3.zero;
             caixaAtual.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
             caixaAtual.selecionado = true;
         }
