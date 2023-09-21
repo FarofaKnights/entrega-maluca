@@ -93,7 +93,9 @@ public class MissaoManager : MonoBehaviour {
     public void InterromperMissao() {
         if (missaoAtual != null)
             missaoAtual.Interromper();
+    }
 
+    public void HandleMissaoInterrompida() {
         ZerarCargas();
 
         missaoAtual = null;

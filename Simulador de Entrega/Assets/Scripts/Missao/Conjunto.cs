@@ -50,6 +50,7 @@ public class Conjunto: Iniciavel {
         indice = 0;
 
         if (diretriz != null) diretriz.Interromper();
+        if (missao != null) missao.Interromper();
     }
 
     void Finalizar() {

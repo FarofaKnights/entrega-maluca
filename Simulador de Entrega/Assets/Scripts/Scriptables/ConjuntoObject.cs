@@ -17,6 +17,18 @@ public class ConjuntoObject {
             objetivos[i] = this.objetivos[i].Convert();
         }
 
-        return new Conjunto(null, objetivos, sequencial, diretrizObj);
+        Conjunto conj = new Conjunto(null, objetivos, sequencial, diretrizObj);
+
+        if (diretrizObj != null) {
+            diretrizObj.pai = conj;
+        }
+
+        if (objetivos != null) {
+            foreach (Objetivo obj in objetivos) {
+                obj.pai = conj;
+            }
+        }
+
+        return conj;
     }
 }

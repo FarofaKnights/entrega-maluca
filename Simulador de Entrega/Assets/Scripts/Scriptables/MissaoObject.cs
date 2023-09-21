@@ -37,7 +37,15 @@ public class MissaoObject : ScriptableObject {
             conjuntos[i] = this.conjuntos[i].Convert();
         }
 
-        return new Missao(objetivoInicial, conjuntos, nome, descricao, missoesDesbloqueadas, gerarAleatoriaNoFinal);
+        Missao missao = new Missao(objetivoInicial, conjuntos, nome, descricao, missoesDesbloqueadas, gerarAleatoriaNoFinal);
+        
+        if (conjuntos != null) {
+            foreach (Conjunto conj in conjuntos) {
+                conj.missao = missao;
+            }
+        }
+
+        return missao;
     }
 
 

@@ -5,10 +5,18 @@ using UnityEngine;
 [System.Serializable]
 public class DiretrizObject {
     public string texto;
-    public LimitacaoObject[] limitacoes;
+    public List<TimerObject> limitacoes;
 
     public Diretriz Convert() {
-        return new Diretriz(texto);
+        if (limitacoes == null || limitacoes.Count == 0)
+            return new Diretriz(texto);
+
+        List<Limitacao> limitacoesConvertidas = new List<Limitacao>();
+        foreach (TimerObject timer in limitacoes) {
+            limitacoesConvertidas.Add(timer.Convert());
+        }
+
+        return new Diretriz(texto, limitacoesConvertidas.ToArray());
     }
 
 }

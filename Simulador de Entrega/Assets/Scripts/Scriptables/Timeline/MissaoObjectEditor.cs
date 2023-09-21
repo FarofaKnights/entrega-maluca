@@ -111,7 +111,7 @@ public class MissaoObjectEditor : Editor {
                     DrawObjetivo(element, counter);
                     break;
                 case TimelineElementType.Diretriz:
-                    DrawDiretriz(element);
+                    DrawDiretriz(element, counter);
                     break;
                 case TimelineElementType.ComecoNaoSequencial:
                     DrawNaoSequencialInicio(element);
@@ -516,8 +516,45 @@ public class MissaoObjectEditor : Editor {
         DrawFooter(objetivo);
     }
 
-    void DrawDiretriz(TimelineElement diretriz) {
+    void DrawTimer(List<TimerObject> limites, int i, List<TimerObject> remover, int conjuntoId) {
+        Color oldColor = GUI.backgroundColor;
+        if (oldColor != Color.red) {
+            GUI.backgroundColor = Color.magenta;
+        }
+
+        int halfPadding = padding/2;
+
+
+        GUILayout.BeginVertical("HelpBox");
+        GUILayout.Space(halfPadding);
+        
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Limite " + i, EditorStyles.boldLabel);
+        if (GUILayout.Button("-", GUILayout.Width(20), GUILayout.Height(20))) {
+            remover.Add(limites[i]);
+        }
+        EditorGUILayout.EndHorizontal();
+
+        TimerObject timer = limites[i];
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Tempo:");
+        timer.tempo = EditorGUILayout.FloatField(timer.tempo);
+        EditorGUILayout.EndHorizontal();
+
+        GUILayout.Space(halfPadding/2);
+        GUILayout.EndVertical();
+        GUILayout.Space(halfPadding/2);
+
+        if (GUI.backgroundColor == Color.magenta) {
+            GUI.backgroundColor = oldColor;
+        }
+    }
+
+    void DrawDiretriz(TimelineElement diretriz, int id) {
         if (diretriz.diretriz == null) return;
+        int halfPadding = padding/2;
+
 
         DrawHeader(diretriz, "Diretriz");
 
@@ -525,6 +562,35 @@ public class MissaoObjectEditor : Editor {
         GUILayout.Label("Texto:");
         diretriz.diretriz.texto = EditorGUILayout.TextField(diretriz.diretriz.texto);
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Limitações:");
+
+        if (GUILayout.Button("+", GUILayout.Width(20), GUILayout.Height(20))) {
+            if (diretriz.diretriz.limitacoes == null) diretriz.diretriz.limitacoes = new List<TimerObject>();
+            diretriz.diretriz.limitacoes.Add(new TimerObject());
+        }
+        EditorGUILayout.EndHorizontal();
+
+        GUILayout.BeginVertical("box");
+        GUILayout.Space(halfPadding);
+
+        List<TimerObject> limites = diretriz.diretriz.limitacoes;
+        List<TimerObject> remover = new List<TimerObject>();
+
+        if (limites == null) limites = new List<TimerObject>();
+
+        for (int i = 0; i < limites.Count; i++) {
+            DrawTimer(limites, i, remover, id);
+        }
+
+        foreach (TimerObject el in remover) {
+            limites.Remove(el);
+        }
+
+
+        GUILayout.Space(halfPadding/2);
+        GUILayout.EndVertical();
 
         DrawFooter(diretriz);
     }

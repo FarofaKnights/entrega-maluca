@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using TMPro;
 
 public class UIController : MonoBehaviour {
     public static UIController instance;
@@ -21,6 +22,7 @@ public class UIController : MonoBehaviour {
     public Slider efeitoSlider, carroSlider, geralSlider;
 
     public Text dinheiro;
+    public TextMeshProUGUI timer;
 
     Objetivo objetivo;
 
@@ -184,6 +186,17 @@ public class UIController : MonoBehaviour {
 
     public void AtualizarDinheiro() {
         dinheiro.text = Player.instance.GetDinheiro().ToString("C2");
+    }
+
+    public void MostrarTimer(bool mostrar) {
+        timer.gameObject.SetActive(mostrar);
+    }
+
+    public void AtualizarTimer(float tempo) {
+        int minutos = (int) tempo / 60;
+        int segundos = (int) tempo % 60;
+
+        timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
     }
 
     public void EntrarPausa() {

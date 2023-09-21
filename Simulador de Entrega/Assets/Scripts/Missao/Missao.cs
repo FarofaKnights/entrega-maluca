@@ -56,6 +56,8 @@ public class Missao: Iniciavel {
     }
 
     public void Interromper() {
+        if (!iniciada) return;
+
         if (MissaoManager.instance.missaoAtual == this) {
             MissaoManager.instance.missaoAtual = null;
         }
@@ -67,6 +69,8 @@ public class Missao: Iniciavel {
 
         if(Cacamba.instance.currentState == Cacamba.State.Tetris)
             UIController.instance.InterromperTetris();
+
+        MissaoManager.instance.HandleMissaoInterrompida();
     }
 
     public void Finalizar() {

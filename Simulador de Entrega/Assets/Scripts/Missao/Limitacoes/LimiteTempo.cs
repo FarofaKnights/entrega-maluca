@@ -9,43 +9,32 @@ public class LimiteTempo: Limitacao {
     [System.NonSerialized]
     public Diretriz pai;
 
-    class Listener: TimerListener {
-        LimiteTempo limite;
+    bool falhou = false;
 
-        public Listener(LimiteTempo limite) {
-            this.limite = limite;
-        }
-
-        public override void OnTimerEnd() {
-            limite.Falhar();
-        }
-    }
-    Listener listener;
+    Timer timer;
 
     public LimiteTempo(float tempo) {
         this.tempo = tempo;
-        listener = new Listener(this);
     }
 
     public void Iniciar() {
-        TimerController.instance.AdicionarLimite(listener, tempo);
+        GameObject go = new GameObject("LimiteTempo");
+        timer = go.AddComponent<Timer>();
+        timer.tempo = tempo;
+        timer.callback = Falhar;
     }
 
     public void Interromper() {
-        TimerController.instance.RemoverLimite(listener);
+        if (falhou)
+            return;
+
+        timer.Interromper();
+        timer = null;
     }
 
     public void Falhar() {
+        falhou = true;
         Debug.Log("Limite de tempo atingido");
         pai.Falhar();
-    }
-}
-
-[CreateAssetMenu(fileName = "LimiteTempo", menuName = "Limitacoes/LimiteTempo")]
-public class LimiteTempoObject: LimitacaoObject {
-    public float tempo;
-
-    public LimiteTempo Convert() {
-        return new LimiteTempo(tempo);
     }
 }
