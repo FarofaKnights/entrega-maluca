@@ -7,12 +7,13 @@ using TMPro;
 
 public class UIController : MonoBehaviour {
     public static UIController instance;
+    public static HUDController HUD;
 
     public Button botaoAcao, botaoConfirm;
-    public Text textoDiretriz;
-    public GameObject textoMissaoConcluida;
+    
+    
 
-    public GameObject missaoPanel, diretrizPanel;
+    
     public GameObject refMissaoPanel, refEncaixePanel, refOficinaPanel, refPausaPanel, refMinimapaPanel;
 
     public GameObject tutorialEncaixeMovimento, tutorialEncaixeRotacao;
@@ -21,12 +22,12 @@ public class UIController : MonoBehaviour {
     public AudioMixer audioMixer;
     public Slider efeitoSlider, carroSlider, geralSlider;
 
-    public Text dinheiro;
-    public TextMeshProUGUI timer;
-
-    Objetivo objetivo;
-
-    List<Diretriz> diretrizes = new List<Diretriz>();
+    
+    void Awake() {
+        instance = this;
+        HUD = transform.GetComponentInChildren<HUDController>()[0];
+    }
+    
 
     void Start() {
         instance = this;
@@ -58,30 +59,9 @@ public class UIController : MonoBehaviour {
         }
     }
 
-    // Chamado quando player entra/sai em uma área de Acao
-    public void PlayerNaAreaDeAcao(Objetivo objetivo, bool estado) {
-        this.objetivo = objetivo;
-        botaoAcao.gameObject.SetActive(estado);
-    }
-
-    // Chamado quando player entra/sai em uma área de Iniciar Missão
-    public void PlayerNaAreaDeIniciarMissao(ObjetivoInicial objetivo, bool estado) {
-        this.objetivo = objetivo;
-        missaoPanel.SetActive(estado);
-
-        if (estado) {
-            Text titulo = missaoPanel.transform.Find("Titulo").GetComponent<Text>();
-            Text descricao = missaoPanel.transform.Find("Descricao").GetComponent<Text>();
-
-            titulo.text = objetivo.missao.titulo;
-            descricao.text = objetivo.missao.descricao;
-        }
-    }
-
     // Handle do clique no botão "Fazer Ação"
     public void HandleBotaoAcao() {
         objetivo.Concluir();
-        botaoAcao.gameObject.SetActive(false);
     }
 
     // Handle do clique no botão "Iniciar Missão"
@@ -133,40 +113,7 @@ public class UIController : MonoBehaviour {
         estaNoEncaixe = false;
     }
 
-    #region Diretriz
-
-    public void AdicionarDiretriz(Diretriz diretriz) {
-        diretrizes.Add(diretriz);
-        diretrizPanel.SetActive(true);
-
-        AtualizaTextoDiretrizes();
-    }
-
-    public void RemoverDiretriz(Diretriz diretriz) {
-        diretrizes.Remove(diretriz);
-
-        if (diretrizes.Count == 0)
-            diretrizPanel.SetActive(false);
-        
-        AtualizaTextoDiretrizes();
-    }
-
-    void AtualizaTextoDiretrizes() {
-        string text = "";
-        int i = 0;
-
-        foreach (Diretriz d in diretrizes) {
-            text += d.texto;
-
-            if (i < diretrizes.Count - 1)
-                text += "\n";
-            
-            i++;
-        }
-        textoDiretriz.text = text;
-    }
-
-    #endregion
+    
 
     public void EntrarOficina() {
         refOficinaPanel.SetActive(true);
@@ -182,21 +129,6 @@ public class UIController : MonoBehaviour {
         refMissaoPanel.SetActive(true);
         refEncaixePanel.SetActive(true);
         refMinimapaPanel.SetActive(true);
-    }
-
-    public void AtualizarDinheiro() {
-        dinheiro.text = Player.instance.GetDinheiro().ToString("C2");
-    }
-
-    public void MostrarTimer(bool mostrar) {
-        timer.gameObject.SetActive(mostrar);
-    }
-
-    public void AtualizarTimer(float tempo) {
-        int minutos = (int) tempo / 60;
-        int segundos = (int) tempo % 60;
-
-        timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
     }
 
     public void EntrarPausa() {
