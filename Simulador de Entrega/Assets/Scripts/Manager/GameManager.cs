@@ -31,14 +31,14 @@ public class GameManager : MonoBehaviour {
         timeScaleAntigo = Time.timeScale;
         Time.timeScale = 0;
 
-        UIController.instance.EntrarPausa();
+        UIController.pause.Mostrar();
     }
 
     public void Despausar() {
         estadoAtual = Estado.Jogando;
         Time.timeScale = timeScaleAntigo;
 
-        UIController.instance.SairPausa();
+        UIController.pause.Esconder();
     }
 
     public void VoltarMenu() {

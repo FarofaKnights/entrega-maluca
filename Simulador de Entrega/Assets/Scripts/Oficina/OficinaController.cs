@@ -62,7 +62,7 @@ public class OficinaController : MonoBehaviour {
         player.transform.Find("Main Camera").gameObject.SetActive(false);
         cameraOficina.gameObject.SetActive(true);
 
-        UIController.instance.EntrarOficina();
+        UIController.oficina.Mostrar();
         trigger.SetActive(false);
 
         naOficina = true;
@@ -84,7 +84,7 @@ public class OficinaController : MonoBehaviour {
         player.transform.Find("Main Camera").gameObject.SetActive(true);
         cameraOficina.gameObject.SetActive(false);
         
-        UIController.instance.SairOficina();
+        UIController.oficina.Esconder();
         trigger.SetActive(true);
 
         naOficina = false;

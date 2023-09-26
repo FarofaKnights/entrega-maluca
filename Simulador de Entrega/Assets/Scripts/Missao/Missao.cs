@@ -68,7 +68,7 @@ public class Missao: Iniciavel {
         indiceConjunto = 0;
 
         if(Cacamba.instance.currentState == Cacamba.State.Tetris)
-            UIController.instance.InterromperTetris();
+            UIController.encaixe.InterromperTetris();
 
         MissaoManager.instance.HandleMissaoInterrompida();
     }
@@ -85,7 +85,7 @@ public class Missao: Iniciavel {
         finalizada = true;
         MissaoManager.instance.FinalizarMissao();
 
-        UIController.instance.MissaoConcluida();
+        UIController.HUD.MissaoConcluida();
         indiceConjunto = 0;
 
         if (missoesDesbloqueadas != null && missoesDesbloqueadas.Length > 0) {

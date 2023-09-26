@@ -11,12 +11,12 @@ public class Timer: MonoBehaviour {
 
     void Start() {
         tempoRestante = tempo;
-        UIController.instance.MostrarTimer(true);
+        UIController.HUD.MostrarTimer(true);
     }
 
     void FixedUpdate() {
         tempoRestante -= Time.fixedDeltaTime;
-        UIController.instance.AtualizarTimer(tempoRestante);
+        UIController.HUD.AtualizarTimer(tempoRestante);
 
         if (tempoRestante <= 0) {
             tempoRestante = 0;
@@ -30,7 +30,7 @@ public class Timer: MonoBehaviour {
     }
 
     void OnDestroy() {
-        UIController.instance.MostrarTimer(false);
+        UIController.HUD.MostrarTimer(false);
         if (callback != null) {
             callback();
         }

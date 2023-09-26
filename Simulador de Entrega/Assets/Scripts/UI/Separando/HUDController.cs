@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDController : MonoBehaviour {
     public GameObject telaMain, telaFalha, telaSucesso;
@@ -13,12 +14,26 @@ public class HUDController : MonoBehaviour {
 
     // Missão
     public GameObject textoMissaoConcluida;
+    public Button botaoAcao;
     public GameObject missaoPanel;
     Objetivo objetivo;
     
 
     public Text dinheiro;
     public TextMeshProUGUI timer;
+
+    void Start() {
+        textoMissaoConcluida.SetActive(false);
+
+        diretrizPanel.SetActive(false);
+
+        botaoAcao.gameObject.SetActive(false);
+        botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao();});
+
+        missaoPanel.SetActive(false);
+
+        AtualizarDinheiro();
+    }
 
     #region Missão
 
@@ -33,13 +48,13 @@ public class HUDController : MonoBehaviour {
         missaoPanel.SetActive(mostrar);
 
         if (mostrar) {
-            this.objetivo = objetivo;
+            this.objetivo = objetivoInicial;
 
             Text titulo = missaoPanel.transform.Find("Titulo").GetComponent<Text>();
             Text descricao = missaoPanel.transform.Find("Descricao").GetComponent<Text>();
 
-            titulo.text = objetivo.missao.titulo;
-            descricao.text = objetivo.missao.descricao;
+            titulo.text = objetivoInicial.missao.titulo;
+            descricao.text = objetivoInicial.missao.descricao;
         } else {
             this.objetivo = null;
         }
@@ -55,7 +70,19 @@ public class HUDController : MonoBehaviour {
     public void HandleBotaoIniciarMissao() {
         objetivo.Concluir();
         missaoPanel.SetActive(false);
-        refMinimapaPanel.SetActive(false);
+        // Esconder HUD
+    }
+
+    public void MissaoConcluida() {
+        textoMissaoConcluida.SetActive(true);
+
+        // Espera 2 segundos e esconde o texto
+        StartCoroutine(EsconderTextoMissaoConcluida());
+    }
+
+    IEnumerator EsconderTextoMissaoConcluida() {
+        yield return new WaitForSeconds(2);
+        textoMissaoConcluida.SetActive(false);
     }
 
     #endregion

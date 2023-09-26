@@ -1,6 +1,8 @@
+using UnityEngine;
+
 public class Tela : MonoBehaviour {
-    public bool exclusivo = false;
     public string nome;
+    public bool exclusivo = false;
 
     Tela[] GetVizinhas() {
         return transform.parent.GetComponentsInChildren<Tela>();

@@ -21,7 +21,7 @@ public class Diretriz: Iniciavel {
     
     public void Iniciar() {
         if (this.texto != null && this.texto != "")
-            UIController.instance.AdicionarDiretriz(this);
+            UIController.HUD.AdicionarDiretriz(this);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
@@ -37,7 +37,7 @@ public class Diretriz: Iniciavel {
 
     public void Interromper() {
         if (this.texto != null && this.texto != "")
-            UIController.instance.RemoverDiretriz(this);
+            UIController.HUD.RemoverDiretriz(this);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
