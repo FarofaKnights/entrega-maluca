@@ -99,6 +99,13 @@ public class Missao: Iniciavel {
         }
     }
 
+    public void Resetar() {
+        Endereco e = objetivoInicial.endereco;
+        e.TeleportToHere();
+
+        objetivoInicial.Concluir();
+    }
+
     // Metodos Missao
     public void ProximoConjunto() {
         indiceConjunto++;

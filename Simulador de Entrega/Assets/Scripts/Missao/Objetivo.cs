@@ -103,7 +103,7 @@ public class ObjetivoInicial : Objetivo {
     }
 
     public override void HandleObjetivoTrigger(bool estado) {
-        UIController.HUD.MostrarBotaoAcao(this, estado);
+        UIController.HUD.MostrarMissaoInfo(this, estado);
     }
 
     // Chamada ao clicar no botão de iniciar missão
@@ -113,8 +113,6 @@ public class ObjetivoInicial : Objetivo {
 
         ativo = false;
         endereco.RemoverObjetivo();
-
-        UIController.HUD.MostrarBotaoAcao(this, false);
 
         if (cargas != null && cargas.Count > 0) 
             MissaoManager.instance.AdicionarCarga(cargas);

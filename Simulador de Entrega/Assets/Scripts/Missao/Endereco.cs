@@ -6,6 +6,8 @@ using UnityEngine;
 public class Endereco : MonoBehaviour {
     public static Dictionary<string, Endereco> ListaEnderecos = new Dictionary<string, Endereco>();
 
+    public GameObject posicaoInicial;
+
     public string nome;
     // public GameObject colisor;
 
@@ -36,6 +38,11 @@ public class Endereco : MonoBehaviour {
         if (objetivo != null) {
             objetivo.HandleObjetivoTrigger(entrou);
         }
+    }
+
+    public void TeleportToHere() {
+        Player.instance.transform.position = posicaoInicial.transform.position;
+        Player.instance.transform.rotation = posicaoInicial.transform.rotation;
     }
 
     public static Endereco GetEndereco(string nome) {

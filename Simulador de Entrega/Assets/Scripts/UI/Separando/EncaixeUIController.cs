@@ -23,20 +23,17 @@ public class EncaixeUIController : MonoBehaviour {
         }
     }
 
-    public void Confirm()
-    {
-        if (Cacamba.instance.completed)
-        {
+    public void Confirm() {
+        if (Cacamba.instance.completed) {
             Cacamba.instance.FinalizarTetris();
-            // objetivo.Finalizar();
-            // MostrarTelaMissao();
+            Esconder();
         }
     }
 
     public void InterromperTetris() {
         // Solução temporária para o caos do startdrag
         Cacamba.instance.FinalizarTetris();
-        // MostrarTelaMissao();
+        Esconder();
     }
 
     public void Mostrar() {

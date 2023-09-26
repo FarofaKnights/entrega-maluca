@@ -17,6 +17,7 @@ public class HUDController : MonoBehaviour {
     public Button botaoAcao;
     public GameObject missaoPanel;
     Objetivo objetivo;
+    Missao missao;
     
 
     public Text dinheiro;
@@ -64,13 +65,31 @@ public class HUDController : MonoBehaviour {
     [SerializeField]
     void HandleBotaoAcao() {
         objetivo.Concluir();
+        MostrarBotaoAcao(null, false);
     }
 
     // Handle do clique no botão "Iniciar Missão"
     public void HandleBotaoIniciarMissao() {
         objetivo.Concluir();
-        missaoPanel.SetActive(false);
-        // Esconder HUD
+        MostrarMissaoInfo(null, false);
+    }
+
+    public void FalhaMissao(Missao missao) {
+        this.missao = missao;
+        telaFalha.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void SairFalhaMissao() {
+        telaFalha.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void ResetarMissao() {
+        telaFalha.SetActive(false);
+        Time.timeScale = 1;
+
+        missao.Resetar();
     }
 
     public void MissaoConcluida() {
