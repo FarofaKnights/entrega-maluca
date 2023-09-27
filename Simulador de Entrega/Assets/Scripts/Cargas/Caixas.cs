@@ -77,16 +77,19 @@ public class Caixas : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!dentroDoCarro)
+        if (Cacamba.instance.currentState == Cacamba.State.Dirigindo)
         {
-            if (Vector3.Distance(transform.position, spawnPosition.transform.position) <= 6)
+            if (!dentroDoCarro)
             {
-                Debug.Log(veiculo.GetComponent<Rigidbody>().velocity.magnitude);
-                if (veiculo.GetComponent<Rigidbody>().velocity.magnitude <= 15)
+                if (Vector3.Distance(transform.position, spawnPosition.transform.position) <= 6)
                 {
-                    VoltarParaCarroca();
-                }
+                    Debug.Log(veiculo.GetComponent<Rigidbody>().velocity.magnitude);
+                    if (veiculo.GetComponent<Rigidbody>().velocity.magnitude <= 15)
+                    {
+                        VoltarParaCarroca();
+                    }
 
+                }
             }
         }
         else ChecarLimites();
@@ -99,13 +102,19 @@ public class Caixas : MonoBehaviour
     }
     public void ResetarPosicao()
     {
-        transform.rotation = rotacaoInicial;
-        transform.position = posicaoInicial;
         rb.velocity = Vector3.zero;
         Gizmos.transform.position = transform.position;
         rodando = false;
         Gizmos.SetActive(false);
-        selecionado = false;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+         transform.rotation = rotacaoInicial;
+        if (!selecionado)
+        {
+            transform.position = posicaoInicial;
+        }
+        else
+        {
+            transform.position = new Vector3(posicaoInicial.x, transform.position.y, posicaoInicial.z);
+        }
     }
 }
