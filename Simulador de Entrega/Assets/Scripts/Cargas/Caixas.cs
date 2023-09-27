@@ -28,12 +28,7 @@ public class Caixas : MonoBehaviour
     }
     public void ChecarLimites()
     {
-        if (transform.localPosition.x > 7.2f && transform.localPosition.z > -6.5f) transform.localPosition = new Vector3(-7.2f, transform.localPosition.y, transform.localPosition.z);
-        else if (transform.localPosition.x > 5f && transform.localPosition.z < -6.5f) transform.localPosition = new Vector3(-6f, transform.localPosition.y, transform.localPosition.z);
-        if (transform.localPosition.x < -7.2f && transform.localPosition.z > -6.5f) transform.localPosition = new Vector3(7.2f, transform.localPosition.y, transform.localPosition.z);
-        else if (transform.localPosition.x < -5f && transform.localPosition.z < -6.5f) transform.localPosition = new Vector3(6f, transform.localPosition.y, transform.localPosition.z);
-        if (transform.localPosition.z < -7.5f) transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 3f);
-        if (transform.localPosition.z > 3f) transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -7.5f);
+        if (transform.localPosition.x > 7.2f || transform.localPosition.x < -7.2f || transform.localPosition.z < -7.5f || transform.localPosition.z > 0.3f || transform.localPosition.y > 7.5f || transform.localPosition.y < -1f) ResetarPosicao();
     }
     public void Remover()
     {
@@ -94,6 +89,7 @@ public class Caixas : MonoBehaviour
 
             }
         }
+        else ChecarLimites();
     }
     IEnumerator wait()
     {
@@ -105,5 +101,11 @@ public class Caixas : MonoBehaviour
     {
         transform.rotation = rotacaoInicial;
         transform.position = posicaoInicial;
+        rb.velocity = Vector3.zero;
+        Gizmos.transform.position = transform.position;
+        rodando = false;
+        Gizmos.SetActive(false);
+        selecionado = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }

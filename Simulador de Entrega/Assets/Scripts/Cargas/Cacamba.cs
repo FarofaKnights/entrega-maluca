@@ -47,6 +47,7 @@ public class Cacamba : MonoBehaviour
         }
         caixaAtual = cargas[0];
         caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+        caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
         cameras[0].gameObject.SetActive(false);
         cameras[1].gameObject.SetActive(true);
         CriarListadeCaixas(cargas);
@@ -105,6 +106,7 @@ public class Cacamba : MonoBehaviour
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.proxima;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -112,6 +114,7 @@ public class Cacamba : MonoBehaviour
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.anterior;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -119,6 +122,7 @@ public class Cacamba : MonoBehaviour
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.proxima.proxima;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -126,6 +130,7 @@ public class Cacamba : MonoBehaviour
                 caixaRb.useGravity = true;
                 caixaAtual = caixaAtual.anterior.anterior;
                 caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
             }
             if(Input.GetKeyDown(KeyCode.X))
             {
@@ -153,12 +158,14 @@ public class Cacamba : MonoBehaviour
             caixaAtual.selecionado = false;
             caixaAtual = caixaAtual.proxima;
             caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+            caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
         }
         else
         {
             caixaRb.useGravity = false;
             caixaRb.velocity = Vector3.zero;
             caixaAtual.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
+            caixaAtual.Gizmos.transform.position = caixaAtual.transform.position;
             caixaAtual.selecionado = true;
         }
     }
