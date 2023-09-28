@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NodoIA : MonoBehaviour{
+    static List<NodoIA> nodosVisitaveis = new List<NodoIA>();
+
     public List<NodoIA> nodosConectados = new List<NodoIA>();
+    public bool visitavel = false;
+
+    void Awake() {
+        if (visitavel) {
+            nodosVisitaveis.Add(this);
+        }
+    }
 
     void OnDrawGizmos(){
         Gizmos.color = Color.red;
@@ -19,5 +28,15 @@ public class NodoIA : MonoBehaviour{
             // Drawline
             Gizmos.DrawLine(transform.position, desenharMetade);
         }
+    }
+
+    public static List<NodoIA> GetNodosVisitaveis(){
+        return nodosVisitaveis;
+    }
+
+    public static NodoIA GetRandomNodo(){
+        int randomIndex = Random.Range(0, nodosVisitaveis.Count);
+        Debug.Log("Random index: " + randomIndex);
+        return nodosVisitaveis[randomIndex];
     }
 }
