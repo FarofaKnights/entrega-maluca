@@ -7,12 +7,31 @@ public class WNPCMachine : MonoBehaviour {
     IState state;
 
     public Transform target;
+    public string estado;
+
+    public void SetTarget(Transform t) {
+        if (t != target)
+        {
+            energia++;
+            
+        }
+
+        target = t;
+    }
+
+    public bool estaCansado {
+        get => energia >= energiaMax;
+    }
 
     public NavMeshAgent agent;
+
+    public int energia = 0, energiaMax;
 
     void Start(){
         agent = GetComponent<NavMeshAgent>();
         SetState(new ObjetivoState(this));
+
+        ResetEnergia();
     }
 
     void FixedUpdate(){
@@ -23,6 +42,8 @@ public class WNPCMachine : MonoBehaviour {
         this.state?.Exit();
         this.state = state;
         this.state?.Enter();
+
+        estado = state.GetType().Name;
     }
 
     #region Metodos auxiliares
@@ -36,6 +57,11 @@ public class WNPCMachine : MonoBehaviour {
         }
 
         return false;
+    }
+
+    public void ResetEnergia() {
+        energia = 0;
+        energiaMax = Random.Range(7, 15);
     }
 
     #endregion

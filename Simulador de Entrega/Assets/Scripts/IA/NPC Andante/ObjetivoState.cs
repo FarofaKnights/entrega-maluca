@@ -42,11 +42,14 @@ public class ObjetivoState : IState {
             wnpc.agent.SetDestination(wnpc.target.position);
 
             if(wnpc.IsAtTarget()){
-                if (nodosPath.Count > 0) {
-                    NodoIA nodoAtual = nodosPath.Dequeue();
+                NodoIA nodoAtual = wnpc.target.GetComponent<NodoIA>();
+                if (nodoAtual.descanso && wnpc.estaCansado) {
+                    wnpc.SetState(new DescansoState(wnpc, this));
+                } else if (nodosPath.Count > 0) {
+                    nodoAtual = nodosPath.Dequeue();
                     wnpc.target = nodoAtual.transform;
                 } else {
-                    wnpc.SetState(new PerambulaState(wnpc));
+                    wnpc.SetState(new VisitandoState(wnpc));
                 }
             }
         }
@@ -68,7 +71,7 @@ public class ObjetivoState : IState {
 
             Debug.Log("Nodo atual: " + nodoAtual.nodo.name);
 
-            if (nodoAtual.nodo == wnpc.target.GetComponent<NodoIA>()) {
+            if (nodoAtual.nodo == wnpc.target?.GetComponent<NodoIA>()) {
                 Queue<NodoIA> nodosPath = new Queue<NodoIA>();
 
                 while (nodoAtual != null) {

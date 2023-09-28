@@ -7,6 +7,7 @@ public class NodoIA : MonoBehaviour{
 
     public List<NodoIA> nodosConectados = new List<NodoIA>();
     public bool visitavel = false;
+    public bool descanso = false;
 
     void Awake() {
         if (visitavel) {

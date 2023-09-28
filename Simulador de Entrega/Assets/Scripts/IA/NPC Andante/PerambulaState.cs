@@ -27,6 +27,17 @@ public class PerambulaState : IState {
     void ChangeTarget() {
         NodoIA nodo = wnpc.target.GetComponent<NodoIA>();
         if(nodo != null){
+            if (nodo.descanso && wnpc.estaCansado) {
+                wnpc.SetState(new DescansoState(wnpc, this));
+                return;
+            }
+
+            if (nodo.visitavel) { 
+                int chance = Random.Range(0, 10);
+                if (chance == 0) wnpc.SetState(new VisitandoState(wnpc));
+                return;
+            }
+
             List<NodoIA> nodosConectados = nodo.nodosConectados;
 
             if (nodosConectados.Count == 1) {
