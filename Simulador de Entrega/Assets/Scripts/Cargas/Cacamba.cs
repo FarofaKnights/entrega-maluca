@@ -85,7 +85,7 @@ public class Cacamba : MonoBehaviour
         cameras[0].gameObject.SetActive(false);
         cameras[1].gameObject.SetActive(true);
         cameraAtual = cameras[1];
-        UIController.instance.MostrarTelaEncaixe();
+        UIController.encaixe.Mostrar();
         rb.isKinematic = true;
         //Spawna o resto das caixas com base na posicao da caixa anterior
         foreach (Carga carga in MissaoManager.instance.cargaAtual)

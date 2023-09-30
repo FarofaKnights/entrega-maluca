@@ -21,7 +21,7 @@ public class Diretriz: Iniciavel {
     
     public void Iniciar() {
         if (this.texto != null && this.texto != "")
-            UIController.instance.AdicionarDiretriz(this);
+            UIController.HUD.AdicionarDiretriz(this);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
@@ -37,7 +37,7 @@ public class Diretriz: Iniciavel {
 
     public void Interromper() {
         if (this.texto != null && this.texto != "")
-            UIController.instance.RemoverDiretriz(this);
+            UIController.HUD.RemoverDiretriz(this);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
@@ -46,7 +46,17 @@ public class Diretriz: Iniciavel {
         }
     }
 
+    public Missao GetMissao() {
+        if (pai is Missao) return (Missao) pai;
+        else if (pai is Conjunto) return ((Conjunto) pai).missao;
+        else if (pai is ObjetivoInicial) return ((ObjetivoInicial) pai).missao;
+        else if (pai is Objetivo) return ((Objetivo) pai).pai.missao;
+        else return null;
+    }
+
     public void Falhar() {
+        UIController.HUD.FalhaMissao(GetMissao());
+        
         Interromper();
         pai.Interromper();
     }

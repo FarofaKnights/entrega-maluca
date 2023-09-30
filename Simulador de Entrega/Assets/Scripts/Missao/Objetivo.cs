@@ -13,7 +13,7 @@ public class Objetivo: Iniciavel {
 
     public Diretriz diretriz = null;
 
-    bool ativo = false;
+    protected bool ativo = false;
 
 
     public Objetivo(Endereco endereco, Conjunto pai = null) {
@@ -32,7 +32,7 @@ public class Objetivo: Iniciavel {
     // Chamada quando o Player entrou/saiu do trigger do endereço
     public virtual void HandleObjetivoTrigger(bool estado) {
         if ((cargas != null && cargas.Count > 0) || permiteReceber) // Se houver carga para receber, chama o Handle de recebimento
-            UIController.instance.PlayerNaAreaDeAcao(this, estado);
+            UIController.HUD.MostrarBotaoAcao(this, estado);
         else
             Finalizar();
     }
@@ -103,14 +103,16 @@ public class ObjetivoInicial : Objetivo {
     }
 
     public override void HandleObjetivoTrigger(bool estado) {
-        UIController.instance.PlayerNaAreaDeIniciarMissao(this, estado);
+        UIController.HUD.MostrarMissaoInfo(this, estado);
     }
 
     // Chamada ao clicar no botão de iniciar missão
     public override void Concluir() {
         MissaoManager.instance.ComecarMissao(missao);
-
         MissaoManager.instance.RemoveObjetivoAtivo(this);
+
+        ativo = false;
+        endereco.RemoverObjetivo();
 
         if (cargas != null && cargas.Count > 0) 
             MissaoManager.instance.AdicionarCarga(cargas);

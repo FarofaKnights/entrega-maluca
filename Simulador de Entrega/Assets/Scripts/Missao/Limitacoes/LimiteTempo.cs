@@ -22,6 +22,7 @@ public class LimiteTempo: Limitacao {
         timer = go.AddComponent<Timer>();
         timer.tempo = tempo;
         timer.callback = Falhar;
+        falhou = false;
     }
 
     public void Interromper() {

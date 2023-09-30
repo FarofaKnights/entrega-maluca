@@ -35,7 +35,7 @@ MonoBehaviour:
       diretriz:
         texto: EEEEEEE
         limitacoes:
-        - tempo: 10
+        - tempo: 30
     sequencial: 1
     diretriz:
       texto: 
@@ -61,7 +61,6 @@ MonoBehaviour:
       texto: 
       limitacoes: []
     cutscenes: []
-    valor: 0
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
@@ -75,7 +74,6 @@ MonoBehaviour:
       texto: 
       limitacoes: []
     cutscenes: []
-    valor: 0
     mostrandoFilhos: 1
   - tipo: 1
     objetivo:
@@ -88,7 +86,6 @@ MonoBehaviour:
     diretriz:
       texto: EEEEEEE
       limitacoes:
-      - tempo: 10
+      - tempo: 30
     cutscenes: []
-    valor: 0
     mostrandoFilhos: 1
