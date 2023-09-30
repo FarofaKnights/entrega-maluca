@@ -12,8 +12,8 @@ public class PerambulaState : IState {
     public void Enter() {}
 
     public void Update() {
-        if(wnpc.target != null){
-            wnpc.agent.SetDestination(wnpc.target.position);
+        if(wnpc.GetTarget() != null){
+            wnpc.agent.SetDestination(wnpc.GetTarget().position);
 
             if(wnpc.IsAtTarget()){
                 ChangeTarget();
@@ -25,7 +25,7 @@ public class PerambulaState : IState {
 
 
     void ChangeTarget() {
-        NodoIA nodo = wnpc.target.GetComponent<NodoIA>();
+        NodoIA nodo = wnpc.GetTarget().GetComponent<NodoIA>();
         if(nodo != null){
             if (nodo.descanso && wnpc.estaCansado) {
                 wnpc.SetState(new DescansoState(wnpc, this));
@@ -41,7 +41,7 @@ public class PerambulaState : IState {
             List<NodoIA> nodosConectados = nodo.nodosConectados;
 
             if (nodosConectados.Count == 1) {
-                wnpc.target = nodosConectados[0].transform;
+                wnpc.SetTarget(nodosConectados[0].transform);
                 return;
             }
 
@@ -52,7 +52,7 @@ public class PerambulaState : IState {
             }
 
             // Set new target
-            wnpc.target = randomNodo.transform;
+            wnpc.SetTarget(randomNodo.transform);
         }
     }
     

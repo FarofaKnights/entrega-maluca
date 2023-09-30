@@ -6,23 +6,14 @@ using UnityEngine.AI;
 public class WNPCMachine : MonoBehaviour {
     IState state;
 
-    public Transform target;
+    protected Transform target;
     public string estado;
-
-    public void SetTarget(Transform t) {
-        if (t != target)
-        {
-            energia++;
-            
-        }
-
-        target = t;
-    }
 
     public bool estaCansado {
         get => energia >= energiaMax;
     }
-
+    
+    [HideInInspector]
     public NavMeshAgent agent;
 
     public int energia = 0, energiaMax;
@@ -30,7 +21,6 @@ public class WNPCMachine : MonoBehaviour {
     void Start(){
         agent = GetComponent<NavMeshAgent>();
         SetState(new ObjetivoState(this));
-
         ResetEnergia();
     }
 
@@ -47,6 +37,18 @@ public class WNPCMachine : MonoBehaviour {
     }
 
     #region Metodos auxiliares
+
+    public void SetTarget(Transform t) {
+        if (t != target)
+            energia++;
+
+        target = t;
+    }
+
+    public Transform GetTarget() {
+        return target;
+    }
+
     public bool IsAtTarget(){
         if (!agent.pathPending) {
             if (agent.remainingDistance <= agent.stoppingDistance) {

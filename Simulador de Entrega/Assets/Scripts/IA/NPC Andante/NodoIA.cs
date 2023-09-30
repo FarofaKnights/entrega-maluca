@@ -15,9 +15,24 @@ public class NodoIA : MonoBehaviour{
         }
     }
 
+    #if UNITY_EDITOR
+
     void OnDrawGizmos(){
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 1.5f);
+
+        Color cor = Color.red;
+        float tamanho = 1.5f;
+
+        if (visitavel) {
+            cor = Color.magenta;
+            tamanho = 3f;
+        } else if (descanso) {
+            cor = Color.blue;
+            tamanho = 2f;
+        }
+        
+        Gizmos.color = cor;
+        Gizmos.DrawWireSphere(transform.position, tamanho);
+
 
         Gizmos.color = Color.green;
         foreach(NodoIA nodo in nodosConectados){
@@ -30,6 +45,8 @@ public class NodoIA : MonoBehaviour{
             Gizmos.DrawLine(transform.position, desenharMetade);
         }
     }
+
+    #endif
 
     public static List<NodoIA> GetNodosVisitaveis(){
         return nodosVisitaveis;
