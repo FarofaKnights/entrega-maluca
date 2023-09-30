@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour {
 
     public Text dinheiro;
 
-    Objetivo objetivo;
+    public Objetivo objetivo;
 
     List<Diretriz> diretrizes = new List<Diretriz>();
 
@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour {
         missaoPanel.SetActive(false);
 
         MostrarTelaMissao();
-        botaoConfirm.onClick.AddListener(delegate { Confirm(); });
+        botaoConfirm.onClick.AddListener(delegate { Confirm(Cacamba.instance.cargas); });
 
         AtualizarDinheiro();
     }
@@ -99,14 +99,9 @@ public class UIController : MonoBehaviour {
         yield return new WaitForSeconds(2);
         textoMissaoConcluida.SetActive(false);
     }
-    public void Confirm()
+    public void Confirm(Caixas[] c)
     {
-        if (Cacamba.instance.completed)
-        {
-            Cacamba.instance.FinalizarTetris();
-            objetivo.Finalizar();
-            MostrarTelaMissao();
-        }
+         Cacamba.instance.MudarCaixas(c);
     }
 
     public void InterromperTetris() {

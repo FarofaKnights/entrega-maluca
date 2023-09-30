@@ -12,14 +12,14 @@ public class Cacamba : MonoBehaviour
     public Rigidbody playerRb, caixaRb;
     public Transform[] pontos;
     public GameObject[] caixasNoCarro;
-    public Caixas[] cargas;
+    public Caixas[] cargas, caixasCaidas;
     Vector3 rodar, mover;
     Transform veiculo;
     int cargaAtual = 0;
     public Caixas caixaAtual, primeira, ultima;
     public static Cacamba instance;
     public bool completed = false;
-    [SerializeField] int i = 0, load;
+    [SerializeField] int i = 0, load, maxCaixas;
     private void Awake()
     {
         instance = this;
@@ -33,6 +33,7 @@ public class Cacamba : MonoBehaviour
     public void IniciarTetris()
     {
         cargaAtual = 0;
+        maxCaixas = MissaoManager.instance.cargaAtual.Count;
         i = 0;
         UIController.instance.MostrarTelaEncaixe();
         playerRb.isKinematic = true;
@@ -42,6 +43,7 @@ public class Cacamba : MonoBehaviour
             GameObject c = Instantiate(carga.prefab, pontos[cargaAtual].position, carga.prefab.transform.rotation);
             cargas[cargaAtual] = c.GetComponent<Caixas>();
             c.GetComponent<Caixas>().veiculo = veiculo;
+            c.GetComponent<Caixas>().spawnTransformPoint = pontos[cargaAtual];
             carga.cx = cargas[cargaAtual].GetComponent<Caixas>();
             cargaAtual++;
         }
@@ -76,6 +78,8 @@ public class Cacamba : MonoBehaviour
         primeira.anterior = ultima;
         ultima.proxima = primeira;
         currentState = State.Tetris;
+        UIController.instance.botaoConfirm.onClick.RemoveAllListeners();
+        UIController.instance.botaoConfirm.onClick.AddListener(delegate { UIController.instance.Confirm(cargas); });
     }
     void Update()
     {
@@ -195,7 +199,7 @@ public class Cacamba : MonoBehaviour
             if (currentState == State.Tetris)
             {
                 i++;
-                if (i >= MissaoManager.instance.cargaAtual.Count)
+                if (i >= maxCaixas)
                 {
                     completed = true;
                 }
@@ -223,29 +227,50 @@ public class Cacamba : MonoBehaviour
     }
     public void FinalizarTetris()
     {
-        if (completed)
+        cameras[0].gameObject.SetActive(true);
+        cameras[1].gameObject.SetActive(false);
+        playerRb.isKinematic = false;
+        UIController.instance.objetivo.Finalizar();
+        UIController.instance.MostrarTelaMissao();
+        currentState = State.Dirigindo;
+    }
+    public void MudarCaixas(Caixas [] c)
+    {
+        if(completed)
         {
-            cameras[0].gameObject.SetActive(true);
-            cameras[1].gameObject.SetActive(false);
-            playerRb.isKinematic = false;
-            currentState = State.Dirigindo;
-            MudarCaixas();
+            foreach (Caixas caixa in c)
+            {
+                if(caixa == null)
+                {
+                    break;
+                }
+                Debug.Log(caixa.gameObject.name);
+                caixa.Gizmos.SetActive(false);
+                caixa.gameObject.transform.SetParent(null);
+                caixa.rb.constraints = RigidbodyConstraints.None;
+                caixa.rb.useGravity = true;
+            }
+            FinalizarTetris();
         }
     }
-    void MudarCaixas()
+    public void ReiniciarTetris()
     {
-        for (int h = 0; h < caixasNoCarro.Length; h++)
+        currentState = State.Tetris;
+        UIController.instance.botaoConfirm.onClick.RemoveAllListeners();
+        UIController.instance.botaoConfirm.onClick.AddListener(delegate { UIController.instance.Confirm(caixasCaidas); });
+        UIController.instance.MostrarTelaEncaixe();
+        playerRb.isKinematic = true;
+        foreach (Caixas c in caixasCaidas)
         {
-            if(caixasNoCarro[h] == null)
-            {
-               break;
-            }
-            Rigidbody rb = caixasNoCarro[h].GetComponent<Rigidbody>();
-            caixasNoCarro[h].transform.SetParent(null);
-            Caixas c = caixasNoCarro[h].GetComponent<Caixas>();
-            c.Gizmos.SetActive(false);
-            rb.constraints = RigidbodyConstraints.None;
-            rb.useGravity = true;
+            c.gameObject.transform.position = c.spawnTransformPoint.position;
+            cargas[cargaAtual] = c.GetComponent<Caixas>();
+            c.Inicializar();
         }
+        caixaAtual = caixasCaidas[0];
+        caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+        caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        cameras[0].gameObject.SetActive(false);
+        cameras[1].gameObject.SetActive(true);
+        CriarListadeCaixas(caixasCaidas);
     }
 }

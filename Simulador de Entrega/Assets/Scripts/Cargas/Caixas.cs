@@ -6,11 +6,11 @@ public class Caixas : MonoBehaviour
 {
     public bool rodando, dentroDoCarro = true, selecionado = false;
     public float multiplicadorDano;
-    public Transform veiculo;
+    public Transform veiculo, spawnTransformPoint;
     public Caixas proxima, anterior;
-    public GameObject Gizmos, spawnPosition;
+    public GameObject Gizmos;
     public AudioSource bater;
-    Rigidbody rb;
+    public Rigidbody rb;
     Vector3 posicaoInicial;
     Quaternion rotacaoInicial;
     public Carga carga;
@@ -20,11 +20,14 @@ public class Caixas : MonoBehaviour
         Gizmos = Instantiate(Gizmos, transform.position, veiculo.transform.rotation);
         Gizmos.SetActive(false);
         posicaoInicial = transform.localPosition;
-        rotacaoInicial = transform.localRotation;
+        rotacaoInicial = transform.localRotation;;
+        bater = GetComponent<AudioSource>();
+        Inicializar();
+    }
+    public void Inicializar()
+    {
         transform.rotation = veiculo.rotation;
         transform.SetParent(veiculo);
-        spawnPosition = GameObject.Find("Veiculo/Cacamba/relocateCaixas");
-        bater = GetComponent<AudioSource>();
     }
     public void ChecarLimites()
     {
@@ -68,27 +71,15 @@ public class Caixas : MonoBehaviour
             }
         }
     }
-    void VoltarParaCarroca()
-    {
-        rb.constraints = RigidbodyConstraints.None;
-        transform.position = spawnPosition.transform.position;
-        dentroDoCarro = true;
-        carga.dentroCarro = true;
-    }
     private void FixedUpdate()
     {
         if (Cacamba.instance.currentState == Cacamba.State.Dirigindo)
         {
             if (!dentroDoCarro)
             {
-                if (Vector3.Distance(transform.position, spawnPosition.transform.position) <= 6)
+                if (Vector3.Distance(transform.position, veiculo.position) <= 6)
                 {
-                    Debug.Log(veiculo.GetComponent<Rigidbody>().velocity.magnitude);
-                    if (veiculo.GetComponent<Rigidbody>().velocity.magnitude <= 15)
-                    {
-                        VoltarParaCarroca();
-                    }
-
+                    Proximidade();
                 }
             }
         }
@@ -115,6 +106,20 @@ public class Caixas : MonoBehaviour
         else
         {
             transform.position = new Vector3(posicaoInicial.x, transform.position.y, posicaoInicial.z);
+        }
+    }
+    public void Proximidade()
+    {
+        for(int k = 0; k < Cacamba.instance.caixasCaidas.Length; k++)
+        {
+            if(Cacamba.instance.caixasCaidas[k] != null)
+            {
+                Cacamba.instance.caixasCaidas[k] = this;
+            }
+            else
+            {
+                k++;
+            }
         }
     }
 }
