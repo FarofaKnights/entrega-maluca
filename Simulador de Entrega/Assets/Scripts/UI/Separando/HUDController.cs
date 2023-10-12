@@ -16,7 +16,7 @@ public class HUDController : MonoBehaviour {
     public GameObject textoMissaoConcluida;
     public Button botaoAcao;
     public GameObject missaoPanel;
-    Objetivo objetivo;
+    public Objetivo objetivo;
     Missao missao;
     
 

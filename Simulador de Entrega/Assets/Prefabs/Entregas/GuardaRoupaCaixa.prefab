@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 112238025252840069}
   - component: {fileID: 8508249225935260432}
   - component: {fileID: 7116503009516556226}
-  - component: {fileID: -4849776668469827709}
   - component: {fileID: -7739241975820103499}
+  - component: {fileID: 2545415141620582445}
   m_Layer: 7
   m_Name: GuardaRoupaCaixa
   m_TagString: Entrega
@@ -49,13 +49,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f60c9063cb61542b5671204af99930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotating: 0
-  cnoCarro: {fileID: 5081300716754360578, guid: 9a722d1928294ac41a81c31e722741d6,
-    type: 3}
-  speed: 200
-  rotateSpeed: 500
-  v: {fileID: 0}
+  rodando: 0
+  dentroDoCarro: 1
+  selecionado: 0
+  multiplicadorDano: 0
+  veiculo: {fileID: 0}
+  spawnTransformPoint: {fileID: 0}
+  proxima: {fileID: 0}
+  anterior: {fileID: 0}
   Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
+  bater: {fileID: 0}
+  rb: {fileID: 0}
   carga:
     peso: 30
     fragilidade: 50
@@ -93,32 +97,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.824316, y: 0.61718357, z: 2.3589659}
   m_Center: {x: -0.0098259095, y: -0.016504059, z: 0.07397804}
---- !u!114 &-4849776668469827709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240624705749833600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeac8a01867325d4a95202bc0620d87b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  carga:
-    peso: 0
-    fragilidade: 0
-    tipo: 0
-    destinatario: {fileID: 0}
-    cx: {fileID: 0}
-    prefab: {fileID: 0}
-    dentroCarro: 0
-  spawnPosition: {fileID: 0}
-  carro: {fileID: 0}
-  inCarro: 1
-  multiplicadorDano: 0
-  bater: {fileID: 0}
 --- !u!82 &-7739241975820103499
 AudioSource:
   m_ObjectHideFlags: 0
@@ -216,6 +194,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &2545415141620582445
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240624705749833600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6668571760281209405
 PrefabInstance:
   m_ObjectHideFlags: 0

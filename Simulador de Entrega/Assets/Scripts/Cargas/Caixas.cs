@@ -4,110 +4,154 @@ using UnityEngine;
 
 public class Caixas : MonoBehaviour
 {
-    public bool rodando;
-    public CaixasNoCarro caixasnoCarro;
-    public float speed = 5f, rotateSpeed;
-    public Transform v;
+    public bool rodando, dentroDoCarro = true, selecionado = false;
+    public float multiplicadorDano;
+    public Transform veiculo, spawnPoint;
+    public Caixas proxima, anterior;
     public GameObject Gizmos;
-    Rigidbody rb;
-    Vector3 mover, rodar;
+    public AudioSource bater;
+    public Rigidbody rb;
+    Vector3 posicaoInicial;
+    Quaternion rotacaoInicial;
     public Carga carga;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        v = GameObject.Find("Veiculo").transform;
-        transform.rotation = v.rotation;
-        Gizmos = Instantiate(Gizmos, transform.position, v.transform.rotation);
+        Gizmos = Instantiate(Gizmos, transform.position, veiculo.transform.rotation);
         Gizmos.SetActive(false);
-        transform.SetParent(v);
-        caixasnoCarro = GetComponent<CaixasNoCarro>();
-        caixasnoCarro.carga = carga;
-        caixasnoCarro.carro = GameObject.Find("Veiculo");
-        caixasnoCarro.rb = rb;
-        caixasnoCarro.spawnPosition = GameObject.Find("Veiculo/Cacamba/relocateCaixas");
-        caixasnoCarro.bater = GetComponent<AudioSource>();
+        bater = GetComponent<AudioSource>();
+        Inicializar();
     }
-    private void FixedUpdate()
-    {   
-        float mZero;
-        if (Cacamba.instance.objSelecionado == this.gameObject)
-        {
-            float h = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-            mZero = Mathf.Clamp(Input.mouseScrollDelta.y, -1, 1);
-            rodar = new Vector3(mZero, h, z);
-            if (Cacamba.instance.cameraAtual== Cacamba.instance.cameras[2]) mover = new Vector3(-z, mZero, h);
-            else if (Cacamba.instance.cameraAtual == Cacamba.instance.cameras[3]) mover = new Vector3(z, mZero, -h);
-            else mover = new Vector3(h, mZero, z);
-            Mover();
-        }
-        else
-        {
-            rb.useGravity = true;
-            Gizmos.SetActive(false);
-            rodando = false;
-        }
-        if(rb.velocity != Vector3.zero)
-        {
-            Checar();
-        }
-    }
-    private void Update()
+    public void Inicializar()
     {
-        if (Cacamba.instance.objSelecionado == this.gameObject)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (rodando)
-                {
-                    rodando = false;
-                    Gizmos.SetActive(false);
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                }
-                else
-                {
-                    rodando = true;
-                    rb.velocity = Vector3.zero;
-                    Gizmos.SetActive(true);
-                    rb.constraints = RigidbodyConstraints.FreezePosition;
-                }
-            }
-        }
+        transform.rotation = veiculo.rotation;
+        rotacaoInicial = transform.rotation;
+        transform.SetParent(veiculo);
     }
-    void Mover()
+    public void ChecarLimites()
     {
-        if (!rodando)
-        {
-            Vector3 moveVector = v.TransformDirection(mover) * speed;
-            rb.velocity = moveVector * Time.fixedDeltaTime;
-            Gizmos.transform.position = transform.position;
+        if(dentroDoCarro && transform.parent != null)
+        { 
+            if (transform.localPosition.x > 7.2f || transform.localPosition.x < -7.2f || transform.localPosition.z < -7.5f || transform.localPosition.z > 0.3f || transform.localPosition.y > 7.5f || transform.localPosition.y < -1f) ResetarPosicao();
         }
-        else 
-        {
-            Vector3 rotateVector = v.TransformDirection(rodar) * rotateSpeed;
-            Quaternion delta = Quaternion.Euler(rotateVector * Time.fixedDeltaTime);
-            rb.MoveRotation(delta * rb.rotation);
-        }
-    }
-    void Checar()
-    {
-        if (transform.localPosition.x > 7.2f && transform.localPosition.z > -6.5f) transform.localPosition = new Vector3(-7.2f, transform.localPosition.y, transform.localPosition.z);
-        else if (transform.localPosition.x > 5f && transform.localPosition.z < -6.5f) transform.localPosition = new Vector3(-6f, transform.localPosition.y, transform.localPosition.z);
-        if (transform.localPosition.x < -7.2f && transform.localPosition.z > -6.5f) transform.localPosition = new Vector3(7.2f, transform.localPosition.y, transform.localPosition.z);
-        else if (transform.localPosition.x < -5f && transform.localPosition.z < -6.5f) transform.localPosition = new Vector3(6f, transform.localPosition.y, transform.localPosition.z);
-        if (transform.localPosition.z < -7.5f) transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 3f);
-        if (transform.localPosition.z > 3f) transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -7.5f);
-        if (transform.localPosition.y > 4f) Cacamba.instance.objSelecionado = null;
     }
     public void Remover()
     {
         Destroy(this.gameObject);
     }
-    private void OnMouseDown()
-    { 
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+    void Selecionado()
+    {
+        transform.position = new Vector3(0, 3f, 0);
         rb.useGravity = false;
-        Cacamba.instance.objSelecionado = this.gameObject;
-  }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (Cacamba.instance.currentState == Cacamba.State.Dirigindo)
+        {
+            if (collision.gameObject.name != "Veiculo" && collision.gameObject.tag != gameObject.tag)
+            {
+                Debug.Log(carga.fragilidade);
+                float velocity = rb.velocity.magnitude;
+                carga.fragilidade -= velocity;
+                carga.dentroCarro = false;
+                bater.Play();
+                if (carga.fragilidade <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    StartCoroutine(wait());
+                }
+            }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!dentroDoCarro)
+        {
+            if(other.gameObject.name == "Veiculo")
+            {
+                for (int k = 0; k < Cacamba.instance.caixasCaidas.Length; k++)
+                {
+                    if (Cacamba.instance.caixasCaidas[k] == null)
+                    {
+                        Cacamba.instance.caixasCaidas[k] = this;
+                        break;
+                    }
+                    else if(Cacamba.instance.caixasCaidas[k] == this)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        k++;
+                    }
+                }
+                UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(true);
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (!dentroDoCarro)
+        {
+            if (other.gameObject.name == "Veiculo")
+            {
+                for (int k = 0; k < Cacamba.instance.caixasCaidas.Length; k++)
+                {
+                    if (Cacamba.instance.caixasCaidas[k] == this)
+                    {
+                        Cacamba.instance.caixasCaidas[k] = null;
+                        break;
+                    }
+                    else
+                    {
+                        k++;
+                    }
+                }
+                UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
+            }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if(!dentroDoCarro)
+        {
+            if(other.gameObject.name == "Veiculo")
+            {
+                UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(true);
+            }
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (Cacamba.instance.currentState != Cacamba.State.Dirigindo)
+        {
+            ChecarLimites();
+        }
+    }
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(3f);
+        dentroDoCarro = false;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+    public void ResetarPosicao()
+    {
+        rb.velocity = Vector3.zero;
+        Gizmos.transform.position = transform.position;
+        rodando = false;
+        Gizmos.SetActive(false);
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        transform.rotation = rotacaoInicial;
+        if (!selecionado)
+        {
+            transform.position = spawnPoint.position;
+        }
+        else
+        {
+            transform.position = new Vector3(spawnPoint.position.x, transform.position.y, spawnPoint.position.z);
+        }
+    }
 }

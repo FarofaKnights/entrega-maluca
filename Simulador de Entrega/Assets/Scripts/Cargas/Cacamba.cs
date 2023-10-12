@@ -7,16 +7,19 @@ public class Cacamba : MonoBehaviour
 {
     public enum State { Dirigindo, Tetris}
     public State currentState;
+    public float speed, rotateSpeed;
     public GameObject [] cameras;
-    public GameObject cameraAtual;
-    public Rigidbody rb;
+    public Rigidbody playerRb, caixaRb;
     public Transform[] pontos;
-    public GameObject[] cargas, caixasNoCarro;
-    int u = 0;
-    public GameObject objSelecionado; 
+    public GameObject[] caixasNoCarro;
+    public Caixas[] cargas, caixasCaidas;
+    Vector3 rodar, mover;
+    Transform veiculo;
+    int cargaAtual = 0;
+    public Caixas caixaAtual, primeira, ultima;
     public static Cacamba instance;
     public bool completed = false;
-    [SerializeField] int i = 0, load;
+    [SerializeField] int i = 0, load, maxCaixas;
     private void Awake()
     {
         instance = this;
@@ -24,148 +27,281 @@ public class Cacamba : MonoBehaviour
     }
     void Start()
     {
-        rb = Player.instance.GetComponent<Rigidbody>();
-        cameraAtual = cameras[0];
+        playerRb = Player.instance.GetComponent<Rigidbody>();
+        veiculo = GameObject.Find("Veiculo").transform;
     }
-
-    void Update()
+    public void IniciarTetris()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if(currentState == State.Tetris)
-            {
-
-              cameras[1].gameObject.SetActive(true);
-              cameras[2].gameObject.SetActive(false);
-              cameras[3].gameObject.SetActive(false);
-              cameras[4].gameObject.SetActive(false);
-              cameraAtual = cameras[1];
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            if (currentState == State.Tetris)
-            {
-                cameras[1].gameObject.SetActive(false);
-                cameras[2].gameObject.SetActive(true);
-                cameras[3].gameObject.SetActive(false);
-                cameras[4].gameObject.SetActive(false);
-                cameraAtual = cameras[2];
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (currentState == State.Tetris)
-            {
-                cameras[1].gameObject.SetActive(false);
-                cameras[2].gameObject.SetActive(false);
-                cameras[3].gameObject.SetActive(true);
-                cameras[4].gameObject.SetActive(false);
-                cameraAtual = cameras[3];
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (currentState == State.Tetris)
-            {
-
-                cameras[1].gameObject.SetActive(false);
-                cameras[2].gameObject.SetActive(false);
-                cameras[3].gameObject.SetActive(false);
-                cameras[4].gameObject.SetActive(true);
-                cameraAtual = cameras[4];
-            }
-        }
-    }
-   public void IniciarTetris()
-    {
-        currentState = State.Tetris;
-        u = 0;
+        cargaAtual = 0;
+        maxCaixas = MissaoManager.instance.cargaAtual.Count;
         i = 0;
-        cameras[0].gameObject.SetActive(false);
-        cameras[1].gameObject.SetActive(true);
-        cameraAtual = cameras[1];
         UIController.encaixe.Mostrar();
-        rb.isKinematic = true;
+        playerRb.isKinematic = true;
         //Spawna o resto das caixas com base na posicao da caixa anterior
         foreach (Carga carga in MissaoManager.instance.cargaAtual)
         {
-           GameObject caixa = Instantiate(carga.prefab, pontos[u].position, carga.prefab.transform.rotation);
-           carga.cx = caixa.GetComponent<Caixas>();
-           u++;
+            GameObject c = Instantiate(carga.prefab, pontos[cargaAtual].position, carga.prefab.transform.rotation);
+            cargas[cargaAtual] = c.GetComponent<Caixas>();
+            c.GetComponent<Caixas>().veiculo = veiculo;
+            c.GetComponent<Caixas>().spawnPoint = pontos[cargaAtual];
+            carga.cx = cargas[cargaAtual].GetComponent<Caixas>();
+            cargaAtual++;
+        }
+        caixaAtual = cargas[0];
+        caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+        caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        cameras[0].gameObject.SetActive(false);
+        cameras[1].gameObject.SetActive(true);
+        CriarListadeCaixas(cargas);
+    }
+    void CriarListadeCaixas(Caixas[] c)
+    {
+        int l;
+        for(l = 0; c[l + 1] != null; l++)
+        {
+            if(l != 0)
+            {
+                c[l].anterior = c[l - 1];
+            }
+            else
+            {
+                primeira = c[l];
+            }
+            if (c[l + 1] == null)
+            {
+                ultima = c[l];
+            }
+            c[l].proxima = c[l + 1];
+        }
+        ultima = c[l];
+        if(l - 1 < 0)
+        {
+            ultima.anterior = ultima;
+        }
+        else
+        {
+            ultima.anterior = c[1 - 1];
+        }
+        primeira.anterior = ultima;
+        ultima.proxima = primeira;
+        currentState = State.Tetris;
+        UIController.encaixe.botaoConfirm.onClick.RemoveAllListeners();
+        UIController.encaixe.botaoConfirm.onClick.AddListener(delegate { UIController.encaixe.Confirm(cargas); });
+    }
+    void Update()
+    {
+        if(currentState == State.Tetris)
+        {
+            //Ativa ou desativa o modo de rodar
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (caixaAtual.rodando)
+                {
+                   caixaAtual.rodando = false;
+                   caixaAtual.Gizmos.SetActive(false);
+                   caixaRb.constraints = RigidbodyConstraints.None;
+                   caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+                }
+                else
+                {
+                    caixaAtual.rodando = true;
+                    caixaRb.velocity = Vector3.zero;
+                    caixaAtual.Gizmos.SetActive(true);
+                    caixaRb.constraints = RigidbodyConstraints.FreezePosition;
+                }
+                //Trocar a caixaSelecionada
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                caixaAtual.rodando = false;
+                caixaRb.useGravity = true;
+                caixaAtual = caixaAtual.proxima;
+                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                caixaAtual.rodando = false;
+                caixaRb.useGravity = true;
+                caixaAtual = caixaAtual.anterior;
+                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                caixaAtual.rodando = false;
+                caixaRb.useGravity = true;
+                caixaAtual = caixaAtual.proxima.proxima;
+                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                caixaAtual.rodando = false;
+                caixaRb.useGravity = true;
+                caixaAtual = caixaAtual.anterior.anterior;
+                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+            if(Input.GetKeyDown(KeyCode.X))
+            {
+                CaixaSelecionada();
+            }
+            if(Input.GetKeyDown(KeyCode.T))
+            {
+                caixaAtual.ResetarPosicao();
+            }
+          float h = Input.GetAxis("Horizontal");
+          float v = Input.GetAxis("Vertical");
+          rodar = new Vector3(v, h, 0);
+          mover = new Vector3(h, 0, v);
+          MoverCaixaSelecionada();
+        }
+    }
+    void CaixaSelecionada()
+    {
+        if(caixaAtual.selecionado)
+        {
+            caixaRb.useGravity = true;
+            caixaAtual.rodando = false;
+            caixaAtual.Gizmos.SetActive(false);
+            caixaRb.constraints = RigidbodyConstraints.None;
+            caixaAtual.selecionado = false;
+            caixaAtual = caixaAtual.proxima;
+            caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+            caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+        else
+        {
+            caixaRb.useGravity = false;
+            caixaRb.velocity = Vector3.zero;
+            caixaAtual.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
+            caixaAtual.Gizmos.transform.position = caixaAtual.transform.position;
+            caixaAtual.selecionado = true;
+        }
+    }
+    void MoverCaixaSelecionada()
+    {
+        if (!caixaAtual.rodando)
+        {
+            Vector3 moveVector = caixaAtual.veiculo.TransformDirection(mover) * speed;
+            caixaRb.velocity = moveVector * Time.fixedDeltaTime;
+            caixaAtual.Gizmos.transform.position = caixaAtual.gameObject.transform.position;
+        }
+        else
+        {
+            Vector3 rotateVector = caixaAtual.veiculo.TransformDirection(rodar) * rotateSpeed;
+            Quaternion delta = Quaternion.Euler(rotateVector * Time.fixedDeltaTime);
+            caixaRb.MoveRotation(delta * caixaRb.rotation);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Entrega"))
+        if(currentState == State.Tetris)
         {
-           load = 0;
-            while (caixasNoCarro[load] != null)
-                load++;
-            caixasNoCarro[load] = other.gameObject;
-            if (currentState == State.Tetris)
+            if(other.gameObject.CompareTag("Entrega"))
             {
-                i++;
-                if (i >= MissaoManager.instance.cargaAtual.Count)
+               load = 0;
+                while (caixasNoCarro[load] != null)
+                    load++;
+                caixasNoCarro[load] = other.gameObject;
+                if (currentState == State.Tetris)
                 {
-                    completed = true;
+                    i++;
+                    if (i >= maxCaixas)
+                    {
+                        completed = true;
+                    }
                 }
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Entrega"))
+        if(currentState == State.Tetris)
         {
-            GameObject ligma = other.gameObject;
-            CaixasNoCarro cnc = ligma.GetComponent<CaixasNoCarro>();
-            for (int j = 0; j < caixasNoCarro.Length; j++)
+            if (other.gameObject.CompareTag("Entrega"))
             {
-                if (ligma == caixasNoCarro[j])
-                { 
-                    caixasNoCarro[j] = null;
+                GameObject entrega = other.gameObject;
+                for (int j = 0; j < caixasNoCarro.Length; j++)
+                {
+                    if (entrega == caixasNoCarro[j])
+                    { 
+                        caixasNoCarro[j] = null;
+                    }
                 }
-            }
-            if (currentState == State.Tetris)
-            {
-                i -= 1;
-                completed = false;
+                if (currentState == State.Tetris)
+                {
+                    i -= 1;
+                    completed = false;
+                }
             }
         }
     }
     public void FinalizarTetris()
     {
-        if (completed)
+        cameras[0].gameObject.SetActive(true);
+        cameras[1].gameObject.SetActive(false);
+        playerRb.isKinematic = false;
+        UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
+        UIController.HUD.objetivo.Finalizar();
+        //UIController.instance.MostrarTelaMissao();
+        UIController.encaixe.Esconder();
+        currentState = State.Dirigindo;
+        for(int m = 0; m < caixasCaidas.Length; m++)
         {
-            cameras[0].gameObject.SetActive(true);
-            cameras[1].gameObject.SetActive(false);
-            cameras[2].gameObject.SetActive(false);
-            cameras[3].gameObject.SetActive(false);
-            cameras[4].gameObject.SetActive(false);
-            cameraAtual = cameras[0];
-            rb.isKinematic = false;
-            currentState = State.Dirigindo;
-            objSelecionado = null;
-            MudarCaixas();
+            if(caixasCaidas[m] != null)
+            {
+                caixasCaidas[m] = null;
+            }
+        }
+        UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
+    }
+    public void MudarCaixas(Caixas [] c)
+    {
+        if(completed)
+        {
+            foreach (Caixas caixa in c)
+            {
+                if(caixa == null)
+                {
+                    break;
+                }
+                Debug.Log(caixa.gameObject.name);
+                caixa.Gizmos.SetActive(false);
+                caixa.gameObject.transform.SetParent(null);
+                caixa.rb.constraints = RigidbodyConstraints.None;
+                caixa.rb.useGravity = true;
+            }
+            FinalizarTetris();
         }
     }
-
-    void MudarCaixas()
+    public void ReiniciarTetris()
     {
-        for (int h = 0; h < caixasNoCarro.Length; h++)
+        UIController.encaixe.botaoConfirm.onClick.RemoveAllListeners();
+        UIController.encaixe.botaoConfirm.onClick.AddListener(delegate { UIController.encaixe.Confirm(caixasCaidas); });
+        UIController.encaixe.Mostrar();
+        completed = true;
+        playerRb.isKinematic = true;
+        CriarListadeCaixas(caixasCaidas);
+        currentState = State.Tetris;
+        for (int r = 0; r < caixasCaidas.Length; r++)
         {
-            if(caixasNoCarro[h] == null)
+            if(caixasCaidas[r] != null)
             {
-               break;
+                Caixas c = caixasCaidas[r];
+                c.dentroDoCarro = true;
+                c.gameObject.transform.SetParent(veiculo);
+                c.Inicializar();
+                c.spawnPoint = pontos[r];
+                c.gameObject.transform.position = c.spawnPoint.position;
             }
-            Rigidbody rb = caixasNoCarro[h].GetComponent<Rigidbody>();
-            caixasNoCarro[h].transform.SetParent(null);
-            Caixas c = caixasNoCarro[h].GetComponent<Caixas>();
-            c.Gizmos.SetActive(false);
-            c.caixasnoCarro.enabled = true;
-            rb.constraints = RigidbodyConstraints.None;
-            rb.useGravity = true;
-            c.enabled = false;
         }
+        UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
+        caixaAtual = caixasCaidas[0];
+        caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+        caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        cameras[0].gameObject.SetActive(false);
+        cameras[1].gameObject.SetActive(true);
     }
 }
