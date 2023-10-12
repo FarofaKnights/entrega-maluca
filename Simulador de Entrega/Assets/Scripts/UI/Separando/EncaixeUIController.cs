@@ -2,16 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EncaixeUIController : MonoBehaviour {
-    public Button botaoConfirm, botaoReiniciarTetris;
+    public Button botaoConfirm;
     public GameObject tutorialEncaixeMovimento, tutorialEncaixeRotacao;
     bool estaNoEncaixe = false; // Solucao temporaria
 
 
     void Start() {
         botaoConfirm.onClick.AddListener(delegate { Confirm(Cacamba.instance.cargas); });
-
-        botaoReiniciarTetris.gameObject.SetActive(false); 
-        botaoReiniciarTetris.onClick.AddListener(delegate { Cacamba.instance.ReiniciarTetris(); }); 
     }
 
     void FixedUpdate() {

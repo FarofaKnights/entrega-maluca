@@ -243,9 +243,7 @@ public class Cacamba : MonoBehaviour
         cameras[0].gameObject.SetActive(true);
         cameras[1].gameObject.SetActive(false);
         playerRb.isKinematic = false;
-        UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
-        UIController.HUD.objetivo.Finalizar();
-        //UIController.instance.MostrarTelaMissao();
+        UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(false);
         UIController.encaixe.Esconder();
         currentState = State.Dirigindo;
         for(int m = 0; m < caixasCaidas.Length; m++)
@@ -255,7 +253,7 @@ public class Cacamba : MonoBehaviour
                 caixasCaidas[m] = null;
             }
         }
-        UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
+        UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(false);
     }
     public void MudarCaixas(Caixas [] c)
     {
@@ -297,7 +295,7 @@ public class Cacamba : MonoBehaviour
                 c.gameObject.transform.position = c.spawnPoint.position;
             }
         }
-        UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
+        UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(false);
         caixaAtual = caixasCaidas[0];
         caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
         caixaRb.constraints = RigidbodyConstraints.FreezeRotation;

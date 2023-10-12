@@ -14,7 +14,7 @@ public class HUDController : MonoBehaviour {
 
     // Missão
     public GameObject textoMissaoConcluida;
-    public Button botaoAcao;
+    public Button botaoAcao, botaoReiniciarTetris;
     public GameObject missaoPanel;
     public Objetivo objetivo;
     Missao missao;
@@ -30,6 +30,9 @@ public class HUDController : MonoBehaviour {
 
         botaoAcao.gameObject.SetActive(false);
         botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao();});
+
+        botaoReiniciarTetris.gameObject.SetActive(false); 
+        botaoReiniciarTetris.onClick.AddListener(delegate { Cacamba.instance.ReiniciarTetris(); }); 
 
         missaoPanel.SetActive(false);
 

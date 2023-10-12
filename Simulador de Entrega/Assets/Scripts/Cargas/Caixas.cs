@@ -88,7 +88,7 @@ public class Caixas : MonoBehaviour
                         k++;
                     }
                 }
-                UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(true);
+                UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(true);
             }
         }
     }
@@ -110,7 +110,7 @@ public class Caixas : MonoBehaviour
                         k++;
                     }
                 }
-                UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(false);
+                UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(false);
             }
         }
     }
@@ -120,7 +120,7 @@ public class Caixas : MonoBehaviour
         {
             if(other.gameObject.name == "Veiculo")
             {
-                UIController.encaixe.botaoReiniciarTetris.gameObject.SetActive(true);
+                UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(true);
             }
         }
     }
