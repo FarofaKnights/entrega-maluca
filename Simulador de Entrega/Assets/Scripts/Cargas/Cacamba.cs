@@ -85,8 +85,7 @@ public class Cacamba : MonoBehaviour
         primeira.anterior = ultima;
         ultima.proxima = primeira;
         currentState = State.Tetris;
-        UIController.encaixe.botaoConfirm.onClick.RemoveAllListeners();
-        UIController.encaixe.botaoConfirm.onClick.AddListener(delegate { UIController.encaixe.Confirm(cargas); });
+        UIController.encaixe.SetCargas(cargas);
     }
     void Update()
     {
@@ -243,7 +242,6 @@ public class Cacamba : MonoBehaviour
         cameras[0].gameObject.SetActive(true);
         cameras[1].gameObject.SetActive(false);
         playerRb.isKinematic = false;
-        UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(false);
         UIController.encaixe.Esconder();
         currentState = State.Dirigindo;
         for(int m = 0; m < caixasCaidas.Length; m++)
@@ -253,7 +251,6 @@ public class Cacamba : MonoBehaviour
                 caixasCaidas[m] = null;
             }
         }
-        UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(false);
     }
     public void MudarCaixas(Caixas [] c)
     {
@@ -276,8 +273,7 @@ public class Cacamba : MonoBehaviour
     }
     public void ReiniciarTetris()
     {
-        UIController.encaixe.botaoConfirm.onClick.RemoveAllListeners();
-        UIController.encaixe.botaoConfirm.onClick.AddListener(delegate { UIController.encaixe.Confirm(caixasCaidas); });
+        UIController.encaixe.SetCargas(caixasCaidas);
         UIController.encaixe.Mostrar();
         completed = true;
         playerRb.isKinematic = true;
@@ -295,7 +291,6 @@ public class Cacamba : MonoBehaviour
                 c.gameObject.transform.position = c.spawnPoint.position;
             }
         }
-        UIController.HUD.botaoReiniciarTetris.gameObject.SetActive(false);
         caixaAtual = caixasCaidas[0];
         caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
         caixaRb.constraints = RigidbodyConstraints.FreezeRotation;

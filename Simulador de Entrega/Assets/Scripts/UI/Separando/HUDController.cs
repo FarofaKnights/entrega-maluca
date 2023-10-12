@@ -29,10 +29,10 @@ public class HUDController : MonoBehaviour {
         diretrizPanel.SetActive(false);
 
         botaoAcao.gameObject.SetActive(false);
-        botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao();});
+        botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao(); });
 
         botaoReiniciarTetris.gameObject.SetActive(false); 
-        botaoReiniciarTetris.onClick.AddListener(delegate { Cacamba.instance.ReiniciarTetris(); }); 
+        botaoReiniciarTetris.onClick.AddListener(delegate { HandleBotaoRecuperar(); }); 
 
         missaoPanel.SetActive(false);
 
@@ -140,6 +140,19 @@ public class HUDController : MonoBehaviour {
             i++;
         }
         textoDiretriz.text = text;
+    }
+
+    #endregion
+
+    #region Tetris
+    
+    public void MostrarBotaoRecuperar(bool mostrar) {
+        botaoReiniciarTetris.gameObject.SetActive(mostrar);
+    }
+
+    void HandleBotaoRecuperar() {
+        Cacamba.instance.ReiniciarTetris();
+        MostrarBotaoRecuperar(false);
     }
 
     #endregion
