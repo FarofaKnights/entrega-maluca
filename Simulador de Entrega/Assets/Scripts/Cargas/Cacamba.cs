@@ -43,7 +43,7 @@ public class Cacamba : MonoBehaviour
             GameObject c = Instantiate(carga.prefab, pontos[cargaAtual].position, carga.prefab.transform.rotation);
             cargas[cargaAtual] = c.GetComponent<Caixas>();
             c.GetComponent<Caixas>().veiculo = veiculo;
-            c.GetComponent<Caixas>().spawnTransformPoint = pontos[cargaAtual];
+            c.GetComponent<Caixas>().spawnPoint = pontos[cargaAtual];
             carga.cx = cargas[cargaAtual].GetComponent<Caixas>();
             cargaAtual++;
         }
@@ -59,7 +59,7 @@ public class Cacamba : MonoBehaviour
         int l;
         for(l = 0; c[l + 1] != null; l++)
         {
-            if(i != 0)
+            if(l != 0)
             {
                 c[l].anterior = c[l - 1];
             }
@@ -74,7 +74,14 @@ public class Cacamba : MonoBehaviour
             c[l].proxima = c[l + 1];
         }
         ultima = c[l];
-        ultima.anterior = c[1 - 1];
+        if(l - 1 < 0)
+        {
+            ultima.anterior = ultima;
+        }
+        else
+        {
+            ultima.anterior = c[1 - 1];
+        }
         primeira.anterior = ultima;
         ultima.proxima = primeira;
         currentState = State.Tetris;
@@ -190,38 +197,44 @@ public class Cacamba : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Entrega"))
+        if(currentState == State.Tetris)
         {
-           load = 0;
-            while (caixasNoCarro[load] != null)
-                load++;
-            caixasNoCarro[load] = other.gameObject;
-            if (currentState == State.Tetris)
+            if(other.gameObject.CompareTag("Entrega"))
             {
-                i++;
-                if (i >= maxCaixas)
+               load = 0;
+                while (caixasNoCarro[load] != null)
+                    load++;
+                caixasNoCarro[load] = other.gameObject;
+                if (currentState == State.Tetris)
                 {
-                    completed = true;
+                    i++;
+                    if (i >= maxCaixas)
+                    {
+                        completed = true;
+                    }
                 }
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Entrega"))
+        if(currentState == State.Tetris)
         {
-            GameObject entrega = other.gameObject;
-            for (int j = 0; j < caixasNoCarro.Length; j++)
+            if (other.gameObject.CompareTag("Entrega"))
             {
-                if (entrega == caixasNoCarro[j])
-                { 
-                    caixasNoCarro[j] = null;
+                GameObject entrega = other.gameObject;
+                for (int j = 0; j < caixasNoCarro.Length; j++)
+                {
+                    if (entrega == caixasNoCarro[j])
+                    { 
+                        caixasNoCarro[j] = null;
+                    }
                 }
-            }
-            if (currentState == State.Tetris)
-            {
-                i -= 1;
-                completed = false;
+                if (currentState == State.Tetris)
+                {
+                    i -= 1;
+                    completed = false;
+                }
             }
         }
     }
@@ -230,9 +243,18 @@ public class Cacamba : MonoBehaviour
         cameras[0].gameObject.SetActive(true);
         cameras[1].gameObject.SetActive(false);
         playerRb.isKinematic = false;
+        UIController.instance.botaoReiniciarTetris.gameObject.SetActive(false);
         UIController.instance.objetivo.Finalizar();
         UIController.instance.MostrarTelaMissao();
         currentState = State.Dirigindo;
+        for(int m = 0; m < caixasCaidas.Length; m++)
+        {
+            if(caixasCaidas[m] != null)
+            {
+                caixasCaidas[m] = null;
+            }
+        }
+        UIController.instance.botaoReiniciarTetris.gameObject.SetActive(false);
     }
     public void MudarCaixas(Caixas [] c)
     {
@@ -255,22 +277,30 @@ public class Cacamba : MonoBehaviour
     }
     public void ReiniciarTetris()
     {
-        currentState = State.Tetris;
         UIController.instance.botaoConfirm.onClick.RemoveAllListeners();
         UIController.instance.botaoConfirm.onClick.AddListener(delegate { UIController.instance.Confirm(caixasCaidas); });
         UIController.instance.MostrarTelaEncaixe();
+        completed = true;
         playerRb.isKinematic = true;
-        foreach (Caixas c in caixasCaidas)
+        CriarListadeCaixas(caixasCaidas);
+        currentState = State.Tetris;
+        for (int r = 0; r < caixasCaidas.Length; r++)
         {
-            c.gameObject.transform.position = c.spawnTransformPoint.position;
-            cargas[cargaAtual] = c.GetComponent<Caixas>();
-            c.Inicializar();
+            if(caixasCaidas[r] != null)
+            {
+                Caixas c = caixasCaidas[r];
+                c.dentroDoCarro = true;
+                c.gameObject.transform.SetParent(veiculo);
+                c.Inicializar();
+                c.spawnPoint = pontos[r];
+                c.gameObject.transform.position = c.spawnPoint.position;
+            }
         }
+        UIController.instance.botaoReiniciarTetris.gameObject.SetActive(false);
         caixaAtual = caixasCaidas[0];
         caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
         caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
         cameras[0].gameObject.SetActive(false);
         cameras[1].gameObject.SetActive(true);
-        CriarListadeCaixas(caixasCaidas);
     }
 }

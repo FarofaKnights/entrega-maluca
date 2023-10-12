@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class UIController : MonoBehaviour {
     public static UIController instance;
 
-    public Button botaoAcao, botaoConfirm;
+    public Button botaoAcao, botaoConfirm, botaoReiniciarTetris;
     public Text textoDiretriz;
     public GameObject textoMissaoConcluida;
 
@@ -35,6 +35,9 @@ public class UIController : MonoBehaviour {
 
         botaoAcao.gameObject.SetActive(false);
         botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao();});
+
+        botaoReiniciarTetris.gameObject.SetActive(false);
+        botaoReiniciarTetris.onClick.AddListener(delegate { Cacamba.instance.ReiniciarTetris(); });
 
         missaoPanel.SetActive(false);
 
