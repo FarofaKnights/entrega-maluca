@@ -59,10 +59,6 @@ public class Caixas : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                 }
-                else
-                {
-                    StartCoroutine(wait());
-                }
             }
         }
     }
@@ -98,19 +94,7 @@ public class Caixas : MonoBehaviour
         {
             if (other.gameObject.name == "Veiculo")
             {
-                for (int k = 0; k < Cacamba.instance.caixasCaidas.Length; k++)
-                {
-                    if (Cacamba.instance.caixasCaidas[k] == this)
-                    {
-                        Cacamba.instance.caixasCaidas[k] = null;
-                        break;
-                    }
-                    else
-                    {
-                        k++;
-                    }
-                }
-                UIController.HUD.MostrarBotaoRecuperar(false);
+                StartCoroutine("wait");
             }
         }
     }
@@ -131,11 +115,22 @@ public class Caixas : MonoBehaviour
             ChecarLimites();
         }
     }
-    IEnumerator wait()
+    IEnumerator Wait()
     {
         yield return new WaitForSeconds(3f);
-        dentroDoCarro = false;
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        for (int k = 0; k < Cacamba.instance.caixasCaidas.Length; k++)
+        {
+            if (Cacamba.instance.caixasCaidas[k] == this)
+            {
+                Cacamba.instance.caixasCaidas[k] = null;
+                break;
+            }
+            else
+            {
+                k++;
+            }
+        }
+        UIController.HUD.MostrarBotaoRecuperar(false);
     }
     public void ResetarPosicao()
     {

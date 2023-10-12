@@ -57,7 +57,7 @@ public class Cacamba : MonoBehaviour
     void CriarListadeCaixas(Caixas[] c)
     {
         int l;
-        for(l = 0; c[l + 1] != null; l++)
+        for(l = 0; c[l] != null; l++)
         {
             if(l != 0)
             {
@@ -71,10 +71,12 @@ public class Cacamba : MonoBehaviour
             {
                 ultima = c[l];
             }
-            c[l].proxima = c[l + 1];
+            else
+            {
+                c[l].proxima = c[l + 1];
+            }
         }
-        ultima = c[l];
-        if(l - 1 < 0)
+        if(l - 1 <= 0)
         {
             ultima.anterior = ultima;
         }
@@ -256,17 +258,15 @@ public class Cacamba : MonoBehaviour
     {
         if(completed)
         {
-            foreach (Caixas caixa in c)
+            for (int r = 0; r < c.Length; r++)
             {
-                if(caixa == null)
+                if (c[r] != null)
                 {
-                    break;
+                    c[r].Gizmos.SetActive(false);
+                    c[r].gameObject.transform.SetParent(null);
+                    c[r].rb.constraints = RigidbodyConstraints.None;
+                    c[r].rb.useGravity = true;
                 }
-                Debug.Log(caixa.gameObject.name);
-                caixa.Gizmos.SetActive(false);
-                caixa.gameObject.transform.SetParent(null);
-                caixa.rb.constraints = RigidbodyConstraints.None;
-                caixa.rb.useGravity = true;
             }
             FinalizarTetris();
         }
