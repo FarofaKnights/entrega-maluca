@@ -13,6 +13,12 @@ public class Carga {
     public GameObject prefab;
     public bool dentroCarro;
 
+    public string nome {
+        get {
+            return prefab.name;
+        }
+    }
+
     public Carga(float peso, float fragilidade, Endereco destinatario, GameObject prefab, TipoCarga tipo = TipoCarga.Normal) {
         this.peso = peso;
         this.fragilidade = fragilidade;

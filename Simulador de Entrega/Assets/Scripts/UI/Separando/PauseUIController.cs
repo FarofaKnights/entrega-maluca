@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using TMPro;
+
 public class PauseUIController : MonoBehaviour {
     public GameObject missaoPanel, menuPanel, opcoesPanel;
     public GameObject missaoDetails, missaoList, missaoItemPrefab;
@@ -26,6 +28,7 @@ public class PauseUIController : MonoBehaviour {
         opcoesPanel.SetActive(false);
         menuPanel.SetActive(false);
         GenerateMissaoList();
+        UpdateMissaoDetails(null);
     }
 
     public void OpenMenu() {
@@ -65,7 +68,7 @@ public class PauseUIController : MonoBehaviour {
 
         GameObject missaoItem = Instantiate(missaoItemPrefab, missaoList.transform);
         missaoItem.GetComponent<RefMissao>().missao = missao;
-        missaoItem.GetComponentInChildren<Text>().text = missao.titulo;
+        missaoItem.GetComponentInChildren<TextMeshProUGUI>().text = missao.titulo;
 
         Toggle toggle = missaoItem.GetComponent<Toggle>();
         toggle.group = toggleGroup;
@@ -77,8 +80,6 @@ public class PauseUIController : MonoBehaviour {
     public void GenerateMissaoList() {
         List<Missao> missoes = MissaoManager.instance.missoesDisponiveis;
         List<Missao> missoesConcluidas = MissaoManager.instance.missoesConcluidas;
-
-        
 
         // Limpa a lista
         foreach (Transform child in missaoList.transform) {
@@ -112,14 +113,22 @@ public class PauseUIController : MonoBehaviour {
 
         missaoDetails.SetActive(true);
 
-        Text titulo = missaoDetails.transform.Find("Conteudo").Find("Titulo").GetComponent<Text>();
+        // Text titulo = missaoDetails.transform.Find("Conteudo").Find("Titulo").GetComponent<Text>();
         Text descricao = missaoDetails.transform.Find("Conteudo").Find("Descricao").GetComponent<Text>();
 
-        missaoJaFoiConcluida.SetActive(missao.FoiFinalizada());
-        missaoAtual.SetActive(missao == MissaoManager.instance.missaoAtual);
+        // missaoJaFoiConcluida.SetActive(missao.FoiFinalizada());
+        // missaoAtual.SetActive(missao == MissaoManager.instance.missaoAtual);
+        // titulo.text = missao.titulo;
 
-        titulo.text = missao.titulo;
         descricao.text = missao.descricao;
+
+        string texto = "Os itens a serem entregues são:\n";
+        Carga[] cargas = missao.GetAllCargas();
+        foreach (Carga carga in cargas) {
+            texto += " - " + carga.nome + "\n";
+        }
+
+        descricao.text += "\n\n" + texto;
     }
 
     public void SetVolumeEfeito(float volume) {

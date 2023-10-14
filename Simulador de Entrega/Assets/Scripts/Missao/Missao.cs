@@ -211,4 +211,24 @@ public class Missao: Iniciavel {
         return arr;
     }
     #endregion
+
+    #region Utils
+
+    public Carga[] GetAllCargas() {
+        List<Carga> cargas = new List<Carga>();
+
+        if (objetivoInicial.cargas != null)
+            cargas.AddRange(objetivoInicial.cargas);
+
+        foreach (Conjunto conjunto in conjuntos) {
+            foreach (Objetivo objetivo in conjunto.objetivos) {
+                if (objetivo.cargas != null)
+                    cargas.AddRange(objetivo.cargas);
+            }
+        }
+
+        return cargas.ToArray();
+    }
+
+    #endregion
 }
