@@ -3,9 +3,11 @@ using UnityEngine.UI;
 
 public class EncaixeUIController : MonoBehaviour {
     public Button botaoConfirm;
-    public GameObject tutorialEncaixeMovimento, tutorialEncaixeRotacao;
-    bool estaNoEncaixe = false; // Solucao temporaria
+    public GameObject tutorialEncaixeMovimento;
     Caixas[] c;
+
+    public Text wasdText, rotacionarText;
+    public Tela tela;
 
 
     void Start() {
@@ -13,12 +15,17 @@ public class EncaixeUIController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (estaNoEncaixe && Cacamba.instance.caixaAtual != null) {
+        if (tela.visivel && Cacamba.instance.caixaAtual != null) {
             Caixas caixa = Cacamba.instance.caixaAtual;
             if (caixa != null) {
                 bool estaRodando = caixa.rodando;
-                tutorialEncaixeMovimento.SetActive(!estaRodando);
-                tutorialEncaixeRotacao.SetActive(estaRodando);
+                if (estaRodando) {
+                    wasdText.text = "Rotacionar";
+                    rotacionarText.text = "Desativar rotação";
+                } else {
+                    wasdText.text = "Mover";
+                    rotacionarText.text = "Ativar rotação";
+                }
             }
         }
     }
@@ -38,14 +45,11 @@ public class EncaixeUIController : MonoBehaviour {
     }
 
     public void Mostrar() {
-        Tela tela = GetComponent<Tela>();
         tela.Mostrar();
-        estaNoEncaixe = true;
     }
 
     public void Esconder() {
-        Tela tela = GetComponent<Tela>();
         tela.Esconder();
-        estaNoEncaixe = false;
+        tela.GetVizinho("HUD")?.Mostrar();
     }
 }

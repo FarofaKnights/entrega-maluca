@@ -41,12 +41,8 @@ public class ObjetivoState : IState {
 
         if (nodosPath == null) {
             wnpc.SetState(new PerambulaState(wnpc));
-            Debug.Log("NodosPath is null");
             return;
         }
-
-        Debug.Log("Search for: " + nodo.gameObject.name);
-        Debug.Log("NodosPath count: " + nodosPath.Count);
 
         NodoIA nodoAtual = nodosPath.Dequeue();
         wnpc.SetTarget(nodoAtual.transform);

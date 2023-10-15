@@ -8,7 +8,6 @@ public class WNPCController : MonoBehaviour {
     public GameObject prefab;
     public int quantidade;
     public GameObject esquinasHolder;
-    public bool showGizmos = true;
 
     void Awake() {
         instance = this;
@@ -27,6 +26,7 @@ public class WNPCController : MonoBehaviour {
 
     public void GerarWNPC(GameObject nodoInicial) {
         GameObject npc = Instantiate(prefab, nodoInicial.transform.position, Quaternion.identity);
+        npc.transform.SetParent(transform, true);
         
         WNPCMachine wnpc = npc.GetComponent<WNPCMachine>();
         wnpc.SetTarget(nodoInicial.transform);

@@ -168,5 +168,7 @@ public class OficinaUI : MonoBehaviour {
     public void Esconder() {
         Tela tela = GetComponent<Tela>();
         tela.Esconder();
+
+        tela.GetVizinho("HUD")?.Mostrar();
     }
 }
