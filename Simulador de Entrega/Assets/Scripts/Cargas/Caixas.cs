@@ -38,8 +38,7 @@ public class Caixas : MonoBehaviour
     }
     public void Remover()
     {
-        GameObject explosion = Instantiate(Clash_Txt, transform.position, transform.rotation);
-        Destroy(explosion, 0.75f);
+       
     }
     void Selecionado()
     {
@@ -59,7 +58,8 @@ public class Caixas : MonoBehaviour
                 bater.Play();
                 if (carga.fragilidade <= 0)
                 {
-                    Remover();
+                    GameObject explosion = Instantiate(Clash_Txt, transform.position, transform.rotation);
+                    Destroy(explosion, 0.75f);
                     gameObject.SetActive(false);
 
                 }
