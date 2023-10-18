@@ -133,7 +133,6 @@ public class Missao: Iniciavel {
     }
 
     public void CargaEntregue(Carga carga) {
-        Debug.Log("Era pra isso aqui ser chamado....");
         cargasEntregues.Add(carga);
     }
 

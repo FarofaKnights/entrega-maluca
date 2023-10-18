@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class StatusCarga {
     public string nome;
@@ -15,6 +16,13 @@ public class StatusCarga {
         nome = carga.nome;
         porcentagem = carga.fragilidade / carga.fragilidadeInicial;
         valor = carga.GetValor();
+
+        if (carga.fragilidadeInicial == 0) {
+            Debug.LogError("Porra de carga não ta com os valores certos onde devia tá arruma isso ai Henri");
+            // Se você veio aqui descobrir o que é esse erro, bem, o valor de fragilidade inicial da carga é 0. Se o problema for do prefab, arrume
+            // Se o problema não for do prefab (provavelmente é o caso), é porque a carga que está no cargasEntregues não é a mesma que está na caixa!
+            porcentagem = 0.75f;
+        }
     }
 }
 

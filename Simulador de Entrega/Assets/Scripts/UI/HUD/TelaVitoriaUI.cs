@@ -10,6 +10,7 @@ public class TelaVitoriaUI : MonoBehaviour {
     public GameObject tentarNovamenteBtn, concluirBtn;
     public Text dinheiroFixoTxt, tempoTxt;
     public GameObject holderCargas, cargasPrefab;
+    public GameObject[] avaliacaoSelecionada;
 
     Missao missaoVitoriosa;
     StatusMissao status;
@@ -42,6 +43,16 @@ public class TelaVitoriaUI : MonoBehaviour {
             GameObject go = Instantiate(cargasPrefab, holderCargas.transform);
             go.GetComponent<CargaRelatorioUI>().AtualizarValores(statusCarga);
         }
+
+        concluirBtn.SetActive(status.avaliacao > 1); // Caso avaliação menor que 1, não mostra botão de concluir
+
+        SelecionarAvaliacao(status.avaliacao);
+    }
+
+    void SelecionarAvaliacao(int avaliacao) {
+        for (int i = 0; i < avaliacaoSelecionada.Length; i++) {
+            avaliacaoSelecionada[i].SetActive(i == avaliacao - 1);
+        }
     }
 
     public void HandleCloseRelatorio() {
@@ -50,7 +61,7 @@ public class TelaVitoriaUI : MonoBehaviour {
     }
 
     public void HandleReiniciar() {
-        MissaoManager.instance.ReiniciarMissao();
+        missaoVitoriosa.Resetar();
         relatorio.SetActive(false);
         gameObject.SetActive(false);
     }
