@@ -17,8 +17,6 @@ public class DescansoState : IState {
     public void Enter() {
         tempoVisitando = Random.Range(2.0f, 4.0f);
         timer = 0;
-
-        Debug.Log(tempoVisitando);
     }
     public void Update() {
         timer += Time.fixedDeltaTime;

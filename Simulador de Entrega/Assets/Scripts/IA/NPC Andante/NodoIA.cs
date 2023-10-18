@@ -17,8 +17,7 @@ public class NodoIA : MonoBehaviour{
 
     #if UNITY_EDITOR
 
-    void OnDrawGizmos(){
-
+    void OnDrawGizmosSelected(){
         Color cor = Color.red;
         float tamanho = 1.5f;
 
@@ -54,7 +53,6 @@ public class NodoIA : MonoBehaviour{
 
     public static NodoIA GetRandomNodo(){
         int randomIndex = Random.Range(0, nodosVisitaveis.Count);
-        Debug.Log("Random index: " + randomIndex);
         return nodosVisitaveis[randomIndex];
     }
 }

@@ -14,8 +14,6 @@ public class VisitandoState : IState {
     public void Enter() {
         tempoVisitando = Random.Range(3.0f, 6.0f);
         timer = 0;
-
-        Debug.Log(tempoVisitando);
     }
     public void Update() {
         timer += Time.fixedDeltaTime;
