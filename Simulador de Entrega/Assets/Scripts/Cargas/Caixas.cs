@@ -14,11 +14,13 @@ public class Caixas : MonoBehaviour
     Vector3 posicaoInicial;
     Quaternion rotacaoInicial;
     public Carga carga;
+    public float fragilidade;
     public GameObject Clash_Txt;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Gizmos = Instantiate(Gizmos, transform.position, veiculo.transform.rotation);
+        Debug.Log(carga.fragilidade);
         Gizmos.SetActive(false);
         bater = GetComponent<AudioSource>();
         Inicializar();
@@ -38,7 +40,7 @@ public class Caixas : MonoBehaviour
     }
     public void Remover()
     {
-       
+        Destroy(this.gameObject);
     }
     void Selecionado()
     {
@@ -60,7 +62,7 @@ public class Caixas : MonoBehaviour
                 {
                     GameObject explosion = Instantiate(Clash_Txt, transform.position, transform.rotation);
                     Destroy(explosion, 0.75f);
-                    gameObject.SetActive(false);
+                    Remover();
 
                 }
             }

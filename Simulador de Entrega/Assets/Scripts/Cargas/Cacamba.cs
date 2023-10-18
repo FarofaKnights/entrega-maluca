@@ -34,9 +34,10 @@ public class Cacamba : MonoBehaviour
     {
         cargaAtual = 0;
         maxCaixas = MissaoManager.instance.cargaAtual.Count;
-        i = 0;
         UIController.encaixe.Mostrar();
         playerRb.isKinematic = true;
+        completed = false;
+        i = 0;
         //Spawna o resto das caixas com base na posicao da caixa anterior
         foreach (Carga carga in MissaoManager.instance.cargaAtual)
         {
@@ -200,7 +201,7 @@ public class Cacamba : MonoBehaviour
     {
         if(currentState == State.Tetris)
         {
-            if(other.gameObject.CompareTag("Entrega"))
+            if(other.gameObject.CompareTag("Entrega") && other.isTrigger != true)
             {
                load = 0;
                 while (caixasNoCarro[load] != null)
@@ -221,7 +222,7 @@ public class Cacamba : MonoBehaviour
     {
         if(currentState == State.Tetris)
         {
-            if (other.gameObject.CompareTag("Entrega"))
+            if (other.gameObject.CompareTag("Entrega") && other.isTrigger != true)
             {
                 GameObject entrega = other.gameObject;
                 for (int j = 0; j < caixasNoCarro.Length; j++)

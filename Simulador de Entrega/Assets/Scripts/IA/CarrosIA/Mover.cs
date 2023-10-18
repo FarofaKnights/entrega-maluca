@@ -7,7 +7,6 @@ public class Mover : ComportamentoCarros
 {
     CarrosNPC npc;
     NavMeshAgent ia;
-    bool podeMudar = true;
     public Mover(CarrosNPC carro, NavMeshAgent agent)
     {
         npc = carro;
@@ -27,14 +26,12 @@ public class Mover : ComportamentoCarros
     {
         if(npc.transform.position.x == npc.currentWaypoint.position.x && npc.transform.position.z == npc.currentWaypoint.position.z)
         {
-            Debug.Log("Cheguei");
             if(Pesquisar(npc.currentWaypoint))
             {
                npc.MudarComportamento(new Stop(npc, ia));
             }
             else
             {
-                Debug.Log("J");
                 npc.MudarComportamento(new Mover(npc, ia));
             }
         }

@@ -63,6 +63,7 @@ MonoBehaviour:
   carga:
     peso: 25
     fragilidade: 80
+    _fragilidadeInicial: 80
     tipo: 0
     destinatario: {fileID: 0}
     cx: {fileID: 0}

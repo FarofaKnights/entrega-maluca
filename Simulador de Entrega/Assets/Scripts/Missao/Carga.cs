@@ -7,7 +7,7 @@ public enum TipoCarga { Normal, Rara, Importante, Especial };
 [System.Serializable]
 public class Carga {
     public float peso, fragilidade;
-    float _fragilidadeInicial;
+    public float _fragilidadeInicial;
     public TipoCarga tipo;
     public Endereco destinatario;
     public Caixas cx;
@@ -22,6 +22,7 @@ public class Carga {
 
     public float fragilidadeInicial {
         get {
+            Debug.Log(_fragilidadeInicial);
             return _fragilidadeInicial;
         }
     }

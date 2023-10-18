@@ -27,6 +27,5 @@ public class CarrosNPC : MonoBehaviour
     {
         comportamento = c;
         comportamento.Enter();
-        Debug.Log("dededyf");
     }
 }
