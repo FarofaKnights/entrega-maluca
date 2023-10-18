@@ -11,7 +11,7 @@ public class Missao: Iniciavel {
     
     public ObjetivoInicial objetivoInicial; // Objetivo para comecar a missao
 
-    List<Carga> cargasEntregues = new List<Carga>(); // Lista de cargas entregues
+    public List<Carga> cargasEntregues = new List<Carga>(); // Lista de cargas entregues
 
     public MissaoObject[] missoesDesbloqueadas; // Lista de missoes desbloqueadas ao finalizar
 
@@ -19,6 +19,8 @@ public class Missao: Iniciavel {
     public Diretriz diretriz = null;
 
     public bool gerarAleatoriaNoFinal = false;
+
+    public StatusMissao melhorStatus = null;
 
     bool iniciada = false;
     bool finalizada = false;
@@ -74,19 +76,25 @@ public class Missao: Iniciavel {
     }
 
     public void Finalizar() {
-        float dinheiro = 0;
+        StatusMissao status = new StatusMissao(this);
+        float dinheiro = status.dinheiro;
 
-        foreach (Carga carga in cargasEntregues) {
-            dinheiro += carga.GetValor();
+        Debug.Log(cargasEntregues.Count + " cargas entregues.");
+
+        if (melhorStatus != null) {
+            if (melhorStatus.dinheiro < dinheiro) {
+                dinheiro -= melhorStatus.dinheiro;
+                melhorStatus = status;
+            }
+            else dinheiro = 0;
         }
 
         Player.instance.AdicionarDinheiro(dinheiro);
+        UIController.HUD.ChamaVitoria(this, status);
 
+        indiceConjunto = 0;
         finalizada = true;
         MissaoManager.instance.FinalizarMissao();
-
-        UIController.HUD.MissaoConcluida();
-        indiceConjunto = 0;
 
         if (missoesDesbloqueadas != null && missoesDesbloqueadas.Length > 0) {
             foreach (MissaoObject missaoObject in missoesDesbloqueadas) {
@@ -99,7 +107,14 @@ public class Missao: Iniciavel {
         }
     }
 
+    public void Concluir() {
+        // conjuntos[indiceConjunto].Concluir();
+    }
+
     public void Resetar() {
+        iniciada = false;
+        finalizada = false;
+
         Endereco e = objetivoInicial.endereco;
         e.TeleportToHere();
 
@@ -118,6 +133,7 @@ public class Missao: Iniciavel {
     }
 
     public void CargaEntregue(Carga carga) {
+        Debug.Log("Era pra isso aqui ser chamado....");
         cargasEntregues.Add(carga);
     }
 

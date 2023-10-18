@@ -108,11 +108,11 @@ public class ObjetivoInicial : Objetivo {
 
     // Chamada ao clicar no botão de iniciar missão
     public override void Concluir() {
-        MissaoManager.instance.ComecarMissao(missao);
         MissaoManager.instance.RemoveObjetivoAtivo(this);
-
         ativo = false;
         endereco.RemoverObjetivo();
+
+        MissaoManager.instance.ComecarMissao(missao);
 
         if (cargas != null && cargas.Count > 0) 
             MissaoManager.instance.AdicionarCarga(cargas);

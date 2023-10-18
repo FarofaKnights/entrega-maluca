@@ -7,13 +7,14 @@ using TMPro;
 public class HUDController : MonoBehaviour {
     public GameObject telaMain, telaFalha, telaSucesso;
 
+    public TelaVitoriaUI vitoria;
+
     // Diretriz
     public GameObject diretrizPanel;
     public Text textoDiretriz;
     List<Diretriz> diretrizes = new List<Diretriz>();
 
     // Missão
-    public GameObject textoMissaoConcluida;
     public Button botaoAcao, botaoReiniciarTetris;
     public GameObject missaoPanel;
     public Objetivo objetivo;
@@ -23,9 +24,11 @@ public class HUDController : MonoBehaviour {
     public Text dinheiro;
     public TextMeshProUGUI timer;
 
-    void Start() {
-        textoMissaoConcluida.SetActive(false);
+    void Awake() {
+        vitoria = transform.GetComponentInChildren<TelaVitoriaUI>(true);
+    }
 
+    void Start() {
         diretrizPanel.SetActive(false);
 
         botaoAcao.gameObject.SetActive(false);
@@ -37,6 +40,11 @@ public class HUDController : MonoBehaviour {
         missaoPanel.SetActive(false);
 
         AtualizarDinheiro();
+    }
+
+    public void ChamaVitoria(Missao missao, StatusMissao status) {
+        vitoria.gameObject.SetActive(true);
+        vitoria.MissaoConcluida(missao, status);
     }
 
     #region Missão
@@ -93,18 +101,6 @@ public class HUDController : MonoBehaviour {
         Time.timeScale = 1;
 
         missao.Resetar();
-    }
-
-    public void MissaoConcluida() {
-        textoMissaoConcluida.SetActive(true);
-
-        // Espera 2 segundos e esconde o texto
-        StartCoroutine(EsconderTextoMissaoConcluida());
-    }
-
-    IEnumerator EsconderTextoMissaoConcluida() {
-        yield return new WaitForSeconds(2);
-        textoMissaoConcluida.SetActive(false);
     }
 
     #endregion

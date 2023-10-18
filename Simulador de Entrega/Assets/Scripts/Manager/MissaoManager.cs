@@ -118,6 +118,10 @@ public class MissaoManager : MonoBehaviour {
             OficinaController.instance.AtivarOficina();
     }
 
+    public void ReiniciarMissao() {
+        missaoAtual.Resetar();
+    }
+
     #endregion
 
     #region Sistema De Carga
