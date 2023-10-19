@@ -34,15 +34,20 @@ public class Cacamba : MonoBehaviour
     {
         cargaAtual = 0;
         maxCaixas = MissaoManager.instance.cargaAtual.Count;
-        i = 0;
         UIController.encaixe.Mostrar();
         playerRb.isKinematic = true;
+        completed = false;
+        i = 0;
         //Spawna o resto das caixas com base na posicao da caixa anterior
         foreach (Carga carga in MissaoManager.instance.cargaAtual)
         {
             GameObject c = Instantiate(carga.prefab, pontos[cargaAtual].position, carga.prefab.transform.rotation);
             cargas[cargaAtual] = c.GetComponent<Caixas>();
             c.GetComponent<Caixas>().veiculo = veiculo;
+            c.GetComponent<Caixas>().carga = carga;
+            c.GetComponent<Caixas>().carga.peso = c.GetComponent<Rigidbody>().mass;
+            c.GetComponent<Caixas>().carga.fragilidade= c.GetComponent<Caixas>().fragilidade;
+            c.GetComponent<Caixas>().carga._fragilidadeInicial = c.GetComponent<Caixas>().fragilidade;
             c.GetComponent<Caixas>().spawnPoint = pontos[cargaAtual];
             carga.cx = cargas[cargaAtual].GetComponent<Caixas>();
             cargaAtual++;
@@ -185,9 +190,13 @@ public class Cacamba : MonoBehaviour
     {
         if (!caixaAtual.rodando)
         {
-            Vector3 moveVector = caixaAtual.veiculo.TransformDirection(mover) * speed;
-            caixaRb.velocity = moveVector * Time.fixedDeltaTime;
-            caixaAtual.Gizmos.transform.position = caixaAtual.gameObject.transform.position;
+            if (caixaAtual.selecionado)
+            {
+                Vector3 moveVector = caixaAtual.veiculo.TransformDirection(mover) * speed;
+                caixaRb.velocity = moveVector * Time.fixedDeltaTime;
+                caixaAtual.Gizmos.transform.position = caixaAtual.gameObject.transform.position;
+
+            }
         }
         else
         {
@@ -200,7 +209,7 @@ public class Cacamba : MonoBehaviour
     {
         if(currentState == State.Tetris)
         {
-            if(other.gameObject.CompareTag("Entrega"))
+            if(other.gameObject.CompareTag("Entrega") && other.isTrigger != true)
             {
                load = 0;
                 while (caixasNoCarro[load] != null)
@@ -221,7 +230,7 @@ public class Cacamba : MonoBehaviour
     {
         if(currentState == State.Tetris)
         {
-            if (other.gameObject.CompareTag("Entrega"))
+            if (other.gameObject.CompareTag("Entrega") && other.isTrigger != true)
             {
                 GameObject entrega = other.gameObject;
                 for (int j = 0; j < caixasNoCarro.Length; j++)

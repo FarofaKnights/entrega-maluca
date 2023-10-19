@@ -7,11 +7,24 @@ public enum TipoCarga { Normal, Rara, Importante, Especial };
 [System.Serializable]
 public class Carga {
     public float peso, fragilidade;
+    public float _fragilidadeInicial;
     public TipoCarga tipo;
     public Endereco destinatario;
     public Caixas cx;
     public GameObject prefab;
     public bool dentroCarro;
+
+    public string nome {
+        get {
+            return prefab.name;
+        }
+    }
+
+    public float fragilidadeInicial {
+        get {
+            return _fragilidadeInicial;
+        }
+    }
 
     public Carga(float peso, float fragilidade, Endereco destinatario, GameObject prefab, TipoCarga tipo = TipoCarga.Normal) {
         this.peso = peso;
@@ -19,6 +32,8 @@ public class Carga {
         this.destinatario = destinatario;
         this.prefab = prefab;
         this.tipo = tipo;
+
+        _fragilidadeInicial = fragilidade;
     }
 
     public Carga(float peso, float fragilidade, Endereco destinatario, TipoCarga tipo = TipoCarga.Normal)
@@ -28,6 +43,8 @@ public class Carga {
         this.destinatario = destinatario;
         this.prefab = GameManager.instance.prefabGenerico;
         this.tipo = tipo;
+
+        _fragilidadeInicial = fragilidade;
     }
 
     public virtual float GetValor() {
@@ -51,6 +68,10 @@ public class Carga {
 
         return valor;
     }
+
+    public virtual float GetMaxValor() {
+        return GetValor();
+    }
 }
 
 // Exemplo de carga especial
@@ -60,5 +81,10 @@ public class CargaEspecial: Carga {
     public override float GetValor() {
         if(!dentroCarro) return 0;
         else return 40 + 10 * fragilidade;
+    }
+
+    public override float GetMaxValor() {
+        if(!dentroCarro) return 0;
+        else return 40 + 10; // * fragilidade; //?????????
     }
 }
