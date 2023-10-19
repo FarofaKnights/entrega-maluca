@@ -79,14 +79,14 @@ public class Missao: Iniciavel {
         StatusMissao status = new StatusMissao(this);
         float dinheiro = status.dinheiro;
 
-        Debug.Log(cargasEntregues.Count + " cargas entregues.");
-
         if (melhorStatus != null) {
             if (melhorStatus.dinheiro < dinheiro) {
                 dinheiro -= melhorStatus.dinheiro;
                 melhorStatus = status;
             }
             else dinheiro = 0;
+        } else {
+            melhorStatus = status;
         }
 
         Player.instance.AdicionarDinheiro(dinheiro);

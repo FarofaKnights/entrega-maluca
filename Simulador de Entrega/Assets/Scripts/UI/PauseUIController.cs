@@ -15,6 +15,11 @@ public class PauseUIController : MonoBehaviour {
     public AudioMixer audioMixer;
     public Slider efeitoSlider, carroSlider, geralSlider;
 
+    public GameObject missaoSelecionadaRelatorio;
+    public GameObject[] relatorioAvaliacao;
+    public Text relatorioValor, relatorioTempo;
+    Missao mostrandoMissao = null;
+
     void Start() {
         
     }
@@ -106,6 +111,8 @@ public class PauseUIController : MonoBehaviour {
     }
 
     public void UpdateMissaoDetails(Missao missao) {
+        mostrandoMissao = missao;
+
         if (missao == null) {
             missaoDetails.SetActive(false);
             return;
@@ -129,6 +136,25 @@ public class PauseUIController : MonoBehaviour {
         }
 
         descricao.text += "\n\n" + texto;
+
+        missaoSelecionadaRelatorio.SetActive(missao.melhorStatus != null);
+        if (missao.melhorStatus != null) {
+            relatorioValor.text = missao.melhorStatus.dinheiro.ToString();
+            relatorioTempo.text = missao.melhorStatus.tempo.ToString("0.00") + "s";
+
+            foreach (GameObject obj in relatorioAvaliacao) {
+                obj.SetActive(false);
+            }
+
+            relatorioAvaliacao[missao.melhorStatus.avaliacao].SetActive(true);
+        }
+    }
+
+    public void HandleTentarNovamenteMissao(){
+        if (mostrandoMissao == null) return;
+
+        mostrandoMissao.Resetar();
+        UpdateBotaoInterromperMissao();
     }
 
     public void SetVolumeEfeito(float volume) {
