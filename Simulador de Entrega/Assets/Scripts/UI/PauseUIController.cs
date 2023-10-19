@@ -146,7 +146,7 @@ public class PauseUIController : MonoBehaviour {
                 obj.SetActive(false);
             }
 
-            relatorioAvaliacao[missao.melhorStatus.avaliacao].SetActive(true);
+            relatorioAvaliacao[missao.melhorStatus.avaliacao-1].SetActive(true);
         }
     }
 

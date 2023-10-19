@@ -5,7 +5,7 @@ using UnityEngine;
 public class Caixas : MonoBehaviour
 {
     public bool rodando, dentroDoCarro = true, selecionado = false;
-    public float multiplicadorDano;
+    public float multiplicadorDano, fragilidade;
     public Transform veiculo, spawnPoint;
     public Caixas proxima, anterior;
     public GameObject Gizmos;
@@ -14,7 +14,6 @@ public class Caixas : MonoBehaviour
     Vector3 posicaoInicial;
     Quaternion rotacaoInicial;
     public Carga carga;
-    public float fragilidade;
     public GameObject Clash_Txt;
     void Start()
     {
@@ -40,6 +39,7 @@ public class Caixas : MonoBehaviour
     }
     public void Remover()
     {
+        MissaoManager.instance.missaoAtual.CargaRemove(this.carga);
         Destroy(this.gameObject);
     }
     void Selecionado()
@@ -58,6 +58,7 @@ public class Caixas : MonoBehaviour
                 carga.fragilidade -= velocity;
                 carga.dentroCarro = false;
                 bater.Play();
+                MissaoManager.instance.missaoAtual.CargaRemove(this.carga);
                 if (carga.fragilidade <= 0)
                 {
                     GameObject explosion = Instantiate(Clash_Txt, transform.position, transform.rotation);
@@ -74,6 +75,7 @@ public class Caixas : MonoBehaviour
         {
             if(other.gameObject.name == "Veiculo")
             {
+                MissaoManager.instance.missaoAtual.CargaEntregue(this.carga);
                 for (int k = 0; k < Cacamba.instance.caixasCaidas.Length; k++)
                 {
                     if (Cacamba.instance.caixasCaidas[k] == null)

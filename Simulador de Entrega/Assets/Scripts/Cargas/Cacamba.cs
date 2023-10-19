@@ -44,6 +44,10 @@ public class Cacamba : MonoBehaviour
             GameObject c = Instantiate(carga.prefab, pontos[cargaAtual].position, carga.prefab.transform.rotation);
             cargas[cargaAtual] = c.GetComponent<Caixas>();
             c.GetComponent<Caixas>().veiculo = veiculo;
+            c.GetComponent<Caixas>().carga = carga;
+            c.GetComponent<Caixas>().carga.peso = c.GetComponent<Rigidbody>().mass;
+            c.GetComponent<Caixas>().carga.fragilidade= c.GetComponent<Caixas>().fragilidade;
+            c.GetComponent<Caixas>().carga._fragilidadeInicial = c.GetComponent<Caixas>().fragilidade;
             c.GetComponent<Caixas>().spawnPoint = pontos[cargaAtual];
             carga.cx = cargas[cargaAtual].GetComponent<Caixas>();
             cargaAtual++;
@@ -186,9 +190,13 @@ public class Cacamba : MonoBehaviour
     {
         if (!caixaAtual.rodando)
         {
-            Vector3 moveVector = caixaAtual.veiculo.TransformDirection(mover) * speed;
-            caixaRb.velocity = moveVector * Time.fixedDeltaTime;
-            caixaAtual.Gizmos.transform.position = caixaAtual.gameObject.transform.position;
+            if (caixaAtual.selecionado)
+            {
+                Vector3 moveVector = caixaAtual.veiculo.TransformDirection(mover) * speed;
+                caixaRb.velocity = moveVector * Time.fixedDeltaTime;
+                caixaAtual.Gizmos.transform.position = caixaAtual.gameObject.transform.position;
+
+            }
         }
         else
         {

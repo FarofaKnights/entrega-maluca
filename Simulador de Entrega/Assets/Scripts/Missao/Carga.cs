@@ -22,7 +22,6 @@ public class Carga {
 
     public float fragilidadeInicial {
         get {
-            Debug.Log(_fragilidadeInicial);
             return _fragilidadeInicial;
         }
     }

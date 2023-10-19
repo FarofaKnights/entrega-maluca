@@ -136,6 +136,11 @@ public class Missao: Iniciavel {
         cargasEntregues.Add(carga);
     }
 
+    public void CargaRemove(Carga carga)
+    {
+        cargasEntregues.Remove(carga);
+    }
+
     public bool FoiFinalizada() {
         return finalizada;
     }
