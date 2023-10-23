@@ -606,6 +606,242 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Encaixe"",
+            ""id"": ""96e5f97e-f22f-4911-a8a6-134281066283"",
+            ""actions"": [
+                {
+                    ""name"": ""Rotacionar"",
+                    ""type"": ""Button"",
+                    ""id"": ""31a94cba-5ec9-4002-8a7d-a82fff8d66b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Subir"",
+                    ""type"": ""Button"",
+                    ""id"": ""698f6e11-1168-4aa8-a292-58976d9b39fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Resetar"",
+                    ""type"": ""Button"",
+                    ""id"": ""38215ecf-8a23-420c-8135-9068c99df250"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mover"",
+                    ""type"": ""Value"",
+                    ""id"": ""0a90c0ef-6a96-46bb-b091-9f03f5001d54"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Selecionar"",
+                    ""type"": ""Value"",
+                    ""id"": ""332ac602-76e8-4dff-bc58-632a87b89e63"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""e27b2543-1063-41ac-af73-21297d29f54e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EfetuarAcao"",
+                    ""type"": ""Button"",
+                    ""id"": ""1355be9c-1966-482b-9635-71908bf086f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e5685741-3543-4443-bb50-4a759ed7a639"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotacionar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc666762-cf87-473a-840e-88a9a96cc2f1"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Subir"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7e7f529-0f03-4dca-9069-c619ffca3d5f"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resetar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Teclado"",
+                    ""id"": ""7f9bcf16-474d-4c97-b469-ac9511247547"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mover"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""71b76105-51ce-4f40-a178-a843a634431d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""20613090-c463-489f-85c1-acc1febeb031"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""905e4b90-5770-4e23-aa6b-85b2500d6c10"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""26ab8662-e80c-49f5-9f03-182ccc5f3551"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Teclado"",
+                    ""id"": ""525174eb-4a96-474f-9bfc-3cb910416371"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selecionar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5acdd87f-a3cf-413a-aa23-586e52fe8716"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selecionar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""8bee9d53-37a2-43f8-8012-642f44f7d325"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selecionar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c0133e04-f5b4-406e-a9c5-92e33489dce7"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selecionar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4cce009e-0aa9-4f11-88e3-938212da62c2"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selecionar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d046c935-9ec3-424b-b596-a2427c6d4a08"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ee49bdd-e6ef-4d05-96b5-b0b81858bd93"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EfetuarAcao"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -627,6 +863,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Game_Newaction = m_Game.FindAction("New action", throwIfNotFound: true);
         m_Game_EfetuarAcao = m_Game.FindAction("EfetuarAcao", throwIfNotFound: true);
         m_Game_Pausar = m_Game.FindAction("Pausar", throwIfNotFound: true);
+        // Encaixe
+        m_Encaixe = asset.FindActionMap("Encaixe", throwIfNotFound: true);
+        m_Encaixe_Rotacionar = m_Encaixe.FindAction("Rotacionar", throwIfNotFound: true);
+        m_Encaixe_Subir = m_Encaixe.FindAction("Subir", throwIfNotFound: true);
+        m_Encaixe_Resetar = m_Encaixe.FindAction("Resetar", throwIfNotFound: true);
+        m_Encaixe_Mover = m_Encaixe.FindAction("Mover", throwIfNotFound: true);
+        m_Encaixe_Selecionar = m_Encaixe.FindAction("Selecionar", throwIfNotFound: true);
+        m_Encaixe_Newaction = m_Encaixe.FindAction("New action", throwIfNotFound: true);
+        m_Encaixe_EfetuarAcao = m_Encaixe.FindAction("EfetuarAcao", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -836,6 +1081,87 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public GameActions @Game => new GameActions(this);
+
+    // Encaixe
+    private readonly InputActionMap m_Encaixe;
+    private IEncaixeActions m_EncaixeActionsCallbackInterface;
+    private readonly InputAction m_Encaixe_Rotacionar;
+    private readonly InputAction m_Encaixe_Subir;
+    private readonly InputAction m_Encaixe_Resetar;
+    private readonly InputAction m_Encaixe_Mover;
+    private readonly InputAction m_Encaixe_Selecionar;
+    private readonly InputAction m_Encaixe_Newaction;
+    private readonly InputAction m_Encaixe_EfetuarAcao;
+    public struct EncaixeActions
+    {
+        private @Controls m_Wrapper;
+        public EncaixeActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Rotacionar => m_Wrapper.m_Encaixe_Rotacionar;
+        public InputAction @Subir => m_Wrapper.m_Encaixe_Subir;
+        public InputAction @Resetar => m_Wrapper.m_Encaixe_Resetar;
+        public InputAction @Mover => m_Wrapper.m_Encaixe_Mover;
+        public InputAction @Selecionar => m_Wrapper.m_Encaixe_Selecionar;
+        public InputAction @Newaction => m_Wrapper.m_Encaixe_Newaction;
+        public InputAction @EfetuarAcao => m_Wrapper.m_Encaixe_EfetuarAcao;
+        public InputActionMap Get() { return m_Wrapper.m_Encaixe; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EncaixeActions set) { return set.Get(); }
+        public void SetCallbacks(IEncaixeActions instance)
+        {
+            if (m_Wrapper.m_EncaixeActionsCallbackInterface != null)
+            {
+                @Rotacionar.started -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnRotacionar;
+                @Rotacionar.performed -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnRotacionar;
+                @Rotacionar.canceled -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnRotacionar;
+                @Subir.started -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnSubir;
+                @Subir.performed -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnSubir;
+                @Subir.canceled -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnSubir;
+                @Resetar.started -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnResetar;
+                @Resetar.performed -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnResetar;
+                @Resetar.canceled -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnResetar;
+                @Mover.started -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnMover;
+                @Mover.performed -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnMover;
+                @Mover.canceled -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnMover;
+                @Selecionar.started -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnSelecionar;
+                @Selecionar.performed -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnSelecionar;
+                @Selecionar.canceled -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnSelecionar;
+                @Newaction.started -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnNewaction;
+                @EfetuarAcao.started -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnEfetuarAcao;
+                @EfetuarAcao.performed -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnEfetuarAcao;
+                @EfetuarAcao.canceled -= m_Wrapper.m_EncaixeActionsCallbackInterface.OnEfetuarAcao;
+            }
+            m_Wrapper.m_EncaixeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Rotacionar.started += instance.OnRotacionar;
+                @Rotacionar.performed += instance.OnRotacionar;
+                @Rotacionar.canceled += instance.OnRotacionar;
+                @Subir.started += instance.OnSubir;
+                @Subir.performed += instance.OnSubir;
+                @Subir.canceled += instance.OnSubir;
+                @Resetar.started += instance.OnResetar;
+                @Resetar.performed += instance.OnResetar;
+                @Resetar.canceled += instance.OnResetar;
+                @Mover.started += instance.OnMover;
+                @Mover.performed += instance.OnMover;
+                @Mover.canceled += instance.OnMover;
+                @Selecionar.started += instance.OnSelecionar;
+                @Selecionar.performed += instance.OnSelecionar;
+                @Selecionar.canceled += instance.OnSelecionar;
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+                @EfetuarAcao.started += instance.OnEfetuarAcao;
+                @EfetuarAcao.performed += instance.OnEfetuarAcao;
+                @EfetuarAcao.canceled += instance.OnEfetuarAcao;
+            }
+        }
+    }
+    public EncaixeActions @Encaixe => new EncaixeActions(this);
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
@@ -854,5 +1180,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnNewaction(InputAction.CallbackContext context);
         void OnEfetuarAcao(InputAction.CallbackContext context);
         void OnPausar(InputAction.CallbackContext context);
+    }
+    public interface IEncaixeActions
+    {
+        void OnRotacionar(InputAction.CallbackContext context);
+        void OnSubir(InputAction.CallbackContext context);
+        void OnResetar(InputAction.CallbackContext context);
+        void OnMover(InputAction.CallbackContext context);
+        void OnSelecionar(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
+        void OnEfetuarAcao(InputAction.CallbackContext context);
     }
 }

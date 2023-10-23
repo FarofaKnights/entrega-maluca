@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class EncaixeUIController : MonoBehaviour {
     public Button botaoConfirm;
     public GameObject tutorialEncaixeMovimento;
-    Caixas[] c;
 
     public Text wasdText, rotacionarText;
     public Tela tela;
@@ -30,12 +29,8 @@ public class EncaixeUIController : MonoBehaviour {
         }
     }
 
-    public void SetCargas(Caixas[] c) {
-        this.c = c;
-    }
-
     public void Confirm() {
-        Cacamba.instance.MudarCaixas(c); 
+        Cacamba.instance.MudarCaixas(); 
     }
 
     public void InterromperTetris() {
