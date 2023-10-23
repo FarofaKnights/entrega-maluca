@@ -13,9 +13,24 @@ public class Endereco : MonoBehaviour {
 
     Objetivo objetivo;
     public IncluiMinimapa icone;
+    Controls controls;
 
     void Awake() {
         ListaEnderecos.Add(nome, this);
+
+        controls = new Controls();
+    }
+
+    void OnEnable() {
+        controls.Game.Enable();
+    }
+
+    void OnDisable() {
+        controls.Game.Disable();
+    }
+
+    public void EfetuarAcao() {
+        objetivo.Concluir();
     }
 
     public virtual void DefinirComoObjetivo(Objetivo objetivo) {
@@ -37,6 +52,12 @@ public class Endereco : MonoBehaviour {
     public void HandleTrigger(bool entrou) {
         if (objetivo != null) {
             objetivo.HandleObjetivoTrigger(entrou);
+        }
+
+        if (entrou) {
+            controls.Game.EfetuarAcao.performed += ctx => EfetuarAcao();
+        } else {
+            controls.Game.EfetuarAcao.performed -= ctx => EfetuarAcao();
         }
     }
 
