@@ -12,7 +12,7 @@ public class Cacamba : MonoBehaviour
     public Rigidbody playerRb, caixaRb;
     public Transform[] pontos;
     public GameObject[] caixasNoCarro;
-    public Caixas[] cargas, caixasCaidas;
+    public Caixas[] cargas, caixasCaidas, cargasAtuais;
     Vector3 rodar, mover;
     Transform veiculo;
     int cargaAtual = 0;
@@ -20,10 +20,19 @@ public class Cacamba : MonoBehaviour
     public static Cacamba instance;
     public bool completed = false;
     [SerializeField] int i = 0, load, maxCaixas;
+    Controls controls;
+
     private void Awake()
     {
         instance = this;
         currentState = State.Dirigindo;
+
+        controls = new Controls();
+        controls.Encaixe.EfetuarAcao.performed += ctx => MudarCaixas();
+        controls.Encaixe.Rotacionar.performed += ctx => Rotacionar();
+        controls.Encaixe.Subir.performed += ctx => { if (currentState == State.Tetris) CaixaSelecionada(); };
+        controls.Encaixe.Resetar.performed += ctx => { if (currentState == State.Tetris) caixaAtual.ResetarPosicao(); };
+        controls.Encaixe.Selecionar.performed += ctx => Selecionar(ctx.ReadValue<Vector2>());
     }
     void Start()
     {
@@ -32,6 +41,7 @@ public class Cacamba : MonoBehaviour
     }
     public void IniciarTetris()
     {
+        controls.Encaixe.Enable();
         cargaAtual = 0;
         maxCaixas = MissaoManager.instance.cargaAtual.Count;
         UIController.encaixe.Mostrar();
@@ -92,71 +102,76 @@ public class Cacamba : MonoBehaviour
         primeira.anterior = ultima;
         ultima.proxima = primeira;
         currentState = State.Tetris;
-        UIController.encaixe.SetCargas(cargas);
+        // UIController.encaixe.SetCargas(cargas);
+        cargasAtuais = cargas;
+    }
+    void Rotacionar() {
+        if (currentState != State.Tetris) return;
+
+        if (caixaAtual.rodando)
+        {
+            caixaAtual.rodando = false;
+            caixaAtual.Gizmos.SetActive(false);
+            caixaRb.constraints = RigidbodyConstraints.None;
+            caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+        else
+        {
+            caixaAtual.rodando = true;
+            caixaRb.velocity = Vector3.zero;
+            caixaAtual.Gizmos.SetActive(true);
+            caixaRb.constraints = RigidbodyConstraints.FreezePosition;
+        }
+        //Trocar a caixaSelecionada
+    }
+    void Selecionar(Vector2 vector2)
+    {
+        if (currentState != State.Tetris) return;
+
+        if (vector2.x > 0)
+        {
+            caixaAtual.rodando = false;
+            caixaRb.useGravity = true;
+            caixaAtual = caixaAtual.proxima;
+            caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+            caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+        if (vector2.x < 0)
+        {
+            caixaAtual.rodando = false;
+            caixaRb.useGravity = true;
+            caixaAtual = caixaAtual.anterior;
+            caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+            caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+        if (vector2.y < 0)
+        {
+            caixaAtual.rodando = false;
+            caixaRb.useGravity = true;
+            caixaAtual = caixaAtual.proxima.proxima;
+            caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+            caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+        if (vector2.y > 0)
+        {
+            caixaAtual.rodando = false;
+            caixaRb.useGravity = true;
+            caixaAtual = caixaAtual.anterior.anterior;
+            caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
+            caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
+    void Mover(Vector2 vector2)
+    {
+        if (currentState != State.Tetris) return;
+
+        rodar = new Vector3(vector2.y, vector2.x, 0);
+        mover = new Vector3(vector2.x, 0, vector2.y);
     }
     void Update()
     {
         if(currentState == State.Tetris)
         {
-            //Ativa ou desativa o modo de rodar
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (caixaAtual.rodando)
-                {
-                   caixaAtual.rodando = false;
-                   caixaAtual.Gizmos.SetActive(false);
-                   caixaRb.constraints = RigidbodyConstraints.None;
-                   caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
-                }
-                else
-                {
-                    caixaAtual.rodando = true;
-                    caixaRb.velocity = Vector3.zero;
-                    caixaAtual.Gizmos.SetActive(true);
-                    caixaRb.constraints = RigidbodyConstraints.FreezePosition;
-                }
-                //Trocar a caixaSelecionada
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                caixaAtual.rodando = false;
-                caixaRb.useGravity = true;
-                caixaAtual = caixaAtual.proxima;
-                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
-                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                caixaAtual.rodando = false;
-                caixaRb.useGravity = true;
-                caixaAtual = caixaAtual.anterior;
-                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
-                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                caixaAtual.rodando = false;
-                caixaRb.useGravity = true;
-                caixaAtual = caixaAtual.proxima.proxima;
-                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
-                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                caixaAtual.rodando = false;
-                caixaRb.useGravity = true;
-                caixaAtual = caixaAtual.anterior.anterior;
-                caixaRb = caixaAtual.gameObject.GetComponent<Rigidbody>();
-                caixaRb.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-            if(Input.GetKeyDown(KeyCode.X))
-            {
-                CaixaSelecionada();
-            }
-            if(Input.GetKeyDown(KeyCode.T))
-            {
-                caixaAtual.ResetarPosicao();
-            }
           float h = Input.GetAxis("Horizontal");
           float v = Input.GetAxis("Vertical");
           rodar = new Vector3(v, h, 0);
@@ -250,6 +265,7 @@ public class Cacamba : MonoBehaviour
     }
     public void FinalizarTetris()
     {
+        controls.Encaixe.Disable();
         cameras[0].gameObject.SetActive(true);
         cameras[1].gameObject.SetActive(false);
         playerRb.isKinematic = false;
@@ -263,18 +279,18 @@ public class Cacamba : MonoBehaviour
             }
         }
     }
-    public void MudarCaixas(Caixas [] c)
+    public void MudarCaixas()
     {
         if(completed)
         {
-            for (int r = 0; r < c.Length; r++)
+            for (int r = 0; r < cargasAtuais.Length; r++)
             {
-                if (c[r] != null)
+                if (cargasAtuais[r] != null)
                 {
-                    c[r].Gizmos.SetActive(false);
-                    c[r].gameObject.transform.SetParent(null);
-                    c[r].rb.constraints = RigidbodyConstraints.None;
-                    c[r].rb.useGravity = true;
+                    cargasAtuais[r].Gizmos.SetActive(false);
+                    cargasAtuais[r].gameObject.transform.SetParent(null);
+                    cargasAtuais[r].rb.constraints = RigidbodyConstraints.None;
+                    cargasAtuais[r].rb.useGravity = true;
                 }
             }
             FinalizarTetris();
@@ -282,7 +298,9 @@ public class Cacamba : MonoBehaviour
     }
     public void ReiniciarTetris()
     {
-        UIController.encaixe.SetCargas(caixasCaidas);
+        controls.Encaixe.Enable();
+        cargasAtuais = caixasCaidas;
+        //UIController.encaixe.SetCargas(caixasCaidas);
         UIController.encaixe.Mostrar();
         completed = true;
         playerRb.isKinematic = true;

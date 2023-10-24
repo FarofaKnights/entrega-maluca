@@ -10,19 +10,28 @@ public class GameManager : MonoBehaviour {
     public Estado estadoAtual = Estado.Jogando;
 
     float timeScaleAntigo = 1;
-
+    Controls controls;
     public GameObject prefabGenerico;
+
     void Awake() {
         instance = this;
+        controls = new Controls();
+        controls.Game.Pausar.performed += ctx => TogglePause();
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (estadoAtual == Estado.Jogando) {
-                Pausar();
-            } else {
-                Despausar();
-            }
+    void OnEnable() {
+        controls.Game.Enable();
+    }
+
+    void OnDisable() {
+        controls.Game.Disable();
+    }
+
+    public void TogglePause() {
+        if (estadoAtual == Estado.Jogando) {
+            Pausar();
+        } else {
+            Despausar();
         }
     }
 
