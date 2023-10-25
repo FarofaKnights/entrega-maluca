@@ -5,11 +5,8 @@ using UnityEngine.AI;
 
 public class CarrosNPC : MonoBehaviour
 {
-    public Transform [] wayPoints;
-    public Transform[] stopPoints;
     public Transform currentWaypoint;
     ComportamentoCarros comportamento; 
-    public int currentWaypointNumber;
     NavMeshAgent agent;
     void Start()
     {

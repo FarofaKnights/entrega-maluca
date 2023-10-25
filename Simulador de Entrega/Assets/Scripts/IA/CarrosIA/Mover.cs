@@ -14,13 +14,13 @@ public class Mover : ComportamentoCarros
     }
     public void Enter()
     {
-        npc.currentWaypointNumber++;
-        if (npc.currentWaypointNumber == npc.wayPoints.Length)
+        int nextWaypoint = Random.Range(0, WayPointCarrosManager.instance.wayPoints.Length);
+        while (WayPointCarrosManager.instance.wayPoints[nextWaypoint] == npc.currentWaypoint)
         {
-            npc.currentWaypointNumber = 0;
+            nextWaypoint = Random.Range(0, WayPointCarrosManager.instance.wayPoints.Length);
         }
-        npc.currentWaypoint = npc.wayPoints[npc.currentWaypointNumber];
-        ia.SetDestination(npc.wayPoints[npc.currentWaypointNumber].position);
+        npc.currentWaypoint = WayPointCarrosManager.instance.wayPoints[nextWaypoint];
+        ia.SetDestination(npc.currentWaypoint.position);
     }
     public void Action()
     {
@@ -38,9 +38,9 @@ public class Mover : ComportamentoCarros
     }
     bool Pesquisar(Transform t)
     {
-        for (int m = 0; m < npc.stopPoints.Length; m++)
+        for (int m = 0; m < WayPointCarrosManager.instance.stopPoints.Length; m++)
         {
-            if (t == npc.stopPoints[m]) return true;
+            if (t == WayPointCarrosManager.instance.stopPoints[m]) return true;
         }
         return false;
     }
