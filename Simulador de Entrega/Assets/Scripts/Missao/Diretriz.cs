@@ -35,29 +35,21 @@ public class Diretriz: Iniciavel {
         }
     }
 
-    public void Interromper() {
+    public void Parar() {
         if (this.texto != null && this.texto != "")
             UIController.HUD.RemoverDiretriz(this);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
-                limitacao.Interromper();
+                limitacao.Parar();
             }
         }
     }
-
-    public Missao GetMissao() {
-        if (pai is Missao) return (Missao) pai;
-        else if (pai is Conjunto) return ((Conjunto) pai).missao;
-        else if (pai is ObjetivoInicial) return ((ObjetivoInicial) pai).missao;
-        else if (pai is Objetivo) return ((Objetivo) pai).pai.missao;
-        else return null;
-    }
-
+    
     public void Falhar() {
-        UIController.HUD.FalhaMissao(GetMissao());
+        UIController.HUD.FalhaMissao(MissaoManager.instance.missaoAtual);
         
-        Interromper();
-        pai.Interromper();
+        Parar();
+        MissaoManager.instance.PararMissao();
     }
 }

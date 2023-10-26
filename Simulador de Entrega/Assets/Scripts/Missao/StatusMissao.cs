@@ -16,13 +16,6 @@ public class StatusCarga {
         nome = carga.nome;
         porcentagem = carga.fragilidade / carga.fragilidadeInicial;
         valor = carga.GetValor();
-
-        if (carga.fragilidadeInicial == 0) {
-            Debug.LogError("Porra de carga não ta com os valores certos onde devia tá arruma isso ai Henri");
-            // Se você veio aqui descobrir o que é esse erro, bem, o valor de fragilidade inicial da carga é 0. Se o problema for do prefab, arrume
-            // Se o problema não for do prefab (provavelmente é o caso), é porque a carga que está no cargasEntregues não é a mesma que está na caixa!
-            porcentagem = 0.75f;
-        }
     }
 }
 
@@ -39,18 +32,19 @@ public class StatusMissao {
     }
 
     public StatusMissao(Missao missao) {
-        cargas = new StatusCarga[missao.cargasEntregues.Count];
+        Carga[] cargasEntregues = missao.GetCargasEntregues();
+        cargas = new StatusCarga[cargasEntregues.Length];
         dinheiro = 0;
         
         float porcentagem = 0;
 
-        for (int i = 0; i < missao.cargasEntregues.Count; i++) {
-            cargas[i] = new StatusCarga(missao.cargasEntregues[i]);
+        for (int i = 0; i < cargasEntregues.Length; i++) {
+            cargas[i] = new StatusCarga(cargasEntregues[i]);
             porcentagem += cargas[i].porcentagem;
             dinheiro += cargas[i].valor;
         }
 
-        porcentagem /= missao.cargasEntregues.Count; // Valor de 0 a 1
+        porcentagem /= cargasEntregues.Length; // Valor de 0 a 1
 
         avaliacao = (int) Math.Round(porcentagem * 4, MidpointRounding.AwayFromZero) + 1; // Valor de 1 a 5
         tempo = 1;

@@ -61,7 +61,7 @@ public class TelaVitoriaUI : MonoBehaviour {
     }
 
     public void HandleReiniciar() {
-        missaoVitoriosa.Resetar();
+        MissaoManager.instance.ReiniciarMissao(missaoVitoriosa);
         relatorio.SetActive(false);
         gameObject.SetActive(false);
     }
