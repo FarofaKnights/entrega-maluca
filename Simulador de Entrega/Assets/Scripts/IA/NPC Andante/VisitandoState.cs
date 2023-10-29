@@ -15,8 +15,8 @@ public class VisitandoState : IState {
         tempoVisitando = Random.Range(3.0f, 6.0f);
         timer = 0;
     }
-    public void Update() {
-        timer += Time.fixedDeltaTime;
+    public void Execute(float deltaTime) {
+        timer += deltaTime;
 
         if (timer >= tempoVisitando) {
             int chance = Random.Range(0, 2);

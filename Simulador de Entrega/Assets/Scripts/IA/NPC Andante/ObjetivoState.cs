@@ -48,7 +48,7 @@ public class ObjetivoState : IState {
         wnpc.SetTarget(nodoAtual.transform);
     }
 
-    public void Update() {
+    public void Execute(float dt) {
         Transform target = wnpc.GetTarget();
 
         if(target != null){

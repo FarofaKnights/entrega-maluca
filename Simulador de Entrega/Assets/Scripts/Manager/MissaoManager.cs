@@ -12,7 +12,6 @@ public class MissaoManager : MonoBehaviour {
     List<Missao> missoesDisponiveis = new List<Missao>();
     List<Missao> missoesConcluidas = new List<Missao>();
 
-    public List<Carga> cargaAtual = new List<Carga>(); // Sistema temporario
     public List<Objetivo> objetivosAtivos = new List<Objetivo>();
 
     [System.NonSerialized]
@@ -39,7 +38,7 @@ public class MissaoManager : MonoBehaviour {
             missaoAtual.Parar();
         }
 
-        ZerarCargas();
+        Player.instance.ZerarCargas();
         SetEstado(Estado.Entrega);
         missaoAtual = missao;
         missaoAtual.Iniciar();
@@ -52,13 +51,13 @@ public class MissaoManager : MonoBehaviour {
         if (missaoAtual == null) return;
         missaoAtual.Parar();
 
-        ZerarCargas();
+        Player.instance.ZerarCargas();
 
         missaoAtual = null;
         SetEstado(Estado.SemMissao);
 
-        if(Cacamba.instance.currentState == Cacamba.State.Tetris)
-            UIController.encaixe.InterromperTetris();
+        if(Player.instance.GetState().GetType() == typeof(EncaixeState))
+            Player.instance.SetDirigindo();
 
         if (OficinaController.instance != null)
             OficinaController.instance.AtivarOficina();
@@ -70,7 +69,7 @@ public class MissaoManager : MonoBehaviour {
         RemoverMissao(missao);
         missaoAtual = null;
 
-        ZerarCargas();
+        Player.instance.ZerarCargas();
         SetEstado(Estado.SemMissao);
 
         if (OficinaController.instance != null)
@@ -139,44 +138,6 @@ public class MissaoManager : MonoBehaviour {
 
     public Missao[] GetMissoesConcluidas() {
         return missoesConcluidas.ToArray();
-    }
-
-    #endregion
-
-    #region Sistema De Carga
-
-    // Metodo chamado por um Objetivo que esta enviando uma carga
-    public void AdicionarCarga(List<Carga> cargas) {
-        cargaAtual.AddRange(cargas);
-
-        Cacamba.instance.IniciarTetris();
-    }
-
-    // Metodo chamado por um Objetivo que esta recebendo uma carga
-    public List<Carga> RemoverCarga(Endereco endereco) {
-        List<Carga> cargasRemovidas = new List<Carga>();
-
-        // Poderia ser substituido por um Where ?
-        for (int i = cargaAtual.Count-1; i >= 0; i--) {
-            Carga carga = cargaAtual[i];
-            if (carga.destinatario == endereco) {
-                carga.cx.Remover();
-                cargasRemovidas.Add(carga);
-                cargaAtual.Remove(carga);
-            }
-        }
-
-        return cargasRemovidas;
-    }
-    
-
-    // Zera todas as cargas
-    public void ZerarCargas() {
-        foreach (Carga carga in cargaAtual) {
-            carga.cx.Remover();
-        }
-
-        cargaAtual = new List<Carga>();
     }
 
     #endregion

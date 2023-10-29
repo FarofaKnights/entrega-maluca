@@ -11,31 +11,36 @@ public class EncaixeUIController : MonoBehaviour {
 
     void Start() {
         botaoConfirm.onClick.AddListener(delegate { Confirm(); });
+
+        Player.instance.onStateChange += state => {
+            if (state.GetType() == typeof(EncaixeState)) {
+                EncaixeState encaixeState = (EncaixeState) state;
+                encaixeState.onRotateChange += CheckRotate;
+            }
+        };
     }
 
-    void FixedUpdate() {
-        if (tela.visivel && Cacamba.instance.caixaAtual != null) {
-            Caixas caixa = Cacamba.instance.caixaAtual;
-            if (caixa != null) {
-                bool estaRodando = caixa.rodando;
-                if (estaRodando) {
-                    wasdText.text = "Rotacionar";
-                    rotacionarText.text = "Desativar rotação";
-                } else {
-                    wasdText.text = "Mover";
-                    rotacionarText.text = "Ativar rotação";
-                }
-            }
+    void CheckRotate(bool estaRodando) {
+        if (estaRodando) {
+            wasdText.text = "Rotacionar";
+            rotacionarText.text = "Desativar rotação";
+        } else {
+            wasdText.text = "Mover";
+            rotacionarText.text = "Ativar rotação";
         }
     }
 
     public void Confirm() {
-        Cacamba.instance.MudarCaixas(); 
+        IState estado = Player.instance.GetState();
+
+        if (estado.GetType() == typeof(EncaixeState)) {
+            EncaixeState encaixeState = (EncaixeState) estado;
+            encaixeState.CheckConcluido();
+        }
     }
 
     public void InterromperTetris() {
-        // Solução temporária para o caos do startdrag
-        Cacamba.instance.FinalizarTetris();
+        Player.instance.SetDirigindo();
         Esconder();
     }
 

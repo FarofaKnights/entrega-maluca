@@ -49,13 +49,13 @@ public class Objetivo: Iniciavel {
         ativo = false;
 
         if (permiteReceber){
-            foreach (Carga carga in MissaoManager.instance.RemoverCarga(endereco)) {
+            foreach (Carga carga in Player.instance.RemoverCarga(endereco)) {
                 MissaoManager.instance.missaoAtual.AddCargaEntregue(carga);
             }
         }
         
         if (cargas != null && cargas.Count > 0)
-            MissaoManager.instance.AdicionarCarga(cargas);
+            Player.instance.AdicionarCarga(cargas);
         
 
         endereco.RemoverObjetivo();
@@ -106,7 +106,7 @@ public class ObjetivoInicial : Objetivo {
         MissaoManager.instance.IniciarMissao(missao);
 
         if (cargas != null && cargas.Count > 0) 
-            MissaoManager.instance.AdicionarCarga(cargas);
+            Player.instance.AdicionarCarga(cargas);
         
         if (diretriz != null) diretriz.Parar();
     }

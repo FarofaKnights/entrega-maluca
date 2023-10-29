@@ -25,7 +25,7 @@ public class WNPCMachine : MonoBehaviour {
     }
 
     void FixedUpdate(){
-        state?.Update();
+        state?.Execute(Time.fixedDeltaTime);
     }
 
     public void SetState(IState state){
