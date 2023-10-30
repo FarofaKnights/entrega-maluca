@@ -54,6 +54,8 @@ public class EncaixeState : IPlayerState {
     }
 
     public void Execute(float dt) {
+        if (!subiu) return;
+
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Mover(new Vector2(h,v), dt);
@@ -69,7 +71,15 @@ public class EncaixeState : IPlayerState {
         player.cameras[0].gameObject.SetActive(true);
         player.cameras[1].gameObject.SetActive(false);
 
+        player.cacambaTrigger.onTriggerEnter -= OnTriggerEnter;
+        player.cacambaTrigger.onTriggerExit -= OnTriggerExit;
+
         onRotateChange = null;
+
+        for (int i = 0; i < cargasEncaixadas.Count; i++) {
+            Caixa caixa = cargasEncaixadas[i].cx;
+            caixa.SetState(new CaixaParadaState(caixa));
+        }
 
         // TODO: Ter um jeito de habilitar e desabilitar o player no próprio player
         Player.instance.GetComponent<Rigidbody>().isKinematic = false;
@@ -130,6 +140,7 @@ public class EncaixeState : IPlayerState {
 
         if (subiu) {
             caixaAtual.Deselecionar();
+            subiu = false;
             return;
         }
 

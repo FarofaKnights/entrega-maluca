@@ -149,7 +149,7 @@ public class HUDController : MonoBehaviour {
     void HandleBotaoRecuperar() {
         Debug.Log("Não esquece de mim! :(");
         // Iniciar estado com cargas caidas...
-        // Cacamba.instance.ReiniciarTetris();
+        Player.instance.RecuperarCargasProximas();
         MostrarBotaoRecuperar(false);
     }
 

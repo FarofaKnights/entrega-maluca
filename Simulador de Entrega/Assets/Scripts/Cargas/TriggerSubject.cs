@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trigger : MonoBehaviour {
+public class TriggerSubject : MonoBehaviour {
     public System.Action<Collider> onTriggerEnter;
     public System.Action<Collider> onTriggerExit;
     public System.Action<Collider> onTriggerStay;

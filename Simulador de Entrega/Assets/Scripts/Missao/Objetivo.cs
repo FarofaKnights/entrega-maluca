@@ -49,7 +49,7 @@ public class Objetivo: Iniciavel {
         ativo = false;
 
         if (permiteReceber){
-            foreach (Carga carga in Player.instance.RemoverCarga(endereco)) {
+            foreach (Carga carga in Player.instance.RemoverCargaDeEndereco(endereco)) {
                 MissaoManager.instance.missaoAtual.AddCargaEntregue(carga);
             }
         }

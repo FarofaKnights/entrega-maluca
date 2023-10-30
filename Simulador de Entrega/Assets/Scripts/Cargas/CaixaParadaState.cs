@@ -13,10 +13,12 @@ public class CaixaParadaState : IState {
     }
 
     public void Enter() {
+        caixa.collision.onCollisionEnter += OnCollisionEnter;
     }
 
     public void Execute(float dt) {}
     public void Exit() {
+        caixa.collision.onCollisionEnter -= OnCollisionEnter;
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -25,9 +27,8 @@ public class CaixaParadaState : IState {
 
         float velocity = caixa.GetComponent<Rigidbody>().velocity.magnitude;
         caixa.carga.fragilidade -= velocity;
-        // caixa.carga.dentroCarro = false; //trocar estado
-        // bater.Play();
-        // MissaoManager.instance.missaoAtual.CargaRemove(this.carga);
+        caixa.SetState(new CaixaCaidaState(caixa));
+        caixa.BarulhoBater();
         if (caixa.carga.fragilidade <= 0) {
             caixa.Explodir();
         }

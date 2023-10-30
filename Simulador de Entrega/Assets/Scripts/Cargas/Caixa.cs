@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Caixa : MonoBehaviour {
     public Carga carga;
+    
+    [HideInInspector] public Quaternion rotacaoInicial;
+    public TriggerSubject trigger;
+    public CollisionSubject collision;
 
-    public Quaternion rotacaoInicial;
 
     IState estadoAtual;
 
@@ -14,6 +17,8 @@ public class Caixa : MonoBehaviour {
 
     void Start() {
         rotacaoInicial = transform.rotation;
+        trigger = GetComponent<TriggerSubject>();
+        collision = GetComponent<CollisionSubject>();
     }
 
 
@@ -21,6 +26,8 @@ public class Caixa : MonoBehaviour {
         estadoAtual?.Exit();
         estadoAtual = estado;
         estadoAtual.Enter();
+
+        Debug.Log(estado.GetType());
     }
 
     public IState GetState() {
@@ -38,6 +45,9 @@ public class Caixa : MonoBehaviour {
         Destroy(explosion, 0.75f);
 
         Destroy(gameObject);
+    }
+
+    public void BarulhoBater() { 
     }
 
     void OnDestroy() {

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 
     public float dinheiro = 300;
     public List<Carga> cargaAtual = new List<Carga>();
+    List<Carga> cargasCaidasProximas = new List<Carga>();
     IState estadoAtual;
 
     public System.Action<IState> onStateChange;
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour {
     // temp
     public GameObject gizmos, subirPos;
     public float velocidade, velocidadeRotacao;
-    public Trigger cacambaTrigger;
+    public TriggerSubject cacambaTrigger;
 
     public GameObject [] cameras;
     public Transform[] pontosCaixa;
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour {
         SetState(new EncaixeState(this, cargas.ToArray()));
     }
 
-    public List<Carga> RemoverCarga(Endereco endereco) {
+    public List<Carga> RemoverCargaDeEndereco(Endereco endereco) {
         List<Carga> cargasRemovidas = new List<Carga>();
 
         // Poderia ser substituido por um Where ?
@@ -102,6 +103,10 @@ public class Player : MonoBehaviour {
         return cargasRemovidas;
     }
 
+    public void RemoverCarga(Carga carga) {
+        cargaAtual.Remove(carga);
+    }
+
     public void ZerarCargas() {
         foreach (Carga carga in cargaAtual) {
             Destroy(carga.cx.gameObject);
@@ -111,5 +116,21 @@ public class Player : MonoBehaviour {
         cargaAtual = new List<Carga>();
     }
 
+    public void AdicionarCargaProxima(Carga carga) {
+        cargasCaidasProximas.Add(carga);
+    }
+
+    public void RemoverCargaProxima(Carga carga) {
+        cargasCaidasProximas.Remove(carga);
+    }
+
+    public Carga[] GetCargasProximas() {
+        return cargasCaidasProximas.ToArray();
+    }
+
+    public void RecuperarCargasProximas() {
+        SetEncaixando(GetCargasProximas());
+        cargasCaidasProximas.Clear();
+    }
     #endregion
 }

@@ -31,6 +31,8 @@ public class Endereco : MonoBehaviour {
 
     public void EfetuarAcao() {
         objetivo.Concluir();
+        UIController.HUD.MostrarBotaoAcao(null, false);
+        UIController.HUD.MostrarMissaoInfo(null, false);
     }
 
     public virtual void DefinirComoObjetivo(Objetivo objetivo) {
