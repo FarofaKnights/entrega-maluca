@@ -13,10 +13,10 @@ public class EncaixeState : IPlayerState {
     bool rodando = false; // Não mudar a variavel diretamente, usar SetRodando
     bool subiu = false;
 
-    public Caixa caixaAtual {
+    public CaixaEncaixeState caixaAtual {
         get {
             if (currentSelected < 0) return null;
-            return cargasAEncaixar[currentSelected].cx;
+            return cargasAEncaixar[currentSelected].cx.GetEncaixeState();
         }
     }
 
@@ -35,7 +35,9 @@ public class EncaixeState : IPlayerState {
         for (int i = 0; i < cargasAEncaixar.Length; i++) {
             Carga carga = cargasAEncaixar[i];
             Transform ponto = player.pontosCaixa[i];
-            InstanciarCaixa(carga, ponto);
+            
+            Caixa caixa = InstanciarCaixa(carga, ponto);
+            caixa.SetState(new CaixaEncaixeState(caixa, ponto));
         }
 
         // TODO: Ter um jeito de habilitar e desabilitar o player no próprio player
@@ -84,7 +86,9 @@ public class EncaixeState : IPlayerState {
         controls.Encaixe.Enable();
     }
 
-    void InstanciarCaixa(Carga carga, Transform ponto) {
+    Caixa InstanciarCaixa(Carga carga, Transform ponto) {
+        if (carga.cx != null) return carga.cx;
+
         GameObject caixaObj = GameObject.Instantiate(carga.prefab, ponto.position, carga.prefab.transform.rotation);
         Caixa caixa = caixaObj.GetComponent<Caixa>();
 
@@ -93,9 +97,9 @@ public class EncaixeState : IPlayerState {
         carga.fragilidadeInicial = carga.fragilidade;
 
         caixa.carga = carga;
-        caixa.spawnPoint = ponto;
-
         carga.cx = caixa;
+
+        return caixa;
     }
 
     public void Selecionar(Vector2 dir) {

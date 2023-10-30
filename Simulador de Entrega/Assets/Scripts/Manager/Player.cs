@@ -92,7 +92,7 @@ public class Player : MonoBehaviour {
         for (int i = cargaAtual.Count-1; i >= 0; i--) {
             Carga carga = cargaAtual[i];
             if (carga.destinatario == endereco) {
-                carga.cx.Destruir();
+                Destroy(carga.cx.gameObject);
                 carga.cx = null;
                 cargasRemovidas.Add(carga);
                 cargaAtual.Remove(carga);
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour {
 
     public void ZerarCargas() {
         foreach (Carga carga in cargaAtual) {
-            carga.cx.Destruir();
+            Destroy(carga.cx.gameObject);
             carga.cx = null;
         }
 
