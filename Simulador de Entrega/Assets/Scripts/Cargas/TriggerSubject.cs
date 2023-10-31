@@ -18,4 +18,24 @@ public class TriggerSubject : MonoBehaviour {
     void OnTriggerStay(Collider other) {
         if (onTriggerStay != null) onTriggerStay(other);
     }
+
+    public void Ativar() {
+        foreach (Collider col in GetComponents<Collider>()) {
+            if (col.isTrigger) {
+                col.enabled = true;
+            }
+        }
+    }
+
+    public void Desativar() {
+        foreach (Collider col in GetComponents<Collider>()) {
+            if (col.isTrigger) {
+                col.enabled = false;
+            }
+        }
+    }
+
+    public Collider[] GetTriggers() {
+        return System.Array.FindAll(GetComponents<Collider>(), col => col.isTrigger);
+    }
 }

@@ -147,8 +147,6 @@ public class HUDController : MonoBehaviour {
     }
 
     void HandleBotaoRecuperar() {
-        Debug.Log("Não esquece de mim! :(");
-        // Iniciar estado com cargas caidas...
         Player.instance.RecuperarCargasProximas();
         MostrarBotaoRecuperar(false);
     }

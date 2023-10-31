@@ -50,8 +50,8 @@ public class Player : MonoBehaviour {
         SetState(new DirigindoState(this));
     }
 
-    public void SetEncaixando(Carga[] cargas) {
-        SetState(new EncaixeState(this, cargas));
+    public void SetEncaixando(Carga[] cargasNovas) {
+        SetState(new EncaixeState(this, cargasNovas, cargaAtual));
     }
 
     #region SistemaDeDinheiro
@@ -81,9 +81,7 @@ public class Player : MonoBehaviour {
 
     #region SistemaDeCargas
     public void AdicionarCarga(List<Carga> cargas) {
-        cargaAtual.AddRange(cargas);
-
-        SetState(new EncaixeState(this, cargas.ToArray()));
+        SetState(new EncaixeState(this, cargas.ToArray(), cargaAtual));
     }
 
     public List<Carga> RemoverCargaDeEndereco(Endereco endereco) {
@@ -117,10 +115,12 @@ public class Player : MonoBehaviour {
     }
 
     public void AdicionarCargaProxima(Carga carga) {
+        if (cargasCaidasProximas.Contains(carga)) return;
         cargasCaidasProximas.Add(carga);
     }
 
     public void RemoverCargaProxima(Carga carga) {
+        if (!cargasCaidasProximas.Contains(carga)) return;
         cargasCaidasProximas.Remove(carga);
     }
 

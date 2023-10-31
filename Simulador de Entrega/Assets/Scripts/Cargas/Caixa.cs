@@ -17,8 +17,10 @@ public class Caixa : MonoBehaviour {
 
     void Start() {
         rotacaoInicial = transform.rotation;
-        trigger = GetComponent<TriggerSubject>();
-        collision = GetComponent<CollisionSubject>();
+        trigger = gameObject.AddComponent<TriggerSubject>();
+        collision = gameObject.AddComponent<CollisionSubject>();
+        
+        trigger.Desativar();
     }
 
 

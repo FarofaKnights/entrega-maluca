@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240624705749833600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.891144, y: 2.9898603, z: 58.920456}
-  m_LocalScale: {x: 1.8164297, y: 0.8114278, z: 0.8114278}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6557592704887172566}
@@ -49,27 +49,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f60c9063cb61542b5671204af99930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rodando: 0
-  dentroDoCarro: 1
-  selecionado: 0
-  multiplicadorDano: 0
-  fragilidade: 20
-  veiculo: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  proxima: {fileID: 0}
-  anterior: {fileID: 0}
-  Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
-  bater: {fileID: 0}
-  rb: {fileID: 0}
   carga:
     peso: 30
     fragilidade: 20
-    _fragilidadeInicial: 20
     tipo: 0
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
-    dentroCarro: 0
+  rotacaoInicial: {x: 0, y: 0, z: 0, w: 0}
+  trigger: {fileID: 0}
+  collision: {fileID: 0}
   Clash_Txt: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
     type: 3}
 --- !u!54 &8508249225935260432
@@ -99,7 +88,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.824316, y: 0.61718357, z: 2.3589659}
+  m_Size: {x: 1.4973123, y: 0.50079995, z: 1.9141306}
   m_Center: {x: -0.0098259095, y: -0.016504059, z: 0.07397804}
 --- !u!82 &-7739241975820103499
 AudioSource:
@@ -209,7 +198,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.93
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6668571760281209405
 PrefabInstance:
@@ -226,17 +215,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ebce53d9f845fe64c9276dafcaa1cfb6,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.67801285
+      value: 1.2315627
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebce53d9f845fe64c9276dafcaa1cfb6,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5177723
+      value: 1.2315624
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebce53d9f845fe64c9276dafcaa1cfb6,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5177723
+      value: 1.2315624
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebce53d9f845fe64c9276dafcaa1cfb6,
         type: 3}

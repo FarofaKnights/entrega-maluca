@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384330550075591027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.056547, y: 3.4300003, z: 60.792473}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6752544276166336398}
@@ -56,7 +56,9 @@ MonoBehaviour:
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  rotacaoInicial: {x: 0, y: 0, z: 0, w: 0}
+  trigger: {fileID: 0}
+  collision: {fileID: 0}
   Clash_Txt: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
     type: 3}
 --- !u!54 &2876863578752007659
@@ -86,8 +88,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1905755, y: 1.0883989, z: 1}
-  m_Center: {x: 0, y: -0.021393538, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &-3052998365788043525
 AudioSource:
   m_ObjectHideFlags: 0
@@ -196,7 +198,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4.95
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6503024428463470693
 PrefabInstance:
@@ -213,7 +215,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0c15d5892a15f0c4897753cd25e12aab,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5422053
+      value: 1.233764
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c15d5892a15f0c4897753cd25e12aab,
         type: 3}

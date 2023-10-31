@@ -17,14 +17,17 @@ public class CaixaEncaixeState : IState {
 
     public void Enter() {
         rb = caixa.GetComponent<Rigidbody>();
-        caixa.transform.position = spawnPoint.position;
     }
 
-    public void Execute(float dt) {}
-    public void Exit() {
-
+    public void Execute(float dt) {
+        ChecarLimites();
     }
+    public void Exit() {}
 
+    public void ChecarLimites(){
+        if (transform.localPosition.x > 7.2f || transform.localPosition.x < -7.2f || transform.localPosition.z < -7.5f || transform.localPosition.z > 0.3f || transform.localPosition.y > 7.5f || transform.localPosition.y < -1f) 
+            ResetarPosicao();
+    }
 
     public void Selecionar() {
         if (rb == null) rb = caixa.GetComponent<Rigidbody>();

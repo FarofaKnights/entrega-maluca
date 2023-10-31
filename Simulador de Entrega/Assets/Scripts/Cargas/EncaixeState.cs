@@ -6,8 +6,8 @@ public class EncaixeState : IPlayerState {
     Player player;
     Controls controls;
 
-    Carga[] cargasAEncaixar;
-    List<Carga> cargasEncaixadas;
+    Carga[] cargasNovas;
+    List<Carga> cargasEncaixadas, cargasAEncaixar, cargasAnteriores;
 
     int currentSelected = -1;
     bool rodando = false; // Não mudar a variavel diretamente, usar SetRodando
@@ -22,17 +22,24 @@ public class EncaixeState : IPlayerState {
 
     public System.Action<bool> onRotateChange;
 
-    public EncaixeState(Player player, Carga[] cargasAEncaixar) {
+    public EncaixeState(Player player, Carga[] cargasNovas,  List<Carga> cargasAnteriores) {
         this.player = player;
-        this.cargasAEncaixar = cargasAEncaixar;
+        this.cargasNovas = cargasNovas;
+        this.cargasAnteriores = cargasAnteriores;
     }
 
     public void Enter() {
         DefinirControles();
         UIController.encaixe.Mostrar();
-        cargasEncaixadas = new List<Carga>(cargasAEncaixar.Length);
 
-        for (int i = 0; i < cargasAEncaixar.Length; i++) {
+        int tamanho = cargasNovas.Length + cargasAnteriores.Count;
+        cargasEncaixadas = new List<Carga>(tamanho);
+
+        cargasAEncaixar = new List<Carga>(tamanho);
+        cargasAEncaixar.AddRange(cargasNovas);
+        cargasAEncaixar.AddRange(cargasAnteriores);
+
+        for (int i = 0; i < cargasAEncaixar.Count; i++) {
             Carga carga = cargasAEncaixar[i];
             Transform ponto = player.pontosCaixa[i];
             
@@ -40,15 +47,17 @@ public class EncaixeState : IPlayerState {
             caixa.SetState(new CaixaEncaixeState(caixa, ponto));
         }
 
+        cargasNovas = null;
+
         // TODO: Ter um jeito de habilitar e desabilitar o player no próprio player
         player.GetComponent<Rigidbody>().isKinematic = true;
 
-        // Seria interessante ter um próprio controlador de cameras ?
         player.cameras[0].gameObject.SetActive(false);
         player.cameras[1].gameObject.SetActive(true);
 
         player.cacambaTrigger.onTriggerEnter += OnTriggerEnter;
         player.cacambaTrigger.onTriggerExit += OnTriggerExit;
+
 
         Selecionar(0);
     }
@@ -97,7 +106,11 @@ public class EncaixeState : IPlayerState {
     }
 
     Caixa InstanciarCaixa(Carga carga, Transform ponto) {
-        if (carga.cx != null) return carga.cx;
+        if (carga.cx != null) {
+            if (carga.cx.GetState() is CaixaCaidaState)
+                carga.cx.transform.position = ponto.position;
+            return carga.cx;
+        }
 
         GameObject caixaObj = GameObject.Instantiate(carga.prefab, ponto.position, carga.prefab.transform.rotation);
         Caixa caixa = caixaObj.GetComponent<Caixa>();
@@ -108,6 +121,8 @@ public class EncaixeState : IPlayerState {
 
         caixa.carga = carga;
         carga.cx = caixa;
+
+        caixa.transform.position = ponto.position;
 
         return caixa;
     }
@@ -120,11 +135,11 @@ public class EncaixeState : IPlayerState {
         if (dir.y > 0) i += 2;
         else if (dir.y < 0) i -= 2;
 
-        Selecionar(i % cargasAEncaixar.Length);
+        Selecionar(i);
     }
 
     public void Selecionar(int i) {
-        i %= cargasAEncaixar.Length;
+        i %= cargasAEncaixar.Count;
         caixaAtual?.Deselecionar();
 
         currentSelected = i;
@@ -202,7 +217,9 @@ public class EncaixeState : IPlayerState {
     }
 
     public void CheckConcluido() {
-        if (cargasEncaixadas.Count == cargasAEncaixar.Length) {
+        if (cargasEncaixadas.Count == cargasAEncaixar.Count) {
+            cargasAnteriores.Clear();
+            cargasAnteriores.AddRange(cargasEncaixadas);
             player.SetState(new DirigindoState(player));
             // cargasAtuais[r].gameObject.transform.SetParent(null); // acho que não precisa
         }
