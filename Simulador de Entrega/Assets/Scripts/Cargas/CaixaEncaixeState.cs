@@ -20,11 +20,12 @@ public class CaixaEncaixeState : IState {
     }
 
     public void Execute(float dt) {
-        ChecarLimites();
+        // ChecarLimites();
     }
     public void Exit() {}
 
     public void ChecarLimites(){
+        // O maior problema atualmente com esse método é que as caixas não são colocadas em nenhum container, então a posição local está bem diferente do esperado
         if (transform.localPosition.x > 7.2f || transform.localPosition.x < -7.2f || transform.localPosition.z < -7.5f || transform.localPosition.z > 0.3f || transform.localPosition.y > 7.5f || transform.localPosition.y < -1f) 
             ResetarPosicao();
     }

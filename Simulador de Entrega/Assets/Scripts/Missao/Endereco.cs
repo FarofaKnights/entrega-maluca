@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class Endereco : MonoBehaviour {
@@ -17,7 +18,6 @@ public class Endereco : MonoBehaviour {
 
     void Awake() {
         ListaEnderecos.Add(nome, this);
-
         controls = new Controls();
     }
 
@@ -26,6 +26,8 @@ public class Endereco : MonoBehaviour {
     }
 
     void OnDisable() {
+        objetivo = null;
+        controls.Game.EfetuarAcao.performed -= EfetuarAcao;
         controls.Game.Disable();
     }
 
@@ -33,6 +35,13 @@ public class Endereco : MonoBehaviour {
         objetivo.Concluir();
         UIController.HUD.MostrarBotaoAcao(null, false);
         UIController.HUD.MostrarMissaoInfo(null, false);
+    }
+
+    public void EfetuarAcao(InputAction.CallbackContext callback) {
+        // Eu sei, parece não fazer sentido, por que eu não faço só um lambda?
+        // Despois de quebrar a cabeça eu descobri que não tem como você desinscrever um lambda,
+        // pois ele é considerado um outro método, então eu tive que fazer um método não anônimo
+        EfetuarAcao();
     }
 
     public virtual void DefinirComoObjetivo(Objetivo objetivo) {
@@ -57,9 +66,9 @@ public class Endereco : MonoBehaviour {
         }
 
         if (entrou) {
-            controls.Game.EfetuarAcao.performed += ctx => EfetuarAcao();
+            controls.Game.EfetuarAcao.performed += EfetuarAcao;
         } else {
-            controls.Game.EfetuarAcao.performed -= ctx => EfetuarAcao();
+            controls.Game.EfetuarAcao.performed -= EfetuarAcao;
         }
     }
 

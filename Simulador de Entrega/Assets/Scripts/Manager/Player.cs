@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
     public float dinheiro = 300;
     public List<Carga> cargaAtual = new List<Carga>();
-    List<Carga> cargasCaidasProximas = new List<Carga>();
+    List<Carga> cargasCaidasProximas = new List<Carga>(), cargasCaidas = new List<Carga>();
     IState estadoAtual;
 
     public System.Action<IState> onStateChange;
@@ -98,11 +98,25 @@ public class Player : MonoBehaviour {
             }
         }
 
+        // Se o endereço onde a caixa supostamente devia ser entregue já foi concluido, não tem porque mante-la no cenário
+        for (int i = cargasCaidas.Count-1; i >= 0; i--) {
+            Carga carga = cargasCaidas[i];
+            if (carga.destinatario == endereco) {
+                if (carga.cx != null) {
+                    Destroy(carga.cx.gameObject);
+                    carga.cx = null;
+                }
+                
+                cargasCaidas.Remove(carga);
+            }
+        }
+
         return cargasRemovidas;
     }
 
     public void RemoverCarga(Carga carga) {
         cargaAtual.Remove(carga);
+        cargasCaidas.Add(carga);
     }
 
     public void ZerarCargas() {
@@ -111,7 +125,13 @@ public class Player : MonoBehaviour {
             carga.cx = null;
         }
 
+        foreach (Carga carga in cargasCaidas) {
+            Destroy(carga.cx.gameObject);
+            carga.cx = null;
+        }
+
         cargaAtual = new List<Carga>();
+        cargasCaidas = new List<Carga>();
     }
 
     public void AdicionarCargaProxima(Carga carga) {

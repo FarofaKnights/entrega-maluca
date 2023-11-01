@@ -29,6 +29,7 @@ public class Missao: Iniciavel {
 
     public void Parar() {
         iterator.Reset();
+        iterator = null;
     }
 
     public void Next() {

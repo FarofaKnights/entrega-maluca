@@ -59,7 +59,7 @@ MonoBehaviour:
   rotacaoInicial: {x: 0, y: 0, z: 0, w: 0}
   trigger: {fileID: 0}
   collision: {fileID: 0}
-  Clash_Txt: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
+  clashEffect: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
     type: 3}
 --- !u!54 &2876863578752007659
 Rigidbody:

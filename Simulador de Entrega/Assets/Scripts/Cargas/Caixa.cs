@@ -6,21 +6,28 @@ public class Caixa : MonoBehaviour {
     public Carga carga;
     
     [HideInInspector] public Quaternion rotacaoInicial;
-    public TriggerSubject trigger;
-    public CollisionSubject collision;
+    [HideInInspector] public TriggerSubject trigger;
+    [HideInInspector] public CollisionSubject collision;
 
 
     IState estadoAtual;
 
-    // temp: ideia usar um flyweight
-    public GameObject Clash_Txt;
+    // temp: ideia de criar um singleton pra isso, uma vez que segundo o roque, flyweight não abrange esse tipo de coisa
+    [SerializeField] GameObject clashEffect;
+    AudioSource baterSom;
 
     void Start() {
         rotacaoInicial = transform.rotation;
+        baterSom = GetComponent<AudioSource>();
+
         trigger = gameObject.AddComponent<TriggerSubject>();
         collision = gameObject.AddComponent<CollisionSubject>();
         
         trigger.Desativar();
+    }
+
+    void FixedUpdate() {
+        estadoAtual?.Execute(Time.fixedDeltaTime);
     }
 
 
@@ -28,8 +35,6 @@ public class Caixa : MonoBehaviour {
         estadoAtual?.Exit();
         estadoAtual = estado;
         estadoAtual.Enter();
-
-        Debug.Log(estado.GetType());
     }
 
     public IState GetState() {
@@ -43,16 +48,14 @@ public class Caixa : MonoBehaviour {
     }
 
     public void Explodir() {
-        GameObject explosion = Instantiate(Clash_Txt, transform.position, transform.rotation);
+        GameObject explosion = Instantiate(clashEffect, transform.position, transform.rotation);
         Destroy(explosion, 0.75f);
 
+        Player.instance.RemoverCarga(carga);
         Destroy(gameObject);
     }
 
-    public void BarulhoBater() { 
-    }
-
-    void OnDestroy() {
-        // Fazer algo
+    public void BarulhoBater() {
+        baterSom.Play();
     }
 }

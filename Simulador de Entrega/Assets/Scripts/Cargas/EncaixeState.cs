@@ -90,6 +90,15 @@ public class EncaixeState : IPlayerState {
             caixa.SetState(new CaixaParadaState(caixa));
         }
 
+        // Garante que ao parar a missão no encaixe, caixas não encaixadas sejam destruidas
+        foreach (Carga carga in cargasAEncaixar) {
+            if (!cargasAnteriores.Contains(carga)) {
+                GameObject.Destroy(carga.cx.gameObject);
+                carga.cx = null;
+                continue;
+            }
+        }
+
         // TODO: Ter um jeito de habilitar e desabilitar o player no próprio player
         Player.instance.GetComponent<Rigidbody>().isKinematic = false;
     }

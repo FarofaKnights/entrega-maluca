@@ -43,8 +43,6 @@ public class Objetivo: Iniciavel {
     }
 
     public virtual void Concluir() {
-        Debug.Log("Concluindo objetivo");
-        Debug.Log(ativo);
         if (!ativo) return;
         ativo = false;
 

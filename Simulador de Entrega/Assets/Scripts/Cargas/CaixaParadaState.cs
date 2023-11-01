@@ -27,10 +27,11 @@ public class CaixaParadaState : IState {
 
         float velocity = caixa.GetComponent<Rigidbody>().velocity.magnitude;
         caixa.carga.fragilidade -= velocity;
-        caixa.SetState(new CaixaCaidaState(caixa));
         caixa.BarulhoBater();
         if (caixa.carga.fragilidade <= 0) {
             caixa.Explodir();
+        } else {
+            caixa.SetState(new CaixaCaidaState(caixa));
         }
     }
 }
