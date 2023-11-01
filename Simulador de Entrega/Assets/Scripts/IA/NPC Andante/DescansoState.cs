@@ -18,8 +18,8 @@ public class DescansoState : IState {
         tempoVisitando = Random.Range(2.0f, 4.0f);
         timer = 0;
     }
-    public void Update() {
-        timer += Time.fixedDeltaTime;
+    public void Execute(float deltaTime) {
+        timer += deltaTime;
 
         if (timer >= tempoVisitando)  {
             wnpc.ResetEnergia();

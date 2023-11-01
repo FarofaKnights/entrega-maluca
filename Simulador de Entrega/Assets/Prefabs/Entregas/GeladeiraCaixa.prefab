@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8945529338682589028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.054039, y: 3.9512002, z: 56.987877}
-  m_LocalScale: {x: 0.57045, y: 1.5212001, z: 0.57045}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5395417645303494120}
@@ -49,28 +49,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f60c9063cb61542b5671204af99930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rodando: 0
-  dentroDoCarro: 1
-  selecionado: 0
-  multiplicadorDano: 0
-  fragilidade: 40
-  veiculo: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  proxima: {fileID: 0}
-  anterior: {fileID: 0}
-  Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
-  bater: {fileID: 0}
-  rb: {fileID: 0}
   carga:
     peso: 40
     fragilidade: 40
-    _fragilidadeInicial: 40
     tipo: 0
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
-    dentroCarro: 0
-  Clash_Txt: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
+  rotacaoInicial: {x: 0, y: 0, z: 0, w: 0}
+  trigger: {fileID: 0}
+  collision: {fileID: 0}
+  clashEffect: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
     type: 3}
 --- !u!54 &6182363309294341049
 Rigidbody:
@@ -99,8 +88,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2588001, y: 1.0630943, z: 1.0305675}
-  m_Center: {x: 0.023204383, y: 0.064272515, z: 0.015283166}
+  m_Size: {x: 0.73694706, y: 1.6742833, z: 0.66265106}
+  m_Center: {x: -0.052040577, y: 0.052339196, z: 0.015743256}
 --- !u!82 &5236101550990730549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -209,7 +198,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.93
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5578524793739481603
 PrefabInstance:
@@ -226,17 +215,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 386685b9afbeb1e4aa21d3a24e07e341,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.0783594
+      value: 1.1855999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 386685b9afbeb1e4aa21d3a24e07e341,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.92551935
+      value: 1.4079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 386685b9afbeb1e4aa21d3a24e07e341,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.0783594
+      value: 1.1855999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 386685b9afbeb1e4aa21d3a24e07e341,
         type: 3}

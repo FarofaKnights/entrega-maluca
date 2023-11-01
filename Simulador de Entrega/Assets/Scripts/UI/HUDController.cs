@@ -65,8 +65,8 @@ public class HUDController : MonoBehaviour {
             Text titulo = missaoPanel.transform.Find("Titulo").GetComponent<Text>();
             Text descricao = missaoPanel.transform.Find("Descricao").GetComponent<Text>();
 
-            titulo.text = objetivoInicial.missao.titulo;
-            descricao.text = objetivoInicial.missao.descricao;
+            titulo.text = objetivoInicial.missao.info.nome;
+            descricao.text = objetivoInicial.missao.info.descricao;
         } else {
             this.objetivo = null;
         }
@@ -100,7 +100,7 @@ public class HUDController : MonoBehaviour {
         telaFalha.SetActive(false);
         Time.timeScale = 1;
 
-        missao.Resetar();
+        MissaoManager.instance.ReiniciarMissao(missao);
     }
 
     #endregion
@@ -147,7 +147,7 @@ public class HUDController : MonoBehaviour {
     }
 
     void HandleBotaoRecuperar() {
-        Cacamba.instance.ReiniciarTetris();
+        Player.instance.RecuperarCargasProximas();
         MostrarBotaoRecuperar(false);
     }
 

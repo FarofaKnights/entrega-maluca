@@ -25,11 +25,11 @@ public class LimiteTempo: Limitacao {
         falhou = false;
     }
 
-    public void Interromper() {
+    public void Parar() {
         if (falhou)
             return;
 
-        timer.Interromper();
+        timer.Parar();
         timer = null;
     }
 

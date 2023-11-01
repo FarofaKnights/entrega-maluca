@@ -15712,7 +15712,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4900687831257854763}
-  - component: {fileID: 4900687831257854767}
   - component: {fileID: 4900687831257854760}
   - component: {fileID: 4900687831257854761}
   - component: {fileID: 4900687831257854762}
@@ -15739,89 +15738,6 @@ Transform:
   m_Father: {fileID: 4866144772179034179}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4900687831257854767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4900687831257854756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d19e0a10af63a4296742415f83145f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  speed: 200
-  rotateSpeed: 500
-  cameras:
-  - {fileID: 1193870180128126216}
-  - {fileID: 4586345597105442178}
-  playerRb: {fileID: 0}
-  caixaRb: {fileID: 0}
-  pontos:
-  - {fileID: 4900687832532427531}
-  - {fileID: 4900687832862747981}
-  - {fileID: 4900687832685321146}
-  - {fileID: 4900687830898685810}
-  - {fileID: 4900687832732851227}
-  - {fileID: 4900687830869725244}
-  - {fileID: 4900687832741366682}
-  - {fileID: 4900687832301435518}
-  - {fileID: 4900687830984695905}
-  - {fileID: 4900687831018268563}
-  - {fileID: 4900687830950826682}
-  - {fileID: 4900687830939369461}
-  - {fileID: 4900687831291159613}
-  - {fileID: 4900687831665799687}
-  - {fileID: 4900687832975981056}
-  - {fileID: 4900687831965933017}
-  caixasNoCarro:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  cargas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  caixasCaidas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  caixaAtual: {fileID: 0}
-  primeira: {fileID: 0}
-  ultima: {fileID: 0}
-  completed: 0
-  i: 0
-  load: 0
-  maxCaixas: 0
 --- !u!65 &4900687831257854760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16469,6 +16385,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dinheiro: 300
+  cargaAtual: []
+  gizmos: {fileID: 0}
+  subirPos: {fileID: 0}
+  velocidade: 0
+  velocidadeRotacao: 0
+  cacambaTrigger: {fileID: 0}
+  cameras: []
+  pontosCaixa: []
 --- !u!65 &1758222566528867924
 BoxCollider:
   m_ObjectHideFlags: 0

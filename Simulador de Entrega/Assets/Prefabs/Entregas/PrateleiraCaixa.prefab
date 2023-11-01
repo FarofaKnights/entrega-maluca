@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240624705749833600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.891144, y: 2.9898603, z: 58.920456}
-  m_LocalScale: {x: 1.8164297, y: 0.8114278, z: 0.8114278}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6073299405943808568}
@@ -51,28 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f60c9063cb61542b5671204af99930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rodando: 0
-  dentroDoCarro: 1
-  selecionado: 0
-  multiplicadorDano: 0
-  fragilidade: 35
-  veiculo: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  proxima: {fileID: 0}
-  anterior: {fileID: 0}
-  Gizmos: {fileID: 6865428687823217030, guid: 9815cefd2426b05498dae19a856436f8, type: 3}
-  bater: {fileID: 0}
-  rb: {fileID: 0}
   carga:
     peso: 20
     fragilidade: 35
-    _fragilidadeInicial: 35
     tipo: 0
     destinatario: {fileID: 0}
     cx: {fileID: 0}
     prefab: {fileID: 0}
-    dentroCarro: 0
-  Clash_Txt: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
+  rotacaoInicial: {x: 0, y: 0, z: 0, w: 0}
+  trigger: {fileID: 0}
+  collision: {fileID: 0}
+  clashEffect: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
     type: 3}
 --- !u!54 &8508249225935260432
 Rigidbody:
@@ -101,8 +90,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.40057865, y: 0.68770665, z: 1.0032158}
-  m_Center: {x: 0.22026134, y: 0.09378742, z: -0.33564574}
+  m_Size: {x: 0.727623, y: 0.5580242, z: 0.8140373}
+  m_Center: {x: 0.40008923, y: 0.07610172, z: -0.27235225}
 --- !u!65 &4930077417133241130
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,8 +103,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.40057865, y: 0.68770665, z: 1.0032158}
-  m_Center: {x: -0.2202613, y: 0.09378742, z: -0.33564574}
+  m_Size: {x: 0.727623, y: 0.5580242, z: 0.8140373}
+  m_Center: {x: -0.40008923, y: 0.07610172, z: -0.27235225}
 --- !u!65 &381058550224181682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,8 +116,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.037959397, y: 0.57410467, z: 1.0642798}
-  m_Center: {x: -0.0035901128, y: 0.012053569, z: -0.3294658}
+  m_Size: {x: 0.06895059, y: 0.4658445, z: 0.86358637}
+  m_Center: {x: -0.006521189, y: 0.009780602, z: -0.2673377}
 --- !u!82 &-6493826558706664983
 AudioSource:
   m_ObjectHideFlags: 0
@@ -237,7 +226,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.93
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6035396194692384211
 PrefabInstance:
@@ -254,17 +243,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 86a3f36905326b946af30a919accce2d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 55.053055
+      value: 100.000015
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86a3f36905326b946af30a919accce2d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 123.239555
+      value: 100.00004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86a3f36905326b946af30a919accce2d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 123.239555
+      value: 100.00004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86a3f36905326b946af30a919accce2d,
         type: 3}

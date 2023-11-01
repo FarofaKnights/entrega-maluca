@@ -24,7 +24,7 @@ public class Timer: MonoBehaviour {
         }
     }
 
-    public void Interromper() {
+    public void Parar() {
         callback = null;
         Destroy(gameObject);
     }

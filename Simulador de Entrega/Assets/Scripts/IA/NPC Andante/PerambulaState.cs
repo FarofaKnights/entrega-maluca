@@ -11,7 +11,7 @@ public class PerambulaState : IState {
 
     public void Enter() {}
 
-    public void Update() {
+    public void Execute(float deltaTime) {
         if(wnpc.GetTarget() != null){
             wnpc.agent.SetDestination(wnpc.GetTarget().position);
 

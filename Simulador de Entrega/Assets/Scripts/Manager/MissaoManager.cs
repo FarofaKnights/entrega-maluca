@@ -9,15 +9,14 @@ public class MissaoManager : MonoBehaviour {
     public Estado estado = Estado.SemMissao;
 
     public MissaoObject[] missoesIniciais;
+    List<Missao> missoesDisponiveis = new List<Missao>();
+    List<Missao> missoesConcluidas = new List<Missao>();
 
-    public List<Missao> missoesDisponiveis = new List<Missao>();
-    public List<Missao> missoesConcluidas = new List<Missao>();
-
-    public List<Carga> cargaAtual = new List<Carga>(); // Sistema temporario
     public List<Objetivo> objetivosAtivos = new List<Objetivo>();
 
     [System.NonSerialized]
     public Missao missaoAtual = null;
+
 
     void Awake () {
         instance = this;
@@ -32,6 +31,64 @@ public class MissaoManager : MonoBehaviour {
         CarregarMissaoInicial();
     }
 
+
+    #region Missão runtime
+    public void IniciarMissao(Missao missao) {
+        if (missaoAtual != null) {
+            missaoAtual.Parar();
+        }
+
+        Player.instance.ZerarCargas();
+        SetEstado(Estado.Entrega);
+        missaoAtual = missao;
+        missaoAtual.Iniciar();
+
+        if (OficinaController.instance != null)
+            OficinaController.instance.DesativarOficina();
+    }
+
+    public void PararMissao() {
+        if (missaoAtual == null) return;
+        missaoAtual.Parar();
+
+        Player.instance.ZerarCargas();
+
+        missaoAtual = null;
+        SetEstado(Estado.SemMissao);
+
+        if(Player.instance.GetState().GetType() == typeof(EncaixeState))
+            Player.instance.SetDirigindo();
+
+        if (OficinaController.instance != null)
+            OficinaController.instance.AtivarOficina();
+    }
+
+    public void HandleMissaoConcluida(Missao missao) {
+        if (!missao.IsConcluida()) return;
+
+        RemoverMissao(missao);
+        missaoAtual = null;
+
+        Player.instance.ZerarCargas();
+        SetEstado(Estado.SemMissao);
+
+        if (OficinaController.instance != null)
+            OficinaController.instance.AtivarOficina();
+
+        if (missao.info.missoesDesbloqueadas != null && missao.info.missoesDesbloqueadas.Length > 0) {
+            foreach (MissaoObject missaoObject in missao.info.missoesDesbloqueadas) {
+                AdicionarMissao(new Missao(missaoObject));
+            }
+        }
+    }
+
+    public void ReiniciarMissao(Missao missao) {
+        Objetivo obj = missao.GetObjetivoInicial();
+        obj.endereco.TeleportToHere();
+
+        obj.Concluir();
+    }
+
     public void SetEstado(Estado estado) {
         Estado estadoAntigo = this.estado;
 
@@ -42,16 +99,17 @@ public class MissaoManager : MonoBehaviour {
 
         if (mostrar != mostrarAntigo) {
             foreach (Missao missao in missoesDisponiveis) {
-                if (mostrar) missao.objetivoInicial.Iniciar();
-                else missao.objetivoInicial.Interromper();
+                missao.ShowObjetivoInicial(mostrar);
             }
         }
     }
     
+    #endregion
+
     #region Carregar Missoes
     void CarregarMissaoInicial() {
         foreach (MissaoObject missaoObject in missoesIniciais) {
-            Missao missao = missaoObject.Convert();
+            Missao missao = new Missao(missaoObject);
             AdicionarMissao(missao);
         }
     }
@@ -60,103 +118,26 @@ public class MissaoManager : MonoBehaviour {
         missoesDisponiveis.Add(missao);
 
         if (estado == Estado.SemMissao)
-            missao.objetivoInicial.Iniciar();
+            missao.ShowObjetivoInicial(true);
     }
 
     public void RemoverMissao(Missao missao) {
         missoesDisponiveis.Remove(missao);
 
-        if (missao.FoiFinalizada())
+        if (missao.IsConcluida())
             missoesConcluidas.Add(missao);
 
         if (estado == Estado.SemMissao)
-            missao.objetivoInicial.Interromper();
+            missao.ShowObjetivoInicial(false);
     }
-    #endregion
-
-    #region Missao Runtime
-    public void ComecarMissao(Missao missao) {
-        if (missaoAtual != null)
-            missaoAtual.Interromper();
-        
-        ZerarCargas();
-        
-        missaoAtual = missao;
-        SetEstado(Estado.Entrega);
-
-        missaoAtual.Iniciar();
-
-        if (OficinaController.instance != null)
-            OficinaController.instance.DesativarOficina();
+    
+    
+    public Missao[] GetMissoesDisponiveis() {
+        return missoesDisponiveis.ToArray();
     }
 
-    public void InterromperMissao() {
-        if (missaoAtual != null)
-            missaoAtual.Interromper();
-    }
-
-    public void HandleMissaoInterrompida() {
-        ZerarCargas();
-
-        missaoAtual = null;
-        SetEstado(Estado.SemMissao);
-
-        if (OficinaController.instance != null)
-            OficinaController.instance.AtivarOficina();
-    }
-
-    // Chamada pela propria missao ao ser finalizada
-    public void FinalizarMissao() {
-        RemoverMissao(missaoAtual);
-
-        ZerarCargas();
-
-        missaoAtual = null;
-        SetEstado(Estado.SemMissao);
-
-        if (OficinaController.instance != null)
-            OficinaController.instance.AtivarOficina();
-    }
-
-    public void ReiniciarMissao() {
-        missaoAtual.Resetar();
-    }
-
-    #endregion
-
-    #region Sistema De Carga
-
-    // Metodo chamado por um Objetivo que esta enviando uma carga
-    public void AdicionarCarga(List<Carga> cargas) {
-        cargaAtual.AddRange(cargas);
-
-        Cacamba.instance.IniciarTetris();
-    }
-
-    // Metodo chamado por um Objetivo que esta recebendo uma carga
-    public List<Carga> RemoverCarga(Endereco endereco) {
-        List<Carga> cargasRemovidas = new List<Carga>();
-
-        // Poderia ser substituido por um Where ?
-        for (int i = cargaAtual.Count-1; i >= 0; i--) {
-            Carga carga = cargaAtual[i];
-            if (carga.destinatario == endereco) {
-                carga.cx.Remover();
-                cargasRemovidas.Add(carga);
-                cargaAtual.Remove(carga);
-            }
-        }
-
-        return cargasRemovidas;
-    }
-
-    // Zera todas as cargas
-    public void ZerarCargas() {
-        foreach (Carga carga in cargaAtual) {
-            carga.cx.Remover();
-        }
-
-        cargaAtual = new List<Carga>();
+    public Missao[] GetMissoesConcluidas() {
+        return missoesConcluidas.ToArray();
     }
 
     #endregion

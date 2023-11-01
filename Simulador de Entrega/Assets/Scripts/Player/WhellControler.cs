@@ -31,7 +31,7 @@ public class WhellControler : MonoBehaviour
         CarRb.centerOfMass = centroDeMassa.localPosition;
     }
 
-    void FixedUpdate()
+    public void Execute(float deltaTime) // Chamado pelo dirigindoState, ou seja, não irá executar quando não estiver dirigindo.
      {
         velocidade = CarRb.velocity.magnitude * 3.6f;   
         if(velocidade < maxVelocidade)

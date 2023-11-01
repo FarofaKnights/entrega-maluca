@@ -7,12 +7,11 @@ public enum TipoCarga { Normal, Rara, Importante, Especial };
 [System.Serializable]
 public class Carga {
     public float peso, fragilidade;
-    public float _fragilidadeInicial;
+    float _fragilidadeInicial;
     public TipoCarga tipo;
     public Endereco destinatario;
-    public Caixas cx;
+    public Caixa cx;
     public GameObject prefab;
-    public bool dentroCarro;
 
     public string nome {
         get {
@@ -23,6 +22,10 @@ public class Carga {
     public float fragilidadeInicial {
         get {
             return _fragilidadeInicial;
+        }
+
+        set {
+            _fragilidadeInicial = value;
         }
     }
 
@@ -79,12 +82,10 @@ public class CargaEspecial: Carga {
     public CargaEspecial(float peso, float fragilidade, Endereco destinatario, GameObject prefab) : base(peso, fragilidade, destinatario, prefab, TipoCarga.Especial) { }
 
     public override float GetValor() {
-        if(!dentroCarro) return 0;
-        else return 40 + 10 * fragilidade;
+        return 40 + 10 * fragilidade;
     }
 
     public override float GetMaxValor() {
-        if(!dentroCarro) return 0;
-        else return 40 + 10; // * fragilidade; //?????????
+        return 40 + 10; // * fragilidade; //?????????
     }
 }

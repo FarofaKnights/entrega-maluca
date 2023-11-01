@@ -63,7 +63,7 @@ public class PauseUIController : MonoBehaviour {
     }
 
     public void HandleBotaoInterromperMissao() {
-        MissaoManager.instance.InterromperMissao();
+        MissaoManager.instance.PararMissao();
 
         UpdateBotaoInterromperMissao();
     }
@@ -73,7 +73,7 @@ public class PauseUIController : MonoBehaviour {
 
         GameObject missaoItem = Instantiate(missaoItemPrefab, missaoList.transform);
         missaoItem.GetComponent<RefMissao>().missao = missao;
-        missaoItem.GetComponentInChildren<TextMeshProUGUI>().text = missao.titulo;
+        missaoItem.GetComponentInChildren<TextMeshProUGUI>().text = missao.info.nome;
 
         Toggle toggle = missaoItem.GetComponent<Toggle>();
         toggle.group = toggleGroup;
@@ -83,8 +83,8 @@ public class PauseUIController : MonoBehaviour {
     }
 
     public void GenerateMissaoList() {
-        List<Missao> missoes = MissaoManager.instance.missoesDisponiveis;
-        List<Missao> missoesConcluidas = MissaoManager.instance.missoesConcluidas;
+        Missao[] missoes = MissaoManager.instance.GetMissoesDisponiveis();
+        Missao[] missoesConcluidas = MissaoManager.instance.GetMissoesConcluidas();
 
         // Limpa a lista
         foreach (Transform child in missaoList.transform) {
@@ -127,10 +127,10 @@ public class PauseUIController : MonoBehaviour {
         // missaoAtual.SetActive(missao == MissaoManager.instance.missaoAtual);
         // titulo.text = missao.titulo;
 
-        descricao.text = missao.descricao;
+        descricao.text = missao.info.descricao;
 
         string texto = "Os itens a serem entregues são:\n";
-        Carga[] cargas = missao.GetAllCargas();
+        Carga[] cargas = missao.info.GetAllCargas();
         foreach (Carga carga in cargas) {
             texto += " - " + carga.nome + "\n";
         }
@@ -153,7 +153,7 @@ public class PauseUIController : MonoBehaviour {
     public void HandleTentarNovamenteMissao(){
         if (mostrandoMissao == null) return;
 
-        mostrandoMissao.Resetar();
+        MissaoManager.instance.ReiniciarMissao(mostrandoMissao);
         UpdateBotaoInterromperMissao();
     }
 
