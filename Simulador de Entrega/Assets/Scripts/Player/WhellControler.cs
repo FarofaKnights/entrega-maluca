@@ -23,12 +23,15 @@ public class WhellControler : MonoBehaviour
     public WheelCollider traseiraEsqCollider;
 
     public Rigidbody CarRb;
-    public Transform centroDeMassa;  
+    public Transform centroDeMassa;
+
+    public static WhellControler instance;
 
      void Start()
     {
         CarRb = GetComponent<Rigidbody>();
         CarRb.centerOfMass = centroDeMassa.localPosition;
+        instance = this;
     }
 
     public void Execute(float deltaTime) // Chamado pelo dirigindoState, ou seja, não irá executar quando não estiver dirigindo.
