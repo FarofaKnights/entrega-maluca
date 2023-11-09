@@ -8,7 +8,7 @@ public class TelaVitoriaUI : MonoBehaviour {
     public GameObject relatorio;
 
     public GameObject tentarNovamenteBtn, concluirBtn;
-    public Text dinheiroFixoTxt, tempoTxt;
+    public CampoNomeValor dinheiroFixoCampo, tempoCampo, cabecalhoCampo;
     public GameObject holderCargas, cargasPrefab;
     public GameObject[] avaliacaoSelecionada;
 
@@ -29,16 +29,25 @@ public class TelaVitoriaUI : MonoBehaviour {
     }
 
     public void GerarRelatorio() {
-        dinheiroFixoTxt.text = status.dinheiro.ToString("C2");
-        tempoTxt.text = status.tempo.ToString("0.00") + "s";
+        StartCoroutine(GerarRelatorioCoroutine());
+    }
+
+    IEnumerator GerarRelatorioCoroutine() {
+        tempoCampo.HideValues();
+        dinheiroFixoCampo.HideValues();
+        cabecalhoCampo.HideValues();
 
         foreach (Transform child in holderCargas.transform) {
             Destroy(child.gameObject);
         }
+        
+        yield return StartCoroutine(tempoCampo.ShowValueAnimation(0, status.tempo));
+        yield return StartCoroutine(dinheiroFixoCampo.ShowValueAnimation(0, status.dinheiro));
+        yield return StartCoroutine(cabecalhoCampo.ScaleDownAnimation());
 
         foreach (StatusCarga statusCarga in status.cargas) {
             GameObject go = Instantiate(cargasPrefab, holderCargas.transform);
-            go.GetComponent<CargaRelatorioUI>().AtualizarValores(statusCarga);
+            yield return StartCoroutine(go.GetComponent<CargaRelatorioUI>().ShowValueAnimation(statusCarga));
         }
 
         concluirBtn.SetActive(status.avaliacao > 1); // Caso avaliação menor que 1, não mostra botão de concluir

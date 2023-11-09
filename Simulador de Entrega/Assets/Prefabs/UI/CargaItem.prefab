@@ -356,6 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330022ece93302442980961ef33d5e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeTxt: {fileID: 222248215169439156}
-  porcentagemTxt: {fileID: 222248214202895963}
+  nome: {fileID: 222248215169439156}
+  valor: {fileID: 222248214202895963}
+  info: {fileID: 11400000, guid: b3189fc649a8aec4891774add84cd4c0, type: 2}
+  tipoFormato: 1
   valorTxt: {fileID: 592941904408205749}
