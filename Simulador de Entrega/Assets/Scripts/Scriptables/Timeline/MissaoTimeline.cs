@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Missao Timeline", menuName = "Missao Timeline")]
+[CreateAssetMenu(fileName = "Missao Timeline", menuName = "Entrega Maluca/Missao Timeline")]
 public class MissaoTimeline : MissaoObject {
     public List<TimelineElement> timeline;
     

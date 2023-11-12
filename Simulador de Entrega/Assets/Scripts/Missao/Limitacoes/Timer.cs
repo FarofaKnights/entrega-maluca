@@ -11,7 +11,7 @@ public class Timer: MonoBehaviour {
 
     void Start() {
         tempoRestante = tempo;
-        UIController.HUD.MostrarTimer(true);
+        UIController.HUD.MostrarTimer(this);
     }
 
     void FixedUpdate() {
@@ -30,7 +30,7 @@ public class Timer: MonoBehaviour {
     }
 
     void OnDestroy() {
-        UIController.HUD.MostrarTimer(false);
+        UIController.HUD.EsconderTimer(this);
         if (callback != null) {
             callback();
         }

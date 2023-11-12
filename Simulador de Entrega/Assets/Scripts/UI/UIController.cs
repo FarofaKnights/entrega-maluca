@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour {
     public static EncaixeUIController encaixe;
     public static PauseUIController pause;
     public static OficinaUI oficina;
+    public static DiretrizUI diretriz;
 
     void Awake() {
         instance = this;
@@ -16,6 +17,7 @@ public class UIController : MonoBehaviour {
         encaixe = transform.GetComponentInChildren<EncaixeUIController>(true);
         pause = transform.GetComponentInChildren<PauseUIController>(true);
         oficina = transform.GetComponentInChildren<OficinaUI>(true);
+        diretriz = transform.GetComponentInChildren<DiretrizUI>(true);
     }
     
 }

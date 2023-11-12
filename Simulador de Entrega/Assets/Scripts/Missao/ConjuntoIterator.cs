@@ -16,7 +16,7 @@ public class ConjuntoIterator: ObjetivoIterator {
 
     public ConjuntoIterator(ConjuntoObject conjunto) {
         this.objetivos = new Objetivo[conjunto.objetivos.Length];
-        this.diretriz = conjunto.diretriz.Convert();
+        this.diretriz = conjunto.diretriz.Convert(1);
 
         for (int i = 0; i < objetivos.Length; i++) {
             objetivos[i] = conjunto.objetivos[i].Convert();

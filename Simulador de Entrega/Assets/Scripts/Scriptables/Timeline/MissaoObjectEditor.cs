@@ -61,6 +61,8 @@ public class MissaoObjectEditor : Editor {
         EditorGUILayout.LabelField("Descrição:");
         missaoObject.descricao = EditorGUILayout.TextArea(missaoObject.descricao, textAreaStyle, GUILayout.Height(60));
 
+        missaoObject.personagem = EditorGUILayout.ObjectField("Personagem:", missaoObject.personagem, typeof(PersonagemObject), false) as PersonagemObject;
+
         GUILayout.Space(padding);
 
         EditorGUILayout.LabelField("Timeline:");

@@ -41,6 +41,7 @@ public class MissaoManager : MonoBehaviour {
         Player.instance.ZerarCargas();
         SetEstado(Estado.Entrega);
         missaoAtual = missao;
+        UIController.diretriz.SetCurrentMissao(missaoAtual);
         missaoAtual.Iniciar();
 
         if (OficinaController.instance != null)
@@ -52,6 +53,7 @@ public class MissaoManager : MonoBehaviour {
         missaoAtual.Parar();
 
         Player.instance.ZerarCargas();
+        UIController.diretriz.Close(missaoAtual);
 
         missaoAtual = null;
         SetEstado(Estado.SemMissao);
@@ -67,6 +69,7 @@ public class MissaoManager : MonoBehaviour {
         if (!missao.IsConcluida()) return;
 
         RemoverMissao(missao);
+        UIController.diretriz.Close(missao);
         missaoAtual = null;
 
         Player.instance.ZerarCargas();
@@ -83,6 +86,8 @@ public class MissaoManager : MonoBehaviour {
     }
 
     public void ReiniciarMissao(Missao missao) {
+        PararMissao();
+
         Objetivo obj = missao.GetObjetivoInicial();
         obj.endereco.TeleportToHere();
 
@@ -124,7 +129,7 @@ public class MissaoManager : MonoBehaviour {
     public void RemoverMissao(Missao missao) {
         missoesDisponiveis.Remove(missao);
 
-        if (missao.IsConcluida())
+        if (missao.IsConcluida() && !missoesConcluidas.Contains(missao))
             missoesConcluidas.Add(missao);
 
         if (estado == Estado.SemMissao)

@@ -6,10 +6,11 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(fileName = "Missao", menuName = "Missao"), System.Serializable]
+[CreateAssetMenu(fileName = "Missao", menuName = "Entrega Maluca/Missao"), System.Serializable]
 public class MissaoObject : ScriptableObject {
     public string nome;
     public string descricao;
+    public PersonagemObject personagem;
 
     public ObjetivoObject objetivoInicial;
 

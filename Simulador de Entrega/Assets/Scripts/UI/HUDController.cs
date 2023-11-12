@@ -19,6 +19,7 @@ public class HUDController : MonoBehaviour {
     public GameObject missaoPanel;
     public Objetivo objetivo;
     Missao missao;
+    Timer currentTimer = null;
     
 
     public Text dinheiro;
@@ -75,13 +76,13 @@ public class HUDController : MonoBehaviour {
     // Handle do clique no botão "Fazer Ação"
     [SerializeField]
     void HandleBotaoAcao() {
-        objetivo.Concluir();
+        if (objetivo != null) objetivo.Concluir();
         MostrarBotaoAcao(null, false);
     }
 
     // Handle do clique no botão "Iniciar Missão"
     public void HandleBotaoIniciarMissao() {
-        objetivo.Concluir();
+        if (objetivo != null) objetivo.Concluir();
         MostrarMissaoInfo(null, false);
     }
 
@@ -157,8 +158,14 @@ public class HUDController : MonoBehaviour {
         dinheiro.text = Player.instance.GetDinheiro().ToString("C2");
     }
 
-    public void MostrarTimer(bool mostrar) {
-        timer.gameObject.SetActive(mostrar);
+    public void MostrarTimer(Timer timer) {
+        currentTimer = timer;
+        this.timer.gameObject.SetActive(true);
+    }
+
+    public void EsconderTimer(Timer timer) {
+        if (currentTimer != timer) return;
+        this.timer.gameObject.SetActive(false);
     }
 
     public void AtualizarTimer(float tempo) {

@@ -5,23 +5,23 @@ using UnityEngine;
 [System.Serializable]
 public class Diretriz: Iniciavel {
     public string texto;
-    public Iniciavel pai;
     public Limitacao[] limitacoes;
+    int nivel = 2;
 
-    public Diretriz(string texto, Limitacao[] limitacoes) {
+    public Diretriz(string texto, Limitacao[] limitacoes, int nivel = 2) {
         this.texto = texto;
         this.limitacoes = limitacoes;
-        this.pai = null;
+        this.nivel = nivel;
     }
 
-    public Diretriz(string texto) {
+    public Diretriz(string texto, int nivel = 2) {
         this.texto = texto;
-        this.pai = null;
+        this.nivel = nivel;
     }
     
     public void Iniciar() {
         if (this.texto != null && this.texto != "")
-            UIController.HUD.AdicionarDiretriz(this);
+            UIController.diretriz.AddDiretriz(this, nivel);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
@@ -37,7 +37,7 @@ public class Diretriz: Iniciavel {
 
     public void Parar() {
         if (this.texto != null && this.texto != "")
-            UIController.HUD.RemoverDiretriz(this);
+            UIController.diretriz.ConcluirDiretriz(this);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
@@ -51,5 +51,9 @@ public class Diretriz: Iniciavel {
         
         Parar();
         MissaoManager.instance.PararMissao();
+    }
+
+    public int GetNivel() {
+        return nivel;
     }
 }

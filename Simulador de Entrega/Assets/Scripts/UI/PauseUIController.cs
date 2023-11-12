@@ -9,7 +9,6 @@ public class PauseUIController : MonoBehaviour {
     public GameObject missaoPanel, menuPanel, opcoesPanel;
     public GameObject missaoDetails, missaoList, missaoItemPrefab;
 
-    public GameObject interromperMissaoBtn;
     public GameObject missaoJaFoiConcluida, missaoAtual;
 
     public AudioMixer audioMixer;
@@ -40,8 +39,6 @@ public class PauseUIController : MonoBehaviour {
         missaoPanel.SetActive(false);
         opcoesPanel.SetActive(false);
         menuPanel.SetActive(true);
-        
-        UpdateBotaoInterromperMissao();
     }
 
     public void OpenOpcoes() {
@@ -52,20 +49,14 @@ public class PauseUIController : MonoBehaviour {
         UpdateSliders();
     }
 
-    void UpdateBotaoInterromperMissao() {
-        // Se jogador estiver em uma missão, mostra o botão de interromper
-        interromperMissaoBtn.SetActive(MissaoManager.instance.missaoAtual != null);
-
-        // Por algum motivo a unity não atualiza o layout automaticamente nesse caso, esta é a solução que encontrei
-        Canvas.ForceUpdateCanvases();
-        interromperMissaoBtn.transform.parent.GetComponent<VerticalLayoutGroup>().enabled = false;
-        interromperMissaoBtn.transform.parent.GetComponent<VerticalLayoutGroup>().enabled = true;
-    }
 
     public void HandleBotaoInterromperMissao() {
         MissaoManager.instance.PararMissao();
+    }
 
-        UpdateBotaoInterromperMissao();
+    public void HandleBotaoReiniciarMissao() {
+        GameManager.instance.Despausar();
+        MissaoManager.instance.ReiniciarMissao(MissaoManager.instance.missaoAtual);
     }
 
     GameObject GenerateMissaoItem(Missao missao) {
@@ -154,7 +145,6 @@ public class PauseUIController : MonoBehaviour {
         if (mostrandoMissao == null) return;
 
         MissaoManager.instance.ReiniciarMissao(mostrandoMissao);
-        UpdateBotaoInterromperMissao();
     }
 
     public void SetVolumeEfeito(float volume) {

@@ -20,16 +20,18 @@ public class Missao: Iniciavel {
 
     public void Iniciar() {
         if (iterator != null) return;
+        cargasEntregues.Clear();
 
         iterator = new MissaoIterator(info.conjuntos);
         iterator.Next();
-
+        
         concluida = false;
     }
 
     public void Parar() {
         iterator.Reset();
         iterator = null;
+        cargasEntregues.Clear();
     }
 
     public void Next() {
@@ -50,6 +52,7 @@ public class Missao: Iniciavel {
         concluida = true;
         CalculaStatus();
         MissaoManager.instance.HandleMissaoConcluida(this);
+        cargasEntregues.Clear();
     }
 
     void CalculaStatus() {

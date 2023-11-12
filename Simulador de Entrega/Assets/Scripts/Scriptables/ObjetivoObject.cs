@@ -24,11 +24,6 @@ public class ObjetivoObject {
         }
 
         Objetivo objetivo = new Objetivo(enderecoObj, cargasList, permiteReceber, diretrizObj);
-
-        if (diretrizObj != null) {
-            diretrizObj.pai = objetivo;
-        }
-        
         return objetivo;
     }
 }

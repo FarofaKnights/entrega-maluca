@@ -13,12 +13,14 @@ public class MissaoIterator: ObjetivoIterator {
     public MissaoIterator(ConjuntoObject[] conjuntos) {
         this.conjuntos = conjuntos;
         iterator = new ConjuntoIterator(conjuntos[0]);
+        iterator.diretriz?.Iniciar();
     }
 
     public Objetivo[] Next() {
         Objetivo[] objetivos = iterator.Next();
 
         if (objetivos == null) {
+            iterator.diretriz?.Parar();
             indice++;
 
             if (indice >= conjuntos.Length) {
@@ -26,6 +28,7 @@ public class MissaoIterator: ObjetivoIterator {
             }
 
             iterator = new ConjuntoIterator(conjuntos[indice]);
+            iterator.diretriz?.Iniciar();
             objetivos = iterator.Next();
         }
             
