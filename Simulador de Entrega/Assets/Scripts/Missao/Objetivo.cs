@@ -9,7 +9,7 @@ public class Objetivo: Iniciavel {
     public bool permiteReceber = false;
     public Diretriz diretriz = null;
 
-    protected bool ativo = false;
+    protected bool ativo = false, concluido = false;
 
 
     public Objetivo(Endereco endereco) {
@@ -36,6 +36,7 @@ public class Objetivo: Iniciavel {
         if (ativo) return;
 
         ativo = true;
+        concluido = false;
         endereco.DefinirComoObjetivo(this);
         MissaoManager.instance.AddObjetivoAtivo(this);
 
@@ -45,6 +46,7 @@ public class Objetivo: Iniciavel {
     public virtual void Concluir() {
         if (!ativo) return;
         ativo = false;
+        concluido = true;
 
         if (permiteReceber){
             foreach (Carga carga in Player.instance.RemoverCargaDeEndereco(endereco)) {
@@ -68,11 +70,15 @@ public class Objetivo: Iniciavel {
         if (!ativo) return;
 
         ativo = false;
+        concluido = false;
         endereco.RemoverObjetivo();
         MissaoManager.instance.RemoveObjetivoAtivo(this);
 
         if (diretriz != null) diretriz.Parar();
     }
+
+    public bool IsConcluido() { return concluido; }
+    public bool IsIniciada() { return ativo; }
 }
 
 public class ObjetivoInicial : Objetivo {
@@ -99,6 +105,7 @@ public class ObjetivoInicial : Objetivo {
     public override void Concluir() {
         MissaoManager.instance.RemoveObjetivoAtivo(this);
         ativo = false;
+        concluido = true;
         endereco.RemoverObjetivo();
 
         MissaoManager.instance.IniciarMissao(missao);

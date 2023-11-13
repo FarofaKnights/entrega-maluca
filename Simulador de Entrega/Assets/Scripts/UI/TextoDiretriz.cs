@@ -8,7 +8,7 @@ public class TextoDiretriz : MonoBehaviour {
 
     public Text text {
         get {
-            if (_text == null) _text = GetComponent<Text>();
+            if (_text == null) _text = GetComponentsInChildren<Text>()[0];
             return _text;
         }
     }
@@ -19,7 +19,7 @@ public class TextoDiretriz : MonoBehaviour {
     public Color destaqueColor;
 
     public bool riscado = false, destaque = true;
-    public GameObject risco;
+    public GameObject risco, tab;
 
     void Start() {
         SetRiscado(riscado);
@@ -33,7 +33,11 @@ public class TextoDiretriz : MonoBehaviour {
         else info = UIController.diretriz.infoNivel2;
 
         text.fontSize = info.tamanhoFonte;
-        // text.rectTransform.sizeDelta = new Vector2(info.tamanhoTexto, text.rectTransform.sizeDelta.y);
+        if (info.tamanhoTab == 0) tab.SetActive(false);
+        else {
+            tab.SetActive(true);
+            tab.GetComponent<RectTransform>().sizeDelta = new Vector2(info.tamanhoTab, 1);
+        }
     }
 
     public void SetRiscado(bool riscado) {

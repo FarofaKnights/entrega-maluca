@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 [System.Serializable]
 public class TextoDiretrizInfo {
-    public float tamanhoTexto;
+    public float tamanhoTab;
     public int tamanhoFonte;
 }
 
