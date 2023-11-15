@@ -9,18 +9,17 @@ public class HUDController : MonoBehaviour {
 
     public TelaVitoriaUI vitoria;
 
-    // Diretriz
-    public GameObject diretrizPanel;
-    public Text textoDiretriz;
-    List<Diretriz> diretrizes = new List<Diretriz>();
-
     // Missão
     public Button botaoAcao, botaoReiniciarTetris;
     public GameObject missaoPanel;
     public Objetivo objetivo;
     Missao missao;
     Timer currentTimer = null;
-    
+
+    public TextMeshProUGUI tituloMissao;
+    public Text descricaoMissao;
+    public Image imagemMissao;
+
 
     public Text dinheiro;
     public TextMeshProUGUI timer;
@@ -30,8 +29,6 @@ public class HUDController : MonoBehaviour {
     }
 
     void Start() {
-        diretrizPanel.SetActive(false);
-
         botaoAcao.gameObject.SetActive(false);
         botaoAcao.onClick.AddListener(delegate { HandleBotaoAcao(); });
 
@@ -63,11 +60,8 @@ public class HUDController : MonoBehaviour {
         if (mostrar) {
             this.objetivo = objetivoInicial;
 
-            Text titulo = missaoPanel.transform.Find("Titulo").GetComponent<Text>();
-            Text descricao = missaoPanel.transform.Find("Descricao").GetComponent<Text>();
-
-            titulo.text = objetivoInicial.missao.info.nome;
-            descricao.text = objetivoInicial.missao.info.descricao;
+            tituloMissao.text = objetivoInicial.missao.info.nome;
+            descricaoMissao.text = objetivoInicial.missao.info.descricao;
         } else {
             this.objetivo = null;
         }
@@ -102,41 +96,6 @@ public class HUDController : MonoBehaviour {
         Time.timeScale = 1;
 
         MissaoManager.instance.ReiniciarMissao(missao);
-    }
-
-    #endregion
-
-    #region Diretriz
-
-    public void AdicionarDiretriz(Diretriz diretriz) {
-        diretrizes.Add(diretriz);
-        diretrizPanel.SetActive(true);
-
-        AtualizaTextoDiretrizes();
-    }
-
-    public void RemoverDiretriz(Diretriz diretriz) {
-        diretrizes.Remove(diretriz);
-
-        if (diretrizes.Count == 0)
-            diretrizPanel.SetActive(false);
-        
-        AtualizaTextoDiretrizes();
-    }
-
-    void AtualizaTextoDiretrizes() {
-        string text = "";
-        int i = 0;
-
-        foreach (Diretriz d in diretrizes) {
-            text += d.texto;
-
-            if (i < diretrizes.Count - 1)
-                text += "\n";
-            
-            i++;
-        }
-        textoDiretriz.text = text;
     }
 
     #endregion
