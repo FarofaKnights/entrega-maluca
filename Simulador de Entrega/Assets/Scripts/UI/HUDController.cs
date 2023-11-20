@@ -119,12 +119,12 @@ public class HUDController : MonoBehaviour {
 
     public void MostrarTimer(Timer timer) {
         currentTimer = timer;
-        this.timer.gameObject.SetActive(true);
+        this.timer.transform.parent.gameObject.SetActive(true);
     }
 
     public void EsconderTimer(Timer timer) {
         if (currentTimer != timer) return;
-        this.timer.gameObject.SetActive(false);
+        this.timer.transform.parent.gameObject.SetActive(false);
     }
 
     public void AtualizarTimer(float tempo) {

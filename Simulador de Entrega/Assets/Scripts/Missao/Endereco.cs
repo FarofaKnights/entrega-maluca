@@ -8,6 +8,7 @@ public class Endereco : MonoBehaviour {
     public static Dictionary<string, Endereco> ListaEnderecos = new Dictionary<string, Endereco>();
 
     public GameObject posicaoInicial;
+    public GameObject indicadorBotao;
 
     public string nome;
     // public GameObject colisor;
@@ -63,6 +64,8 @@ public class Endereco : MonoBehaviour {
     public void HandleTrigger(bool entrou) {
         if (objetivo != null) {
             objetivo.HandleObjetivoTrigger(entrou);
+            if (objetivo is ObjetivoInicial) indicadorBotao.SetActive(false);
+            else indicadorBotao.SetActive(entrou);
         }
 
         if (entrou) {

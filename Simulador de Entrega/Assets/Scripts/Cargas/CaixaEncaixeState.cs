@@ -35,7 +35,9 @@ public class CaixaEncaixeState : IState {
     public void Execute(float dt) {
         // ChecarLimites();
     }
-    public void Exit() {}
+    public void Exit() {
+        Deselecionar();
+    }
 
     public void ChecarLimites(){
         // O maior problema atualmente com esse método é que as caixas não são colocadas em nenhum container, então a posição local está bem diferente do esperado
