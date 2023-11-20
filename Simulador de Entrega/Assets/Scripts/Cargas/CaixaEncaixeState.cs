@@ -10,6 +10,9 @@ public class CaixaEncaixeState : IState {
     public GameObject gameObject => caixa.gameObject;
     public Transform transform => caixa.transform;
 
+    MeshRenderer renderer;
+    Material outline;
+
     public CaixaEncaixeState(Caixa caixa, Transform spawnPoint) {
         this.caixa = caixa;
         this.spawnPoint = spawnPoint;
@@ -17,6 +20,16 @@ public class CaixaEncaixeState : IState {
 
     public void Enter() {
         rb = caixa.GetComponent<Rigidbody>();
+
+        renderer = gameObject.transform.GetChild(0).GetComponent<MeshRenderer>();
+
+        for (int i = 0; i < renderer.materials.Length; i++)
+        {
+            if (renderer.materials[i].name == "Outline (Instance)")
+            {
+                outline = renderer.materials[i];
+            }
+        }
     }
 
     public void Execute(float dt) {
@@ -36,9 +49,15 @@ public class CaixaEncaixeState : IState {
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+        outline.SetColor("_OutlineColor", Color.yellow);
     }
 
     public void Deselecionar() {
+        outline.SetColor("_OutlineColor", Color.black);
+        Soltar();
+    }
+
+    public void Soltar(){
         rb.useGravity = true;
         rb.constraints = RigidbodyConstraints.None;
     }

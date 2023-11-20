@@ -154,7 +154,6 @@ public class EncaixeState : IPlayerState {
         currentSelected = i;
         caixaAtual.Selecionar();
         subiu = false;
-        SubirCaixa();
 
         player.gizmos.transform.position = caixaAtual.transform.position;
     }
@@ -163,7 +162,7 @@ public class EncaixeState : IPlayerState {
         if (caixaAtual == null) return;
 
         if (subiu) {
-            caixaAtual.Deselecionar();
+            caixaAtual.Soltar();
             subiu = false;
             return;
         }
