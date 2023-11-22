@@ -14,12 +14,16 @@ public class DiretrizUI : MonoBehaviour {
     public Image portrait;
     public GameObject diretrizItemPrefab;
     public GameObject diretrizItemHolder;
+    public GameObject btnsHolder;
 
     protected TextoDiretriz itemConjunto;
     protected List<TextoDiretriz> itensObjetivo = new List<TextoDiretriz>();
 
     public TextoDiretrizInfo infoNivel1, infoNivel2;
     Missao missaoAtual;
+
+    public Animator animator;
+    bool closing = false;
 
     public void SetCurrentMissao(Missao missao) {
         Clear();
@@ -32,9 +36,6 @@ public class DiretrizUI : MonoBehaviour {
             portrait.sprite = null;
             Debug.LogError("Missão atual sem personagem!?!?!?!?!?");
         }
-
-
-        gameObject.SetActive(true);
     }
 
     void Clear() {
@@ -54,13 +55,14 @@ public class DiretrizUI : MonoBehaviour {
         
         missaoAtual = null;
         Clear();
-        gameObject.SetActive(false);
+        Hide();
     }
 
     public void AddDiretriz(Diretriz diretriz, int nivel) {
         GameObject diretrizItem = Instantiate(diretrizItemPrefab, transform);
         TextoDiretriz texto = diretrizItem.GetComponent<TextoDiretriz>();
         texto.SetDiretriz(diretriz);
+
 
         // Se conjunto
         if (nivel == 1) {
@@ -75,6 +77,8 @@ public class DiretrizUI : MonoBehaviour {
         }
 
         diretrizItem.transform.SetParent(diretrizItemHolder.transform);
+
+        ShowPopup(diretriz);
     }
 
     public void ConcluirDiretriz(Diretriz diretriz) {
@@ -87,6 +91,58 @@ public class DiretrizUI : MonoBehaviour {
                     break;
                 }
             }
+        }
+    }
+
+    public void Show() {
+        if (missaoAtual == null) return;
+
+        foreach (Transform child in diretrizItemHolder.transform) {
+            child.gameObject.SetActive(true);
+        }
+
+        btnsHolder.SetActive(true);
+        gameObject.SetActive(true);
+        animator.SetTrigger("QuickShow");
+        closing = false;
+    }
+
+    public void Hide() {
+        if (!gameObject.activeSelf) return;
+        animator.SetTrigger("QuickHide");
+        gameObject.SetActive(false);
+    }
+
+    public void ShowPopup(Diretriz diretriz) {
+        if (gameObject.activeSelf) return;
+
+        gameObject.SetActive(true);
+        btnsHolder.SetActive(false);
+
+        foreach (Transform child in diretrizItemHolder.transform) {
+            TextoDiretriz texto = child.GetComponent<TextoDiretriz>();
+            if (texto.GetDiretriz() == diretriz || texto == itemConjunto) {
+                texto.gameObject.SetActive(true);
+            } else {
+                texto.gameObject.SetActive(false);
+            }
+        }
+
+        animator.SetTrigger("Show");
+        StartCoroutine(HidePopup());
+        closing = false;
+    }
+
+    IEnumerator HidePopup() {
+        yield return new WaitForSeconds(2f);
+        animator.SetTrigger("Hide");
+        closing = true;
+    }
+
+    public void HandleClosing() {
+        if (closing) {
+            closing = false;
+            gameObject.SetActive(false);
         }
     }
 }

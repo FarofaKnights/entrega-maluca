@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Animations {
+    public static bool usingScale = true;
+
     public static IEnumerator Animation(float duration, Action<float> action) {
         float time = 0;
         while (time < duration) {
@@ -15,7 +17,17 @@ public class Animations {
         action(1);
     }
 
-    public static IEnumerator UIScaleDown(GameObject go, float duration, Vector3 startScale, Vector3 endScale) {
+    public static IEnumerator UnscaledAnimation(float duration, Action<float> action) {
+        float time = 0;
+        while (time < duration) {
+            action(time / duration);
+            time += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        action(1);
+    }
+
+    public static IEnumerator UIScaleDown(GameObject go, float duration, Vector3 startScale, Vector3 endScale, bool usingScale = true) {
         CanvasGroup canvasGroup = go.GetComponent<CanvasGroup>();
         
         Action<float> action = (float t) => {
@@ -29,10 +41,11 @@ public class Animations {
             };
         }
 
-        return Animation(duration, action);
+        if (usingScale) return Animation(duration, action);
+        else return UnscaledAnimation(duration, action);
     }
 
-    public static IEnumerator UIScaleDown(GameObject go, float duration, Vector3 startScale) {
-        return UIScaleDown(go, duration, startScale, Vector3.one);
+    public static IEnumerator UIScaleDown(GameObject go, float duration, Vector3 startScale, bool usingScale = true) {
+        return UIScaleDown(go, duration, startScale, Vector3.one, usingScale);
     }
 }
