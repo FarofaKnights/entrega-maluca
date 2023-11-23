@@ -28,6 +28,7 @@ public class PauseUIController : MonoBehaviour {
     }
 
     public void OpenMissao() {
+        UIController.diretriz.Hide();
         missaoPanel.SetActive(true);
         opcoesPanel.SetActive(false);
         menuPanel.SetActive(false);
@@ -36,12 +37,14 @@ public class PauseUIController : MonoBehaviour {
     }
 
     public void OpenMenu() {
+        UIController.diretriz.Show();
         missaoPanel.SetActive(false);
         opcoesPanel.SetActive(false);
         menuPanel.SetActive(true);
     }
 
     public void OpenOpcoes() {
+        UIController.diretriz.Hide();
         missaoPanel.SetActive(false);
         opcoesPanel.SetActive(true);
         menuPanel.SetActive(false);
@@ -188,5 +191,6 @@ public class PauseUIController : MonoBehaviour {
     public void Esconder() {
         Tela tela = GetComponent<Tela>();
         tela.Esconder();
+        UIController.diretriz.Hide();
     }
 }

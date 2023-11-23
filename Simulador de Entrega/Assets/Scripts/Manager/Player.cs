@@ -38,6 +38,18 @@ public class Player : MonoBehaviour {
         onStateChange?.Invoke(estadoAtual);
     }
 
+    public PlayerData GetPlayerData()
+    {
+        PlayerData pd = new PlayerData(transform.position, transform.rotation.eulerAngles, dinheiro);
+        return pd;
+    }
+
+    public void SetPlayerData(PlayerData p)
+    {
+        transform.position = p.position;
+        transform.rotation = Quaternion.Euler(p.rotation);
+        dinheiro = p.dinheiro;
+    }
     public IState GetState() {
         return estadoAtual;
     }

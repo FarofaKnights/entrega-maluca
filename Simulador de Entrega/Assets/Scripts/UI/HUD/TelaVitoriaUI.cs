@@ -20,6 +20,7 @@ public class TelaVitoriaUI : MonoBehaviour {
         this.status = status;
         relatorio.SetActive(true);
         GerarRelatorio();
+        Time.timeScale = 0;
     }
 
     IEnumerator EsconderTextoMissaoConcluida() {
@@ -64,12 +65,14 @@ public class TelaVitoriaUI : MonoBehaviour {
     public void HandleCloseRelatorio() {
         relatorio.SetActive(false);
         textoMissaoConcluida.SetActive(true);
+        Time.timeScale = 1;
 
         // Espera 2 segundos e esconde o texto
         StartCoroutine(EsconderTextoMissaoConcluida());
     }
 
     public void HandleReiniciar() {
+        Time.timeScale = 1;
         MissaoManager.instance.ReiniciarMissao(missaoVitoriosa);
         relatorio.SetActive(false);
         gameObject.SetActive(false);

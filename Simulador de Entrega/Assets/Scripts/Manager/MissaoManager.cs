@@ -31,7 +31,27 @@ public class MissaoManager : MonoBehaviour {
         CarregarMissaoInicial();
     }
 
+    public MissaoData GetMissaoData()
+    {
+        MissaoData md = new MissaoData(missoesDisponiveis, missoesConcluidas, missaoAtual);
+        return md;
+    }
 
+    public void SetMissaoData(MissaoData md)
+    {
+        foreach (Missao m in md.missoesDisponiveis)
+        {
+            AdicionarMissao(m);
+        }
+        foreach (Missao m in md.missoesConcluidas)
+        {
+            RemoverMissao(m);
+        }
+        if(md.missaoAtual != null)
+        {
+            missaoAtual = md.missaoAtual;
+        }
+    }
     #region Missão runtime
     public void IniciarMissao(Missao missao) {
         if (missaoAtual != null) {
@@ -161,6 +181,7 @@ public class MissaoManager : MonoBehaviour {
 
         objetivosAtivos.Remove(objetivo);
     }
+
 
     #endregion
 }

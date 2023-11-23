@@ -93,7 +93,7 @@ public class CampoNomeValor : MonoBehaviour {
 
         ShowValues();
 
-        return Animations.UIScaleDown(gameObject, duracao, scaleInicial, scaleFinal);
+        return Animations.UIScaleDown(gameObject, duracao, scaleInicial, scaleFinal, false);
     }
 
     public IEnumerator SetAnimatedValorCoroutine(float valorInicial, float valorFinal) {
@@ -102,7 +102,7 @@ public class CampoNomeValor : MonoBehaviour {
         float tempo = 0;
 
         while (tempo < duracao) {
-            tempo += Time.deltaTime;
+            tempo += Time.unscaledDeltaTime;
             float valor = Mathf.Lerp(valorInicial, valorFinal, tempo / duracao);
             if (format == null) SetValor(valor.ToString());
             else SetValor(format.Formatar(valor));
@@ -118,14 +118,14 @@ public class CampoNomeValor : MonoBehaviour {
         Vector3 scaleFinal = scaleInicial * info.scaleMultJump;
 
         while (tempo < duracao) {
-            tempo += Time.deltaTime;
+            tempo += Time.unscaledDeltaTime;
             valor.transform.localScale = Vector3.Lerp(scaleInicial, scaleFinal, tempo / duracao);
             yield return null;
         }
 
         tempo = 0;
         while (tempo < duracao) {
-            tempo += Time.deltaTime;
+            tempo += Time.unscaledDeltaTime;
             valor.transform.localScale = Vector3.Lerp(scaleFinal, scaleInicial, tempo / duracao);
             yield return null;
         }
