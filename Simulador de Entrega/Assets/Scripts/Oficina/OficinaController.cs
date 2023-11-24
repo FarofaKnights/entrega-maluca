@@ -14,6 +14,7 @@ public class OficinaController : MonoBehaviour {
     Camera cameraOficina;
 
     public List<IUpgrade> upgradesComprados = new List<IUpgrade>();
+    public List<IUpgrade> upgrades = new List<IUpgrade>();
 
     // Solução temporária, talvez teremos que ver uma reestruturação geral do código (GameManager e Player)
     Dictionary<Renderer, Material[]> materiaisVeiculo = new Dictionary<Renderer, Material[]>();
@@ -28,6 +29,38 @@ public class OficinaController : MonoBehaviour {
     public void AtivarOficina() {
         oficinaDisponivel = true;
         trigger.SetActive(true);
+    }
+
+    public UpgradeData GetUpgradeData()
+    {
+        string[] nomes = new string[upgradesComprados.Count];
+        int i = 0;
+        foreach (IUpgrade up in upgradesComprados)
+        {
+            nomes[i] = up.name;
+            i++;
+        }
+        UpgradeData ud = new UpgradeData(nomes);
+        return ud;
+    }
+
+    public void SetUpgradeData(UpgradeData up)
+    {
+        foreach (string names in up.compradosNomes)
+        {
+            for(int i = 0; i < upgrades.Count; i++)
+            {
+                if(upgrades[i].name == names)
+                {
+                    upgrades[i].comprado = true;
+                    upgradesComprados.Add(upgrades[i]);
+                    if(upgrades[i].ativo == true)
+                    {
+                        upgrades[i].Ativar();
+                    }
+                }
+            }
+        }
     }
 
     void Start() {

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MissaoData
 {
-    public List<Missao> missoesConcluidas;
-    public List<Missao> missoesDisponiveis;
-    public Missao missaoAtual;
-    public MissaoData (List<Missao> mc, List<Missao> md, Missao ma)
+    public string[] missoesConcluidas;
+    public string[] missoesDisponiveis;
+    public float[] concluValores;
+    public MissaoData (string[] mc, string[] md, float [] cv)
     {
         this.missoesConcluidas = mc;
         this.missoesDisponiveis = md;
-        this.missaoAtual = ma;
+        this.concluValores = cv;
     }
     
 

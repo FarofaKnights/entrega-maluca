@@ -33,23 +33,49 @@ public class MissaoManager : MonoBehaviour {
 
     public MissaoData GetMissaoData()
     {
-        MissaoData md = new MissaoData(missoesDisponiveis, missoesConcluidas, missaoAtual);
+        string[] dispoNames = new string[missoesDisponiveis.Count];
+        string[] concluNames = new string[missoesConcluidas.Count];
+        float[] valores = new float [missoesConcluidas.Count];
+        int i = 0;
+        int l = 0;
+        foreach (Missao m in missoesDisponiveis)
+        {
+            dispoNames [i] = m.info.name;
+            i++;
+        }
+        foreach (Missao m in missoesConcluidas)
+        {
+            concluNames[l] = m.info.name;
+            l++;
+            valores[l] = m.melhorStatus.dinheiro;
+        }
+        MissaoData md = new MissaoData(dispoNames, concluNames, valores);
         return md;
     }
 
     public void SetMissaoData(MissaoData md)
     {
-        foreach (Missao m in md.missoesDisponiveis)
+        foreach (string m in md.missoesConcluidas)
         {
-            AdicionarMissao(m);
+            for(int i = 0; i < md.missoesConcluidas.Length; i++)
+            {
+                if(missoesDisponiveis[i].info.name == m)
+                {
+                    missoesConcluidas[i].melhorStatus.dinheiro = md.concluValores[i];
+                    RemoverMissao(missoesConcluidas[i]);
+                }
+            }
         }
-        foreach (Missao m in md.missoesConcluidas)
+
+        foreach (string m in md.missoesDisponiveis)
         {
-            RemoverMissao(m);
-        }
-        if(md.missaoAtual != null)
-        {
-            missaoAtual = md.missaoAtual;
+            for (int i = 0; i < md.missoesDisponiveis.Length; i++)
+            {
+                if (missoesDisponiveis[i].info.name == m)
+                {
+                    AdicionarMissao(missoesDisponiveis[i]);
+                }
+            }
         }
     }
     #region Missão runtime

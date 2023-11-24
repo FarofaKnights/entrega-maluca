@@ -11,6 +11,10 @@ public abstract class IUpgrade: MonoBehaviour {
 
     public int id = 0;
 
+    private void Start()
+    {
+        OficinaController.instance.upgrades.Add(this);
+    }
     public void Comprar() {
         if (comprado) {
             Ativar();
