@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245890297503885406}
   - component: {fileID: 6731254538166277871}
+  - component: {fileID: 2533091552340645007}
   m_Layer: 0
   m_Name: Hotel
   m_TagString: Untagged
@@ -24,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4574465311723512221}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0068008304, y: 0.21243426, z: -0.06417036}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,7 +35,6 @@ Transform:
   - {fileID: 2060035115333109848}
   - {fileID: 4175333398875872550}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &6731254538166277871
 LODGroup:
@@ -62,11 +63,33 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3006978785532569161}
   m_Enabled: 1
+--- !u!65 &2533091552340645007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574465311723512221}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14.843605, y: 15.502388, z: 6.9196057}
+  m_Center: {x: 0.060284615, y: 3.1699905, z: 0.3372109}
 --- !u!1001 &964614283187100060
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 245890297503885406}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f9e9f7b729e98ae48b2b34fb665b567c,
@@ -135,6 +158,9 @@ PrefabInstance:
       value: HotelLOD0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e9f7b729e98ae48b2b34fb665b567c, type: 3}
 --- !u!4 &785956101788008055 stripped
 Transform:
@@ -153,6 +179,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 245890297503885406}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 642403b126f751d40b39e3e7b4f7ad18,
@@ -221,6 +248,9 @@ PrefabInstance:
       value: HotelLOD1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 642403b126f751d40b39e3e7b4f7ad18, type: 3}
 --- !u!23 &927068456604218167 stripped
 MeshRenderer:
@@ -239,6 +269,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 245890297503885406}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: aabadd19abf096942bf6e041f410e387,
@@ -307,6 +338,9 @@ PrefabInstance:
       value: HotelLOD2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aabadd19abf096942bf6e041f410e387, type: 3}
 --- !u!23 &3006978785532569161 stripped
 MeshRenderer:

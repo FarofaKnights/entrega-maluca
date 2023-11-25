@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041307301197508663}
   - component: {fileID: 7234586957377617491}
+  - component: {fileID: 1095739962839562226}
   m_Layer: 0
   m_Name: PredioAltoFino-Roxo
   m_TagString: Untagged
@@ -62,6 +63,27 @@ LODGroup:
     renderers:
     - renderer: {fileID: 9008364274551294678}
   m_Enabled: 1
+--- !u!65 &1095739962839562226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897610164850342205}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.798421, y: 26.020042, z: 6.004974}
+  m_Center: {x: 0.19963503, y: 11.893051, z: 0.029260874}
 --- !u!1001 &1741843956096878193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b9e115f11532cd64a8121b630d885699,
         type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
     - target: {fileID: 919132149155446097, guid: b9e115f11532cd64a8121b630d885699,
@@ -217,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a4862d070dea94b4c929b8ec3a2697ee,
         type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
     - target: {fileID: 919132149155446097, guid: a4862d070dea94b4c929b8ec3a2697ee,
@@ -307,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 9f132864f1117d14e8a798af370d4eeb,
         type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5925c96cfb96d6b41b73251f20806539, type: 2}
     - target: {fileID: 919132149155446097, guid: 9f132864f1117d14e8a798af370d4eeb,
