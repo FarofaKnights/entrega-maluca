@@ -7,6 +7,7 @@ public class Boeiro : MonoBehaviour
     Transform tampa;
     [SerializeField] float forca;
     Rigidbody rb;
+    public ParticleSystem particle;
     void Start()
     {
         tampa = transform.GetChild(0);
@@ -18,6 +19,7 @@ public class Boeiro : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             rb.AddForce(Vector3.up * forca, ForceMode.Impulse);
+            particle.Play();
         }
     }
 }
