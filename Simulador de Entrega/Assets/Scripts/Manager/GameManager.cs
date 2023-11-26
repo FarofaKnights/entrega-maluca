@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 
     float timeScaleAntigo = 1;
     Controls controls;
-    public GameObject prefabGenerico;
+    public GameObject prefabGenerico; // acho que ninguém usa isso mais mas to com medo de tirar
 
     void Awake() {
         instance = this;

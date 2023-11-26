@@ -13,6 +13,8 @@ public class EncaixeState : IPlayerState {
     bool rodando = false; // Não mudar a variavel diretamente, usar SetRodando
     bool subiu = false;
 
+    GameObject gizmos;
+
     public CaixaEncaixeState caixaAtual {
         get {
             if (currentSelected < 0) return null;
@@ -45,6 +47,7 @@ public class EncaixeState : IPlayerState {
             
             Caixa caixa = InstanciarCaixa(carga, ponto);
             caixa.SetState(new CaixaEncaixeState(caixa, ponto));
+            caixa.transform.SetParent(player.transform);
         }
 
         cargasNovas = null;
@@ -57,6 +60,9 @@ public class EncaixeState : IPlayerState {
 
         player.cacambaTrigger.onTriggerEnter += OnTriggerEnter;
         player.cacambaTrigger.onTriggerExit += OnTriggerExit;
+
+        gizmos = GameObject.Instantiate(player.gizmos, player.transform);
+        gizmos.SetActive(false);
 
 
         Selecionar(0);
@@ -74,7 +80,6 @@ public class EncaixeState : IPlayerState {
         // Lmebrando que o Exit pode ser chamado quando foi concluido e quando foi interrompido!
         UIController.encaixe.Esconder();
         
-        player.gizmos.SetActive(false);
         controls.Encaixe.Disable();
 
         player.cameras[0].gameObject.SetActive(true);
@@ -83,11 +88,15 @@ public class EncaixeState : IPlayerState {
         player.cacambaTrigger.onTriggerEnter -= OnTriggerEnter;
         player.cacambaTrigger.onTriggerExit -= OnTriggerExit;
 
+        gizmos.SetActive(false);
+        GameObject.Destroy(gizmos);
+
         onRotateChange = null;
 
         for (int i = 0; i < cargasEncaixadas.Count; i++) {
             Caixa caixa = cargasEncaixadas[i].cx;
             caixa.SetState(new CaixaParadaState(caixa));
+            caixa.transform.SetParent(null);
         }
 
         // Garante que ao parar a missão no encaixe, caixas não encaixadas sejam destruidas
@@ -150,12 +159,19 @@ public class EncaixeState : IPlayerState {
     public void Selecionar(int i) {
         i %= cargasAEncaixar.Count;
         caixaAtual?.Deselecionar();
+        SetRodando(false);
 
         currentSelected = i;
         caixaAtual.Selecionar();
         subiu = false;
 
-        player.gizmos.transform.position = caixaAtual.transform.position;
+        gizmos.GetComponent<SeguirObjeto>().SetObjeto(caixaAtual.transform);
+
+        Bounds bounds = caixaAtual.meshRenderer.bounds;
+        Vector3 mostDistantPoint = bounds.max;
+
+        // Define o raio do gizmo como a distancia do centro ao ponto mais distante do bounds
+        gizmos.transform.localScale = Vector3.one * Vector3.Distance(bounds.center, mostDistantPoint);
     }
 
     public void SubirCaixa() {
@@ -169,6 +185,7 @@ public class EncaixeState : IPlayerState {
 
         Transform pos = player.subirPos.transform;
         caixaAtual.gameObject.transform.position = new Vector3(pos.position.x, pos.position.y + 5f, pos.position.z);
+        caixaAtual.Levantar();
         subiu = true;
     }
 
@@ -184,22 +201,21 @@ public class EncaixeState : IPlayerState {
             Vector3 mov = new Vector3(input.x, 0, input.y);
             mov = Player.instance.transform.TransformDirection(mov) * player.velocidade;
             caixaAtual.SetVelocity(mov * dt);
-            player.gizmos.transform.position = caixaAtual.transform.position;
         }
     }
     
     public void SetRodando(bool rodando) {
         this.rodando = rodando;
-        player.gizmos.SetActive(!rodando);
+        gizmos.SetActive(rodando);
 
         onRotateChange?.Invoke(rodando);
+        caixaAtual?.SetVelocity(Vector3.zero);
     }
 
     public void ResetarPosicao() {
         if (caixaAtual == null) return;
 
         caixaAtual.ResetarPosicao();
-        player.gizmos.transform.position = caixaAtual.transform.position;
 
         SetRodando(false);
     }

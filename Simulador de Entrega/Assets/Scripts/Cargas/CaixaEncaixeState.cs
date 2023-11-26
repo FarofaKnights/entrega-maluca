@@ -10,6 +10,8 @@ public class CaixaEncaixeState : IState {
     public GameObject gameObject => caixa.gameObject;
     public Transform transform => caixa.transform;
 
+    public MeshRenderer meshRenderer => renderer;
+
     MeshRenderer renderer;
     Material outline;
 
@@ -33,14 +35,13 @@ public class CaixaEncaixeState : IState {
     }
 
     public void Execute(float dt) {
-        // ChecarLimites();
+        ChecarLimites();
     }
     public void Exit() {
         Deselecionar();
     }
 
     public void ChecarLimites(){
-        // O maior problema atualmente com esse método é que as caixas não são colocadas em nenhum container, então a posição local está bem diferente do esperado
         if (transform.localPosition.x > 7.2f || transform.localPosition.x < -7.2f || transform.localPosition.z < -7.5f || transform.localPosition.z > 0.3f || transform.localPosition.y > 7.5f || transform.localPosition.y < -1f) 
             ResetarPosicao();
     }
@@ -57,6 +58,10 @@ public class CaixaEncaixeState : IState {
     public void Deselecionar() {
         outline.SetColor("_OutlineColor", Color.black);
         Soltar();
+    }
+
+    public void Levantar() {
+        rb.useGravity = false;
     }
 
     public void Soltar(){
