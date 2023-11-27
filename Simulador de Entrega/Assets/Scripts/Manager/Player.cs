@@ -138,6 +138,7 @@ public class Player : MonoBehaviour {
         }
 
         foreach (Carga carga in cargasCaidas) {
+            if (carga.cx == null) continue;
             Destroy(carga.cx.gameObject);
             carga.cx = null;
         }

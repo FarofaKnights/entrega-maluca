@@ -9,12 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: dd9a4ff218c81b64e8e1f5636c17e5ba
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 17402542315a2a04cbbe3f0143806ff0
-  - enabled: 1
-    path: Assets/Scenes/Jogo.unity
-    guid: fc00620d90302c84c8069d46741f9d8f
-  - enabled: 1
     path: Assets/Scenes/Creditos.unity
     guid: 8b6688e69d5432745bc1a1ded7f8cd9a
+  - enabled: 1
+    path: "Assets/Scenes/Cen\xE1rio.unity"
+    guid: 87ef89545934a114798f0104830c263f
   m_configObjects: {}
