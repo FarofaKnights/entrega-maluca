@@ -9,6 +9,8 @@ public class WNPCMachine : MonoBehaviour {
     protected Transform target;
     public string estado;
 
+    public WNPCController controller;
+
     public bool estaCansado {
         get => energia >= energiaMax;
     }

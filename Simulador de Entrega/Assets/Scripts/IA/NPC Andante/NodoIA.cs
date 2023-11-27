@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NodoIA : MonoBehaviour{
-    static List<NodoIA> nodosVisitaveis = new List<NodoIA>();
+    public static string prefabNodo = "Assets/Prefabs/IA/Esquina.prefab";
 
     public List<NodoIA> nodosConectados = new List<NodoIA>();
     public bool visitavel = false;
     public bool descanso = false;
 
+    WNPCController controller;
+
     void Awake() {
-        if (visitavel) {
-            nodosVisitaveis.Add(this);
-        }
+        controller = GetComponentInParent<WNPCController>();
     }
 
     #if UNITY_EDITOR
 
-    void OnDrawGizmosSelected(){
+    void OnDrawGizmos(){
         Color cor = Color.red;
         float tamanho = 1.5f;
 
@@ -32,9 +32,9 @@ public class NodoIA : MonoBehaviour{
         Gizmos.color = cor;
         Gizmos.DrawWireSphere(transform.position, tamanho);
 
-
         Gizmos.color = Color.green;
         foreach(NodoIA nodo in nodosConectados){
+            if (nodo == null) continue;
             Vector3 direccion = nodo.transform.position - transform.position;
             float dist = direccion.magnitude;
 
@@ -47,12 +47,11 @@ public class NodoIA : MonoBehaviour{
 
     #endif
 
-    public static List<NodoIA> GetNodosVisitaveis(){
-        return nodosVisitaveis;
-    }
+    void OnDestroy() {
+        controller.nodosVisitaveis.Remove(this);
 
-    public static NodoIA GetRandomNodo(){
-        int randomIndex = Random.Range(0, nodosVisitaveis.Count);
-        return nodosVisitaveis[randomIndex];
+        foreach(NodoIA nodo in nodosConectados){
+            nodo.nodosConectados.Remove(this);
+        }
     }
 }

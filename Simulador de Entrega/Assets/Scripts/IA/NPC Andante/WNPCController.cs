@@ -5,6 +5,8 @@ using UnityEngine;
 public class WNPCController : MonoBehaviour {
     public static WNPCController instance;
 
+    public List<NodoIA> nodosVisitaveis = new List<NodoIA>();
+
     public GameObject prefab;
     public int quantidade;
     public GameObject esquinasHolder;
@@ -14,8 +16,19 @@ public class WNPCController : MonoBehaviour {
     }
 
     void Start() {
+        UpdateVisitaveisList();
         for (int i = 0; i < quantidade; i++) {
             GerarWNPC();
+        }
+    }
+
+    void UpdateVisitaveisList() {
+        nodosVisitaveis.Clear();
+        foreach (Transform child in esquinasHolder.transform) {
+            NodoIA nodo = child.GetComponent<NodoIA>();
+            if (nodo == null) continue;
+            if (!nodo.visitavel) continue;
+            nodosVisitaveis.Add(nodo);
         }
     }
 
@@ -29,6 +42,7 @@ public class WNPCController : MonoBehaviour {
         npc.transform.SetParent(transform, true);
         
         WNPCMachine wnpc = npc.GetComponent<WNPCMachine>();
+        wnpc.controller = this;
         wnpc.SetTarget(nodoInicial.transform);
     }
 
@@ -47,5 +61,15 @@ public class WNPCController : MonoBehaviour {
             WNPCMachine npc = npcs[Random.Range(0, npcs.Count)];
             Destroy(npc.gameObject);
         }
+    }
+
+    public List<NodoIA> GetNodosVisitaveis(){
+        return nodosVisitaveis;
+    }
+
+    public NodoIA GetRandomNodo(){
+        int randomIndex = Random.Range(0, nodosVisitaveis.Count);
+        Debug.Log("Random index: " + randomIndex + " / " + nodosVisitaveis.Count);
+        return nodosVisitaveis[randomIndex];
     }
 }

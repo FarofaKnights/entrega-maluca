@@ -23,11 +23,11 @@ public class ObjetivoState : IState {
 
     NodoIA GetRandomNodo() {
         NodoIA nodoAtual = wnpc.GetTarget()?.GetComponent<NodoIA>();
-        NodoIA novoNodo = NodoIA.GetRandomNodo();
+        NodoIA novoNodo = wnpc.controller.GetRandomNodo();
 
-        if (NodoIA.GetNodosVisitaveis().Count > 2) {
+        if (wnpc.controller.GetNodosVisitaveis().Count > 2) {
             while (novoNodo == nodoAtual) {
-                novoNodo = NodoIA.GetRandomNodo();
+                novoNodo = wnpc.controller.GetRandomNodo();
             }
         }
 

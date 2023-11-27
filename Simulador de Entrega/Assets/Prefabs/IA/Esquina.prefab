@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fdaa912bb879ad47ada2f28e9a9617c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodosConectados: []
+  visitavel: 0
+  descanso: 0
