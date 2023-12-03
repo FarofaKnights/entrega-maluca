@@ -69,7 +69,6 @@ public class WNPCController : MonoBehaviour {
 
     public NodoIA GetRandomNodo(){
         int randomIndex = Random.Range(0, nodosVisitaveis.Count);
-        Debug.Log("Random index: " + randomIndex + " / " + nodosVisitaveis.Count);
         return nodosVisitaveis[randomIndex];
     }
 }

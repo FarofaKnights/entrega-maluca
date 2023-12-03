@@ -44,4 +44,13 @@ public class IncluiMinimapa : MonoBehaviour {
 
         icon.SetActive(false);
     }
+
+    public void SetColor(Color color) {
+        if(icon == null) GeraIcone();
+        icon.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    void OnDestroy() {
+        if (icon != null) Destroy(icon);
+    }
 }

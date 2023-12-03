@@ -18,6 +18,12 @@ public class CaixaCaidaState : IState {
         caixa.trigger.onTriggerExit += OnTriggerExit;
         caixa.trigger.onTriggerStay += OnTriggerStay;
 
+        IncluiMinimapa icon = caixa.gameObject.AddComponent<IncluiMinimapa>();
+        icon.sprite = MinimapManager.instance.caixaCaidaSprite;
+        icon.comecaAtivo = true;
+        icon.escala = 3f;
+        icon.SetColor(MinimapManager.instance.caixaCaidaColor);
+
         // Se o player já estiver no trigger, o OnTriggerStay não é chamado
         // Então temos que manualmente checar se o player está no trigger
         foreach (Collider col in caixa.trigger.GetTriggers()) {
@@ -39,6 +45,8 @@ public class CaixaCaidaState : IState {
         caixa.trigger.onTriggerEnter -= OnTriggerEnter;
         caixa.trigger.onTriggerExit -= OnTriggerExit;
         caixa.trigger.onTriggerStay -= OnTriggerStay;
+
+        GameObject.Destroy(caixa.GetComponent<IncluiMinimapa>());
     }
 
     private void OnTriggerEnter(Collider other) {

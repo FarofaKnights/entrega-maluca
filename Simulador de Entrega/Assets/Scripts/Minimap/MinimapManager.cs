@@ -9,6 +9,9 @@ public class MinimapManager : MonoBehaviour {
     public GameObject iconPrefab;
     public float minimapHeight = 48;
 
+    public Sprite caixaCaidaSprite;
+    public Color caixaCaidaColor;
+
     void Awake () {
         instance = this;
     }
