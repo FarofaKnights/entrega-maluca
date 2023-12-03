@@ -150,23 +150,19 @@ public class PauseUIController : MonoBehaviour {
         MissaoManager.instance.ReiniciarMissao(mostrandoMissao);
     }
 
-    public void SetVolumeEfeito(float volume) {
+    public void SetVolumeEfeito() {
+        float volume = efeitoSlider.value;
         audioMixer.SetFloat("Efeitos", Mathf.Log10(volume) * 20);
     }
 
-    public void SetVolumeCarro(float volume) {
+    public void SetVolumeCarro() {
+        float volume = carroSlider.value;
         audioMixer.SetFloat("Carro", Mathf.Log10(volume) * 20);
     }
 
-    public void SetVolumeGeral(float volume) {
+    public void SetVolumeGeral() {
+        float volume = geralSlider.value;
         audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
-
-        Debug.Log("Volume geral: " + volume);
-        Debug.Log("Volume geral (log): " + Mathf.Log10(volume));
-        Debug.Log("Volume geral (log) * 20: " + Mathf.Log10(volume) * 20);
-
-        audioMixer.GetFloat("Master", out volume);
-        Debug.Log("Volume geral (log) * 20 (int): " + volume);
     }
 
     public void UpdateSliders() {

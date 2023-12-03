@@ -48,6 +48,7 @@ public class NodoIA : MonoBehaviour{
     #endif
 
     void OnDestroy() {
+        if (!gameObject.scene.isLoaded) return;
         controller.nodosVisitaveis.Remove(this);
 
         foreach(NodoIA nodo in nodosConectados){
