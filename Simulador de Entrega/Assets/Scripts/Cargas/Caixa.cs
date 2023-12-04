@@ -9,7 +9,6 @@ public class Caixa : MonoBehaviour {
     [HideInInspector] public TriggerSubject trigger;
     [HideInInspector] public CollisionSubject collision;
 
-
     IState estadoAtual;
 
     // temp: ideia de criar um singleton pra isso, uma vez que segundo o roque, flyweight não abrange esse tipo de coisa

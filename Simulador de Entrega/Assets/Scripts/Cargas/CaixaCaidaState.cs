@@ -18,6 +18,9 @@ public class CaixaCaidaState : IState {
         caixa.trigger.onTriggerExit += OnTriggerExit;
         caixa.trigger.onTriggerStay += OnTriggerStay;
 
+        gameObject.layer = LayerMask.NameToLayer("Caida");
+        transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Caida");
+
         IncluiMinimapa icon = caixa.gameObject.AddComponent<IncluiMinimapa>();
         icon.sprite = MinimapManager.instance.caixaCaidaSprite;
         icon.comecaAtivo = true;
@@ -45,6 +48,9 @@ public class CaixaCaidaState : IState {
         caixa.trigger.onTriggerEnter -= OnTriggerEnter;
         caixa.trigger.onTriggerExit -= OnTriggerExit;
         caixa.trigger.onTriggerStay -= OnTriggerStay;
+
+        gameObject.layer = LayerMask.NameToLayer("Caixa");
+        transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Caixa");
 
         GameObject.Destroy(caixa.GetComponent<IncluiMinimapa>());
     }
