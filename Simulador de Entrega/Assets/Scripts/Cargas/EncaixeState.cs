@@ -158,9 +158,17 @@ public class EncaixeState : IPlayerState {
 
     public void Selecionar(int i) {
         i %= cargasAEncaixar.Count;
+        i = i < 0 ? cargasAEncaixar.Count + i : i;
+        i %= cargasAEncaixar.Count;
         caixaAtual?.Deselecionar();
         SetRodando(false);
 
+        if (currentSelected == i && cargasAEncaixar.Count > 1) {
+            i++;
+            i %= cargasAEncaixar.Count;
+            i = i < 0 ? cargasAEncaixar.Count + i : i;
+            i %= cargasAEncaixar.Count;
+        }
         currentSelected = i;
         caixaAtual.Selecionar();
         subiu = false;

@@ -128,7 +128,9 @@ public class Player : MonoBehaviour {
 
     public void RemoverCarga(Carga carga) {
         cargaAtual.Remove(carga);
-        cargasCaidas.Add(carga);
+
+        if (!cargasCaidas.Contains(carga))
+            cargasCaidas.Add(carga);
     }
 
     public void ZerarCargas() {

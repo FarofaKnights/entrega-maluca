@@ -23,7 +23,7 @@ public class CaixaEncaixeState : IState {
     public void Enter() {
         rb = caixa.GetComponent<Rigidbody>();
 
-        renderer = gameObject.transform.GetChild(0).GetComponent<MeshRenderer>();
+        renderer = gameObject.transform.GetComponentInChildren<MeshRenderer>();
 
         for (int i = 0; i < renderer.materials.Length; i++)
         {
