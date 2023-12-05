@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
+  m_Name: Missao PostoTimeline
+  m_EditorClassIdentifier: 
+  nome: Posto de gasosa
+  descricao: Leve essas coisas  para o pessoal do posto!
+  personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
+  objetivoInicial:
+    endereco: Parque
+    cargas:
+    - peso: 10
+      fragilidade: 5
+      tipo: 0
+      destinatario: Posto
+      prefab: {fileID: 1384330550075591027, guid: fc43cf3520536ea48aceaa96fb762f4e,
+        type: 3}
+    - peso: 50
+      fragilidade: 20
+      tipo: 0
+      destinatario: Posto
+      prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+        type: 3}
+    - peso: 80
+      fragilidade: 10
+      tipo: 0
+      destinatario: Posto
+      prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
+        type: 3}
+    permiteReceber: 0
+    diretriz:
+      texto: 
+      limitacoes: []
+  conjuntos:
+  - objetivos:
+    - endereco: Posto
+      cargas: []
+      permiteReceber: 1
+      diretriz:
+        texto: 
+        limitacoes: []
+    sequencial: 0
+    diretriz:
+      texto: Entregue no Posto
+      limitacoes: []
+  missoesDesbloqueadas: []
+  gerarAleatoriaNoFinal: 0
+  timeline:
+  - tipo: 0
+    objetivo:
+      endereco: Parque
+      cargas:
+      - peso: 10
+        fragilidade: 5
+        tipo: 0
+        destinatario: Posto
+        prefab: {fileID: 1384330550075591027, guid: fc43cf3520536ea48aceaa96fb762f4e,
+          type: 3}
+      - peso: 50
+        fragilidade: 20
+        tipo: 0
+        destinatario: Posto
+        prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+          type: 3}
+      - peso: 80
+        fragilidade: 10
+        tipo: 0
+        destinatario: Posto
+        prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
+          type: 3}
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 2
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: Entregue no Posto
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 0
+    objetivo:
+      endereco: Posto
+      cargas: []
+      permiteReceber: 1
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 3
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1

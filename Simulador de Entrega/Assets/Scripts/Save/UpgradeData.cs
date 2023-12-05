@@ -5,8 +5,10 @@ using UnityEngine;
 public class UpgradeData
 {
     public string[] compradosNomes;
-   public UpgradeData(string [] names)
+    public string[] ativosNomes;
+   public UpgradeData(string [] comprados, string[] ativos)
     {
-        this.compradosNomes = names;
+        this.compradosNomes = comprados;
+        this.ativosNomes = ativos;
     }
 }

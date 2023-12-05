@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
+  m_Name: Missao GoticoTimeline
+  m_EditorClassIdentifier: 
+  nome: "O bairro G\xF3tico"
+  descricao: "Aquele pessoal g\xF3tico \xE9 ESTRANHO!! Isso aqui vale dinheiro, toma
+    cuidado! E tamb\xE9m n\xE3o sei muito bem para quem \xE9! Alguma casa l\xE1."
+  personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
+  objetivoInicial:
+    endereco: Posto
+    cargas:
+    - peso: 30
+      fragilidade: 5
+      tipo: 3
+      destinatario: Predio2
+      prefab: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
+        type: 3}
+    - peso: 10
+      fragilidade: 10
+      tipo: 3
+      destinatario: Predio2
+      prefab: {fileID: 1384330550075591027, guid: 357a105dab05c7a4abd8b0ad6c6fa7a1,
+        type: 3}
+    - peso: 50
+      fragilidade: 3
+      tipo: 0
+      destinatario: Predio2
+      prefab: {fileID: 1384330550075591027, guid: fc43cf3520536ea48aceaa96fb762f4e,
+        type: 3}
+    - peso: 50
+      fragilidade: 10
+      tipo: 0
+      destinatario: Predio2
+      prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
+        type: 3}
+    - peso: 10
+      fragilidade: 5
+      tipo: 0
+      destinatario: Predio2
+      prefab: {fileID: 8945529338682589028, guid: 3439585f0f94424499814759c3154aed,
+        type: 3}
+    permiteReceber: 0
+    diretriz:
+      texto: 
+      limitacoes: []
+  conjuntos:
+  - objetivos:
+    - endereco: Predio2
+      cargas: []
+      permiteReceber: 1
+      diretriz:
+        texto: 
+        limitacoes: []
+    sequencial: 0
+    diretriz:
+      texto: "Entregue em alguma casa g\xF3tica"
+      limitacoes: []
+  missoesDesbloqueadas: []
+  gerarAleatoriaNoFinal: 0
+  timeline:
+  - tipo: 0
+    objetivo:
+      endereco: Posto
+      cargas:
+      - peso: 30
+        fragilidade: 5
+        tipo: 3
+        destinatario: Predio2
+        prefab: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
+          type: 3}
+      - peso: 10
+        fragilidade: 10
+        tipo: 3
+        destinatario: Predio2
+        prefab: {fileID: 1384330550075591027, guid: 357a105dab05c7a4abd8b0ad6c6fa7a1,
+          type: 3}
+      - peso: 50
+        fragilidade: 3
+        tipo: 0
+        destinatario: Predio2
+        prefab: {fileID: 1384330550075591027, guid: fc43cf3520536ea48aceaa96fb762f4e,
+          type: 3}
+      - peso: 50
+        fragilidade: 10
+        tipo: 0
+        destinatario: Predio2
+        prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
+          type: 3}
+      - peso: 10
+        fragilidade: 5
+        tipo: 0
+        destinatario: Predio2
+        prefab: {fileID: 8945529338682589028, guid: 3439585f0f94424499814759c3154aed,
+          type: 3}
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 2
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: "Entregue em alguma casa g\xF3tica"
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 0
+    objetivo:
+      endereco: Predio2
+      cargas: []
+      permiteReceber: 1
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 3
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1

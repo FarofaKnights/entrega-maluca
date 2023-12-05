@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
+  m_Name: Missao Timeline
+  m_EditorClassIdentifier: 
+  nome: Mudando de casa
+  descricao: "Estou me mudando para um novo bairro, me ajude a levar esse arm\xE1rio
+    e aquelas coisas ali tamb\xE9m."
+  personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
+  objetivoInicial:
+    endereco: Predio3
+    cargas:
+    - peso: 50
+      fragilidade: 10
+      tipo: 3
+      destinatario: Predio1
+      prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+        type: 3}
+    - peso: 50
+      fragilidade: 10
+      tipo: 3
+      destinatario: Predio1
+      prefab: {fileID: 8945529338682589028, guid: 3439585f0f94424499814759c3154aed,
+        type: 3}
+    - peso: 80
+      fragilidade: 20
+      tipo: 3
+      destinatario: Predio1
+      prefab: {fileID: 1384330550075591027, guid: 9a722d1928294ac41a81c31e722741d6,
+        type: 3}
+    - peso: 30
+      fragilidade: 20
+      tipo: 3
+      destinatario: Predio1
+      prefab: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
+        type: 3}
+    permiteReceber: 0
+    diretriz:
+      texto: 
+      limitacoes: []
+  conjuntos:
+  - objetivos:
+    - endereco: Predio1
+      cargas: []
+      permiteReceber: 1
+      diretriz:
+        texto: 
+        limitacoes: []
+    sequencial: 0
+    diretriz:
+      texto: Entregue no outro Bairro
+      limitacoes: []
+  missoesDesbloqueadas: []
+  gerarAleatoriaNoFinal: 0
+  timeline:
+  - tipo: 0
+    objetivo:
+      endereco: Predio3
+      cargas:
+      - peso: 50
+        fragilidade: 10
+        tipo: 3
+        destinatario: Predio1
+        prefab: {fileID: 240624705749833600, guid: ed4c4d56355eae64cad1ac58c263651d,
+          type: 3}
+      - peso: 50
+        fragilidade: 10
+        tipo: 3
+        destinatario: Predio1
+        prefab: {fileID: 8945529338682589028, guid: 3439585f0f94424499814759c3154aed,
+          type: 3}
+      - peso: 80
+        fragilidade: 20
+        tipo: 3
+        destinatario: Predio1
+        prefab: {fileID: 1384330550075591027, guid: 9a722d1928294ac41a81c31e722741d6,
+          type: 3}
+      - peso: 30
+        fragilidade: 20
+        tipo: 3
+        destinatario: Predio1
+        prefab: {fileID: 1384330550075591027, guid: e5f049e72b2ba62459b8eae9c96fa4b6,
+          type: 3}
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 2
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: Entregue no outro Bairro
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 0
+    objetivo:
+      endereco: Predio1
+      cargas: []
+      permiteReceber: 1
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 3
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1

@@ -13,8 +13,11 @@ public class OficinaController : MonoBehaviour {
     GameObject trigger;
     Camera cameraOficina;
 
-    public List<IUpgrade> upgradesComprados = new List<IUpgrade>();
-    public List<IUpgrade> upgrades = new List<IUpgrade>();
+    // Pelo amor de deus não muda isso pra public, sério
+    [SerializeField] List<UpgradeObject> upgradesAtivos = new List<UpgradeObject>();
+    public List<UpgradeObject> upgradesComprados = new List<UpgradeObject>();
+    public List<UpgradeObject> upgrades = new List<UpgradeObject>();
+    
 
     // Solução temporária, talvez teremos que ver uma reestruturação geral do código (GameManager e Player)
     Dictionary<Renderer, Material[]> materiaisVeiculo = new Dictionary<Renderer, Material[]>();
@@ -33,14 +36,23 @@ public class OficinaController : MonoBehaviour {
 
     public UpgradeData GetUpgradeData()
     {
-        string[] nomes = new string[upgradesComprados.Count];
+        string[] comprados = new string[upgradesComprados.Count];
+        string[] ativos = new string[upgradesAtivos.Count];
+
         int i = 0;
-        foreach (IUpgrade up in upgradesComprados)
+        foreach (UpgradeObject up in upgradesComprados)
         {
-            nomes[i] = up.name;
+            comprados[i] = up.name;
             i++;
         }
-        UpgradeData ud = new UpgradeData(nomes);
+
+        i = 0;
+        foreach (UpgradeObject upgrade in upgradesAtivos) {
+            ativos[i] = upgrade.name;
+            i++;
+        }
+
+        UpgradeData ud = new UpgradeData(comprados, ativos);
         return ud;
     }
 
@@ -52,11 +64,11 @@ public class OficinaController : MonoBehaviour {
             {
                 if(upgrades[i].name == names)
                 {
-                    upgrades[i].comprado = true;
                     upgradesComprados.Add(upgrades[i]);
-                    if(upgrades[i].ativo == true)
-                    {
-                        upgrades[i].Ativar();
+
+                    int indexOf = upgrades.IndexOf(upgrades[i]);
+                    if (indexOf != -1) {
+                        AtivarUpgrade(upgrades[i]);
                     }
                 }
             }
@@ -140,6 +152,54 @@ public class OficinaController : MonoBehaviour {
 
         Player.instance.GetComponent<WhellControler>().maxVelocidade = maxSpeed;
         Player.instance.GetComponent<WhellControler>().aceleracao = acelleration;
+    }
+
+    public void AtivarUpgrade(UpgradeObject upgrade) {
+        if (upgradesAtivos.Contains(upgrade)) return;
+
+        if (upgrade.exclusivo) {
+            UpgradeObject upgradeAtual = CurrentOfSameType(upgrade);
+            if (upgradeAtual != null) {
+                DesativarUpgrade(upgradeAtual);
+            }
+        }
+
+        upgradesAtivos.Add(upgrade);
+
+        upgrade.Ativar();
+    }
+
+    public void DesativarUpgrade(UpgradeObject upgrade) {
+        if (!upgradesAtivos.Contains(upgrade)) return;
+        upgradesAtivos.Remove(upgrade);
+
+        upgrade.Desativar();
+    }
+
+    public bool IsUpgradeAtivo(UpgradeObject upgrade) {
+        return upgradesAtivos.Contains(upgrade);
+    }
+
+    public bool IsUpgradeComprado(UpgradeObject upgrade) {
+        return upgradesComprados.Contains(upgrade);
+    }
+
+    public UpgradeObject CurrentOfSameType(UpgradeObject upgrade) {
+        foreach (UpgradeObject up in upgradesAtivos) {
+            if (up.GetType() == upgrade.GetType()) return up;
+        }
+
+        return null;
+    }
+
+    public void ComprarUpgrade(UpgradeObject upgrade) {
+        if (upgradesComprados.Contains(upgrade)) return;
+
+        if (Player.instance.GetDinheiro() >= upgrade.custo) {
+            Player.instance.RemoverDinheiro(upgrade.custo);
+            OficinaController.instance.upgradesComprados.Add(upgrade);
+            upgrade.Ativar();
+        }
     }
 
     #endregion

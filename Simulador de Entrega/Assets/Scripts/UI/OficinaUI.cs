@@ -2,23 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class OficinaUI : MonoBehaviour {
     public OficinaController controller;
 
-    public Text nome, descricao, preco;
+    public Text descricao;
     public Button comprarButton;
 
+    public TextMeshProUGUI nome, preco, comprarBtnText;
+
     public GameObject gridPanel, detalhesPanel, upgradesHolder;
-    IUpgrade upgradeSelecionado;
+    UpgradeObject upgradeSelecionado;
     
     public string metodoOrdenacao = "padrao"; // Opções: "padrao", "preco", "nome"
+
+    public GameObject caracteristicasHolder;
+    public GameObject caracteristicaPrefab;
 
     void Start() {
         int id = 1;
 
         foreach (Transform item in upgradesHolder.transform) {
-            IUpgrade upgrade = item.GetComponent<IUpgrade>();
+            UpgradeButton upgrade = item.GetComponent<UpgradeButton>();
             if (upgrade != null) {
                 upgrade.id = id;
                 id++;
@@ -26,7 +32,11 @@ public class OficinaUI : MonoBehaviour {
         }
     }
 
-    public void ShowDetalhes(IUpgrade upgrade) {
+    public void ShowDetalhes(UpgradeButton upgrade) {
+        ShowDetalhes(upgrade.upgradeObject);
+    }
+
+    public void ShowDetalhes(UpgradeObject upgrade) {
         upgradeSelecionado = upgrade;
 
         nome.text = upgrade.nome;
@@ -34,16 +44,65 @@ public class OficinaUI : MonoBehaviour {
         preco.text = upgrade.custo.ToString("C2");
 
         if (upgrade.comprado) {
-            preco.gameObject.SetActive(false);
             comprarButton.interactable = true;
-            comprarButton.GetComponentInChildren<Text>().text = upgrade.ativo ? "Desativar" : "Ativar";
+            comprarBtnText.text = upgrade.ativo ? "Desativar" : "Ativar";
         } else {
-            preco.gameObject.SetActive(true);
             comprarButton.interactable = Player.instance.GetDinheiro() >= upgrade.custo;
-            comprarButton.GetComponentInChildren<Text>().text = "Comprar";
+            comprarBtnText.text = "Comprar";
         }
 
+        GerarCaracteristicas(upgrade);
         HandleMostrarDetalhes();
+    }
+
+    void ReloadLayout(GameObject uiElement) {
+        LayoutRebuilder.MarkLayoutForRebuild((RectTransform)uiElement.transform);
+        LayoutGroup[] parentLayoutGroups = uiElement.gameObject.GetComponentsInParent<LayoutGroup>();
+        foreach (LayoutGroup group in parentLayoutGroups) {
+        LayoutRebuilder.MarkLayoutForRebuild((RectTransform)group.transform);
+        }
+    }
+
+    void GerarCaracteristicas(UpgradeObject upgrade) {
+        Dictionary<string, (string, float)> info = upgrade.GetInfo();
+
+        if (info == null || info.Count == 0) {
+            caracteristicasHolder.SetActive(false);
+            return;
+        }
+
+        UpgradeObject upgradeAtual = OficinaController.instance.CurrentOfSameType(upgrade);
+        if (!upgrade.exclusivo) upgradeAtual = null;
+        else if (upgradeAtual == upgrade) upgradeAtual = null;
+
+        caracteristicasHolder.SetActive(true);
+
+        foreach (Transform item in caracteristicasHolder.transform) {
+            Destroy(item.gameObject);
+        }
+
+        foreach (KeyValuePair<string, (string, float)> caracteristica in info) {
+            GameObject caracteristicaObject = Instantiate(caracteristicaPrefab, caracteristicasHolder.transform);
+            caracteristicaObject.transform.Find("Nome").GetComponent<Text>().text = caracteristica.Key;
+
+            if (upgradeAtual == null)
+                caracteristicaObject.transform.Find("Valor").GetComponent<Text>().text = caracteristica.Value.Item1;
+            else {
+                float valorAtual = upgradeAtual.GetInfo()[caracteristica.Key].Item2;
+                float valorNovo = caracteristica.Value.Item2;
+
+                string valorAtualTxt = upgradeAtual.GetInfo()[caracteristica.Key].Item1;
+                string valorNovoTxt = caracteristica.Value.Item1;
+
+                if (valorAtual > valorNovo) {
+                    valorNovoTxt = "<color=red>" + valorNovoTxt + "</color>";
+                } else if (valorAtual < valorNovo) {
+                    valorNovoTxt = "<color=#23FF00FF>" + valorNovoTxt + "</color>";
+                }
+
+                caracteristicaObject.transform.Find("Valor").GetComponent<Text>().text = valorAtualTxt + " -> " + valorNovoTxt;
+            }
+        }
     }
 
     public void HandleMostrarGrid() {
@@ -53,6 +112,15 @@ public class OficinaUI : MonoBehaviour {
 
     public void HandleMostrarDetalhes() {
         gridPanel.SetActive(false);
+        detalhesPanel.SetActive(true);
+        
+        StartCoroutine(UpdateLayoutGroup());
+    }
+
+    IEnumerator UpdateLayoutGroup() {
+        descricao.transform.parent.gameObject.GetComponent<LayoutGroup>().enabled = false;
+        yield return new WaitForEndOfFrame();
+        descricao.transform.parent.gameObject.GetComponent<LayoutGroup>().enabled = true;
         detalhesPanel.SetActive(true);
     }
 
@@ -70,7 +138,7 @@ public class OficinaUI : MonoBehaviour {
 
     #region Ordenacao
 
-    void MergeSort(IUpgrade[] upgrades, int inicio, int fim) {
+    void MergeSort(UpgradeButton[] upgrades, int inicio, int fim) {
         if (inicio < fim) {
             int meio = (inicio + fim) / 2;
 
@@ -81,12 +149,12 @@ public class OficinaUI : MonoBehaviour {
         }
     }
 
-    void Merge(IUpgrade[] upgrades, int inicio, int meio, int fim) {
+    void Merge(UpgradeButton[] upgrades, int inicio, int meio, int fim) {
         int n1 = meio - inicio + 1;
         int n2 = fim - meio;
 
-        IUpgrade[] L = new IUpgrade[n1];
-        IUpgrade[] R = new IUpgrade[n2];
+        UpgradeButton[] L = new UpgradeButton[n1];
+        UpgradeButton[] R = new UpgradeButton[n2];
 
         for (int a = 0; a < n1; a++)
             L[a] = upgrades[inicio + a];
@@ -121,15 +189,15 @@ public class OficinaUI : MonoBehaviour {
         }
     }
 
-    bool Comparacao(IUpgrade a, IUpgrade b) {
+    bool Comparacao(UpgradeButton a, UpgradeButton b) {
         switch (metodoOrdenacao) {
             case "padrao":
                 return a.id < b.id;
             case "preco":
-                if (a.custo == b.custo) return a.nome.CompareTo(b.nome) < 0;
-                else return a.custo < b.custo;
+                if (a.upgradeObject.custo == b.upgradeObject.custo) return a.upgradeObject.nome.CompareTo(b.upgradeObject.nome) < 0;
+                else return a.upgradeObject.custo < b.upgradeObject.custo;
             case "nome":
-                return a.nome.CompareTo(b.nome) < 0;
+                return a.upgradeObject.nome.CompareTo(b.upgradeObject.nome) < 0;
             default:
                 return false;
         }
@@ -138,16 +206,16 @@ public class OficinaUI : MonoBehaviour {
     public void Ordenar(string metodo) {
         metodoOrdenacao = metodo;
 
-        List<IUpgrade> upgrades = new List<IUpgrade>();
+        List<UpgradeButton> upgrades = new List<UpgradeButton>();
 
         foreach (Transform item in upgradesHolder.transform) {
-            IUpgrade upgrade = item.GetComponent<IUpgrade>();
+            UpgradeButton upgrade = item.GetComponent<UpgradeButton>();
             if (upgrade != null) {
                 upgrades.Add(upgrade);
             }
         }
 
-        IUpgrade[] upgradesArray = upgrades.ToArray();
+        UpgradeButton[] upgradesArray = upgrades.ToArray();
 
         MergeSort(upgradesArray, 0, upgradesArray.Length - 1);
 
