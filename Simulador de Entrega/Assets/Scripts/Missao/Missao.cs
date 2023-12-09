@@ -10,7 +10,7 @@ public class Missao: Iniciavel {
     ObjetivoInicial objetivoInicial;
     MissaoIterator iterator;
     List<Carga> cargasEntregues = new List<Carga>();
-    bool concluida = false;
+    public bool concluida = false;
 
     public Missao(MissaoObject info) {
         this.info = info;

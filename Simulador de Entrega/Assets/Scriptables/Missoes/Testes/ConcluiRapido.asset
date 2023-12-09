@@ -36,7 +36,7 @@ MonoBehaviour:
       diretriz:
         texto: Diretriz de 30 segundos...
         limitacoes:
-        - tempo: 30
+        - tempo: 3000
     sequencial: 1
     diretriz:
       texto: Uma diretriz pai
@@ -115,6 +115,6 @@ MonoBehaviour:
     diretriz:
       texto: Diretriz de 30 segundos...
       limitacoes:
-      - tempo: 30
+      - tempo: 3000
     cutscenes: []
     mostrandoFilhos: 1

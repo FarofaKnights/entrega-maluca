@@ -52,7 +52,8 @@ MonoBehaviour:
     diretriz:
       texto: Entregue no Posto
       limitacoes: []
-  missoesDesbloqueadas: []
+  missoesDesbloqueadas:
+  - {fileID: 11400000, guid: 33a6b95fda10ba245a6eaf3a0abc632f, type: 2}
   gerarAleatoriaNoFinal: 0
   timeline:
   - tipo: 0

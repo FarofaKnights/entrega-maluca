@@ -11,6 +11,7 @@ public class MissaoManager : MonoBehaviour {
     public MissaoObject[] missoesIniciais;
     public List<Missao> missoesDisponiveis = new List<Missao>();
     public List<Missao> missoesConcluidas = new List<Missao>();
+    public List<Missao> missoesI = new List<Missao>();
 
     public List<Objetivo> objetivosAtivos = new List<Objetivo>();
 
@@ -55,36 +56,48 @@ public class MissaoManager : MonoBehaviour {
 
     public void SetMissaoData(MissaoData md)
     {
-        foreach (string m in md.missoesConcluidas)
+        foreach (Missao miss in missoesI)
         {
-            foreach (Missao miss in missoesDisponiveis)
+            if(MissaoConcluida(miss, md.missoesConcluidas))
             {
-                if(miss.info.nome == m)
-                {
-                    if(miss.info.missoesDesbloqueadas != null)
-                    {
-                        MissoesDesbloqueadas(miss.info.missoesDesbloqueadas, md);
-                    }
-                    RemoverMissao(miss);
-                }
+                miss.concluida = true;
+                RemoverMissao(miss);
             }
-        }
-        int j = 0;
-        foreach (int money in md.concluValores)
-        {
-            missoesConcluidas[j].melhorStatus.dinheiro = money;
-            j++;
         }
     }
 
-    public void MissoesDesbloqueadas(MissaoObject[] missoes, MissaoData md)
+    bool MissaoConcluida(Missao m, string [] s)
+    {
+        foreach (string st in s)
+        {
+            if (m.info.nome == st)
+            {
+                if (m.info.missoesDesbloqueadas != null)
+                {
+                    Debug.Log(m.info.nome);
+                    MissoesDesbloqueadas(m.info.missoesDesbloqueadas, s);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void MissoesDesbloqueadas(MissaoObject[] missoes, string[] s)
     {
         foreach(MissaoObject missaoObj in missoes)
         {
-            Debug.Log("Z");
             Missao missao = new Missao(missaoObj);
-            AdicionarMissao(missao);
-            SetMissaoData(md);
+            if(MissaoConcluida(missao, s))
+            {
+                missao.concluida = true;
+                RemoverMissao(missao);
+            }
+            else
+            {
+                AdicionarMissao(missao);
+            }
+
         }
     }
     #region Missão runtime
@@ -171,6 +184,7 @@ public class MissaoManager : MonoBehaviour {
         foreach (MissaoObject missaoObject in missoesIniciais) {
             Missao missao = new Missao(missaoObject);
             AdicionarMissao(missao);
+            missoesI.Add(missao);
         }
     }
 
