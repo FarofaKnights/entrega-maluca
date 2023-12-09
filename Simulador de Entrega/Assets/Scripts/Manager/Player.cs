@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
     List<Carga> cargasCaidasProximas = new List<Carga>(), cargasCaidas = new List<Carga>();
     IState estadoAtual;
 
+    Rigidbody rb;
+
     public System.Action<IState> onStateChange;
 
 
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour {
 
     void Start() {
         SetState(new DirigindoState(this));
+        rb = GetComponent<Rigidbody>();
     }
 
     public void SetState(IState estado) {
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour {
         transform.position = p.position;
         transform.rotation = Quaternion.Euler(p.rotation);
         dinheiro = p.dinheiro;
+        rb.velocity = Vector3.zero;
     }
     public IState GetState() {
         return estadoAtual;

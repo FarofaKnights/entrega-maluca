@@ -45,14 +45,7 @@ public class OficinaController : MonoBehaviour {
             comprados[i] = up.name;
             i++;
         }
-
-        i = 0;
-        foreach (UpgradeObject upgrade in upgradesAtivos) {
-            ativos[i] = upgrade.name;
-            i++;
-        }
-
-        UpgradeData ud = new UpgradeData(comprados, ativos);
+        UpgradeData ud = new UpgradeData(comprados);
         return ud;
     }
 

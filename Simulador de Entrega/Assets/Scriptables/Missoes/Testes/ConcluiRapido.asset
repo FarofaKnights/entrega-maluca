@@ -41,7 +41,9 @@ MonoBehaviour:
     diretriz:
       texto: Uma diretriz pai
       limitacoes: []
-  missoesDesbloqueadas: []
+  missoesDesbloqueadas:
+  - {fileID: 11400000, guid: f98976360baa5eb48919a0a6fca00e83, type: 2}
+  - {fileID: 11400000, guid: 0aeff25981698a146b91ad1a559dc9f0, type: 2}
   gerarAleatoriaNoFinal: 0
   timeline:
   - tipo: 1

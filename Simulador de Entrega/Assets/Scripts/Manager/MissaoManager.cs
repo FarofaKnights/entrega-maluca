@@ -9,8 +9,8 @@ public class MissaoManager : MonoBehaviour {
     public Estado estado = Estado.SemMissao;
 
     public MissaoObject[] missoesIniciais;
-    List<Missao> missoesDisponiveis = new List<Missao>();
-    List<Missao> missoesConcluidas = new List<Missao>();
+    public List<Missao> missoesDisponiveis = new List<Missao>();
+    public List<Missao> missoesConcluidas = new List<Missao>();
 
     public List<Objetivo> objetivosAtivos = new List<Objetivo>();
 
@@ -40,16 +40,16 @@ public class MissaoManager : MonoBehaviour {
         int l = 0;
         foreach (Missao m in missoesDisponiveis)
         {
-            dispoNames [i] = m.info.name;
+            dispoNames [i] = m.info.nome;
             i++;
         }
         foreach (Missao m in missoesConcluidas)
         {
-            concluNames[l] = m.info.name;
-            l++;
+            concluNames[l] = m.info.nome;
             valores[l] = m.melhorStatus.dinheiro;
+            l++;
         }
-        MissaoData md = new MissaoData(dispoNames, concluNames, valores);
+        MissaoData md = new MissaoData(concluNames, dispoNames, valores);
         return md;
     }
 
@@ -57,25 +57,34 @@ public class MissaoManager : MonoBehaviour {
     {
         foreach (string m in md.missoesConcluidas)
         {
-            for(int i = 0; i < md.missoesConcluidas.Length; i++)
+            foreach (Missao miss in missoesDisponiveis)
             {
-                if(missoesDisponiveis[i].info.name == m)
+                if(miss.info.nome == m)
                 {
-                    missoesConcluidas[i].melhorStatus.dinheiro = md.concluValores[i];
-                    RemoverMissao(missoesConcluidas[i]);
+                    if(miss.info.missoesDesbloqueadas != null)
+                    {
+                        MissoesDesbloqueadas(miss.info.missoesDesbloqueadas, md);
+                    }
+                    RemoverMissao(miss);
                 }
             }
         }
-
-        foreach (string m in md.missoesDisponiveis)
+        int j = 0;
+        foreach (int money in md.concluValores)
         {
-            for (int i = 0; i < md.missoesDisponiveis.Length; i++)
-            {
-                if (missoesDisponiveis[i].info.name == m)
-                {
-                    AdicionarMissao(missoesDisponiveis[i]);
-                }
-            }
+            missoesConcluidas[j].melhorStatus.dinheiro = money;
+            j++;
+        }
+    }
+
+    public void MissoesDesbloqueadas(MissaoObject[] missoes, MissaoData md)
+    {
+        foreach(MissaoObject missaoObj in missoes)
+        {
+            Debug.Log("Z");
+            Missao missao = new Missao(missaoObj);
+            AdicionarMissao(missao);
+            SetMissaoData(md);
         }
     }
     #region Missão runtime

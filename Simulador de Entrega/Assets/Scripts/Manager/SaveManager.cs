@@ -3,36 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class SceneData
-{
-    public MissaoData missaoData;
-    public PlayerData playerData;
-}
 public class SaveManager : MonoBehaviour
 {
-    string path;
+    string pathPlayer, pathMissao, pathUpgrades;
     public static SaveManager instance;
     private void Awake()
     {
         instance = this;
-        path = Application.dataPath + "save.txt";
+        pathPlayer = Application.dataPath + "savePlayer.txt";
+        pathMissao = Application.dataPath + "saveMissao.txt";
+        pathUpgrades = Application.dataPath + "saveUpgrades.txt";
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            Save();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Load();
+        }
     }
 
     public void Save()
     {
-        SceneData data = new SceneData();
-        data.missaoData = MissaoManager.instance.GetMissaoData();
-        data.playerData = Player.instance.GetPlayerData();
-        string save = JsonUtility.ToJson(data, true);
-        File.WriteAllText(path, save);
+        PlayerData playerData = Player.instance.GetPlayerData();
+        string savePlayer = JsonUtility.ToJson(playerData, true);
+        File.WriteAllText(pathPlayer, savePlayer);
+
+        MissaoData missaoData = MissaoManager.instance.GetMissaoData();
+        string saveMissao = JsonUtility.ToJson(missaoData, true);
+        File.WriteAllText(pathMissao, saveMissao);
+
+        UpgradeData upgradeData = OficinaController.instance.GetUpgradeData();
+        string saveUpgrade = JsonUtility.ToJson(upgradeData, true);
+        File.WriteAllText(pathUpgrades, saveUpgrade);
 
     }
     public void Load ()
     {
-        string load = File.ReadAllText(path);
-        SceneData data = JsonUtility.FromJson<SceneData>(load);
-        Player.instance.SetPlayerData(data.playerData);
-        MissaoManager.instance.SetMissaoData(data.missaoData);
+        string loadPlayer = File.ReadAllText(pathPlayer);
+        PlayerData playerData = JsonUtility.FromJson<PlayerData>(loadPlayer);
+        Player.instance.SetPlayerData(playerData);
+
+        string loadMissao = File.ReadAllText(pathMissao);
+        MissaoData missaoData = JsonUtility.FromJson<MissaoData>(loadMissao);
+        MissaoManager.instance.SetMissaoData(missaoData);
+
+        string loadUpgrade = File.ReadAllText(pathUpgrades);
+        UpgradeData upgradeData = JsonUtility.FromJson<UpgradeData>(loadUpgrade);
+        OficinaController.instance.SetUpgradeData(upgradeData);
 
     }
 }
