@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Jerrystein4
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Ent\xE3o, amigo, os ratos meio que viraram zumbis infectados com uma doen\xE7a
+      nova (Booo!) Eu sei, eu sei, eles me morderam, por sorte eu j\xE1 mor- montei
+      uma prote\xE7\xE3o invis\xEDvel, mas eu ainda precisa matar os ratos, que tal
+      buscar algumas armas pra mim? Ratoeira gigante"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "Doen\xE7as sempre tem um novo dram\xE1tico, acho que eu vou criar um nome
+      mais amig\xE1vel pra essa. Que tal abracium-15? O quinze \xE9 pra quantidade
+      de vezes que eu fui mordido"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

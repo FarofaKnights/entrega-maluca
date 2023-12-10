@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Vlad1
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Ol\xE1, voc\xEA deve ser do servi\xE7o de entregas, vamos direto para
+      o ponto, eu preciso de um caix\xE3o hahaha, duas capas hahaha e tr\xEAs estacas
+      hahaha, e seja r\xE1pido"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "Bom, muito bom, meu caro! Este enterro ser\xE1 de morrer"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

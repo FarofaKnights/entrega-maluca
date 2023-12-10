@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Jerrystein1
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Ci\xEAncia \xE9 foda, n\xE9? Voc\xEA taca um monte de l\xEDquido em um
+      vidro e a cor muda, liquido colorido e vidro, parece que a ci\xEAncia foi criada
+      pra afastar crian\xE7a, n\xE3o \xE9 atoa que a ci\xEAncia inventou o anticonceptivo,
+      enfim, eu preciso de uns vidros e uns l\xEDquidos, o filho do meu vizinho t\xE1
+      me irritando... brincadeira, \xE9 pros meus experimentos"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "O que um \xE1lcool disse pro outro? Etan\xF3is! ... Nenhuma rea\xE7\xE3o?
+      Mas foi uma piada qu\xEDmica! (Sons de risada) Desculpa, eu tenho um monte
+      de bocas nas costas- quer dizer, eu tenho um JBL no bolso de tr\xE1s"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

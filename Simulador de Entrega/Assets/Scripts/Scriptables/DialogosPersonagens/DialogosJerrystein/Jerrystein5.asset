@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Jerrystein5
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Eu descobri que os ratos zumbis s\xE3o amig\xE1veis! (Aww!) Quem diria,
+      voc\xEA para de tentar matar um animal e ele para de tentar te matar (Sons
+      de risada). S\xF3 um probleminha: Eles comem e se reproduzem muito, busca umas
+      comidas pra mim por favor"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "Obrigado, amigo. A quantidade de ratos triplicou desde que voc\xEA saiu,
+      voc\xEA n\xE3o conhece algu\xE9m com uma flauta m\xE1gica, conhece?"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

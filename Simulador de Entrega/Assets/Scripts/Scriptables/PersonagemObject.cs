@@ -6,4 +6,5 @@ using UnityEngine;
 public class PersonagemObject : ScriptableObject {
     public string nome;
     public Sprite portrait;
+    public FalaPersonagens falaFalha;
 }
