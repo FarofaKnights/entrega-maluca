@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Padeiro5
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Disseram-me que a jornada do Shape \xE9 longa e \xE1rdua, tudo biene,
+      eu alcan\xE7arei o meu sonho de ter muita massa, no meio tempo, fa\xE7a mais
+      entregas e busque mais coisas para mim"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "Eccellente performance, auto, se precisa de algu\xE9m para te ajudar no
+      supino, bem, estou a disposi\xE7\xE3o "
+    audio: {fileID: 0}
+    anim: {fileID: 0}

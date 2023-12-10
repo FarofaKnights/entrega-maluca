@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Frank
   portrait: {fileID: 21300000, guid: 585f83ef01f5fbf4e8cf35364bef0ecd, type: 3}
+  falaFalha:
+    fala: "Algu\xE9m aqui j\xE1 me decepcionou? N\xE3o? Ah sim, \xE9 porque quem
+      me decepciona nunca \xE9 encontrado"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

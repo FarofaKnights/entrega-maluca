@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Jerrystein2
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Meu c\xE9rebro \xE9 metade cientista e metade comediante, parece uma Sitcom,
+      n\xE9? A gente s\xF3 precisa do homem, ou melhor, do c\xE9rebro s\xE9rio (Sons
+      de risada). Sem piadas agora, eu realmente preciso de um c\xE9rebro pros meus
+      experimentos, sabe como \xE9, dois c\xE9rebros pensam melhor que um"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "Eu ouvi falar que tem um culto conspiracionista aqui na cidade, s\xE9rio,
+      pra que se esconder? Existem coisas muito piores por aqui, voc\xEA j\xE1 conheceu
+      o Vlad, no topo da montanha? Ele sim devia se esconder, parece que ele vai
+      chupar o sangue dos meus- quer dizer do meu corpo (Sons de risada)"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

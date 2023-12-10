@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Padeiro
   portrait: {fileID: 21300000, guid: 0587e4b61f9d77246ac43f1192a9b263, type: 3}
+  falaFalha:
+    fala: "O que? Voc\xEA falhou? Vou ter que te fazer nadar com os peixes hahaha
+      brincadeirinha, mas tente novamente"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

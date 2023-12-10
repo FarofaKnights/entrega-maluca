@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Jerrystein3
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Tem algumas mitologias que acreditam que um raio deu vida aos humanos,
+      eu acho que eles est\xE3o certos, n\xE3o que eu saiba por experiencia, eu s\xF3
+      tenho uma parte deles em mim... geneticamente, \xE9 claro. Eu preciso de alguns
+      acess\xF3rios de metal pra eu testar essas cren\xE7as com cad\xE1veres de rato."
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "Muito obrigado! N\xE3o \xE9 como se algu\xE9m fosse sentir falta dos ratos
+      (boooo!) S\xE9rio, quando \xE9 que alguma crian\xE7a pediu um rato de natal?
+      \u201COi, papai noel, eu quero um boneco do min Stone, um pacote de cartas
+      do mokepon e um ratinho, com a peste negra de prefer\xEAncia\u201D (Sons de
+      risada) isso nunca aconteceu, crian\xE7as pedem cachorro, gato, cobra, o que
+      eles tem em comum? Todos comem ratos (Sons de risada)... talvez eu n\xE3o devesse
+      revive-los"
+    audio: {fileID: 0}
+    anim: {fileID: 0}

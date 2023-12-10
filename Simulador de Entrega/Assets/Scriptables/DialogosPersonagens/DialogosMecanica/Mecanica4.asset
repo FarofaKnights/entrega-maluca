@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Mecanica4
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Parece que as minhas plantas melhoraram, mas tem um pequeno problema:
+      acabou o meu \xF3leo de carro, preciso que voc\xEA busque mais, a n\xE3o ser
+      que voc\xEA queira me dar um pouco do seu, t\xF4 brincando \xE9 claro. Aproveita
+      e pega umas outras coisas pra mim"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
+  falaConclusao:
+    fala: "Muito obrigada, as plantinhas j\xE1 estavam come\xE7ando a ficar famintas"
+    audio: {fileID: 0}
+    anim: {fileID: 0}
