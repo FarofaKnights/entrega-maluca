@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0f1cde515f290a4991e3972ec1e9923, type: 3}
-  m_Name: Frank
+  m_Name: Vlad
   m_EditorClassIdentifier: 
-  nome: Frank
-  portrait: {fileID: 21300000, guid: 585f83ef01f5fbf4e8cf35364bef0ecd, type: 3}
+  nome: 
+  portrait: {fileID: 0}
   falaFalha:
-    fala: "Algu\xE9m aqui j\xE1 me decepcionou? N\xE3o? Ah sim, \xE9 porque quem
-      me decepciona nunca \xE9 encontrado"
+    fala: "N\xE3o me fa\xE7a empalar voc\xEA tamb\xE9m"
     audio: {fileID: 0}
     anim: {fileID: 0}
