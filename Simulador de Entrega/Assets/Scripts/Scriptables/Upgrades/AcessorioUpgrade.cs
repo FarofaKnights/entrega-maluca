@@ -19,4 +19,13 @@ public class AcessorioUpgrade : UpgradeObject {
     public override Dictionary<string, (string, float)> GetInfo() {
         return null;
     }
+
+    public override bool CalculoDeExclusividade(UpgradeObject outro) {
+        if (outro is AcessorioUpgrade) {
+            AcessorioUpgrade outroAcessorio = (AcessorioUpgrade)outro;
+            return outroAcessorio.localizacao == localizacao;
+        }
+
+        return false;
+    }
 }

@@ -39,8 +39,6 @@ public class VisualPlayer : MonoBehaviour {
         }
 
         GameObject skin = Instantiate(acessorioPrefab, holder.transform);
-        skin.transform.localPosition = Vector3.zero;
-        skin.transform.localRotation = Quaternion.identity;
     }
 
     public void RemoveAcessorio(Localizacao localizacao) {

@@ -43,5 +43,6 @@ public abstract class UpgradeObject : ScriptableObject {
 
     protected abstract void _Ativar();
     protected abstract void _Desativar();
+    public abstract bool CalculoDeExclusividade(UpgradeObject outro);
     public abstract Dictionary<string, (string, float)> GetInfo();
 }

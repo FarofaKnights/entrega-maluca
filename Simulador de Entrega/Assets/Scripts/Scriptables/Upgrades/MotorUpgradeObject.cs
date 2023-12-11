@@ -25,4 +25,8 @@ public class MotorUpgradeObject : UpgradeObject {
 
         return info;
     }
+
+    public override bool CalculoDeExclusividade(UpgradeObject outro) {
+        return outro is MotorUpgradeObject;
+    }
 }

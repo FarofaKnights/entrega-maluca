@@ -17,4 +17,8 @@ public class MaterialUpgradeObject : UpgradeObject {
     public override Dictionary<string, (string, float)> GetInfo() {
         return null;
     }
+
+    public override bool CalculoDeExclusividade(UpgradeObject outro) {
+        return outro is MaterialUpgradeObject;
+    }
 }

@@ -177,6 +177,14 @@ public class PauseUIController : MonoBehaviour {
         geralSlider.value = Mathf.Pow(10, volume / 20);
     }
 
+    public void SairPause() {
+        GameManager.instance.Despausar();
+    }
+
+    public void SairJogo() {
+        GameManager.instance.VoltarMenu();
+    }
+
     public void Mostrar() {
         Tela tela = GetComponent<Tela>();
         tela.Mostrar();

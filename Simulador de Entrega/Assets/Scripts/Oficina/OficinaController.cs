@@ -5,7 +5,7 @@ using UnityEngine;
 public class OficinaController : MonoBehaviour {
     public static OficinaController instance;
 
-    public GameObject veiculoHolder, sairRef;
+    GameObject veiculoHolder, sairRef;
     bool naOficina = false;
 
     public bool oficinaDisponivel = true;
@@ -71,6 +71,9 @@ public class OficinaController : MonoBehaviour {
     void Start() {
         instance = this;
 
+        veiculoHolder = transform.Find("VeiculoHolder").gameObject;
+        sairRef = transform.Find("SairRef").gameObject;
+
         trigger = transform.Find("Trigger").gameObject;
         cameraOficina = transform.Find("Camera").GetComponent<Camera>();
 
@@ -135,7 +138,7 @@ public class OficinaController : MonoBehaviour {
 
         foreach (Renderer rend in rends) {
             if (material != null) rend.material = material;
-            else rend.materials = materiaisVeiculo[rend];
+            else if (materiaisVeiculo.ContainsKey(rend)) rend.materials = materiaisVeiculo[rend];
         }
     }
 
@@ -151,9 +154,17 @@ public class OficinaController : MonoBehaviour {
         if (upgradesAtivos.Contains(upgrade)) return;
 
         if (upgrade.exclusivo) {
-            UpgradeObject upgradeAtual = CurrentOfSameType(upgrade);
-            if (upgradeAtual != null) {
-                DesativarUpgrade(upgradeAtual);
+            // Evita multiplos por quaisquer motivos
+            List<UpgradeObject> exclusivos = new List<UpgradeObject>();
+            
+            foreach (UpgradeObject up in upgradesAtivos) {
+                if (upgrade.CalculoDeExclusividade(up)) {
+                    exclusivos.Add(up);
+                }
+            }
+
+            foreach (UpgradeObject up in exclusivos) {
+                DesativarUpgrade(up);
             }
         }
 
@@ -179,7 +190,9 @@ public class OficinaController : MonoBehaviour {
 
     public UpgradeObject CurrentOfSameType(UpgradeObject upgrade) {
         foreach (UpgradeObject up in upgradesAtivos) {
-            if (up.GetType() == upgrade.GetType()) return up;
+            if (upgrade.CalculoDeExclusividade(up)) {
+                return up;
+            }
         }
 
         return null;
@@ -190,7 +203,7 @@ public class OficinaController : MonoBehaviour {
 
         if (Player.instance.GetDinheiro() >= upgrade.custo) {
             Player.instance.RemoverDinheiro(upgrade.custo);
-            OficinaController.instance.upgradesComprados.Add(upgrade);
+            upgradesComprados.Add(upgrade);
             upgrade.Ativar();
         }
     }

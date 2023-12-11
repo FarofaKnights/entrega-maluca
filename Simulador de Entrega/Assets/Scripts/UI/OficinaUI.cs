@@ -5,32 +5,19 @@ using UnityEngine.UI;
 using TMPro;
 
 public class OficinaUI : MonoBehaviour {
-    public OficinaController controller;
-
     public Text descricao;
     public Button comprarButton;
 
     public TextMeshProUGUI nome, preco, comprarBtnText;
 
     public GameObject gridPanel, detalhesPanel, upgradesHolder;
+    public GameObject upgradePrefab;
     UpgradeObject upgradeSelecionado;
     
     public string metodoOrdenacao = "padrao"; // Opções: "padrao", "preco", "nome"
 
     public GameObject caracteristicasHolder;
     public GameObject caracteristicaPrefab;
-
-    void Start() {
-        int id = 1;
-
-        foreach (Transform item in upgradesHolder.transform) {
-            UpgradeButton upgrade = item.GetComponent<UpgradeButton>();
-            if (upgrade != null) {
-                upgrade.id = id;
-                id++;
-            }
-        }
-    }
 
     public void ShowDetalhes(UpgradeButton upgrade) {
         ShowDetalhes(upgrade.upgradeObject);
@@ -108,6 +95,27 @@ public class OficinaUI : MonoBehaviour {
     public void HandleMostrarGrid() {
         gridPanel.SetActive(true);
         detalhesPanel.SetActive(false);
+    }
+
+    public void GerarBotoes() {
+        foreach (Transform item in upgradesHolder.transform) {
+            Destroy(item.gameObject);
+        }
+
+        Debug.Log(OficinaController.instance);
+        Debug.Log(OficinaController.instance.upgrades.Count);
+
+
+        int i = 0;
+        foreach (UpgradeObject upgrade in OficinaController.instance.upgrades) {
+            GameObject upgradeObject = Instantiate(upgradePrefab, upgradesHolder.transform);
+
+            upgradeObject.GetComponentInChildren<Text>().text = upgrade.nome;
+
+            upgradeObject.GetComponent<UpgradeButton>().upgradeObject = upgrade;
+            upgradeObject.GetComponent<UpgradeButton>().id = i;
+            i++;
+        }
     }
 
     public void HandleMostrarDetalhes() {
@@ -226,10 +234,15 @@ public class OficinaUI : MonoBehaviour {
 
     #endregion
 
+    public void Sair() {
+        OficinaController.instance.SairOficina();
+    }
+
     public void Mostrar() {
         Tela tela = GetComponent<Tela>();
         tela.Mostrar();
 
+        GerarBotoes();
         HandleMostrarGrid();
     }
 
