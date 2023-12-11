@@ -102,10 +102,6 @@ public class OficinaUI : MonoBehaviour {
             Destroy(item.gameObject);
         }
 
-        Debug.Log(OficinaController.instance);
-        Debug.Log(OficinaController.instance.upgrades.Count);
-
-
         int i = 0;
         foreach (UpgradeObject upgrade in OficinaController.instance.upgrades) {
             GameObject upgradeObject = Instantiate(upgradePrefab, upgradesHolder.transform);

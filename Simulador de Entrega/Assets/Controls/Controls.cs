@@ -842,6 +842,56 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Oficina"",
+            ""id"": ""40ff083a-bd06-45d7-a680-1a75b0d9c29c"",
+            ""actions"": [
+                {
+                    ""name"": ""Girar"",
+                    ""type"": ""Value"",
+                    ""id"": ""6329de53-19e3-4278-b93f-c483193efe08"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""c0ca4e00-4190-48bf-9d89-209b05df0163"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Girar"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3cd17043-ef38-4264-b117-20247c28cc12"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Girar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e77fc1d1-4093-4b9f-87c0-2343040e4e05"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Girar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -872,6 +922,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Encaixe_Selecionar = m_Encaixe.FindAction("Selecionar", throwIfNotFound: true);
         m_Encaixe_Newaction = m_Encaixe.FindAction("New action", throwIfNotFound: true);
         m_Encaixe_EfetuarAcao = m_Encaixe.FindAction("EfetuarAcao", throwIfNotFound: true);
+        // Oficina
+        m_Oficina = asset.FindActionMap("Oficina", throwIfNotFound: true);
+        m_Oficina_Girar = m_Oficina.FindAction("Girar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1162,6 +1215,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public EncaixeActions @Encaixe => new EncaixeActions(this);
+
+    // Oficina
+    private readonly InputActionMap m_Oficina;
+    private IOficinaActions m_OficinaActionsCallbackInterface;
+    private readonly InputAction m_Oficina_Girar;
+    public struct OficinaActions
+    {
+        private @Controls m_Wrapper;
+        public OficinaActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Girar => m_Wrapper.m_Oficina_Girar;
+        public InputActionMap Get() { return m_Wrapper.m_Oficina; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OficinaActions set) { return set.Get(); }
+        public void SetCallbacks(IOficinaActions instance)
+        {
+            if (m_Wrapper.m_OficinaActionsCallbackInterface != null)
+            {
+                @Girar.started -= m_Wrapper.m_OficinaActionsCallbackInterface.OnGirar;
+                @Girar.performed -= m_Wrapper.m_OficinaActionsCallbackInterface.OnGirar;
+                @Girar.canceled -= m_Wrapper.m_OficinaActionsCallbackInterface.OnGirar;
+            }
+            m_Wrapper.m_OficinaActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Girar.started += instance.OnGirar;
+                @Girar.performed += instance.OnGirar;
+                @Girar.canceled += instance.OnGirar;
+            }
+        }
+    }
+    public OficinaActions @Oficina => new OficinaActions(this);
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
@@ -1190,5 +1276,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnSelecionar(InputAction.CallbackContext context);
         void OnNewaction(InputAction.CallbackContext context);
         void OnEfetuarAcao(InputAction.CallbackContext context);
+    }
+    public interface IOficinaActions
+    {
+        void OnGirar(InputAction.CallbackContext context);
     }
 }

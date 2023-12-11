@@ -5,7 +5,12 @@ using UnityEngine;
 public class OficinaController : MonoBehaviour {
     public static OficinaController instance;
 
-    GameObject veiculoHolder, sairRef;
+    Controls controls;
+    float girarValue = 0f;
+    bool girando = false;
+    public float giroPadrao = 1f;
+
+    public GameObject veiculoHolder, sairRef, giradorRef;
     bool naOficina = false;
 
     public bool oficinaDisponivel = true;
@@ -71,9 +76,6 @@ public class OficinaController : MonoBehaviour {
     void Start() {
         instance = this;
 
-        veiculoHolder = transform.Find("VeiculoHolder").gameObject;
-        sairRef = transform.Find("SairRef").gameObject;
-
         trigger = transform.Find("Trigger").gameObject;
         cameraOficina = transform.Find("Camera").GetComponent<Camera>();
 
@@ -106,6 +108,11 @@ public class OficinaController : MonoBehaviour {
         UIController.oficina.Mostrar();
         trigger.SetActive(false);
 
+        controls = new Controls();
+        controls.Oficina.Girar.performed += ctx => HabilitarGirar(ctx.ReadValue<float>());
+        controls.Oficina.Girar.canceled += ctx => DesabilitarGirar();
+        controls.Oficina.Enable();
+
         naOficina = true;
     }
 
@@ -127,6 +134,8 @@ public class OficinaController : MonoBehaviour {
         
         UIController.oficina.Esconder();
         trigger.SetActive(true);
+
+        controls.Oficina.Disable();
 
         naOficina = false;
     }
@@ -209,4 +218,20 @@ public class OficinaController : MonoBehaviour {
     }
 
     #endregion
+
+    void HabilitarGirar(float input) {
+        if (input == 0) return;
+        girando = true;
+        girarValue = input;
+    }
+
+    void DesabilitarGirar() {
+        girando = false;
+        girarValue = 0;
+    }
+
+    void FixedUpdate() {
+        if (girando) giradorRef.transform.Rotate(Vector3.up, girarValue * 30 * Time.fixedDeltaTime);
+        else giradorRef.transform.Rotate(Vector3.up, giroPadrao * Time.fixedDeltaTime);
+    }
 }

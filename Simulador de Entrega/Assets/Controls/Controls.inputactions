@@ -820,6 +820,56 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Oficina",
+            "id": "40ff083a-bd06-45d7-a680-1a75b0d9c29c",
+            "actions": [
+                {
+                    "name": "Girar",
+                    "type": "Value",
+                    "id": "6329de53-19e3-4278-b93f-c483193efe08",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "c0ca4e00-4190-48bf-9d89-209b05df0163",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Girar",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3cd17043-ef38-4264-b117-20247c28cc12",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Girar",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "e77fc1d1-4093-4b9f-87c0-2343040e4e05",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Girar",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
         }
     ],
     "controlSchemes": []
