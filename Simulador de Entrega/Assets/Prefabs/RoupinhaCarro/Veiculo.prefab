@@ -5553,6 +5553,7 @@ GameObject:
   - component: {fileID: 2325983894357867966}
   - component: {fileID: 1585442689393072738}
   - component: {fileID: 7528264336263519814}
+  - component: {fileID: 2800495336571317752}
   m_Layer: 0
   m_Name: Veiculo
   m_TagString: Player
@@ -5805,6 +5806,22 @@ MonoBehaviour:
   minPitch: 0.4
   maxPitch: 1
   pitchDoCarro: 0
+--- !u!114 &2800495336571317752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2187325619862996354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b70faaea52508948aa34ed76f087184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapeuHolder: {fileID: 1883894496223759871}
+  frontalHolder: {fileID: 1883894496228395296}
+  traseiraHolder: {fileID: 1883894496834046472}
+  visaoHolder: {fileID: 1883894496178730953}
 --- !u!1 &2472870418740676031
 GameObject:
   m_ObjectHideFlags: 0
