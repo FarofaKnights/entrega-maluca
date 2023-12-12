@@ -8,6 +8,7 @@ public abstract class UpgradeObject : ScriptableObject {
     public float custo;
 
     public bool exclusivo;
+    public bool ativavel = true;
 
     public bool comprado {
         get {

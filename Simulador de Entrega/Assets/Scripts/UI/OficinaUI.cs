@@ -230,6 +230,44 @@ public class OficinaUI : MonoBehaviour {
 
     #endregion
 
+    #region Filtros
+
+    public void FiltrarLista(string filtro) {
+        foreach (Transform item in upgradesHolder.transform) {
+            UpgradeButton upgrade = item.GetComponent<UpgradeButton>();
+            if (upgrade != null) {
+                if (ChecarFiltro(upgrade.upgradeObject, filtro)) {
+                    item.gameObject.SetActive(true);
+                } else {
+                    item.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
+    public bool ChecarFiltro(UpgradeObject upgrade, string filtro) {
+        switch (filtro) {
+            case "upgrades":
+                return upgrade is MotorUpgradeObject;
+            case "acessorios":
+                return upgrade is AcessorioUpgrade;
+            case "tintas":
+                return upgrade is MaterialUpgradeObject;
+            default:
+                return true;
+        }
+    }
+
+    #endregion
+
+    #region Skins
+
+    public void SelecionarLocalSkin(string local) {
+
+    }
+
+    #endregion
+
     public void Sair() {
         OficinaController.instance.SairOficina();
     }

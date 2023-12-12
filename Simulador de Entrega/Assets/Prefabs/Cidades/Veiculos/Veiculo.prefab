@@ -317,6 +317,33 @@ MonoBehaviour:
   frontalHolder: {fileID: 8638528489547998151}
   traseiraHolder: {fileID: 5399725930548869918}
   visaoHolder: {fileID: 770822042729432211}
+  materialsInfo:
+    cabineMaterials:
+    - obj: {fileID: 8738711390635754360}
+      materialIndex: 0
+    - obj: {fileID: 8738711390635754360}
+      materialIndex: 1
+    - obj: {fileID: 8738711390635754360}
+      materialIndex: 7
+    capoMaterial:
+    - obj: {fileID: 8254098958646566453}
+      materialIndex: 0
+    portaMaterial:
+    - obj: {fileID: 1262609094128540468}
+      materialIndex: 0
+    - obj: {fileID: 1262609094128540468}
+      materialIndex: 1
+    luzesMaterial:
+    - obj: {fileID: 8738711390635754360}
+      materialIndex: 4
+    frenteMaterial:
+    - obj: {fileID: 8738711390635754360}
+      materialIndex: 5
+    cacambaMaterial:
+    - obj: {fileID: 2466398878213844646}
+      materialIndex: 0
+    - obj: {fileID: 7446682781773033083}
+      materialIndex: 0
 --- !u!1 &633520056185171573
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ public class SelecionavelHandler : MonoBehaviour, IPointerEnterHandler, IPointer
     public void DeselecionarInstantanea() {
         if (onDeselecionado != null) onDeselecionado();
 
-        transform.position = posicaoInicial;
+        if (movimentoVertical != 0) transform.position = posicaoInicial;
         transform.localScale = escalaInicial;
     }
     

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class MaterialLocation {
+    public GameObject obj;
+    public int materialIndex;
+}
+
 public class VisualPlayer : MonoBehaviour {
     public static VisualPlayer instance;
 
@@ -11,6 +17,20 @@ public class VisualPlayer : MonoBehaviour {
     public GameObject frontalHolder;
     public GameObject traseiraHolder;
     public GameObject visaoHolder;
+
+    [System.Serializable]
+    class MaterialsInfo {
+        public MaterialLocation[] cabineMaterials;
+        public MaterialLocation[] capoMaterial;
+        public MaterialLocation[] portaMaterial;
+        public MaterialLocation[] luzesMaterial;
+        public MaterialLocation[] frenteMaterial;
+        public MaterialLocation[] cacambaMaterial;
+    }
+
+    
+    [SerializeField] MaterialsInfo materialsInfo;
+
 
     void Awake() {
         instance = this;
