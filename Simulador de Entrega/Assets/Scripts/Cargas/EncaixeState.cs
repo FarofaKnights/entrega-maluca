@@ -66,6 +66,7 @@ public class EncaixeState : IPlayerState {
 
 
         Selecionar(0);
+        UIController.dinheiro.gameObject.SetActive(false);
     }
 
     public void Execute(float dt) {
@@ -77,6 +78,7 @@ public class EncaixeState : IPlayerState {
     }
 
     public void Exit() {
+        UIController.dinheiro.gameObject.SetActive(true);
         // Lmebrando que o Exit pode ser chamado quando foi concluido e quando foi interrompido!
         UIController.encaixe.Esconder();
         

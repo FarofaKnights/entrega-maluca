@@ -18,4 +18,7 @@ MonoBehaviour:
     \xE9 um fato irrefutavel e a priori."
   custo: 20
   exclusivo: 1
+  ativavel: 1
   material: {fileID: 2100000, guid: f4d56e86c60fe604aa721d30928ca5ee, type: 2}
+  icone: {fileID: 0}
+  colorIcone: {r: 1, g: 0.6901961, b: 0, a: 1}

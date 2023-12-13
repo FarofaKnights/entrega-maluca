@@ -75,13 +75,13 @@ public class Player : MonoBehaviour {
     public void AdicionarDinheiro(float valor) {
         dinheiro += valor;
 
-        UIController.HUD.AtualizarDinheiro();
+        UIController.dinheiro.AtualizarDinheiro();
     }
 
     public bool RemoverDinheiro(float valor) {
         if (dinheiro >= valor) {
             dinheiro -= valor;
-            UIController.HUD.AtualizarDinheiro();
+            UIController.dinheiro.AtualizarDinheiro();
 
             return true;
         }

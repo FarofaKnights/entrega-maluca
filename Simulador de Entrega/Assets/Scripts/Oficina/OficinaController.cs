@@ -142,15 +142,6 @@ public class OficinaController : MonoBehaviour {
 
     #region Upgrades
 
-    public void SetMaterial(Material material) {
-        Renderer[] rends = Player.instance.GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer rend in rends) {
-            if (material != null) rend.material = material;
-            else if (materiaisVeiculo.ContainsKey(rend)) rend.materials = materiaisVeiculo[rend];
-        }
-    }
-
     public void SetMotor(int maxSpeed, float acelleration) {
         if (maxSpeed < 0) maxSpeed = defaultMaxSpeed;
         if (acelleration < 0) acelleration = defaultAcelleration;

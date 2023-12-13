@@ -10,9 +10,13 @@ public class OficinaUI : MonoBehaviour {
 
     public TextMeshProUGUI nome, preco, comprarBtnText;
 
-    public GameObject gridPanel, detalhesPanel, upgradesHolder;
-    public GameObject upgradePrefab;
+    public GameObject gridPanel, detalhesPanel, pinturaPanel, upgradesHolder, tintasHolder;
+    public GameObject upgradePrefab, tintaPrefab, resetarTintaPrefab;
+    public GameObject tintasList, semLocalSelecionado, localizacoesParent;
+    string lastSection = "grid";
     UpgradeObject upgradeSelecionado;
+
+    VisualPlayer.SkinLocation skinLocation = VisualPlayer.SkinLocation.None;
     
     public string metodoOrdenacao = "padrao"; // Opções: "padrao", "preco", "nome"
 
@@ -20,6 +24,10 @@ public class OficinaUI : MonoBehaviour {
     public GameObject caracteristicaPrefab;
 
     public void ShowDetalhes(UpgradeButton upgrade) {
+        ShowDetalhes(upgrade.upgradeObject);
+    }
+
+    public void ShowDetalhes(MaterialButton upgrade) {
         ShowDetalhes(upgrade.upgradeObject);
     }
 
@@ -32,7 +40,8 @@ public class OficinaUI : MonoBehaviour {
 
         if (upgrade.comprado) {
             comprarButton.interactable = true;
-            comprarBtnText.text = upgrade.ativo ? "Desativar" : "Ativar";
+            if (upgrade is MaterialUpgradeObject) comprarBtnText.text = "Pintar";
+            else comprarBtnText.text = upgrade.ativo ? "Desativar" : "Ativar";
         } else {
             comprarButton.interactable = Player.instance.GetDinheiro() >= upgrade.custo;
             comprarBtnText.text = "Comprar";
@@ -92,11 +101,6 @@ public class OficinaUI : MonoBehaviour {
         }
     }
 
-    public void HandleMostrarGrid() {
-        gridPanel.SetActive(true);
-        detalhesPanel.SetActive(false);
-    }
-
     public void GerarBotoes() {
         foreach (Transform item in upgradesHolder.transform) {
             Destroy(item.gameObject);
@@ -112,13 +116,73 @@ public class OficinaUI : MonoBehaviour {
             upgradeObject.GetComponent<UpgradeButton>().id = i;
             i++;
         }
+
+        FiltrarLista("geral");
+    }
+
+    public void GerarTintas() {
+        foreach (Transform item in tintasHolder.transform) {
+            Destroy(item.gameObject);
+        }
+
+        GameObject resetar = Instantiate(resetarTintaPrefab, tintasHolder.transform);
+        resetar.GetComponent<MaterialButton>().id = -1;
+
+        int i = 0;
+        foreach (UpgradeObject material in OficinaController.instance.upgrades) {
+            if (!(material is MaterialUpgradeObject)) continue;
+
+            GameObject upgradeObject = Instantiate(tintaPrefab, tintasHolder.transform);
+            upgradeObject.GetComponent<MaterialButton>().SetUpgrade((MaterialUpgradeObject)material);
+            upgradeObject.GetComponent<MaterialButton>().id = i;
+
+            i++;
+        }
+    }
+
+    string GetCurrentSection() {
+        if (gridPanel.activeSelf) return "grid";
+        if (detalhesPanel.activeSelf) return "detalhes";
+        if (pinturaPanel.activeSelf) return "pintura";
+        return "";
+    }
+
+    public void HandleMostrarGrid() {
+        lastSection = GetCurrentSection();
+
+        gridPanel.SetActive(true);
+        detalhesPanel.SetActive(false);
+        pinturaPanel.SetActive(false);
+        UIController.dinheiro.gameObject.SetActive(true);
     }
 
     public void HandleMostrarDetalhes() {
+        lastSection = GetCurrentSection();
+
         gridPanel.SetActive(false);
         detalhesPanel.SetActive(true);
+        pinturaPanel.SetActive(false);
+        UIController.dinheiro.gameObject.SetActive(true);
         
         StartCoroutine(UpdateLayoutGroup());
+    }
+
+    public void HandleMostrasPintura() {
+        lastSection = GetCurrentSection();
+
+        gridPanel.SetActive(false);
+        detalhesPanel.SetActive(false);
+        pinturaPanel.SetActive(true);
+        UIController.dinheiro.gameObject.SetActive(false);
+
+        GerarTintas();
+        
+        Toggle[] toggles = localizacoesParent.GetComponentsInChildren<Toggle>();
+        foreach (Toggle toggle in toggles) {
+            toggle.isOn = false;
+        }
+
+        SelecionarLocalSkin(VisualPlayer.SkinLocation.None);
     }
 
     IEnumerator UpdateLayoutGroup() {
@@ -128,13 +192,25 @@ public class OficinaUI : MonoBehaviour {
         detalhesPanel.SetActive(true);
     }
 
+    public void HandleVoltarBtn() {
+        if (lastSection == "pintura") HandleMostrasPintura();
+        else HandleMostrarGrid();
+    }
+
     public void HandleComprar() {
         if (!upgradeSelecionado.comprado) {
             upgradeSelecionado.Comprar();
-        } else if (upgradeSelecionado.ativo) {
-            upgradeSelecionado.Desativar();
         } else {
-            upgradeSelecionado.Ativar();
+            if (upgradeSelecionado is MaterialUpgradeObject) {
+                HandleMostrasPintura();
+                return;
+            }
+
+            if (upgradeSelecionado.ativo) {
+                upgradeSelecionado.Desativar();
+            } else {
+                upgradeSelecionado.Ativar();
+            }
         }
         
         ShowDetalhes(upgradeSelecionado);
@@ -247,6 +323,8 @@ public class OficinaUI : MonoBehaviour {
 
     public bool ChecarFiltro(UpgradeObject upgrade, string filtro) {
         switch (filtro) {
+            case "geral":
+                return !(upgrade is MaterialUpgradeObject);
             case "upgrades":
                 return upgrade is MotorUpgradeObject;
             case "acessorios":
@@ -262,13 +340,30 @@ public class OficinaUI : MonoBehaviour {
 
     #region Skins
 
-    public void SelecionarLocalSkin(string local) {
+    public void SelecionarLocalSkin(string nome) {
+        SelecionarLocalSkin(VisualPlayer.StringToSkinLocation(nome));
+    }
 
+    public void SelecionarLocalSkin(VisualPlayer.SkinLocation location) {
+        bool isNone = location == VisualPlayer.SkinLocation.None;
+
+        semLocalSelecionado.SetActive(isNone);
+        tintasList.SetActive(!isNone);
+
+        skinLocation = location;
+    }
+
+    public void SetarCor(MaterialUpgradeObject material) {
+        if (skinLocation == VisualPlayer.SkinLocation.None) return;
+
+        if (material == null) VisualPlayer.instance.RemoveSkin(skinLocation);
+        else VisualPlayer.instance.SetSkin(material.material, skinLocation);
     }
 
     #endregion
 
     public void Sair() {
+        UIController.dinheiro.gameObject.SetActive(true);
         OficinaController.instance.SairOficina();
     }
 

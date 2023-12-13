@@ -20,8 +20,6 @@ public class HUDController : MonoBehaviour {
     public Text descricaoMissao;
     public Image imagemMissao;
 
-
-    public Text dinheiro;
     public TextMeshProUGUI timer;
 
     void Awake() {
@@ -37,7 +35,7 @@ public class HUDController : MonoBehaviour {
 
         missaoPanel.SetActive(false);
 
-        AtualizarDinheiro();
+        UIController.dinheiro.AtualizarDinheiro();
     }
 
     public void ChamaVitoria(Missao missao, StatusMissao status) {
@@ -113,9 +111,7 @@ public class HUDController : MonoBehaviour {
 
     #endregion
 
-    public void AtualizarDinheiro() {
-        dinheiro.text = Player.instance.GetDinheiro().ToString("C2");
-    }
+    
 
     public void MostrarTimer(Timer timer) {
         currentTimer = timer;

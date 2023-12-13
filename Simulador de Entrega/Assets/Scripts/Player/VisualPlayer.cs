@@ -6,12 +6,29 @@ using UnityEngine;
 public class MaterialLocation {
     public GameObject obj;
     public int materialIndex;
+    Material materialInicial;
+
+    public void SetMaterialInicial() {
+        materialInicial = obj.GetComponent<Renderer>().materials[materialIndex];
+    }
+
+    public void ResetMaterialToInicial() {
+        SetMaterial(materialInicial);
+    }
+
+    public void SetMaterial(Material mat) {
+        Material[] materials = obj.GetComponent<Renderer>().materials;
+        materials[materialIndex] = mat;
+        
+        obj.GetComponent<Renderer>().materials = materials;
+    }
 }
 
 public class VisualPlayer : MonoBehaviour {
     public static VisualPlayer instance;
 
     public enum Localizacao { Chapeu, Frontal, Traseira, Visao }
+    public enum SkinLocation { None, Cabine, Capo, Porta, Luzes, Frente, Cacamba }
 
     public GameObject chapeuHolder;
     public GameObject frontalHolder;
@@ -34,6 +51,23 @@ public class VisualPlayer : MonoBehaviour {
 
     void Awake() {
         instance = this;
+    }
+
+    void Start() {
+        MaterialLocation[][] locations = new MaterialLocation[][] {
+            materialsInfo.cabineMaterials,
+            materialsInfo.capoMaterial,
+            materialsInfo.portaMaterial,
+            materialsInfo.luzesMaterial,
+            materialsInfo.frenteMaterial,
+            materialsInfo.cacambaMaterial
+        };
+
+        foreach (MaterialLocation[] item in locations) {
+            foreach (MaterialLocation materialLocation in item) {
+                materialLocation.SetMaterialInicial();
+            }
+        }
     }
 
     public void SetAcessorio(GameObject acessorioPrefab, Localizacao localizacao) {
@@ -81,6 +115,83 @@ public class VisualPlayer : MonoBehaviour {
 
         if (holder.transform.childCount > 0) {
             Destroy(holder.transform.GetChild(0).gameObject);
+        }
+    }
+
+    public void SetSkin(Material material, SkinLocation location) {
+        MaterialLocation[] locations = null;
+
+        switch (location) {
+            case SkinLocation.Cabine:
+                locations = materialsInfo.cabineMaterials;
+                break;
+            case SkinLocation.Capo:
+                locations = materialsInfo.capoMaterial;
+                break;
+            case SkinLocation.Porta:
+                locations = materialsInfo.portaMaterial;
+                break;
+            case SkinLocation.Luzes:
+                locations = materialsInfo.luzesMaterial;
+                break;
+            case SkinLocation.Frente:
+                locations = materialsInfo.frenteMaterial;
+                break;
+            case SkinLocation.Cacamba:
+                locations = materialsInfo.cacambaMaterial;
+                break;
+        }
+
+        foreach (MaterialLocation item in locations) {
+            item.SetMaterial(material);
+        }
+    }
+
+    public void RemoveSkin(SkinLocation location) {
+        MaterialLocation[] locations = null;
+
+        switch (location) {
+            case SkinLocation.Cabine:
+                locations = materialsInfo.cabineMaterials;
+                break;
+            case SkinLocation.Capo:
+                locations = materialsInfo.capoMaterial;
+                break;
+            case SkinLocation.Porta:
+                locations = materialsInfo.portaMaterial;
+                break;
+            case SkinLocation.Luzes:
+                locations = materialsInfo.luzesMaterial;
+                break;
+            case SkinLocation.Frente:
+                locations = materialsInfo.frenteMaterial;
+                break;
+            case SkinLocation.Cacamba:
+                locations = materialsInfo.cacambaMaterial;
+                break;
+        }
+
+        foreach (MaterialLocation item in locations) {
+            item.ResetMaterialToInicial();
+        }
+    }
+
+    public static SkinLocation StringToSkinLocation(string txt) {
+        switch (txt) {
+            case "cabine":
+                return SkinLocation.Cabine;
+            case "capo":
+                return SkinLocation.Capo;
+            case "porta":
+                return SkinLocation.Porta;
+            case "luzes":
+                return SkinLocation.Luzes;
+            case "frente":
+                return SkinLocation.Frente;
+            case "cacamba":
+                return SkinLocation.Cacamba;
+            default:
+                return SkinLocation.None;
         }
     }
 }

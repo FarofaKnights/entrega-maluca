@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour {
     public static PauseUIController pause;
     public static OficinaUI oficina;
     public static DiretrizUI diretriz;
+    public static DinheiroUI dinheiro;
 
     void Awake() {
         instance = this;
@@ -18,6 +19,7 @@ public class UIController : MonoBehaviour {
         pause = transform.GetComponentInChildren<PauseUIController>(true);
         oficina = transform.GetComponentInChildren<OficinaUI>(true);
         diretriz = transform.GetComponentInChildren<DiretrizUI>(true);
+        dinheiro = transform.GetComponentInChildren<DinheiroUI>(true);
     }
     
 }

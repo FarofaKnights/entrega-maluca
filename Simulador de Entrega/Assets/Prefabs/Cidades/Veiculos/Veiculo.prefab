@@ -325,6 +325,8 @@ MonoBehaviour:
       materialIndex: 1
     - obj: {fileID: 8738711390635754360}
       materialIndex: 7
+    - obj: {fileID: 8738711390635754360}
+      materialIndex: 6
     capoMaterial:
     - obj: {fileID: 8254098958646566453}
       materialIndex: 0
