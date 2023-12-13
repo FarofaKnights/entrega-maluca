@@ -102,7 +102,7 @@ public class OficinaController : MonoBehaviour {
         player.transform.localPosition = Vector3.zero;
         player.transform.localRotation = Quaternion.identity;
 
-        player.transform.Find("Main Camera").gameObject.SetActive(false);
+        player.GetComponent<Player>().cameras[0].gameObject.SetActive(false);
         cameraOficina.gameObject.SetActive(true);
 
         UIController.oficina.Mostrar();
@@ -129,7 +129,7 @@ public class OficinaController : MonoBehaviour {
         player.transform.position = sairRef.transform.position;
         player.transform.rotation = sairRef.transform.rotation;
 
-        player.transform.Find("Main Camera").gameObject.SetActive(true);
+        player.GetComponent<Player>().cameras[0].gameObject.SetActive(true);
         cameraOficina.gameObject.SetActive(false);
         
         UIController.oficina.Esconder();
