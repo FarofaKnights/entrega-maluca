@@ -69,7 +69,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1503345872741158424}
-  - {fileID: 4136013680750747012}
   - {fileID: 5682459493779626744}
   - {fileID: 3016897486544278603}
   - {fileID: 3689905548425145849}
@@ -142,7 +141,7 @@ MonoBehaviour:
   velocidadeRotacao: 500
   cacambaTrigger: {fileID: 6546267038405480642}
   cameras:
-  - {fileID: 6546267038222632429}
+  - {fileID: 0}
   - {fileID: 6546267039203022047}
   pontosCaixa:
   - {fileID: 6546267038672783881}
@@ -15977,7 +15976,7 @@ Transform:
   - {fileID: 1310965087349694348}
   - {fileID: 315581445106967721}
   m_Father: {fileID: 1966696225812750019}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6234330089783329552
 GameObject:
@@ -16156,90 +16155,6 @@ Transform:
   m_Father: {fileID: 3016897486544278603}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6546267038222632429
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4136013680750747012}
-  - component: {fileID: 5404653403213525287}
-  - component: {fileID: 1251502199098471628}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4136013680750747012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546267038222632429}
-  m_LocalRotation: {x: 0.19768105, y: -0, z: -0, w: 0.9802664}
-  m_LocalPosition: {x: 0, y: 15.3, z: -20.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1966696225812750019}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 22.803, y: 0, z: 0}
---- !u!20 &5404653403213525287
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546267038222632429}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.01
-  far clip plane: 10000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &1251502199098471628
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546267038222632429}
-  m_Enabled: 1
 --- !u!1 &6546267038405480640
 GameObject:
   m_ObjectHideFlags: 0
@@ -16274,7 +16189,7 @@ Transform:
   m_Children:
   - {fileID: 5304846833835101809}
   m_Father: {fileID: 1966696225812750019}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1850299418343294569
 BoxCollider:
@@ -16359,7 +16274,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1966696225812750019}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!20 &7312613701182429923
 Camera:
@@ -17110,7 +17025,7 @@ Transform:
   - {fileID: 6546267038289906477}
   - {fileID: 6546267038568199784}
   m_Father: {fileID: 1966696225812750019}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8738711390635754360
 GameObject:
