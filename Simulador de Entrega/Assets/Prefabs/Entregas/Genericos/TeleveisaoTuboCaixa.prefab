@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carga:
+    nome: "Televis\xE3o"
     peso: 25
     fragilidade: 25
     tipo: 0
@@ -61,12 +62,6 @@ MonoBehaviour:
   rotacaoInicial: {x: 0, y: 0, z: 0, w: 0}
   trigger: {fileID: 0}
   collision: {fileID: 0}
-  caixaLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  caidaLayer:
-    serializedVersion: 2
-    m_Bits: 1024
   clashEffect: {fileID: 1105142720954869788, guid: c59616261f17c704e82b2e4a8b8a8de7,
     type: 3}
 --- !u!54 &2876863578752007659

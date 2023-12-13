@@ -10,6 +10,7 @@ using UnityEditor;
 public class MissaoObject : ScriptableObject {
     public string nome;
     public string descricao;
+    public string descricaoGrande;
     public PersonagemObject personagem;
 
     public ObjetivoObject objetivoInicial;

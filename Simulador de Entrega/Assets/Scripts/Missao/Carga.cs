@@ -6,18 +6,13 @@ public enum TipoCarga { Normal, Rara, Importante, Especial };
 
 [System.Serializable]
 public class Carga {
+    public string nome;
     public float peso, fragilidade;
     float _fragilidadeInicial;
     public TipoCarga tipo;
     public Endereco destinatario;
     public Caixa cx;
     public GameObject prefab;
-
-    public string nome {
-        get {
-            return prefab.name;
-        }
-    }
 
     public float fragilidadeInicial {
         get {

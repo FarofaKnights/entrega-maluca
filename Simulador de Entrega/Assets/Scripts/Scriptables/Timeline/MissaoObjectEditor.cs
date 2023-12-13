@@ -58,8 +58,11 @@ public class MissaoObjectEditor : Editor {
         textAreaStyle = new GUIStyle(EditorStyles.textArea);
         textAreaStyle.wordWrap = true;
 
-        EditorGUILayout.LabelField("Descrição:");
+        EditorGUILayout.LabelField("Descrição breve:");
         missaoObject.descricao = EditorGUILayout.TextArea(missaoObject.descricao, textAreaStyle, GUILayout.Height(60));
+
+        EditorGUILayout.LabelField("Descrição longa:");
+        missaoObject.descricaoGrande = EditorGUILayout.TextArea(missaoObject.descricaoGrande, textAreaStyle, GUILayout.Height(80));
 
         missaoObject.personagem = EditorGUILayout.ObjectField("Personagem:", missaoObject.personagem, typeof(PersonagemObject), false) as PersonagemObject;
 
@@ -403,7 +406,7 @@ public class MissaoObjectEditor : Editor {
         }
         EditorGUILayout.EndHorizontal();
 
-        
+        /*
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Peso:");
         cargas[i].peso = EditorGUILayout.FloatField(cargas[i].peso);
@@ -413,7 +416,7 @@ public class MissaoObjectEditor : Editor {
         GUILayout.Label("Fragilidade:");
         cargas[i].fragilidade = EditorGUILayout.FloatField(cargas[i].fragilidade);
         EditorGUILayout.EndHorizontal();
-
+        */
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Destinatario:");
         cargas[i].destinatario = DrawEnderecoField(cargas[i].destinatario, "Carga" + conjuntoId + "_" + i);
@@ -423,12 +426,12 @@ public class MissaoObjectEditor : Editor {
         GUILayout.Label("Prefab:");
         cargas[i].prefab = (GameObject)EditorGUILayout.ObjectField(cargas[i].prefab, typeof(GameObject), false);
         EditorGUILayout.EndHorizontal();
-
+/*
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Tipo:");
         cargas[i].tipo = (TipoCarga)EditorGUILayout.EnumPopup(cargas[i].tipo);
         EditorGUILayout.EndHorizontal();
-
+*/
         GUILayout.Space(paddingCarga);
         GUILayout.EndVertical();
         GUILayout.Space(paddingCarga/2);
