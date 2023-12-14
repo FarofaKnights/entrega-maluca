@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f1cde515f290a4991e3972ec1e9923, type: 3}
   m_Name: Vlad
   m_EditorClassIdentifier: 
-  nome: 
+  nome: Vlad
   portrait: {fileID: 0}
+  portraitGrande: {fileID: 0}
+  prefab: {fileID: 2741850982652721142, guid: ab7a3811f4d713946add9b631d0ed937, type: 3}
   falaFalha:
     fala: "N\xE3o me fa\xE7a empalar voc\xEA tamb\xE9m"
     audio: {fileID: 0}

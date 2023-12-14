@@ -15,7 +15,9 @@ MonoBehaviour:
   nome: Parque da cidade
   descricao: "Estou precisando que voc\xEA leve essas caixas para o dono do carrinho
     de cachorro quente. V\xE1 o mais r\xE1pido poss\xEDvel!!"
+  descricaoGrande: 
   personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
+  dialogo: {fileID: 11400000, guid: 74f00f020f6a6954cbc0c7d283449a69, type: 2}
   objetivoInicial:
     endereco: Mecanica
     cargas:

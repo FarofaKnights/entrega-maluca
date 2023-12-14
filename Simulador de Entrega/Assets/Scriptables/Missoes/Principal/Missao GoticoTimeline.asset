@@ -17,6 +17,7 @@ MonoBehaviour:
     cuidado! E tamb\xE9m n\xE3o sei muito bem para quem \xE9! Alguma casa l\xE1."
   descricaoGrande: 
   personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
+  dialogo: {fileID: 0}
   objetivoInicial:
     endereco: Posto
     cargas:

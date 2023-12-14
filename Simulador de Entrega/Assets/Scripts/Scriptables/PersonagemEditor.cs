@@ -14,14 +14,25 @@ public class PersonagemEditor : Editor {
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
 
-        if (personagem.portrait == null) return;
+        if (personagem.portrait != null) {
+            Texture2D texture = AssetPreview.GetAssetPreview(personagem.portrait);
+            if (texture != null) {
+                texture.filterMode = FilterMode.Point;
+                GUILayout.Label("", GUILayout.Height(240), GUILayout.Width(240));
+                GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
+            }
+        }
 
-        Texture2D texture = AssetPreview.GetAssetPreview(personagem.portrait);
-        if (texture == null) return;
+        if (personagem.portraitGrande != null) {
+            Texture2D texture = AssetPreview.GetAssetPreview(personagem.portraitGrande);
+            if (texture != null) {
+                texture.filterMode = FilterMode.Point;
+                GUILayout.Label("", GUILayout.Height(480), GUILayout.Width(480));
+                GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
+            }
+        }
         
-        texture.filterMode = FilterMode.Point;
-        GUILayout.Label("", GUILayout.Height(240), GUILayout.Width(240));
-        GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
+        
     }
 }
 

@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour {
     public static OficinaUI oficina;
     public static DiretrizUI diretriz;
     public static DinheiroUI dinheiro;
+    public static CutsceneUI cutscene;
 
     void Awake() {
         instance = this;
@@ -20,6 +21,12 @@ public class UIController : MonoBehaviour {
         oficina = transform.GetComponentInChildren<OficinaUI>(true);
         diretriz = transform.GetComponentInChildren<DiretrizUI>(true);
         dinheiro = transform.GetComponentInChildren<DinheiroUI>(true);
+        cutscene = transform.GetComponentInChildren<CutsceneUI>(true);
+    }
+
+    public void ShowCutscene(PersonagemObject personagem, FalaPersonagens fala, System.Action next) {
+        cutscene.gameObject.SetActive(true);
+        cutscene.ShowFala(personagem, fala, next);
     }
     
 }

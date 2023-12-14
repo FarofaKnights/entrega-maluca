@@ -9,6 +9,8 @@ public class Endereco : MonoBehaviour {
 
     public GameObject posicaoInicial;
     public GameObject indicadorBotao;
+    public GameObject personagemHolder;
+    GameObject personagemObj;
 
     public string nome;
     // public GameObject colisor;
@@ -50,6 +52,20 @@ public class Endereco : MonoBehaviour {
         gameObject.SetActive(true);
 
         if (icone != null) icone.AtivarIcone();
+
+        if (objetivo is ObjetivoInicial) {
+            PersonagemObject personagem = ((ObjetivoInicial) objetivo).missao.info.personagem;
+
+            if (personagem == null) return;
+
+            if (personagemObj != null) Destroy(personagemObj);
+            personagemObj = Instantiate(personagem.prefab, personagemHolder.transform);
+            personagemObj.transform.localPosition = Vector3.zero;
+            personagemObj.transform.localRotation = Quaternion.identity;
+
+            Personagem personagemScript = personagemObj.GetComponent<Personagem>();
+            personagemScript.Aguardar();
+        }
     }
 
     public virtual void RemoverObjetivo() {
@@ -57,6 +73,12 @@ public class Endereco : MonoBehaviour {
 
         this.objetivo = null;
         gameObject.SetActive(false);
+
+        if (objetivo is ObjetivoInicial) {
+            if (((ObjetivoInicial) objetivo).missao.info.personagem != null)
+                if (personagemObj != null)
+                    Destroy(personagemObj);
+        }
 
         if (icone != null) icone.DesativarIcone();
     }

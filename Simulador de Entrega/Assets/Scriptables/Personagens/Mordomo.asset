@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f1cde515f290a4991e3972ec1e9923, type: 3}
   m_Name: Mordomo
   m_EditorClassIdentifier: 
-  nome: 
+  nome: Mordomo
   portrait: {fileID: 0}
+  portraitGrande: {fileID: 0}
+  prefab: {fileID: 7899916798239478934, guid: 4f1725160100fa24091325a3e2f53125, type: 3}
   falaFalha:
     fala: "Ah, voc\xEA falhou? Que pena, mas lembre-se, nos s\xF3 ca\xEDmos para
       aprender a nos levantar"

@@ -108,11 +108,20 @@ public class ObjetivoInicial : Objetivo {
         concluido = true;
         endereco.RemoverObjetivo();
 
+        IniciarMissaoComCutscene();
+        
+        if (diretriz != null) diretriz.Parar();
+    }
+
+    public void IniciarMissaoComCutscene() {
+        if (missao.info.dialogo == null) IniciarMissao();
+        else UIController.instance.ShowCutscene(missao.info.personagem, missao.info.dialogo.falaInicial, IniciarMissao);
+    }
+
+    void IniciarMissao() {
         MissaoManager.instance.IniciarMissao(missao);
 
         if (cargas != null && cargas.Count > 0) 
             Player.instance.AdicionarCarga(cargas);
-        
-        if (diretriz != null) diretriz.Parar();
     }
 }

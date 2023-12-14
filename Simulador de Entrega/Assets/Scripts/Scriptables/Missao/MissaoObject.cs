@@ -12,6 +12,7 @@ public class MissaoObject : ScriptableObject {
     public string descricao;
     public string descricaoGrande;
     public PersonagemObject personagem;
+    public DialogoPersonagens dialogo;
 
     public ObjetivoObject objetivoInicial;
 

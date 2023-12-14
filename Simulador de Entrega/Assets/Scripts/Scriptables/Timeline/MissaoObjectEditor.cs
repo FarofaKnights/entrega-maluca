@@ -65,6 +65,7 @@ public class MissaoObjectEditor : Editor {
         missaoObject.descricaoGrande = EditorGUILayout.TextArea(missaoObject.descricaoGrande, textAreaStyle, GUILayout.Height(80));
 
         missaoObject.personagem = EditorGUILayout.ObjectField("Personagem:", missaoObject.personagem, typeof(PersonagemObject), false) as PersonagemObject;
+        missaoObject.dialogo = EditorGUILayout.ObjectField("Dialogo:", missaoObject.dialogo, typeof(DialogoPersonagens), false) as DialogoPersonagens;
 
         GUILayout.Space(padding);
 
