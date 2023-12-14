@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2936824082185110658}
   estado: 0
+  lastEstado: 0
   aguardoArea: 1
 --- !u!135 &1849960242005200049
 SphereCollider:
@@ -73,6 +74,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1b247699adbb7e145ad6a3d5dd7825ab,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1b247699adbb7e145ad6a3d5dd7825ab,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1b247699adbb7e145ad6a3d5dd7825ab,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b247699adbb7e145ad6a3d5dd7825ab,
         type: 3}
