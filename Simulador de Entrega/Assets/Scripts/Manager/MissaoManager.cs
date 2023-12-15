@@ -237,6 +237,12 @@ public class MissaoManager : MonoBehaviour {
         objetivosAtivos.Remove(objetivo);
     }
 
+    public Objetivo GetCurrentObjetivo() {
+        if (objetivosAtivos.Count == 0) return null;
+
+        return objetivosAtivos[0];
+    }
+
 
     #endregion
 }

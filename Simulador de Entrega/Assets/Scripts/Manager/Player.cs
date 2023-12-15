@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public float dinheiro = 300;
     public List<Carga> cargaAtual = new List<Carga>();
     List<Carga> cargasCaidasProximas = new List<Carga>(), cargasCaidas = new List<Carga>();
+    public float areaRecuperarCaixa = 15f;
     IState estadoAtual;
 
     Rigidbody rb;
@@ -164,12 +165,40 @@ public class Player : MonoBehaviour {
     }
 
     public Carga[] GetCargasProximas() {
+        // Pega caixas na região do player e que não estão como caixas caídas por algum motivo
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, areaRecuperarCaixa, Vector3.up, 0f, GameManager.instance.caixaLayer);
+        foreach (RaycastHit hit in hits) {
+            Caixa caixa = hit.collider.GetComponent<Caixa>();
+            if (caixa == null) continue;
+            if (caixa.GetState() is CaixaCaidaState) {
+                Carga carga = caixa.carga;
+                if (!cargasCaidasProximas.Contains(carga))
+                    cargasCaidasProximas.Add(carga);
+            }
+        }
+
         return cargasCaidasProximas.ToArray();
+    }
+
+    public List<Carga> GetCargasCaidas() {
+        return cargasCaidas;
+    }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, areaRecuperarCaixa);
     }
 
     public void RecuperarCargasProximas() {
         SetEncaixando(GetCargasProximas());
         cargasCaidasProximas.Clear();
+
+        foreach (Carga cargaCaida in cargasCaidas) {
+            if (cargaCaida.cx == null) continue;
+            if (cargaAtual.Contains(cargaCaida)) {
+                cargasCaidas.Remove(cargaCaida);
+            }
+        }
     }
     #endregion
 }

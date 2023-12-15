@@ -23,7 +23,7 @@ public class MinimapIcon : MonoBehaviour {
         radius = Mathf.Max(cameraWidth, cameraHeight) / 2 - iconWidth / 2;
     }
     
-    void Update() {
+    void FixedUpdate() {
         Vector3 pos = target.position;
         pos.y = transform.position.y;
         transform.position = pos;
@@ -43,5 +43,10 @@ public class MinimapIcon : MonoBehaviour {
             clampedPosition.y = transform.position.y;
             transform.position = clampedPosition;
         }
+
+        Vector3 rotation = transform.eulerAngles;
+        rotation.y = minimapCamera.transform.eulerAngles.y - 180;
+
+        transform.eulerAngles = rotation;
     }
 }

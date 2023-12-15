@@ -14,11 +14,23 @@ public class GameManager : MonoBehaviour {
     Controls controls;
 
     public GameObject cutsceneVirtualCamera;
+    public LayerMask caixaLayer;
 
     void Awake() {
         instance = this;
         controls = new Controls();
         controls.Game.Pausar.performed += ctx => TogglePause();
+    }
+
+    void FixedUpdate() {
+        // Se 1, 9 e 0 estão pressionados, ativa os cheats
+        if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) {
+            if (Input.GetKey(KeyCode.Keypad9) || Input.GetKey(KeyCode.Alpha9)) {
+                if (Input.GetKey(KeyCode.Keypad1) || Input.GetKey(KeyCode.Alpha1)) {
+                   EnableCheats();
+                }
+            }
+        }
     }
 
     void OnEnable() {
@@ -74,4 +86,55 @@ public class GameManager : MonoBehaviour {
         cineMachine.enabled = false;
 
     }
+
+    #region Cheats
+
+    void EnableCheats() {
+        controls.Cheat.Enable();
+        controls.Cheat.TP.performed += ctx => TPCheat();
+        controls.Cheat.Dinheiro.performed += ctx => DinheiroCheat();
+        controls.Cheat.Sair.performed += ctx => DisableCheats();
+
+        Debug.Log("Cheats enabled");
+    }
+
+    void DisableCheats() {
+        controls.Cheat.Disable();
+
+        Debug.Log("Cheats disabled");
+    }
+
+    void TPCheat() {
+        if (MissaoManager.instance.missaoAtual == null) return;
+
+        List<Carga> cargas = Player.instance.cargaAtual;
+        List<(Carga, Transform)> cargasTransforms = new List<(Carga, Transform)>();
+
+        foreach (Carga carga in cargas) {
+            if (carga.cx != null) {
+                cargasTransforms.Add((carga, carga.cx.transform));
+                carga.cx.transform.SetParent(Player.instance.transform);
+            }
+        }
+
+        Objetivo objetivo = MissaoManager.instance.GetCurrentObjetivo();
+        Endereco endereco = objetivo.endereco;
+        endereco.TeleportToHere();
+
+        foreach (Carga carga in cargas) {
+            if (carga.cx != null) {
+                foreach ((Carga, Transform) cargaTransform in cargasTransforms) {
+                    if (cargaTransform.Item1 == carga) {
+                        carga.cx.transform.SetParent(cargaTransform.Item2);
+                    }
+                }
+            }
+        }
+    }
+
+    void DinheiroCheat() {
+        Player.instance.AdicionarDinheiro(100);
+    }
+
+    #endregion
 }

@@ -870,6 +870,74 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Cheat",
+            "id": "429c3a5d-fe9b-4cee-a1b5-7cecd1c093ea",
+            "actions": [
+                {
+                    "name": "TP",
+                    "type": "Button",
+                    "id": "0ded4ba5-bd53-49da-8c23-9284f211184f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sair",
+                    "type": "Button",
+                    "id": "1dd8b713-070c-4218-b0ce-f6b33522723a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dinheiro",
+                    "type": "Button",
+                    "id": "795f2aba-b384-4288-ad82-8734ba2ee6ce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "aa062b12-383c-44a6-8cca-9ba676889637",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3785b6f0-e8a2-489d-95e4-19ef6b00bef5",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sair",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b466d351-454a-43a8-b43d-18fe80cb07e2",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dinheiro",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

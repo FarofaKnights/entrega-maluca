@@ -135,6 +135,7 @@ public class EncaixeState : IPlayerState {
         GameObject caixaObj = GameObject.Instantiate(carga.prefab, ponto.position, carga.prefab.transform.rotation);
         Caixa caixa = caixaObj.GetComponent<Caixa>();
 
+        carga.nome = caixa.GetComponent<Caixa>().carga.nome;
         carga.peso = caixa.GetComponent<Rigidbody>().mass;
         carga.fragilidade = caixa.GetComponent<Caixa>().carga.fragilidade;
         carga.fragilidadeInicial = carga.fragilidade;

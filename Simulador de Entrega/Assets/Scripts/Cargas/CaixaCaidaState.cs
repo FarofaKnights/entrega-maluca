@@ -24,7 +24,7 @@ public class CaixaCaidaState : IState {
         IncluiMinimapa icon = caixa.gameObject.AddComponent<IncluiMinimapa>();
         icon.sprite = MinimapManager.instance.caixaCaidaSprite;
         icon.comecaAtivo = true;
-        icon.escala = 3f;
+        icon.escala = 5f;
         icon.SetColor(MinimapManager.instance.caixaCaidaColor);
 
         // Se o player já estiver no trigger, o OnTriggerStay não é chamado
@@ -58,14 +58,14 @@ public class CaixaCaidaState : IState {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.name != "Veiculo") return;
 
-        Player.instance.AdicionarCargaProxima(caixa.carga);
+        // Player.instance.AdicionarCargaProxima(caixa.carga);
         UIController.HUD.MostrarBotaoRecuperar(true);
     }
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.name != "Veiculo") return;
 
         // StartCoroutine("WaitToRemove");
-        Player.instance.RemoverCargaProxima(caixa.carga);
+        // Player.instance.RemoverCargaProxima(caixa.carga);
         UIController.HUD.MostrarBotaoRecuperar(false);
     }
     private void OnTriggerStay(Collider other) {

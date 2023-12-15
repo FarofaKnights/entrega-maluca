@@ -12,6 +12,9 @@ public class CutsceneUI : MonoBehaviour {
 
     public System.Action OnNext;
 
+    bool typing = false;
+    string sentence = "";
+
     public void ShowCutscene(Cutscene cutscene, System.Action nextTrue) {
         System.Action next = () => {
             if (cutscene.proximaCutscene != null) {
@@ -32,7 +35,6 @@ public class CutsceneUI : MonoBehaviour {
         nome.text = personagem.nome;
         imagem.sprite = personagem.portraitGrande;
         
-        nextButton.SetActive(false);
         OnNext = next;
 
         StopCoroutine("TypeSentence");
@@ -40,7 +42,9 @@ public class CutsceneUI : MonoBehaviour {
     }
 
     IEnumerator TypeSentence(string sentence) {
+        this.sentence = sentence;
         fala.text = "";
+        typing = true;
         foreach (char letter in sentence.ToCharArray()) {
             fala.text += letter;
 
@@ -48,11 +52,23 @@ public class CutsceneUI : MonoBehaviour {
                 yield return new WaitForSecondsRealtime(0.2f);
             } else yield return null;
         }
+        typing = false;
+    }
 
-        nextButton.SetActive(true);
+    void ForceSentence() {
+        if(!typing) return;
+
+        fala.text = sentence;
+        typing = false;
     }
 
     public void HandleNext() {
+        if (typing) {
+            StopCoroutine("TypeSentence");
+            ForceSentence();
+            return;
+        }
+
         gameObject.SetActive(false);
 
         if (OnNext != null){

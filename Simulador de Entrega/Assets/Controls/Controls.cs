@@ -892,6 +892,74 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Cheat"",
+            ""id"": ""429c3a5d-fe9b-4cee-a1b5-7cecd1c093ea"",
+            ""actions"": [
+                {
+                    ""name"": ""TP"",
+                    ""type"": ""Button"",
+                    ""id"": ""0ded4ba5-bd53-49da-8c23-9284f211184f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sair"",
+                    ""type"": ""Button"",
+                    ""id"": ""1dd8b713-070c-4218-b0ce-f6b33522723a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dinheiro"",
+                    ""type"": ""Button"",
+                    ""id"": ""795f2aba-b384-4288-ad82-8734ba2ee6ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""aa062b12-383c-44a6-8cca-9ba676889637"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TP"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3785b6f0-e8a2-489d-95e4-19ef6b00bef5"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sair"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b466d351-454a-43a8-b43d-18fe80cb07e2"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dinheiro"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -925,6 +993,11 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         // Oficina
         m_Oficina = asset.FindActionMap("Oficina", throwIfNotFound: true);
         m_Oficina_Girar = m_Oficina.FindAction("Girar", throwIfNotFound: true);
+        // Cheat
+        m_Cheat = asset.FindActionMap("Cheat", throwIfNotFound: true);
+        m_Cheat_TP = m_Cheat.FindAction("TP", throwIfNotFound: true);
+        m_Cheat_Sair = m_Cheat.FindAction("Sair", throwIfNotFound: true);
+        m_Cheat_Dinheiro = m_Cheat.FindAction("Dinheiro", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1248,6 +1321,55 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public OficinaActions @Oficina => new OficinaActions(this);
+
+    // Cheat
+    private readonly InputActionMap m_Cheat;
+    private ICheatActions m_CheatActionsCallbackInterface;
+    private readonly InputAction m_Cheat_TP;
+    private readonly InputAction m_Cheat_Sair;
+    private readonly InputAction m_Cheat_Dinheiro;
+    public struct CheatActions
+    {
+        private @Controls m_Wrapper;
+        public CheatActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TP => m_Wrapper.m_Cheat_TP;
+        public InputAction @Sair => m_Wrapper.m_Cheat_Sair;
+        public InputAction @Dinheiro => m_Wrapper.m_Cheat_Dinheiro;
+        public InputActionMap Get() { return m_Wrapper.m_Cheat; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CheatActions set) { return set.Get(); }
+        public void SetCallbacks(ICheatActions instance)
+        {
+            if (m_Wrapper.m_CheatActionsCallbackInterface != null)
+            {
+                @TP.started -= m_Wrapper.m_CheatActionsCallbackInterface.OnTP;
+                @TP.performed -= m_Wrapper.m_CheatActionsCallbackInterface.OnTP;
+                @TP.canceled -= m_Wrapper.m_CheatActionsCallbackInterface.OnTP;
+                @Sair.started -= m_Wrapper.m_CheatActionsCallbackInterface.OnSair;
+                @Sair.performed -= m_Wrapper.m_CheatActionsCallbackInterface.OnSair;
+                @Sair.canceled -= m_Wrapper.m_CheatActionsCallbackInterface.OnSair;
+                @Dinheiro.started -= m_Wrapper.m_CheatActionsCallbackInterface.OnDinheiro;
+                @Dinheiro.performed -= m_Wrapper.m_CheatActionsCallbackInterface.OnDinheiro;
+                @Dinheiro.canceled -= m_Wrapper.m_CheatActionsCallbackInterface.OnDinheiro;
+            }
+            m_Wrapper.m_CheatActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @TP.started += instance.OnTP;
+                @TP.performed += instance.OnTP;
+                @TP.canceled += instance.OnTP;
+                @Sair.started += instance.OnSair;
+                @Sair.performed += instance.OnSair;
+                @Sair.canceled += instance.OnSair;
+                @Dinheiro.started += instance.OnDinheiro;
+                @Dinheiro.performed += instance.OnDinheiro;
+                @Dinheiro.canceled += instance.OnDinheiro;
+            }
+        }
+    }
+    public CheatActions @Cheat => new CheatActions(this);
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
@@ -1280,5 +1402,11 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     public interface IOficinaActions
     {
         void OnGirar(InputAction.CallbackContext context);
+    }
+    public interface ICheatActions
+    {
+        void OnTP(InputAction.CallbackContext context);
+        void OnSair(InputAction.CallbackContext context);
+        void OnDinheiro(InputAction.CallbackContext context);
     }
 }
