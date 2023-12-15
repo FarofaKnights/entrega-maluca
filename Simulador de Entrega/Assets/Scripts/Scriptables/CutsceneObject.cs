@@ -4,11 +4,10 @@ using UnityEngine;
 
 [System.Serializable]
 public class CutsceneObject {
-    public string nome;
-    public string texto;
-    public Sprite imagem;
+    public FalaPersonagens fala;
+    public PersonagemObject personagem;
 
     public Cutscene Convert() {
-        return new Cutscene(nome, texto, imagem);
+        return new Cutscene(fala, personagem);
     }
 }

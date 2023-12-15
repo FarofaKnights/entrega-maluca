@@ -16,6 +16,13 @@ public class MissaoIterator: ObjetivoIterator {
         iterator.diretriz?.Iniciar();
     }
 
+    public MissaoIterator(ConjuntoObject[] conjuntos, ObjetivoCutscene objetivoCutscene) {
+        this.conjuntos = conjuntos;
+        indice = -1;
+        iterator = CreateIterator(new Objetivo[] { objetivoCutscene }, null);
+        iterator.diretriz?.Iniciar();
+    }
+
     public Objetivo[] Next() {
         Objetivo[] objetivos = iterator.Next();
 
@@ -40,6 +47,10 @@ public class MissaoIterator: ObjetivoIterator {
         return new ConjuntoIterator(conjunto);
     }
 
+    ConjuntoIterator CreateIterator(Objetivo[] objetivos, Diretriz diretriz) {
+        return new ConjuntoIterator(objetivos, diretriz);
+    }
+
     public Objetivo[] GetCurrent() {
         return iterator.GetCurrent();
     }
@@ -52,6 +63,6 @@ public class MissaoIterator: ObjetivoIterator {
     public void Reset() {
         iterator.Reset();
         indice = 0;
-        iterator = CreateIterator(conjuntos[0]);
+        iterator = null;
     }
 }

@@ -28,5 +28,10 @@ public class UIController : MonoBehaviour {
         cutscene.gameObject.SetActive(true);
         cutscene.ShowFala(personagem, fala, next);
     }
+
+    public void ShowCutscene(Cutscene cutscene, System.Action next) {
+        UIController.cutscene.gameObject.SetActive(true);
+        UIController.cutscene.ShowCutscene(cutscene, next);
+    }
     
 }

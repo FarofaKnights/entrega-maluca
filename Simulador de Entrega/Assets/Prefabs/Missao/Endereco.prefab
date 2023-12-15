@@ -394,7 +394,7 @@ MonoBehaviour:
   posicaoInicial: {fileID: 976556355933640003}
   indicadorBotao: {fileID: 7298990421280564978}
   personagemHolder: {fileID: 6775578348049331069}
-  nome: Posto
+  nome: EnderecoFalso
   icone: {fileID: 6373742742832547777}
 --- !u!1 &4526368010077554568
 GameObject:

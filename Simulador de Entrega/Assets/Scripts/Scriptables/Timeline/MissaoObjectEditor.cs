@@ -660,18 +660,26 @@ public class MissaoObjectEditor : Editor {
             }
             EditorGUILayout.EndHorizontal();
 
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.Label("Nome:");
-            cutList[i].nome = EditorGUILayout.TextField(cutList[i].nome);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.LabelField("Descrição:");
-            cutList[i].texto = EditorGUILayout.TextArea(cutList[i].texto, textAreaStyle, GUILayout.Height(60));
+            FalaPersonagens fala = (cutList[i].fala==null) ? new FalaPersonagens() : cutList[i].fala;
 
             EditorGUILayout.BeginHorizontal();
-            GUILayout.Label("Imagem:");
-            cutList[i].imagem = (Sprite)EditorGUILayout.ObjectField(cutList[i].imagem, typeof(Sprite), false);
+            GUILayout.Label("Texto:");
+            cutList[i].fala.fala = EditorGUILayout.TextField(cutList[i].fala.fala);
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Audio:");
+            cutList[i].fala.audio = (AudioClip)EditorGUILayout.ObjectField(cutList[i].fala.audio, typeof(AudioClip), false);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Animacao:");
+            cutList[i].fala.animacao = (AnimacoesFala)EditorGUILayout.EnumPopup(cutList[i].fala.animacao);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.LabelField("Personagem:");
+            cutList[i].personagem = (PersonagemObject)EditorGUILayout.ObjectField(cutList[i].personagem, typeof(PersonagemObject), false);
+
 
             GUILayout.Space(paddingCut);
             GUILayout.EndVertical();

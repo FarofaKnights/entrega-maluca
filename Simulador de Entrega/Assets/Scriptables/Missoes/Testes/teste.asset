@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Teste
   descricao: TEESTEEe
+  descricaoGrande: 
+  personagem: {fileID: 0}
+  dialogo: {fileID: 0}
   objetivoInicial:
     endereco: Mecanica
     cargas:
@@ -36,6 +39,12 @@ MonoBehaviour:
         texto: EEEEEEE
         limitacoes:
         - tempo: 30
+    - endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
     sequencial: 1
     diretriz:
       texto: 
@@ -88,4 +97,22 @@ MonoBehaviour:
       limitacoes:
       - tempo: 30
     cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 4
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes:
+    - fala:
+        fala: 
+        audio: {fileID: 0}
+        animacao: 2
+      personagem: {fileID: 0}
     mostrandoFilhos: 1

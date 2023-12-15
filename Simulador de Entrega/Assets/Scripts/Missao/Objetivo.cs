@@ -66,7 +66,7 @@ public class Objetivo: Iniciavel {
     }
 
     // Deve ser chamada caso a missão seja interrompida
-    public void Parar() {
+    public virtual void Parar() {
         if (!ativo) return;
 
         ativo = false;
@@ -79,6 +79,17 @@ public class Objetivo: Iniciavel {
 
     public bool IsConcluido() { return concluido; }
     public bool IsIniciada() { return ativo; }
+
+    // Gambiarras
+    public List<Carga> RemoveCargas() {
+        List<Carga> cargas = this.cargas;
+        this.cargas = null;
+        return cargas;
+    }
+
+    public void SetCargas(List<Carga> cargas) {
+        this.cargas = cargas;
+    }
 }
 
 public class ObjetivoInicial : Objetivo {
@@ -108,7 +119,7 @@ public class ObjetivoInicial : Objetivo {
         concluido = true;
         endereco.RemoverObjetivo();
 
-        IniciarMissaoComCutscene();
+        IniciarMissao(); //IniciarMissaoComCutscene();
         
         if (diretriz != null) diretriz.Parar();
     }

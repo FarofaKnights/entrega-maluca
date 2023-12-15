@@ -34,17 +34,6 @@ public class Carga {
         _fragilidadeInicial = fragilidade;
     }
 
-    public Carga(float peso, float fragilidade, Endereco destinatario, TipoCarga tipo = TipoCarga.Normal)
-    {
-        this.peso = peso;
-        this.fragilidade = fragilidade;
-        this.destinatario = destinatario;
-        this.prefab = GameManager.instance.prefabGenerico;
-        this.tipo = tipo;
-
-        _fragilidadeInicial = fragilidade;
-    }
-
     public virtual float GetValor() {
         // Calculo e valores temporarios
         float valor = 0;

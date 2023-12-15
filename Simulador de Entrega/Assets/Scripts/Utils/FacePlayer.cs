@@ -7,9 +7,11 @@ public class FacePlayer : MonoBehaviour {
     public bool y = true;
     public bool z = true;
 
+    public Transform secundaryTarget;
+
 
     void FixedUpdate() {
-        Transform player = Player.instance.transform;
+        Transform player = (secundaryTarget==null) ? Player.instance.transform : secundaryTarget;
 
         Vector3 direction = player.position - transform.position;
         direction.Normalize();

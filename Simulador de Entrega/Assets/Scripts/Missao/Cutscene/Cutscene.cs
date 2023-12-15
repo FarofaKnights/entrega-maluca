@@ -4,15 +4,13 @@ using UnityEngine;
 
 [System.Serializable]
 public class Cutscene {
-    public string nome;
-    public string texto;
-    public Sprite imagem;
+    public FalaPersonagens fala;
+    public PersonagemObject personagem;
     public Cutscene proximaCutscene;
 
-    public Cutscene(string nome, string texto, Sprite imagem) {
-        this.nome = nome;
-        this.texto = texto;
-        this.imagem = imagem;
+    public Cutscene(FalaPersonagens fala, PersonagemObject personagem) {
+        this.fala = fala;
+        this.personagem = personagem;
         this.proximaCutscene = null;
     }
 }

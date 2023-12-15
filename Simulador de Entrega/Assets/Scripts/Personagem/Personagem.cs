@@ -6,10 +6,15 @@ public class Personagem : MonoBehaviour {
     public enum Estado {Parado, Aguardando, Acenando, Irritado, Conversando}
     public Animator animator;
     public Estado estado = Estado.Parado, lastEstado = Estado.Parado;
+    public GameObject cabecaPos;
     public float aguardoArea = 1f;
 
     public void Aguardar() {
         SetEstado(Estado.Aguardando);
+    }
+
+    public void Conversar() {
+        SetEstado(Estado.Conversando);
     }
 
     public void SetEstado(Estado estado) {
@@ -30,7 +35,7 @@ public class Personagem : MonoBehaviour {
                 animator.SetTrigger("Acenar");
                 break;
             case Estado.Conversando:
-                animator.SetTrigger("Falar");
+                animator.SetTrigger("Conversar");
                 break;
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
@@ -11,7 +12,8 @@ public class GameManager : MonoBehaviour {
 
     float timeScaleAntigo = 1;
     Controls controls;
-    public GameObject prefabGenerico; // acho que ninguém usa isso mais mas to com medo de tirar
+
+    public GameObject cutsceneVirtualCamera;
 
     void Awake() {
         instance = this;
@@ -53,5 +55,23 @@ public class GameManager : MonoBehaviour {
     public void VoltarMenu() {
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void VirtualCameraToMiddleOf(GameObject obj) {
+        GameObject cabeca = obj.GetComponent<Personagem>().cabecaPos;
+
+        CinemachineVirtualCamera cineMachine = cutsceneVirtualCamera.GetComponent<CinemachineVirtualCamera>();
+        cineMachine.enabled = true;
+        cineMachine.LookAt = cabeca.transform;
+
+        cutsceneVirtualCamera.transform.position = cabeca.transform.position;
+
+        cutsceneVirtualCamera.transform.position += cutsceneVirtualCamera.transform.forward * -3;
+    }
+
+    public void HideVirtualCamera() {
+        CinemachineVirtualCamera cineMachine = cutsceneVirtualCamera.GetComponent<CinemachineVirtualCamera>();
+        cineMachine.enabled = false;
+
     }
 }

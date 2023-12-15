@@ -18,6 +18,12 @@ public class MissaoManager : MonoBehaviour {
     [System.NonSerialized]
     public Missao missaoAtual = null;
 
+    public EnderecoFalso enderecoFalso {
+        get {
+            return GetComponent<EnderecoFalso>();
+        }
+    }
+
 
     void Awake () {
         instance = this;

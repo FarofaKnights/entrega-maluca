@@ -25,13 +25,17 @@ public class Endereco : MonoBehaviour {
     }
 
     void OnEnable() {
-        controls.Game.Enable();
+        if (controls != null)
+            controls.Game.Enable();
     }
 
     void OnDisable() {
         objetivo = null;
-        controls.Game.EfetuarAcao.performed -= EfetuarAcao;
-        controls.Game.Disable();
+
+        if (controls != null) {
+            controls.Game.EfetuarAcao.performed -= EfetuarAcao;
+            controls.Game.Disable();
+        }
     }
 
     public void EfetuarAcao() {
@@ -55,17 +59,28 @@ public class Endereco : MonoBehaviour {
 
         if (objetivo is ObjetivoInicial) {
             PersonagemObject personagem = ((ObjetivoInicial) objetivo).missao.info.personagem;
-
-            if (personagem == null) return;
-
-            if (personagemObj != null) Destroy(personagemObj);
-            personagemObj = Instantiate(personagem.prefab, personagemHolder.transform);
-            personagemObj.transform.localPosition = Vector3.zero;
-            personagemObj.transform.localRotation = Quaternion.identity;
-
-            Personagem personagemScript = personagemObj.GetComponent<Personagem>();
-            personagemScript.Aguardar();
+            if (personagem != null) SetPersonagem(personagem);
         }
+    }
+
+    public GameObject SetPersonagem(PersonagemObject personagem) {
+        if (personagemObj != null) Destroy(personagemObj);
+        personagemObj = Instantiate(personagem.prefab, personagemHolder.transform);
+        personagemObj.transform.localPosition = Vector3.zero;
+        personagemObj.transform.localRotation = Quaternion.identity;
+
+        Personagem personagemScript = personagemObj.GetComponent<Personagem>();
+        personagemScript.Aguardar();
+
+        return personagemObj;
+    }
+
+    public void RemovePersonagem() {
+        if (personagemObj != null) Destroy(personagemObj);
+    }
+
+    public void PersonagemSecundaryTarget(Transform t) {
+        personagemHolder.GetComponent<FacePlayer>().secundaryTarget = t;
     }
 
     public virtual void RemoverObjetivo() {
@@ -76,8 +91,7 @@ public class Endereco : MonoBehaviour {
 
         if (objetivo is ObjetivoInicial) {
             if (((ObjetivoInicial) objetivo).missao.info.personagem != null)
-                if (personagemObj != null)
-                    Destroy(personagemObj);
+                RemovePersonagem();
         }
 
         if (icone != null) icone.DesativarIcone();
