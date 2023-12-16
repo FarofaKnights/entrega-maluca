@@ -18,11 +18,19 @@ public class EditorAcessorioUpgrade : Editor {
 
         if (acessorio.acessorioPrefab == null) return;
 
-        Texture2D texture = AssetPreview.GetAssetPreview(acessorio.acessorioPrefab);
-        if (texture == null) return;
 
-        GUILayout.Label("", GUILayout.Height(120), GUILayout.Width(120));
-        GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
+        GUILayout.Label("Esse é o item, não o ícone:", EditorStyles.boldLabel);
+        Texture2D texture = AssetPreview.GetAssetPreview(acessorio.acessorioPrefab);
+        if (texture != null) {
+             GUILayout.Label("", GUILayout.Height(120), GUILayout.Width(120));
+            GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
+        }
+
+        if (acessorio.icone != null) {
+            GUILayout.Label("Esse é o ícone:", EditorStyles.boldLabel);
+            GUILayout.Label("", GUILayout.Height(120), GUILayout.Width(120));
+            GUI.DrawTexture(GUILayoutUtility.GetLastRect(), acessorio.icone);
+        }
 
         if (GUILayout.Button("Mostrar faltantes?")) {
             mostrarFaltantes = !mostrarFaltantes;

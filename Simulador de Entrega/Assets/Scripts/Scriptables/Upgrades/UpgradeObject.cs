@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class UpgradeObject : ScriptableObject {
     public string nome; // Unique KEY
     public string descricao;
     public float custo;
+
+    public Texture2D icone;
 
     public bool exclusivo;
     public bool ativavel = true;
