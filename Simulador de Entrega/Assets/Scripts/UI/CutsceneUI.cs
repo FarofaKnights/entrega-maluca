@@ -40,7 +40,6 @@ public class CutsceneUI : MonoBehaviour {
         
         OnNext = next;
 
-        Debug.Log(fala.fala);
         if (currentWriting != null) StopCoroutine(currentWriting);
         currentWriting = TypeSentence(fala.fala);
         StartCoroutine(currentWriting);
