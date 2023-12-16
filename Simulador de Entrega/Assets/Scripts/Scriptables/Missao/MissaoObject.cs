@@ -38,6 +38,13 @@ public class MissaoObject : ScriptableObject {
         return cargas.ConvertAll(c => c.Convert()).ToArray();
     }
 
+    public Endereco GetEnderecoFinal() {
+        ConjuntoObject ultimoConjunto = conjuntos[conjuntos.Length - 1];
+        ObjetivoObject ultimoObjetivo = ultimoConjunto.objetivos[ultimoConjunto.objetivos.Length - 1];
+        string endereco = ultimoObjetivo.endereco;
+        return Endereco.GetEndereco(endereco);
+    }
+
     public Cutscene GetCutsceneInicial() {
         if (dialogo == null) return null;
 

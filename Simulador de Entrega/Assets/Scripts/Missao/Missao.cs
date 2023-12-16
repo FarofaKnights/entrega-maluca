@@ -7,7 +7,7 @@ public class Missao: Iniciavel {
     public MissaoObject info;
     public StatusMissao melhorStatus = null;
 
-    ObjetivoCutscene objetivoCutscene;
+    CutsceneGroup cutsceneGroup;
     ObjetivoInicial objetivoInicial;
     MissaoIterator iterator;
     List<Carga> cargasEntregues = new List<Carga>();
@@ -19,9 +19,9 @@ public class Missao: Iniciavel {
         objetivoInicial = new ObjetivoInicial(info.objetivoInicial.Convert(), this);
 
         if (info.dialogo != null) {
-            objetivoCutscene = new ObjetivoCutscene(info.dialogo.falaInicial, info.personagem);
-            objetivoCutscene.SetCargas(objetivoInicial.RemoveCargas());
-            objetivoCutscene.enderecoCutscene = objetivoInicial.endereco;
+            cutsceneGroup = new CutsceneGroup(this);
+        } else {
+            cutsceneGroup = null;
         }
             
     }
@@ -30,8 +30,8 @@ public class Missao: Iniciavel {
         if (iterator != null) return;
         cargasEntregues.Clear();
 
-        if (objetivoCutscene == null) iterator = new MissaoIterator(info.conjuntos);
-        else iterator = new MissaoIterator(info.conjuntos, objetivoCutscene);
+        if (cutsceneGroup == null) iterator = new MissaoIterator(info.conjuntos);
+        else iterator = new MissaoIterator(info.conjuntos, cutsceneGroup);
 
         iterator.Next();
         

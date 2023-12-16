@@ -6,6 +6,7 @@ using UnityEngine;
 public class MissaoIterator: ObjetivoIterator {
     ConjuntoObject[] conjuntos;
     ConjuntoIterator iterator;
+    ConjuntoIterator iteratorFinal;
     int indice = 0;
     
 
@@ -16,11 +17,15 @@ public class MissaoIterator: ObjetivoIterator {
         iterator.diretriz?.Iniciar();
     }
 
-    public MissaoIterator(ConjuntoObject[] conjuntos, ObjetivoCutscene objetivoCutscene) {
+    public MissaoIterator(ConjuntoObject[] conjuntos, CutsceneGroup cutsceneGroup) {
         this.conjuntos = conjuntos;
         indice = -1;
-        iterator = CreateIterator(new Objetivo[] { objetivoCutscene }, null);
+
+        iterator = CreateIterator(new Objetivo[] { cutsceneGroup.inicial }, null);
         iterator.diretriz?.Iniciar();
+
+        if (cutsceneGroup.final != null)
+            iteratorFinal = CreateIterator(new Objetivo[] { cutsceneGroup.final }, null);
     }
 
     public Objetivo[] Next() {
@@ -30,7 +35,12 @@ public class MissaoIterator: ObjetivoIterator {
             iterator.diretriz?.Parar();
             indice++;
 
-            if (indice >= conjuntos.Length) {
+            if (indice == conjuntos.Length && iteratorFinal != null) {
+                iterator = iteratorFinal;
+                iterator.diretriz?.Iniciar();
+                objetivos = iterator.Next();
+                return objetivos;
+            } else if (indice > conjuntos.Length) {
                 return null;
             }
 

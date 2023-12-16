@@ -2,6 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class CutsceneGroup {
+    public ObjetivoCutscene inicial;
+    public ObjetivoCutscene final;
+
+    public CutsceneGroup(ObjetivoCutscene inicial, ObjetivoCutscene final) {
+        this.inicial = inicial;
+        this.final = final;
+    }
+
+    public CutsceneGroup(Missao missao) {
+        Cutscene cutsInicial = missao.info.GetCutsceneInicial();
+        if (cutsInicial != null) {
+            inicial = new ObjetivoCutscene(cutsInicial);
+            inicial.SetCargas(missao.GetObjetivoInicial().RemoveCargas());
+            inicial.enderecoCutscene = missao.GetObjetivoInicial().endereco;
+        }
+
+        Cutscene cutsFinal = missao.info.GetCutsceneConclusao();
+        if (cutsFinal != null) {
+            final = new ObjetivoCutscene(cutsFinal);
+            final.enderecoCutscene = missao.GetObjetivoInicial().endereco; // eu tinha feito pra pegar o endereço final mas não tem pq o personagem estar no endereço final
+        }
+    }
+}
+
 public class ObjetivoCutscene : Objetivo {
     public Cutscene cutscene;
     public Endereco enderecoCutscene;
