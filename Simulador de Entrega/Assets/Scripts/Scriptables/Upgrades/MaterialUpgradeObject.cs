@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Material tal", menuName = "Entrega Maluca/Upgrade/Material"), System.Serializable]
 public class MaterialUpgradeObject : UpgradeObject {
     public Material material;
-    public Texture2D icone;
     public Color colorIcone = Color.white;
 
     protected override void _Ativar() { }
