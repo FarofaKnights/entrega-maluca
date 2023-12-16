@@ -5,8 +5,7 @@ using UnityEngine;
 public class CascaDeBanana : MonoBehaviour
 {
     [SerializeField] float rotacao;
-    AudioSource barulho;
-    Animation animacao;
+    [SerializeField] AudioSource barulho;
     void Action(Rigidbody rb)
     {
         rb.AddTorque(new Vector3(0, rotacao, 0), ForceMode.Impulse);
@@ -15,8 +14,7 @@ public class CascaDeBanana : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            //barulho.Play();
-            //animacao.Play();
+            barulho.Play();
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             Action(rb);
         }

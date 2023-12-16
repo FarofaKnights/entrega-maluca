@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArmadilhaDeUrso : MonoBehaviour
 {
-    AudioSource barulho;
+    [SerializeField] AudioSource barulho;
     Animation animacao;
     [SerializeField] float tempo;
     void Action(Rigidbody rb)
@@ -17,7 +17,7 @@ public class ArmadilhaDeUrso : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //barulho.Play();
+            barulho.Play();
             //animacao.Play();
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             Action(rb);

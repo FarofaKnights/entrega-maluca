@@ -5,7 +5,8 @@ using UnityEngine;
 public class Hidrante : MonoBehaviour
 {
     [SerializeField] float forca;
-    public ParticleSystem particle;
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] AudioSource barulho;
     void Action(Rigidbody rb)
     {
         particle.Play();
@@ -15,6 +16,7 @@ public class Hidrante : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            barulho.Play();
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             Action(rb);
         }
