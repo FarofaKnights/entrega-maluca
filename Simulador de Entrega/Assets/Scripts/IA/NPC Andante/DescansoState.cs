@@ -17,6 +17,7 @@ public class DescansoState : IState {
     public void Enter() {
         tempoVisitando = Random.Range(2.0f, 4.0f);
         timer = 0;
+        wnpc.animator.SetTrigger("Parar");
     }
     public void Execute(float deltaTime) {
         timer += deltaTime;

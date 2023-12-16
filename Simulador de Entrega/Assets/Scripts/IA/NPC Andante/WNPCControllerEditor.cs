@@ -20,6 +20,7 @@ public class WNPCControllerEditor : Editor {
 
             foreach (NodoIA nodo in GetNodos(controller)) {
                 CorrigirLigacao(nodo);
+                EditorUtility.SetDirty(nodo);
             }
 
             Debug.Log("Ligações corrigidas: " + corrigidas);

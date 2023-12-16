@@ -9,7 +9,9 @@ public class PerambulaState : IState {
         this.wnpc = wnpc;
     }
 
-    public void Enter() {}
+    public void Enter() {
+        wnpc.animator.SetTrigger("Andar");
+    }
 
     public void Execute(float deltaTime) {
         if(wnpc.GetTarget() != null){

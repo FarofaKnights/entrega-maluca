@@ -46,6 +46,7 @@ public class ObjetivoState : IState {
 
         NodoIA nodoAtual = nodosPath.Dequeue();
         wnpc.SetTarget(nodoAtual.transform);
+        wnpc.animator.SetTrigger("Andar");
     }
 
     public void Execute(float dt) {

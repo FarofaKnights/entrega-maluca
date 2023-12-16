@@ -7,15 +7,17 @@ public class WNPCController : MonoBehaviour {
 
     public List<NodoIA> nodosVisitaveis = new List<NodoIA>();
 
-    public GameObject prefab;
+    WNPCFactory factory;
     public int quantidade;
     public GameObject esquinasHolder;
+    public GameObject holder;
 
     void Awake() {
         instance = this;
     }
 
     void Start() {
+        factory = GetComponent<WNPCFactory>();
         UpdateVisitaveisList();
         for (int i = 0; i < quantidade; i++) {
             GerarWNPC();
@@ -38,8 +40,10 @@ public class WNPCController : MonoBehaviour {
     }
 
     public void GerarWNPC(GameObject nodoInicial) {
-        GameObject npc = Instantiate(prefab, nodoInicial.transform.position, Quaternion.identity);
-        npc.transform.SetParent(transform, true);
+        GameObject npc = Instantiate(factory.GetRandomPrefab(), nodoInicial.transform.position, Quaternion.identity);
+        npc.transform.localPosition = Vector3.zero;
+        npc.transform.localRotation = Quaternion.identity;
+        npc.transform.SetParent(holder.transform, true);
         
         WNPCMachine wnpc = npc.GetComponent<WNPCMachine>();
         wnpc.controller = this;

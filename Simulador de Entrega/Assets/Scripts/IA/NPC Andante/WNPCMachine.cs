@@ -10,6 +10,7 @@ public class WNPCMachine : MonoBehaviour {
     public string estado;
 
     public WNPCController controller;
+    public Animator animator;
 
     public bool estaCansado {
         get => energia >= energiaMax;
@@ -17,13 +18,22 @@ public class WNPCMachine : MonoBehaviour {
     
     [HideInInspector]
     public NavMeshAgent agent;
+    public Atropelavel atropelavel;
 
     public int energia = 0, energiaMax;
 
     void Start(){
         agent = GetComponent<NavMeshAgent>();
+        atropelavel = GetComponent<Atropelavel>();
+        atropelavel.OnAmassado += () => SetAmassado();
+
         SetState(new ObjetivoState(this));
         ResetEnergia();
+    }
+
+    void SetAmassado() {
+        if (GetState().GetType() != typeof(AmassadoState))
+            SetState(new AmassadoState(this, GetState()));
     }
 
     void FixedUpdate(){
@@ -41,10 +51,14 @@ public class WNPCMachine : MonoBehaviour {
     #region Metodos auxiliares
 
     public void SetTarget(Transform t) {
-        if (t != target)
+        if (t != target && t!= null)
             energia++;
 
         target = t;
+    }
+
+    public IState GetState() {
+        return state;
     }
 
     public Transform GetTarget() {
