@@ -226,8 +226,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.017703354, y: 0.079859376, z: -0.060256958}
+  m_Size: {x: 0.7432823, y: 0.3499794, z: 0.43077087}
+  m_Center: {x: -0.031633377, y: 0.06633568, z: -0.007789612}
 --- !u!1001 &366873694813267289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8073391819741584105, guid: 99b5bd101ea7d6342aff8d8c44228974,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: -3669428449320212627, guid: 99b5bd101ea7d6342aff8d8c44228974,
@@ -333,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3639908198193552204, guid: 99b5bd101ea7d6342aff8d8c44228974,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     m_RemovedComponents: []

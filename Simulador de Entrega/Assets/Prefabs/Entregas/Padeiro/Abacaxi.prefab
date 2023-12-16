@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2808934696980845982}
   - component: {fileID: 3802799930443588401}
   - component: {fileID: 91955629840676987}
-  - component: {fileID: 9048778636702559570}
+  - component: {fileID: 6377462833820859974}
   m_Layer: 7
   m_Name: Abacaxi
   m_TagString: Entrega
@@ -207,7 +207,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &9048778636702559570
+--- !u!65 &6377462833820859974
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,8 +226,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.0018307567, y: 0.054440975, z: 0.010778293}
+  m_Size: {x: 0.19104576, y: 0.46014404, z: 0.19631958}
+  m_Center: {x: -0.000790596, y: 0.06804657, z: 0.0021972656}
 --- !u!1001 &2406198285220379526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a78ab4f6665a31845824db2045b95a40,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: a78ab4f6665a31845824db2045b95a40,

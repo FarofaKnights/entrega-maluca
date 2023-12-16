@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2156851431826321012}
   - component: {fileID: 946138679641175639}
   - component: {fileID: 3181040076102444966}
-  - component: {fileID: 8041281607812639470}
-  - component: {fileID: 736010833402572803}
+  - component: {fileID: 5707131579000782435}
+  - component: {fileID: 5479855803742090643}
   m_Layer: 7
   m_Name: Enxada
   m_TagString: Entrega
@@ -208,7 +208,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &8041281607812639470
+--- !u!65 &5707131579000782435
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,9 +227,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.00005531311, y: 0.095998764, z: 0.000869751}
---- !u!65 &736010833402572803
+  m_Size: {x: 0.009195328, y: 0.5157356, z: 0.010620117}
+  m_Center: {x: -0.00013828278, y: 0.10088158, z: 0.000030517578}
+--- !u!65 &5479855803742090643
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,8 +248,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.033065796, y: 0.3239708, z: 0.0013122559}
+  m_Size: {x: 0.055971146, y: 0.029819489, z: 0.065093994}
+  m_Center: {x: -0.029553413, y: 0.33747673, z: -0.0010528564}
 --- !u!1001 &5926597466154473858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 28efcf6823a6e4f448f92dbe6617dff6,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: 28efcf6823a6e4f448f92dbe6617dff6,

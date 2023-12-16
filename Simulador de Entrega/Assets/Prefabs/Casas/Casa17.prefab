@@ -27,6 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6796020494288270377}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,7 +35,6 @@ Transform:
   m_Children:
   - {fileID: 4002432780366106830}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7112410420537516342
 MeshFilter:
@@ -94,11 +94,19 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6796020494288270377}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.618366, y: 5.0000954, z: 9.076807}
-  m_Center: {x: 0.50720215, y: 2.59408, z: 0.17897892}
+  serializedVersion: 3
+  m_Size: {x: 12.863199, y: 5.0000954, z: 9.076807}
+  m_Center: {x: 0.6296189, y: 2.59408, z: 0.17897892}
 --- !u!65 &6083596312828080965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107,16 +115,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6796020494288270377}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 19.790165, y: 5.0421767, z: 8.357317}
-  m_Center: {x: -3.0732384, y: 2.5337336, z: -8.552794}
+  serializedVersion: 3
+  m_Size: {x: 20.534405, y: 5.0421767, z: 8.357317}
+  m_Center: {x: -3.0504332, y: 2.5337336, z: -8.552794}
 --- !u!1001 &3459263782589871909
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6132636112577097363}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2b94d710e8efc7148950d1aaef984551,
@@ -176,22 +193,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8315568864884910075, guid: 2b94d710e8efc7148950d1aaef984551,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 469e66e59e66cba41ab7bab8bc79a87c, type: 2}
     - target: {fileID: -5845828785091608792, guid: 2b94d710e8efc7148950d1aaef984551,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 469e66e59e66cba41ab7bab8bc79a87c, type: 2}
     - target: {fileID: -2787723137345380523, guid: 2b94d710e8efc7148950d1aaef984551,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 469e66e59e66cba41ab7bab8bc79a87c, type: 2}
     - target: {fileID: -2693781668282741907, guid: 2b94d710e8efc7148950d1aaef984551,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 469e66e59e66cba41ab7bab8bc79a87c, type: 2}
     - target: {fileID: 919132149155446097, guid: 2b94d710e8efc7148950d1aaef984551,
@@ -201,10 +218,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6928059700273003463, guid: 2b94d710e8efc7148950d1aaef984551,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 469e66e59e66cba41ab7bab8bc79a87c, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b94d710e8efc7148950d1aaef984551, type: 3}
 --- !u!4 &4002432780366106830 stripped
 Transform:
