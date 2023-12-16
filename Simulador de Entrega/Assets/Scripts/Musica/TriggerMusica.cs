@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class TriggerMusica : MonoBehaviour
 {
-    public bool gotico;
+    public enum Tipo {Normal, Gotico, Praia, Parque };
+    public Tipo thisTipo;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(gotico)
+        if(other.gameObject.CompareTag("Player"))
         {
-            MusicManager.instance.currentPlaylist = MusicManager.instance.goticoAudios;
-            MusicManager.instance.CancelInvoke();
-            MusicManager.instance.isGotico = true;
-            MusicManager.instance.ChangeSong();
-        }
-        else
-        {
-            MusicManager.instance.currentPlaylist = MusicManager.instance.normalAudios;
-            MusicManager.instance.CancelInvoke();
-            MusicManager.instance.isGotico = false;
-            MusicManager.instance.ChangeSong();
+            if (thisTipo == Tipo.Gotico)
+            {
+                MusicManager.instance.currentPlaylist = MusicManager.instance.goticoAudios;
+                MusicManager.instance.CancelInvoke();
+                MusicManager.instance.ChangeSong();
+            }
+            else if (thisTipo == Tipo.Normal)
+            {
+                MusicManager.instance.currentPlaylist = MusicManager.instance.normalAudios;
+                MusicManager.instance.CancelInvoke();
+                MusicManager.instance.ChangeSong();
+            }
+            else if (thisTipo == Tipo.Praia)
+            {
+                MusicManager.instance.currentPlaylist = MusicManager.instance.praiaAudios;
+                MusicManager.instance.CancelInvoke();
+                MusicManager.instance.ChangeSong();
+            }
+            else if (thisTipo == Tipo.Parque)
+            {
+                MusicManager.instance.currentPlaylist = MusicManager.instance.parqueAudios;
+                MusicManager.instance.CancelInvoke();
+                MusicManager.instance.ChangeSong();
+            }
         }
     }
 }

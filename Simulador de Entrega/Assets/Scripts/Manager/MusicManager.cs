@@ -5,8 +5,12 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
+
     public AudioSource[] normalAudios;
     public AudioSource[] goticoAudios;
+    public AudioSource[] praiaAudios;
+    public AudioSource[] parqueAudios;
+
     public AudioSource[] currentPlaylist;
     public AudioSource currentAudioSource;
     public bool isGotico;
@@ -45,7 +49,8 @@ public class MusicManager : MonoBehaviour
     {
         float timeToFade = 1.25f;
         float timeElapsed = 0;
-
+        nextAudio.Play();
+        nextAudio.volume = 0;
         while(timeElapsed < timeToFade)
         {
             currentAudio.volume = Mathf.Lerp(1, 0, timeElapsed/timeToFade);
