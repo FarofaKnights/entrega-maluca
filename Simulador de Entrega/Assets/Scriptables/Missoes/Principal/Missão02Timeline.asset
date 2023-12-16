@@ -48,7 +48,8 @@ MonoBehaviour:
     sequencial: 0
     diretriz:
       texto: "Entregue no parque de divers\xE3o"
-      limitacoes: []
+      limitacoes:
+      - tempo: 10
   missoesDesbloqueadas: []
   gerarAleatoriaNoFinal: 0
   timeline:
@@ -100,7 +101,8 @@ MonoBehaviour:
         limitacoes: []
     diretriz:
       texto: "Entregue no parque de divers\xE3o"
-      limitacoes: []
+      limitacoes:
+      - tempo: 10
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0

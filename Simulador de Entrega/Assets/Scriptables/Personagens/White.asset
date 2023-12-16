@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: White
   m_EditorClassIdentifier: 
   nome: Willy White
-  portrait: {fileID: 0}
-  portraitGrande: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 992d2652abd2eda4fbbec4228db97cfb, type: 3}
+  portraitGrande: {fileID: 21300000, guid: 1e939cb4fcc7c7748b9c1e75f3e3eb2f, type: 3}
   prefab: {fileID: 4004169393185133643, guid: 576ee9297bef5d749a18b520cea00170, type: 3}
   falaFalha:
     fala: "Voc\xEA \xE9 estupido? Qual \xE9 o seu problema? Sua m\xE3e fumou quando
@@ -22,4 +22,4 @@ MonoBehaviour:
       Caiu um livro na sua cabe\xE7a que te fez esquecer como dirigir? Se voc\xEA
       continuar assim eu vou acabar fazendo um milkshake de carro"
     audio: {fileID: 0}
-    anim: {fileID: 0}
+    animacao: 1

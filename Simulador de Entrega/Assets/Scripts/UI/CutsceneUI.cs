@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 
 public class CutsceneUI : MonoBehaviour {
+    public Tela tela;
+
     public TextMeshProUGUI nome;
     public Text fala;
     public Image imagem;
@@ -14,6 +16,7 @@ public class CutsceneUI : MonoBehaviour {
 
     bool typing = false;
     string sentence = "";
+    IEnumerator currentWriting = null;
 
     public void ShowCutscene(Cutscene cutscene, System.Action nextTrue) {
         System.Action next = () => {
@@ -37,8 +40,10 @@ public class CutsceneUI : MonoBehaviour {
         
         OnNext = next;
 
-        StopCoroutine("TypeSentence");
-        StartCoroutine(TypeSentence(fala.fala));
+        Debug.Log(fala.fala);
+        if (currentWriting != null) StopCoroutine(currentWriting);
+        currentWriting = TypeSentence(fala.fala);
+        StartCoroutine(currentWriting);
     }
 
     IEnumerator TypeSentence(string sentence) {
@@ -64,17 +69,26 @@ public class CutsceneUI : MonoBehaviour {
 
     public void HandleNext() {
         if (typing) {
-            StopCoroutine("TypeSentence");
+            if (currentWriting != null) StopCoroutine(currentWriting);
             ForceSentence();
             return;
         }
 
-        gameObject.SetActive(false);
+        Esconder();
 
         if (OnNext != null){
             OnNext();
             OnNext = null;
         }
             
+    }
+
+    public void Mostrar() {
+        tela.Mostrar();
+    }
+
+    public void Esconder() {
+        tela.Esconder();
+        tela.GetVizinho("HUD")?.Mostrar();
     }
 }

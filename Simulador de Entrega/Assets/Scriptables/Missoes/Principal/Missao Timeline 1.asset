@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Me ajude a vender
   descricao: Estou vendendo essas coisas, me ajude a entregar elas.
+  descricaoGrande: 
   personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
+  dialogo: {fileID: 11400000, guid: 1dcf58ab94883c042a8aa8d36feb5af0, type: 2}
   objetivoInicial:
     endereco: PredioPraia
     cargas:

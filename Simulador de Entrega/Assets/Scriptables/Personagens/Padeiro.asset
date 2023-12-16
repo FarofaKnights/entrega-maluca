@@ -20,4 +20,4 @@ MonoBehaviour:
     fala: "O que? Voc\xEA falhou? Vou ter que te fazer nadar com os peixes hahaha
       brincadeirinha, mas tente novamente"
     audio: {fileID: 0}
-    anim: {fileID: 0}
+    animacao: 1

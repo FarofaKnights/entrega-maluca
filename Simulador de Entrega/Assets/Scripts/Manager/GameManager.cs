@@ -94,13 +94,13 @@ public class GameManager : MonoBehaviour {
         controls.Cheat.TP.performed += ctx => TPCheat();
         controls.Cheat.Dinheiro.performed += ctx => DinheiroCheat();
         controls.Cheat.Sair.performed += ctx => DisableCheats();
-
+        UIController.instance.ShowCheatsIcon();
         Debug.Log("Cheats enabled");
     }
 
     void DisableCheats() {
         controls.Cheat.Disable();
-
+        UIController.instance.HideCheatsIcon();
         Debug.Log("Cheats disabled");
     }
 

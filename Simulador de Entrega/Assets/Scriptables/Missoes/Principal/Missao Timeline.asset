@@ -15,7 +15,9 @@ MonoBehaviour:
   nome: Mudando de casa
   descricao: "Estou me mudando para um novo bairro, me ajude a levar esse arm\xE1rio
     e aquelas coisas ali tamb\xE9m."
-  personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
+  descricaoGrande: 
+  personagem: {fileID: 11400000, guid: b58e25147a96fe64caa9f3c83512b583, type: 2}
+  dialogo: {fileID: 11400000, guid: e9b35503d07ee494abe6ddc9738fb409, type: 2}
   objetivoInicial:
     endereco: Predio3
     cargas:

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Mordomo
   m_EditorClassIdentifier: 
   nome: Mordomo
-  portrait: {fileID: 0}
-  portraitGrande: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 90ca2e6474a060a43bd27df15fc3a05e, type: 3}
+  portraitGrande: {fileID: 21300000, guid: 018396f417cd3594cbe91017bd6b290f, type: 3}
   prefab: {fileID: 7899916798239478934, guid: 4f1725160100fa24091325a3e2f53125, type: 3}
   falaFalha:
     fala: "Ah, voc\xEA falhou? Que pena, mas lembre-se, nos s\xF3 ca\xEDmos para
       aprender a nos levantar"
     audio: {fileID: 0}
-    anim: {fileID: 0}
+    animacao: 1

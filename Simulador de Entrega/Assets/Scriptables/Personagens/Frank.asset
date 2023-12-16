@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f1cde515f290a4991e3972ec1e9923, type: 3}
   m_Name: Frank
   m_EditorClassIdentifier: 
-  nome: Frank
+  nome: Jerrystein
   portrait: {fileID: 21300000, guid: 585f83ef01f5fbf4e8cf35364bef0ecd, type: 3}
   portraitGrande: {fileID: 21300000, guid: ea5ef2d71e042904cad1fc27a23af856, type: 3}
   prefab: {fileID: 1098673220502475663, guid: f02bb136f45397d4aa3b6fc312ea2feb, type: 3}
@@ -20,4 +20,4 @@ MonoBehaviour:
     fala: "Algu\xE9m aqui j\xE1 me decepcionou? N\xE3o? Ah sim, \xE9 porque quem
       me decepciona nunca \xE9 encontrado"
     audio: {fileID: 0}
-    anim: {fileID: 0}
+    animacao: 1

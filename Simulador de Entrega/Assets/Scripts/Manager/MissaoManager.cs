@@ -168,6 +168,23 @@ public class MissaoManager : MonoBehaviour {
         obj.Concluir();
     }
 
+    public void FalharMissao() {
+        if (missaoAtual == null) return;
+
+        if (missaoAtual.info.dialogo != null) {
+            Cutscene cutscene = missaoAtual.info.GetCutsceneFalha();
+            Endereco inicial = missaoAtual.GetObjetivoInicial().endereco;
+            Missao missao = missaoAtual;
+
+            PararMissao();
+
+            cutscene.Play(() => {
+                UIController.HUD.FalhaMissao(missao);
+                
+            }, inicial);
+        }
+    }
+
     public void SetEstado(Estado estado) {
         Estado estadoAntigo = this.estado;
 

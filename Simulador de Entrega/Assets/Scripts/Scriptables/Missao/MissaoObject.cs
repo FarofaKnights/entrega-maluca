@@ -37,4 +37,22 @@ public class MissaoObject : ScriptableObject {
 
         return cargas.ConvertAll(c => c.Convert()).ToArray();
     }
+
+    public Cutscene GetCutsceneInicial() {
+        if (dialogo == null) return null;
+
+        return new Cutscene(dialogo.falaInicial, personagem);
+    }
+
+    public Cutscene GetCutsceneFalha() {
+        if (dialogo == null) return null;
+
+        return new Cutscene(personagem.falaFalha, personagem);
+    }
+
+    public Cutscene GetCutsceneConclusao() {
+        if (dialogo == null) return null;
+
+        return new Cutscene(dialogo.falaConclusao, personagem);
+    }
 }

@@ -55,4 +55,21 @@ public class Personagem : MonoBehaviour {
             }
         }
     }
+
+    public static Personagem.Estado GetEstado(AnimacoesFala fala) {
+        switch (fala) {
+            case AnimacoesFala.Parado:
+                return Personagem.Estado.Parado;
+            case AnimacoesFala.Iritado:
+                return Personagem.Estado.Irritado;
+            case AnimacoesFala.Conversar:
+                return Personagem.Estado.Conversando;
+            case AnimacoesFala.Acenar:
+                return Personagem.Estado.Acenando;
+            case AnimacoesFala.Andar:
+                return Personagem.Estado.Parado;
+            default:
+                return Personagem.Estado.Parado;
+        }
+    }
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   descricao: Leve essas coisas  para o pessoal do posto!
   descricaoGrande: 
   personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
+  dialogo: {fileID: 11400000, guid: 25f82bd8805c83048b0ccbeaadb1db0f, type: 2}
   objetivoInicial:
     endereco: Parque
     cargas:

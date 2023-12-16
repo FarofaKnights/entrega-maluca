@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Mecanica
   portrait: {fileID: 0}
+  portraitGrande: {fileID: 0}
+  prefab: {fileID: 0}
   falaFalha:
     fala: Que pena, tente tentar denovo, por favor
     audio: {fileID: 0}
-    anim: {fileID: 0}
+    animacao: 2

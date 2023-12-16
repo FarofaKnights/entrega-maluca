@@ -16,8 +16,8 @@ MonoBehaviour:
   descricao: "Aquele pessoal g\xF3tico \xE9 ESTRANHO!! Isso aqui vale dinheiro, toma
     cuidado! E tamb\xE9m n\xE3o sei muito bem para quem \xE9! Alguma casa l\xE1."
   descricaoGrande: 
-  personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
-  dialogo: {fileID: 0}
+  personagem: {fileID: 11400000, guid: 6f134d7106f17e248b109ed8971ab81d, type: 2}
+  dialogo: {fileID: 11400000, guid: b4920239f7a4aa948b317ea0ee1ea33b, type: 2}
   objetivoInicial:
     endereco: Posto
     cargas:

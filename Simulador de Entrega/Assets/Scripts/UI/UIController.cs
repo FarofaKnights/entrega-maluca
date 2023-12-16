@@ -25,13 +25,21 @@ public class UIController : MonoBehaviour {
     }
 
     public void ShowCutscene(PersonagemObject personagem, FalaPersonagens fala, System.Action next) {
-        cutscene.gameObject.SetActive(true);
+        cutscene.Mostrar();
         cutscene.ShowFala(personagem, fala, next);
     }
 
     public void ShowCutscene(Cutscene cutscene, System.Action next) {
-        UIController.cutscene.gameObject.SetActive(true);
+        UIController.cutscene.Mostrar();
         UIController.cutscene.ShowCutscene(cutscene, next);
+    }
+
+    public void ShowCheatsIcon() {
+        transform.GetChild(0).Find("CheatStatus").gameObject.SetActive(true);
+    }
+
+    public void HideCheatsIcon() {
+        transform.GetChild(0).Find("CheatStatus").gameObject.SetActive(false);
     }
     
 }

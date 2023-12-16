@@ -19,7 +19,7 @@ public class Missao: Iniciavel {
         objetivoInicial = new ObjetivoInicial(info.objetivoInicial.Convert(), this);
 
         if (info.dialogo != null) {
-            objetivoCutscene = new ObjetivoCutscene(info);
+            objetivoCutscene = new ObjetivoCutscene(info.dialogo.falaInicial, info.personagem);
             objetivoCutscene.SetCargas(objetivoInicial.RemoveCargas());
             objetivoCutscene.enderecoCutscene = objetivoInicial.endereco;
         }

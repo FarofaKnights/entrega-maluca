@@ -47,10 +47,8 @@ public class Diretriz: Iniciavel {
     }
     
     public void Falhar() {
-        UIController.HUD.FalhaMissao(MissaoManager.instance.missaoAtual);
-        
         Parar();
-        MissaoManager.instance.PararMissao();
+        MissaoManager.instance.FalharMissao();
     }
 
     public int GetNivel() {
