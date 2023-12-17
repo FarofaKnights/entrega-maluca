@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhellControler : MonoBehaviour
-{
+public class WhellControler : MonoBehaviour {
     public float velocidade;
     public int maxVelocidade;
     public float aceleracao;  
@@ -27,23 +26,20 @@ public class WhellControler : MonoBehaviour
 
     public static WhellControler instance;
 
-     void Start()
-    {
+     void Start() {
         CarRb = GetComponent<Rigidbody>();
         CarRb.centerOfMass = centroDeMassa.localPosition;
         instance = this;
     }
 
     public void Execute(float deltaTime) // Chamado pelo dirigindoState, ou seja, não irá executar quando não estiver dirigindo.
-     {
+    {
         velocidade = CarRb.velocity.magnitude * 3.6f;   
-        if(velocidade < maxVelocidade)
-        {
+        if(velocidade < maxVelocidade) {
             traseiraDirCollider.motorTorque = aceleracao*  forca * Input.GetAxis("Vertical");
             traseiraEsqCollider.motorTorque = aceleracao* forca * Input.GetAxis("Vertical");
         }
-        else
-        {
+        else {
             traseiraDirCollider.motorTorque = 0;
             traseiraEsqCollider.motorTorque = 0;
         }
@@ -51,13 +47,11 @@ public class WhellControler : MonoBehaviour
         frenteDirCollider.steerAngle = maxAngulo * Input.GetAxis("Horizontal");
         frenteEsqCollider.steerAngle = maxAngulo * Input.GetAxis("Horizontal");
 
-        if (Input.GetKey(KeyCode.Space))
-        {
+        if (Input.GetKey(KeyCode.Space)) {
             traseiraDirCollider.brakeTorque = freio;
             traseiraEsqCollider.brakeTorque = freio;
         }
-        else
-        {
+        else {
             traseiraDirCollider.brakeTorque = 0;
             traseiraEsqCollider.brakeTorque = 0;
         }
@@ -69,9 +63,24 @@ public class WhellControler : MonoBehaviour
          
 
     }
-    
-    private void RotacaoRoda(WheelCollider coll, Transform transform)
-    {
+    public void 
+        PararCarro() {
+        //Zera a velocidade linear e angular
+        CarRb.velocity = Vector3.zero;
+        CarRb.angularVelocity = Vector3.zero;
+
+        //Zera a velocidade dos colliders das rodas
+        traseiraDirCollider.motorTorque = 0;
+        traseiraEsqCollider.motorTorque = 0;
+        traseiraDirCollider.brakeTorque = 0;
+        traseiraEsqCollider.brakeTorque = 0;
+
+        //Zera a direção das rodas
+        frenteDirCollider.steerAngle = 0;
+        frenteEsqCollider.steerAngle = 0;
+    }
+
+    private void RotacaoRoda(WheelCollider coll, Transform transform) {
         Vector3 position;
         Quaternion rotation;
 
