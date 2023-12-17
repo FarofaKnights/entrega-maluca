@@ -117,7 +117,7 @@ PrefabInstance:
         type: 3}
       propertyPath: amassavel
       value: 
-      objectReference: {fileID: 4004169393185133643}
+      objectReference: {fileID: 8460660101944525890}
     - target: {fileID: 7543485536458333984, guid: 196694e4a3d7ceb47bbdf52a824e9733,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -690,6 +690,12 @@ PrefabInstance:
 --- !u!95 &2936824082185110658 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 1b247699adbb7e145ad6a3d5dd7825ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 8767141062695483667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8460660101944525890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b247699adbb7e145ad6a3d5dd7825ab,
     type: 3}
   m_PrefabInstance: {fileID: 8767141062695483667}
   m_PrefabAsset: {fileID: 0}

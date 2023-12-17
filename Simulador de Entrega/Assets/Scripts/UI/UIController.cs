@@ -41,5 +41,11 @@ public class UIController : MonoBehaviour {
     public void HideCheatsIcon() {
         transform.GetChild(0).Find("CheatStatus").gameObject.SetActive(false);
     }
+
+
+    public void ToggleDebug() {
+        GameObject debug = transform.GetChild(0).Find("Debug").gameObject;
+        debug.SetActive(!debug.activeSelf);
+    }
     
 }

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Mecanica
   m_EditorClassIdentifier: 
   nome: Mecanica
-  portrait: {fileID: 0}
-  portraitGrande: {fileID: 0}
-  prefab: {fileID: 0}
+  portrait: {fileID: 21300000, guid: c4c7e19113f06f84aa230594a596bd57, type: 3}
+  portraitGrande: {fileID: 21300000, guid: f45120feddd8a6e4cbaad23d5084dd08, type: 3}
+  prefab: {fileID: 1098673220502475663, guid: c4daa85310ad1ea4298980b7f7425dc2, type: 3}
   falaFalha:
     fala: Que pena, tente tentar denovo, por favor
     audio: {fileID: 0}

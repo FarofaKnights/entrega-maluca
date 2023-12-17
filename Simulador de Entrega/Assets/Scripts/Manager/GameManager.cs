@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
         instance = this;
         controls = new Controls();
         controls.Game.Pausar.performed += ctx => TogglePause();
+        controls.Game.ShowDebug.performed += ctx => ToggleDebug();
     }
 
     void FixedUpdate() {
@@ -86,6 +87,10 @@ public class GameManager : MonoBehaviour {
         CinemachineVirtualCamera cineMachine = cutsceneVirtualCamera.GetComponent<CinemachineVirtualCamera>();
         cineMachine.enabled = false;
 
+    }
+
+    void ToggleDebug() {
+        UIController.instance.ToggleDebug();
     }
 
     #region Cheats

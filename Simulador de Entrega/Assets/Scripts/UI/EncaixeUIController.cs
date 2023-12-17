@@ -46,6 +46,7 @@ public class EncaixeUIController : MonoBehaviour {
 
     public void Mostrar() {
         tela.Mostrar();
+        tela.GetVizinho("HUD")?.Esconder();
     }
 
     public void Esconder() {

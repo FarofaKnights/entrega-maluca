@@ -104,6 +104,7 @@ public class EncaixeState : IPlayerState {
         // Garante que ao parar a missão no encaixe, caixas não encaixadas sejam destruidas
         foreach (Carga carga in cargasAEncaixar) {
             if (!cargasAnteriores.Contains(carga)) {
+                if (carga.cx == null) continue;
                 GameObject.Destroy(carga.cx.gameObject);
                 carga.cx = null;
                 continue;

@@ -53,6 +53,8 @@ public class CaixaEncaixeState : IState {
         rb.velocity = Vector3.zero;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         outline.SetColor("_OutlineColor", Color.yellow);
+
+        
     }
 
     public void Deselecionar() {
@@ -62,6 +64,8 @@ public class CaixaEncaixeState : IState {
 
     public void Levantar() {
         rb.useGravity = false;
+        rb.angularVelocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
 
     public void Soltar(){
