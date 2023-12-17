@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5f7c985eb8481409ea4819a7fcb3e2, type: 3}
   m_Name: Branco cromatico
   m_EditorClassIdentifier: 
-  nome: Branco
-  descricao: "Com tecnologia inovadora que n\xE3o suja!"
-  custo: 10
+  nome: Branco Cromatico
+  descricao: Literalmente branco 2
+  custo: 15
   icone: {fileID: 0}
   exclusivo: 1
   ativavel: 1
-  material: {fileID: 2100000, guid: 66ad659eb245a1f4aa133f6a9ea25c9d, type: 2}
-  colorIcone: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 2100000, guid: 516b6f94ac09db34693dd72f8f44bd58, type: 2}
+  colorIcone: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.7411765}
   iconeTextura: {fileID: 0}
