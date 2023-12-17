@@ -522,7 +522,7 @@
             "id": "966ba50a-6959-4cfd-a6c7-cdb86731085a",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Recuperar",
                     "type": "Button",
                     "id": "cb1b88dd-b2d6-41d3-aa31-7f3d3cb88a44",
                     "expectedControlType": "Button",
@@ -547,17 +547,26 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ShowDebug",
+                    "type": "Button",
+                    "id": "3f131102-309b-4438-9f41-e798c9ba383e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "81388e82-e1dc-4bd8-975c-0105a31f9e53",
-                    "path": "",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Recuperar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -574,12 +583,34 @@
                 },
                 {
                     "name": "",
+                    "id": "885bedee-1779-41ac-8cc2-088aa859c3f1",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EfetuarAcao",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8cd48d9d-8b00-4026-b1fd-200a09b9553c",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Pausar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50c34682-cc1c-481c-9a06-6c32e662c1ea",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowDebug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

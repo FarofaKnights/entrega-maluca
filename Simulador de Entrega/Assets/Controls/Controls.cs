@@ -544,7 +544,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""id"": ""966ba50a-6959-4cfd-a6c7-cdb86731085a"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Recuperar"",
                     ""type"": ""Button"",
                     ""id"": ""cb1b88dd-b2d6-41d3-aa31-7f3d3cb88a44"",
                     ""expectedControlType"": ""Button"",
@@ -569,17 +569,26 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowDebug"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f131102-309b-4438-9f41-e798c9ba383e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""81388e82-e1dc-4bd8-975c-0105a31f9e53"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Recuperar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -596,12 +605,34 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""885bedee-1779-41ac-8cc2-088aa859c3f1"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EfetuarAcao"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8cd48d9d-8b00-4026-b1fd-200a09b9553c"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pausar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50c34682-cc1c-481c-9a06-6c32e662c1ea"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowDebug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -978,9 +1009,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
-        m_Game_Newaction = m_Game.FindAction("New action", throwIfNotFound: true);
+        m_Game_Recuperar = m_Game.FindAction("Recuperar", throwIfNotFound: true);
         m_Game_EfetuarAcao = m_Game.FindAction("EfetuarAcao", throwIfNotFound: true);
         m_Game_Pausar = m_Game.FindAction("Pausar", throwIfNotFound: true);
+        m_Game_ShowDebug = m_Game.FindAction("ShowDebug", throwIfNotFound: true);
         // Encaixe
         m_Encaixe = asset.FindActionMap("Encaixe", throwIfNotFound: true);
         m_Encaixe_Rotacionar = m_Encaixe.FindAction("Rotacionar", throwIfNotFound: true);
@@ -1177,16 +1209,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     // Game
     private readonly InputActionMap m_Game;
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
-    private readonly InputAction m_Game_Newaction;
+    private readonly InputAction m_Game_Recuperar;
     private readonly InputAction m_Game_EfetuarAcao;
     private readonly InputAction m_Game_Pausar;
+    private readonly InputAction m_Game_ShowDebug;
     public struct GameActions
     {
         private @Controls m_Wrapper;
         public GameActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Game_Newaction;
+        public InputAction @Recuperar => m_Wrapper.m_Game_Recuperar;
         public InputAction @EfetuarAcao => m_Wrapper.m_Game_EfetuarAcao;
         public InputAction @Pausar => m_Wrapper.m_Game_Pausar;
+        public InputAction @ShowDebug => m_Wrapper.m_Game_ShowDebug;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1196,28 +1230,34 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Recuperar.started += instance.OnRecuperar;
+            @Recuperar.performed += instance.OnRecuperar;
+            @Recuperar.canceled += instance.OnRecuperar;
             @EfetuarAcao.started += instance.OnEfetuarAcao;
             @EfetuarAcao.performed += instance.OnEfetuarAcao;
             @EfetuarAcao.canceled += instance.OnEfetuarAcao;
             @Pausar.started += instance.OnPausar;
             @Pausar.performed += instance.OnPausar;
             @Pausar.canceled += instance.OnPausar;
+            @ShowDebug.started += instance.OnShowDebug;
+            @ShowDebug.performed += instance.OnShowDebug;
+            @ShowDebug.canceled += instance.OnShowDebug;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Recuperar.started -= instance.OnRecuperar;
+            @Recuperar.performed -= instance.OnRecuperar;
+            @Recuperar.canceled -= instance.OnRecuperar;
             @EfetuarAcao.started -= instance.OnEfetuarAcao;
             @EfetuarAcao.performed -= instance.OnEfetuarAcao;
             @EfetuarAcao.canceled -= instance.OnEfetuarAcao;
             @Pausar.started -= instance.OnPausar;
             @Pausar.performed -= instance.OnPausar;
             @Pausar.canceled -= instance.OnPausar;
+            @ShowDebug.started -= instance.OnShowDebug;
+            @ShowDebug.performed -= instance.OnShowDebug;
+            @ShowDebug.canceled -= instance.OnShowDebug;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -1452,9 +1492,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     }
     public interface IGameActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnRecuperar(InputAction.CallbackContext context);
         void OnEfetuarAcao(InputAction.CallbackContext context);
         void OnPausar(InputAction.CallbackContext context);
+        void OnShowDebug(InputAction.CallbackContext context);
     }
     public interface IEncaixeActions
     {

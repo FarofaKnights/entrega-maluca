@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CaixaCaidaState : IState {
     Caixa caixa;
@@ -8,15 +9,23 @@ public class CaixaCaidaState : IState {
     public GameObject gameObject => caixa.gameObject;
     public Transform transform => caixa.transform;
 
+    GameObject indicador;
+    Controls controls;
+
     public CaixaCaidaState(Caixa caixa) {
         this.caixa = caixa;
     }
 
     public void Enter() {
+        CriarIndicador();
+
         caixa.trigger.Ativar();
         caixa.trigger.onTriggerEnter += OnTriggerEnter;
         caixa.trigger.onTriggerExit += OnTriggerExit;
         caixa.trigger.onTriggerStay += OnTriggerStay;
+
+        controls = new Controls();
+        controls.Game.Recuperar.performed += Recuperar;
 
         gameObject.layer = LayerMask.NameToLayer("Caida");
         transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Caida");
@@ -42,42 +51,57 @@ public class CaixaCaidaState : IState {
         Player.instance.RemoverCarga(caixa.carga);
     }
 
-    public void Execute(float dt) { }
+    void Recuperar(InputAction.CallbackContext callback) {
+        Player.instance.RecuperarCargasProximas();
+    }
+
+    void CriarIndicador() {
+        indicador = GameObject.Instantiate(GameManager.instance.caixaCaidaIndicador, caixa.transform.position, Quaternion.identity);
+        indicador.transform.SetParent(caixa.transform);
+
+        indicador.transform.localPosition = Vector3.zero;
+        indicador.transform.localRotation = Quaternion.identity;
+        indicador.transform.localScale = Vector3.one * 0.75f;
+
+        indicador.transform.position += Vector3.up * 4f;
+        indicador.SetActive(false);
+    }
+
+    public void Execute(float dt) {
+        indicador.transform.position = caixa.transform.position + Vector3.up * 4f;
+    }
     public void Exit() {
         caixa.trigger.Desativar();
         caixa.trigger.onTriggerEnter -= OnTriggerEnter;
         caixa.trigger.onTriggerExit -= OnTriggerExit;
         caixa.trigger.onTriggerStay -= OnTriggerStay;
 
+        controls.Game.Recuperar.performed -= Recuperar;
+
         gameObject.layer = LayerMask.NameToLayer("Caixa");
         transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Caixa");
 
         GameObject.Destroy(caixa.GetComponent<IncluiMinimapa>());
+        GameObject.Destroy(indicador);
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.name != "Veiculo") return;
 
-        // Player.instance.AdicionarCargaProxima(caixa.carga);
-        UIController.HUD.MostrarBotaoRecuperar(true);
+        Player.instance.AdicionarCargaProxima(caixa.carga);
+        indicador.SetActive(true);
+        controls.Game.Recuperar.Enable();
     }
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.name != "Veiculo") return;
 
-        // StartCoroutine("WaitToRemove");
-        // Player.instance.RemoverCargaProxima(caixa.carga);
-        UIController.HUD.MostrarBotaoRecuperar(false);
+        Player.instance.RemoverCargaProxima(caixa.carga);
+        indicador.SetActive(false);
+        controls.Game.Recuperar.Disable();
     }
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.name != "Veiculo") return;
 
-        UIController.HUD.MostrarBotaoRecuperar(true);
+        indicador.SetActive(true);
     }
-    /*
-    IEnumerator WaitToRemove() {
-        yield return new WaitForSeconds(3f);
-        
-        Player.instance.RemoverCargaProxima(caixa.carga);
-        UIController.HUD.MostrarBotaoRecuperar(false);
-    }*/
 }

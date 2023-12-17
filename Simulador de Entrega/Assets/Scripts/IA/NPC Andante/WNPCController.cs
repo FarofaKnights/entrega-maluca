@@ -55,7 +55,7 @@ public class WNPCController : MonoBehaviour {
         return esquinasHolder.transform.GetChild(randomIndex).gameObject;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate() {/*
         List<WNPCMachine> npcs = new List<WNPCMachine>(GameObject.FindObjectsOfType<WNPCMachine>());
         int quantidadeNpcs = npcs.Count;
 
@@ -64,7 +64,7 @@ public class WNPCController : MonoBehaviour {
         } else if (quantidadeNpcs > quantidade) {
             WNPCMachine npc = npcs[Random.Range(0, npcs.Count)];
             Destroy(npc.gameObject);
-        }
+        }*/
     }
 
     public List<NodoIA> GetNodosVisitaveis(){

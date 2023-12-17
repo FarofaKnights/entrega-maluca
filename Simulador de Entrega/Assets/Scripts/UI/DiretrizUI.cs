@@ -19,6 +19,9 @@ public class DiretrizUI : MonoBehaviour {
     protected TextoDiretriz itemConjunto;
     protected List<TextoDiretriz> itensObjetivo = new List<TextoDiretriz>();
 
+    public GameObject informativoVazioPrefab;
+    GameObject informativoVazio;
+
     public TextoDiretrizInfo infoNivel1, infoNivel2;
     Missao missaoAtual;
 
@@ -30,6 +33,9 @@ public class DiretrizUI : MonoBehaviour {
 
         missaoAtual = missao;
         titulo.text = missao.info.nome;
+
+        informativoVazio = Instantiate(informativoVazioPrefab, diretrizItemHolder.transform);
+        informativoVazio.transform.SetAsFirstSibling();
 
         if (missao.info.personagem != null) portrait.sprite = missao.info.personagem.portrait;
         else {
@@ -62,6 +68,11 @@ public class DiretrizUI : MonoBehaviour {
         GameObject diretrizItem = Instantiate(diretrizItemPrefab, transform);
         TextoDiretriz texto = diretrizItem.GetComponent<TextoDiretriz>();
         texto.SetDiretriz(diretriz);
+
+        if (informativoVazio != null) {
+            Destroy(informativoVazio);
+            informativoVazio = null;
+        }
 
 
         // Se conjunto
@@ -121,6 +132,8 @@ public class DiretrizUI : MonoBehaviour {
 
         foreach (Transform child in diretrizItemHolder.transform) {
             TextoDiretriz texto = child.GetComponent<TextoDiretriz>();
+            if(texto == null) continue;
+
             if (texto.GetDiretriz() == diretriz || texto == itemConjunto) {
                 texto.gameObject.SetActive(true);
             } else {

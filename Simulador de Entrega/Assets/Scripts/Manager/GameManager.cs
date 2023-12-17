@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject cutsceneVirtualCamera;
     public LayerMask caixaLayer;
+    public GameObject caixaCaidaIndicador;
 
     void Awake() {
         instance = this;
