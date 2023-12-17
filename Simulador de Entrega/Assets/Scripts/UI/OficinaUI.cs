@@ -14,6 +14,7 @@ public class OficinaUI : MonoBehaviour {
     public GameObject upgradePrefab, tintaPrefab, resetarTintaPrefab;
     public GameObject tintasList, semLocalSelecionado, localizacoesParent;
     string lastSection = "grid";
+    string lastFiltro = "geral";
     UpgradeObject upgradeSelecionado;
 
     VisualPlayer.SkinLocation skinLocation = VisualPlayer.SkinLocation.None;
@@ -49,14 +50,6 @@ public class OficinaUI : MonoBehaviour {
 
         GerarCaracteristicas(upgrade);
         HandleMostrarDetalhes();
-    }
-
-    void ReloadLayout(GameObject uiElement) {
-        LayoutRebuilder.MarkLayoutForRebuild((RectTransform)uiElement.transform);
-        LayoutGroup[] parentLayoutGroups = uiElement.gameObject.GetComponentsInParent<LayoutGroup>();
-        foreach (LayoutGroup group in parentLayoutGroups) {
-        LayoutRebuilder.MarkLayoutForRebuild((RectTransform)group.transform);
-        }
     }
 
     void GerarCaracteristicas(UpgradeObject upgrade) {
@@ -108,16 +101,15 @@ public class OficinaUI : MonoBehaviour {
 
         int i = 0;
         foreach (UpgradeObject upgrade in OficinaController.instance.upgrades) {
+            if (upgrade is MaterialUpgradeObject) continue;
+
             GameObject upgradeObject = Instantiate(upgradePrefab, upgradesHolder.transform);
-
-            upgradeObject.GetComponentInChildren<Text>().text = upgrade.nome;
-
-            upgradeObject.GetComponent<UpgradeButton>().upgradeObject = upgrade;
+            upgradeObject.GetComponent<UpgradeButton>().SetUpgrade(upgrade);
             upgradeObject.GetComponent<UpgradeButton>().id = i;
             i++;
         }
 
-        FiltrarLista("geral");
+        FiltrarLista(lastFiltro);
     }
 
     public void GerarTintas() {
@@ -149,6 +141,7 @@ public class OficinaUI : MonoBehaviour {
 
     public void HandleMostrarGrid() {
         lastSection = GetCurrentSection();
+        GerarBotoes();
 
         gridPanel.SetActive(true);
         detalhesPanel.SetActive(false);
@@ -309,6 +302,8 @@ public class OficinaUI : MonoBehaviour {
     #region Filtros
 
     public void FiltrarLista(string filtro) {
+        lastFiltro = filtro;
+
         foreach (Transform item in upgradesHolder.transform) {
             UpgradeButton upgrade = item.GetComponent<UpgradeButton>();
             if (upgrade != null) {
@@ -371,7 +366,6 @@ public class OficinaUI : MonoBehaviour {
         Tela tela = GetComponent<Tela>();
         tela.Mostrar();
 
-        GerarBotoes();
         HandleMostrarGrid();
     }
 

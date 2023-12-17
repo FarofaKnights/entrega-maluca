@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: RaboDeLargartoUpgrade
   m_EditorClassIdentifier: 
-  nome: RaboDeLargarto
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  nome: Rabo de Lagarto
+  descricao: "Vindo diretamente da idade\_da\_pedra"
+  custo: 180
+  icone: {fileID: 21300000, guid: fcb7a02d8300eb043b22a5ad9efae796, type: 3}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 7411658520629328319, guid: 969c1306c44e437478021e3c392cbd23,
     type: 3}
-  localizacao: 0
+  localizacao: 2

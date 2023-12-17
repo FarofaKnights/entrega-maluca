@@ -15,8 +15,9 @@ MonoBehaviour:
   nome: Pedra 2
   descricao: 'Pedra 2: O Retorno da Pedra'
   custo: 20
+  icone: {fileID: 0}
   exclusivo: 1
   ativavel: 1
   material: {fileID: 2100000, guid: 0a279c61e8983264294232e7a1acf007, type: 2}
-  icone: {fileID: 2800000, guid: 4db987fd3f32b674fb2fc732fda375aa, type: 3}
   colorIcone: {r: 1, g: 1, b: 1, a: 1}
+  iconeTextura: {fileID: 2800000, guid: 4db987fd3f32b674fb2fc732fda375aa, type: 3}

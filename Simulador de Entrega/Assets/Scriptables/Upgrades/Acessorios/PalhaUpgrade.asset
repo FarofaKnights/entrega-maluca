@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PalhaUpgrade
   m_EditorClassIdentifier: 
   nome: Palha
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  descricao: "Essa palha gigante \xE9 a comida da vaca gigante que eu mencionei\_agora\_a\_pouco"
+  custo: 70
+  icone: {fileID: 21300000, guid: a97f24e81c329a44ba142e49c79a041e, type: 3}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 1953012302803775119, guid: bd42eeb83c1d9a04ca650c129ff57978,
     type: 3}
-  localizacao: 0
+  localizacao: 1

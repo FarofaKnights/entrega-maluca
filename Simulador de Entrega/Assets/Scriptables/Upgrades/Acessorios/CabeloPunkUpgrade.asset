@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: CabeloPunkUpgrade
   m_EditorClassIdentifier: 
-  nome: CabeloPunk
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  nome: Cabelo Punk
+  descricao: "Uma quantidade n\xE3o saud\xE1vel de gel foi usada pra fazer ele ficar\_sempre\_em\_p\xE9"
+  custo: 300
+  icone: {fileID: 21300000, guid: 528ae1636dc10b74e9528bb33c70bb55, type: 3}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 5394180460791598076, guid: bfa9d409e08be804eae2556f665460a2,
     type: 3}
   localizacao: 0

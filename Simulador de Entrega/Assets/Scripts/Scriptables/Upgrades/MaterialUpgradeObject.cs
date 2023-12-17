@@ -6,6 +6,7 @@ using UnityEngine;
 public class MaterialUpgradeObject : UpgradeObject {
     public Material material;
     public Color colorIcone = Color.white;
+    public Texture2D iconeTextura;
 
     protected override void _Ativar() { }
 

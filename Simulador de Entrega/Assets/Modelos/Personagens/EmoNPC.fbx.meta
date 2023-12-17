@@ -3,12 +3,7 @@ guid: cc913cc304d5db648aace030d226c0ed
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TexturaEmo
-    second: {fileID: 2100000, guid: 7b3586c55571df046911a46e19d3b9d8, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -36,9 +31,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ANDANDO  nps genericos
-      takeName: ANDANDO  nps genericos
-      internalID: -7743288116943229551
+      name: metarig.003|metarig.003|ANDANDO  nps genericos
+      takeName: metarig.003|metarig.003|ANDANDO  nps genericos
+      internalID: 7795195450620456118
       firstFrame: 0
       lastFrame: 44
       wrapMode: 0
@@ -65,9 +60,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: LDLE nps genericos
-      takeName: LDLE nps genericos
-      internalID: 2726665859219457787
+      name: metarig.003|metarig.003|LDLE nps genericos
+      takeName: metarig.003|metarig.003|LDLE nps genericos
+      internalID: 6946845727357790375
       firstFrame: 0
       lastFrame: 39
       wrapMode: 0

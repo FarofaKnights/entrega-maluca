@@ -14,7 +14,7 @@ public class MaterialButton : MonoBehaviour {
 
         this.upgradeObject = upgradeObject;
 
-        if (upgradeObject.icone != null) icone.texture = upgradeObject.icone;
+        if (upgradeObject.iconeTextura != null) icone.texture = upgradeObject.iconeTextura;
         else icone.color = upgradeObject.colorIcone;
 
         locked.SetActive(!upgradeObject.comprado);

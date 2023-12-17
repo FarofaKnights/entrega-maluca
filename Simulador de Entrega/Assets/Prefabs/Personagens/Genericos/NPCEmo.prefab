@@ -52,6 +52,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   animator: {fileID: 1152391447779137926}
   agent: {fileID: 0}
+  atropelavel: {fileID: 750342016038585887}
   energia: 0
   energiaMax: 1
 --- !u!195 &5524310418633000250
@@ -355,7 +356,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 77acaab60693c1443a5efb4853fc5ba8, type: 2}
+      objectReference: {fileID: 9100000, guid: bd6bd630d85fc40448877f7c5ec8ad17, type: 2}
     - target: {fileID: 6278098041941354937, guid: cc913cc304d5db648aace030d226c0ed,
         type: 3}
       propertyPath: m_Layer

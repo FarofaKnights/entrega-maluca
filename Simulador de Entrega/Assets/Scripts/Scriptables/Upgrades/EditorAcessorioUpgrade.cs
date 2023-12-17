@@ -29,7 +29,7 @@ public class EditorAcessorioUpgrade : Editor {
         if (acessorio.icone != null) {
             GUILayout.Label("Esse é o ícone:", EditorStyles.boldLabel);
             GUILayout.Label("", GUILayout.Height(120), GUILayout.Width(120));
-            GUI.DrawTexture(GUILayoutUtility.GetLastRect(), acessorio.icone);
+            GUI.DrawTexture(GUILayoutUtility.GetLastRect(), acessorio.icone.texture);
         }
 
         if (GUILayout.Button("Mostrar faltantes?")) {

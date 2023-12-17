@@ -15,8 +15,9 @@ MonoBehaviour:
   nome: Pedra
   descricao: Pedra
   custo: 20
+  icone: {fileID: 0}
   exclusivo: 1
   ativavel: 1
   material: {fileID: 2100000, guid: 764bcefbd98390a428f0939000a5fc52, type: 2}
-  icone: {fileID: 2800000, guid: 5fe734ca1a1c3eb478f3fcdef883f59d, type: 3}
   colorIcone: {r: 1, g: 1, b: 1, a: 1}
+  iconeTextura: {fileID: 2800000, guid: 5fe734ca1a1c3eb478f3fcdef883f59d, type: 3}

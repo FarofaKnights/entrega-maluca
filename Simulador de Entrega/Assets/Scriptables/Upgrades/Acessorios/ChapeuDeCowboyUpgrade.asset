@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: ChapeuDeCowboyUpgrade
   m_EditorClassIdentifier: 
-  nome: ChapeuDeCowboy
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  nome: "Chap\xE9u de Cowboy"
+  descricao: "O certo seria vaqueiro, mas comercialmente falando,\_cowboy\_\xE9\_melhor"
+  custo: 200
+  icone: {fileID: 0}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 8070401194213582502, guid: 24a0c4976b94fe649899f78de69f7f2f,
     type: 3}
   localizacao: 0

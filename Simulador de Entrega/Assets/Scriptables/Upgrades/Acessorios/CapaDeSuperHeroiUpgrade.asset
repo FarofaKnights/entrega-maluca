@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: CapaDeSuperHeroiUpgrade
   m_EditorClassIdentifier: 
-  nome: CapaDeSuperHeroi
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  nome: "Capa de Super Her\xF3i"
+  descricao: "Devido a raz\xF5es relacionadas ao tr\xE2nsito, essa capa teve de ser
+    feita com metal em\_vez\_de\_tecido"
+  custo: 100
+  icone: {fileID: 21300000, guid: 374af0177524726458445ba805249dce, type: 3}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 948462370686736553, guid: 43d68145e97788941a9ba56a81ec7dbd,
     type: 3}
-  localizacao: 0
+  localizacao: 2

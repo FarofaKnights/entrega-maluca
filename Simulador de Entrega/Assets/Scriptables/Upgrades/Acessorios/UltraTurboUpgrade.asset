@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: UltraTurboUpgrade
   m_EditorClassIdentifier: 
-  nome: UltraTurbo
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  nome: Ultra Turbo
+  descricao: "Pelo formato deles, tem mais chances de voc\xEA tocar um jazz perfeito
+    enquanto dirige, do que de fato\_ganhar\_um\_turbo"
+  custo: 300
+  icone: {fileID: 21300000, guid: 90c7427f779b3f74f997a7e81cec7a5b, type: 3}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 7583131998510569575, guid: e448cf86a460505488c677799322eda8,
     type: 3}
-  localizacao: 0
+  localizacao: 2

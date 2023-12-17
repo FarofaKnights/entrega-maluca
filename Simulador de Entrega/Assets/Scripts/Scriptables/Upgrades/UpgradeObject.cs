@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public abstract class UpgradeObject : ScriptableObject {
@@ -8,7 +9,7 @@ public abstract class UpgradeObject : ScriptableObject {
     public string descricao;
     public float custo;
 
-    public Texture2D icone;
+    public Sprite icone;
 
     public bool exclusivo;
     public bool ativavel = true;

@@ -89,7 +89,8 @@ public class VisualPlayer : MonoBehaviour {
         }
 
         if (holder.transform.childCount > 0) {
-            Destroy(holder.transform.GetChild(0).gameObject);
+            for (int i = holder.transform.childCount-1; i >= 0; i--)
+                Destroy(holder.transform.GetChild(i).gameObject);
         }
 
         GameObject skin = Instantiate(acessorioPrefab, holder.transform);
@@ -114,7 +115,8 @@ public class VisualPlayer : MonoBehaviour {
         }
 
         if (holder.transform.childCount > 0) {
-            Destroy(holder.transform.GetChild(0).gameObject);
+            for (int i = holder.transform.childCount-1; i >= 0; i--)
+                Destroy(holder.transform.GetChild(i).gameObject);
         }
     }
 

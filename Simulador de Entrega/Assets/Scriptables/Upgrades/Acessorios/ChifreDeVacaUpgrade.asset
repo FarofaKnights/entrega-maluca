@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: ChifreDeVacaUpgrade
   m_EditorClassIdentifier: 
-  nome: ChifreDeVaca
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  nome: Chifre de Vaca
+  descricao: "Diferente de guaxinins, de fato existe vacas gigantes...  Mas esse
+    chifre ainda\_\xE9\_sintetico"
+  custo: 100
+  icone: {fileID: 21300000, guid: 17d0a1206a366b846bea4e38cfbf9a7d, type: 3}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 627482295114320476, guid: 24fd6e9a1d72f784aa79e669b6433767,
     type: 3}
   localizacao: 0

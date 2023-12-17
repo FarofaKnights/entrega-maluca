@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: OlhosEspugalhadosUpgrade
   m_EditorClassIdentifier: 
-  nome: OlhosEspugalhados
-  descricao: 
-  custo: 0
-  exclusivo: 0
+  nome: Olhos Esbugalhados
+  descricao: "Para as situa\xE7\xF5es em que voc\xEA precisa de fingir estar supreso
+    depois de contarem uma noticia que\_voc\xEA\_ja\_sabia"
+  custo: 200
+  icone: {fileID: 21300000, guid: 7bf4820b232783d488cfc6ecb7483a93, type: 3}
+  exclusivo: 1
+  ativavel: 1
   acessorioPrefab: {fileID: 547414893265692192, guid: ecc9826dfaf127e47878ff99ae3a80b5,
     type: 3}
-  localizacao: 0
+  localizacao: 1

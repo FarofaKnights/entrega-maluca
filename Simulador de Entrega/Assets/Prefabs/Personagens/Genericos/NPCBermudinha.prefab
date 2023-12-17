@@ -52,6 +52,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   animator: {fileID: 3503714815481422288}
   agent: {fileID: 0}
+  atropelavel: {fileID: 900391612192321865}
   energia: 0
   energiaMax: 1
 --- !u!195 &2255258898250331732
