@@ -6,18 +6,23 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class Endereco : MonoBehaviour {
     public static Dictionary<string, Endereco> ListaEnderecos = new Dictionary<string, Endereco>();
-
     public GameObject posicaoInicial;
     public GameObject indicadorBotao;
     public GameObject personagemHolder;
     GameObject personagemObj;
 
     public string nome;
+    public Sprite imagem;
     // public GameObject colisor;
 
     Objetivo objetivo;
     public IncluiMinimapa icone;
     Controls controls;
+
+    public Sprite GetImagem() {
+        if (imagem == null) return GameManager.instance.imagemSemEndereco;
+        else return imagem;
+    }
 
     void Awake() {
         ListaEnderecos.Add(nome, this);

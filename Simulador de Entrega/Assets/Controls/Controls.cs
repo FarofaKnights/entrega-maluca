@@ -578,6 +578,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowList"",
+                    ""type"": ""Button"",
+                    ""id"": ""abe5e12f-20f7-496d-8c28-fc832a575c71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -633,6 +642,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ShowDebug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""748bc7ad-5575-487f-ac8c-6488a97d5ac8"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowList"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1013,6 +1033,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Game_EfetuarAcao = m_Game.FindAction("EfetuarAcao", throwIfNotFound: true);
         m_Game_Pausar = m_Game.FindAction("Pausar", throwIfNotFound: true);
         m_Game_ShowDebug = m_Game.FindAction("ShowDebug", throwIfNotFound: true);
+        m_Game_ShowList = m_Game.FindAction("ShowList", throwIfNotFound: true);
         // Encaixe
         m_Encaixe = asset.FindActionMap("Encaixe", throwIfNotFound: true);
         m_Encaixe_Rotacionar = m_Encaixe.FindAction("Rotacionar", throwIfNotFound: true);
@@ -1213,6 +1234,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_EfetuarAcao;
     private readonly InputAction m_Game_Pausar;
     private readonly InputAction m_Game_ShowDebug;
+    private readonly InputAction m_Game_ShowList;
     public struct GameActions
     {
         private @Controls m_Wrapper;
@@ -1221,6 +1243,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @EfetuarAcao => m_Wrapper.m_Game_EfetuarAcao;
         public InputAction @Pausar => m_Wrapper.m_Game_Pausar;
         public InputAction @ShowDebug => m_Wrapper.m_Game_ShowDebug;
+        public InputAction @ShowList => m_Wrapper.m_Game_ShowList;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1242,6 +1265,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ShowDebug.started += instance.OnShowDebug;
             @ShowDebug.performed += instance.OnShowDebug;
             @ShowDebug.canceled += instance.OnShowDebug;
+            @ShowList.started += instance.OnShowList;
+            @ShowList.performed += instance.OnShowList;
+            @ShowList.canceled += instance.OnShowList;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -1258,6 +1284,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ShowDebug.started -= instance.OnShowDebug;
             @ShowDebug.performed -= instance.OnShowDebug;
             @ShowDebug.canceled -= instance.OnShowDebug;
+            @ShowList.started -= instance.OnShowList;
+            @ShowList.performed -= instance.OnShowList;
+            @ShowList.canceled -= instance.OnShowList;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -1496,6 +1525,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnEfetuarAcao(InputAction.CallbackContext context);
         void OnPausar(InputAction.CallbackContext context);
         void OnShowDebug(InputAction.CallbackContext context);
+        void OnShowList(InputAction.CallbackContext context);
     }
     public interface IEncaixeActions
     {

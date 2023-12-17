@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour {
     public GameObject cutsceneVirtualCamera;
     public LayerMask caixaLayer;
     public GameObject caixaCaidaIndicador;
+    public Sprite imagemSemEndereco;
 
     void Awake() {
         instance = this;
         controls = new Controls();
         controls.Game.Pausar.performed += ctx => TogglePause();
         controls.Game.ShowDebug.performed += ctx => ToggleDebug();
+        controls.Game.ShowList.performed += ctx => AbrirListaMissao();
     }
 
     void FixedUpdate() {
@@ -69,6 +71,16 @@ public class GameManager : MonoBehaviour {
     public void VoltarMenu() {
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void AbrirListaMissao() {
+        if (estadoAtual == Estado.Jogando) {
+            Pausar();
+            UIController.pause.OpenMissao();
+        } else {
+            Despausar();
+        }
+        
     }
 
     public void VirtualCameraToMiddleOf(GameObject obj) {

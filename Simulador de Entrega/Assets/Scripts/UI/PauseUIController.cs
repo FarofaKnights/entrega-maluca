@@ -19,6 +19,9 @@ public class PauseUIController : MonoBehaviour {
     public Text relatorioValor, relatorioTempo;
     Missao mostrandoMissao = null;
 
+    public TextMeshProUGUI descricaoGrandeMissao;
+    public Image enderecoMissao;
+
     void Start() {
         
     }
@@ -122,6 +125,9 @@ public class PauseUIController : MonoBehaviour {
         // titulo.text = missao.titulo;
 
         descricao.text = missao.info.descricao;
+        descricaoGrandeMissao.text = (missao.info.descricaoGrande != null && missao.info.descricaoGrande!="") ? missao.info.descricaoGrande : "Estou precisando de um serviço de entrega, entre em contato para mais informações.";
+        enderecoMissao.sprite = missao.info.GetEnderecoInicial().GetImagem();
+
 
         string texto = "Os itens a serem entregues são:\n";
         Carga[] cargas = missao.info.GetAllCargas();

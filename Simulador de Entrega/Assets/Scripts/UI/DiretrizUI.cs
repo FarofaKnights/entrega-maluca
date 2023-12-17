@@ -10,6 +10,7 @@ public class TextoDiretrizInfo {
 }
 
 public class DiretrizUI : MonoBehaviour {
+    public float tempoPopup = 4f;
     public Text titulo;
     public Image portrait;
     public GameObject diretrizItemPrefab;
@@ -19,7 +20,7 @@ public class DiretrizUI : MonoBehaviour {
     protected TextoDiretriz itemConjunto;
     protected List<TextoDiretriz> itensObjetivo = new List<TextoDiretriz>();
 
-    public GameObject informativoVazioPrefab;
+    public GameObject informativoVazioPrefab, informativoPopup;
     GameObject informativoVazio;
 
     public TextoDiretrizInfo infoNivel1, infoNivel2;
@@ -49,6 +50,7 @@ public class DiretrizUI : MonoBehaviour {
         portrait.sprite = null;
         
         foreach (Transform child in diretrizItemHolder.transform) {
+            if (child.GetComponent<TextoDiretriz>() == null) continue;
             Destroy(child.gameObject);
         }
 
@@ -109,9 +111,11 @@ public class DiretrizUI : MonoBehaviour {
         if (missaoAtual == null) return;
 
         foreach (Transform child in diretrizItemHolder.transform) {
+            if (child.GetComponent<TextoDiretriz>() == null) continue;
             child.gameObject.SetActive(true);
         }
 
+        informativoPopup.SetActive(false);
         btnsHolder.SetActive(true);
         gameObject.SetActive(true);
         animator.SetTrigger("QuickShow");
@@ -126,6 +130,8 @@ public class DiretrizUI : MonoBehaviour {
 
     public void ShowPopup(Diretriz diretriz) {
         if (gameObject.activeSelf) return;
+
+        informativoPopup.SetActive(true);
 
         gameObject.SetActive(true);
         btnsHolder.SetActive(false);
@@ -147,7 +153,7 @@ public class DiretrizUI : MonoBehaviour {
     }
 
     IEnumerator HidePopup() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(tempoPopup);
         animator.SetTrigger("Hide");
         closing = true;
     }
@@ -156,6 +162,7 @@ public class DiretrizUI : MonoBehaviour {
         if (closing) {
             closing = false;
             gameObject.SetActive(false);
+            informativoPopup.SetActive(false);
         }
     }
 }

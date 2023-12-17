@@ -30,15 +30,13 @@ public class BotaoToggle : MonoBehaviour {
     }
 
     void Selecionar() {
-        Debug.Log("Selecionar");
-        StartCoroutine(Animations.Animation(tempoAnimacao, (float t) => {
+        StartCoroutine(Animations.UnscaledAnimation(tempoAnimacao, (float t) => {
             transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * escala, t);
         }));
     }
 
     void Deselecionar() {
-        Debug.Log("Deselecionar");
-        StartCoroutine(Animations.Animation(tempoAnimacao, (float t) => {
+        StartCoroutine(Animations.UnscaledAnimation(tempoAnimacao, (float t) => {
             transform.localScale = Vector3.Lerp(Vector3.one * escala, Vector3.one, t);
         }));
     }

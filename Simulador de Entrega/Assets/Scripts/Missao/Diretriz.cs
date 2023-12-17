@@ -36,11 +36,13 @@ public class Diretriz: Iniciavel {
     }
 
     public void Parar() {
+        Debug.Log("Parando diretriz " + texto);
         if (this.texto != null && this.texto != "")
             UIController.diretriz.ConcluirDiretriz(this);
 
         if (limitacoes != null) {
             foreach (Limitacao limitacao in limitacoes) {
+                Debug.Log("Parando limitacao " + limitacao);
                 limitacao.Parar();
             }
         }

@@ -38,6 +38,10 @@ public class MissaoObject : ScriptableObject {
         return cargas.ConvertAll(c => c.Convert()).ToArray();
     }
 
+    public Endereco GetEnderecoInicial() {
+        return Endereco.GetEndereco(objetivoInicial.endereco);
+    }
+
     public Endereco GetEnderecoFinal() {
         ConjuntoObject ultimoConjunto = conjuntos[conjuntos.Length - 1];
         ObjetivoObject ultimoObjetivo = ultimoConjunto.objetivos[ultimoConjunto.objetivos.Length - 1];

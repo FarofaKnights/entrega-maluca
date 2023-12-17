@@ -9,8 +9,8 @@ public class SelecionavelHandler : MonoBehaviour, IPointerEnterHandler, IPointer
     [Range(0f,2f), SerializeField] float escala = 1.1f;
     [SerializeField] float tempoAnimacao = 0.1f;
 
-    Vector3 posicaoInicial;
-    Vector3 escalaInicial;
+    public Vector3 posicaoInicial;
+    public Vector3 escalaInicial = Vector3.one;
 
     public System.Action onSelecionado, onDeselecionado;
 
@@ -20,7 +20,6 @@ public class SelecionavelHandler : MonoBehaviour, IPointerEnterHandler, IPointer
 
     void Start() {
         posicaoInicial = transform.position;
-        escalaInicial = transform.localScale;
     }
 
     public void Selecionar() {

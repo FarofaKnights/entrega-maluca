@@ -184,6 +184,14 @@ public class Player : MonoBehaviour {
         return cargasCaidas;
     }
 
+    public void CargaDestruida(Carga carga) {
+        if (cargaAtual.Contains(carga)) {
+            cargaAtual.Remove(carga);
+            if (!cargasCaidas.Contains(carga))
+                cargasCaidas.Add(carga);
+        }
+    }
+
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, areaRecuperarCaixa);

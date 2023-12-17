@@ -71,6 +71,7 @@ public class MissaoIterator: ObjetivoIterator {
     }
 
     public void Reset() {
+        iterator.diretriz?.Parar(); 
         iterator.Reset();
         indice = 0;
         iterator = null;
