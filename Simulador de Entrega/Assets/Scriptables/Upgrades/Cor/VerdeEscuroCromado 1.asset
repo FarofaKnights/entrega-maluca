@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c5f7c985eb8481409ea4819a7fcb3e2, type: 3}
-  m_Name: Rosa
+  m_Name: VerdeEscuroCromado 1
   m_EditorClassIdentifier: 
-  nome: Rosa
-  descricao: O trauma de qualquer modelador, ver essa cor tomando um modelo indica
-    que as coisas fugiram do controle
+  nome: Verde escuro
+  descricao: Mostre seu amor ao meio ambiente com esse verde escuro!
   custo: 10
   icone: {fileID: 0}
   exclusivo: 1
   ativavel: 1
-  material: {fileID: 2100000, guid: 0ef84151b5ee3794e80755f7f7ebbb32, type: 2}
-  colorIcone: {r: 1, g: 0, b: 0.68882465, a: 1}
+  material: {fileID: 2100000, guid: d826c06238e8d38458b9ebf2f1cadb64, type: 2}
+  colorIcone: {r: 0.051409017, g: 0.23584908, b: 0.041162338, a: 1}
   iconeTextura: {fileID: 0}

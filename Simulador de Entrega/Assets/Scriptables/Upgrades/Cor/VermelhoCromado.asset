@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5f7c985eb8481409ea4819a7fcb3e2, type: 3}
+  m_Name: VermelhoCromado
+  m_EditorClassIdentifier: 
+  nome: Vermelho Cromado
+  descricao: Feito com 0% de extrato de tomate
+  custo: 15
+  icone: {fileID: 0}
+  exclusivo: 1
+  ativavel: 1
+  material: {fileID: 2100000, guid: 6f11db9e762c095438ee8c59b378f889, type: 2}
+  colorIcone: {r: 0.7169812, g: 0, b: 0, a: 1}
+  iconeTextura: {fileID: 0}
