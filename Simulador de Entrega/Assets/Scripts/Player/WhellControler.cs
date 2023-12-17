@@ -63,8 +63,7 @@ public class WhellControler : MonoBehaviour {
          
 
     }
-    public void 
-        PararCarro() {
+    public void PararCarro() {
         //Zera a velocidade linear e angular
         CarRb.velocity = Vector3.zero;
         CarRb.angularVelocity = Vector3.zero;
