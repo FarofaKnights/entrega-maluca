@@ -25,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386819381522366381}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.94476, y: 6.2793703, z: 44.50407}
   m_LocalScale: {x: 3, y: 3, z: 3}
@@ -34,7 +35,6 @@ Transform:
   - {fileID: 8726499194271977495}
   - {fileID: 8186672845773020845}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &447273142337189617
 LODGroup:
@@ -71,9 +71,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386819381522366381}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.23641841, y: 0.56557196, z: 0.22605392}
   m_Center: {x: 0.0026601157, y: 0.12778036, z: 0.018918376}
 --- !u!1001 &3738134500431534420
@@ -81,6 +89,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 9178774996475448793}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1a0021ba015fbd54fbfd4f0b07bb1b67,
@@ -140,15 +149,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 1a0021ba015fbd54fbfd4f0b07bb1b67,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1a0021ba015fbd54fbfd4f0b07bb1b67,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0b934fd9a758c6941a52a5374899107f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1a0021ba015fbd54fbfd4f0b07bb1b67,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d9b5e077fa28ba6408e06c2f64b1c9e8, type: 2}
     - target: {fileID: 919132149155446097, guid: 1a0021ba015fbd54fbfd4f0b07bb1b67,
         type: 3}
       propertyPath: m_Name
       value: HidranteLOD0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a0021ba015fbd54fbfd4f0b07bb1b67, type: 3}
 --- !u!23 &2603379806912906704 stripped
 MeshRenderer:
@@ -167,6 +189,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 9178774996475448793}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d0a8835fa9daffe4b984211e467224f1,
@@ -226,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: d0a8835fa9daffe4b984211e467224f1,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0b934fd9a758c6941a52a5374899107f, type: 2}
     - target: {fileID: 919132149155446097, guid: d0a8835fa9daffe4b984211e467224f1,
@@ -235,6 +258,9 @@ PrefabInstance:
       value: HidranteLOD2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a8835fa9daffe4b984211e467224f1, type: 3}
 --- !u!23 &7050327254936380866 stripped
 MeshRenderer:
@@ -253,6 +279,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 9178774996475448793}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 19bd02437887d264b9688ea922d6d66f,
@@ -312,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 19bd02437887d264b9688ea922d6d66f,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0b934fd9a758c6941a52a5374899107f, type: 2}
     - target: {fileID: 919132149155446097, guid: 19bd02437887d264b9688ea922d6d66f,
@@ -321,6 +348,9 @@ PrefabInstance:
       value: HidranteLOD1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19bd02437887d264b9688ea922d6d66f, type: 3}
 --- !u!23 &7589106420210969464 stripped
 MeshRenderer:

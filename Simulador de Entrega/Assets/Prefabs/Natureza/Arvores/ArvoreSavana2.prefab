@@ -24,6 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4630529868402651401}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.595451, y: 10.294654, z: 39.97015}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,7 +34,6 @@ Transform:
   - {fileID: 120981873631168604}
   - {fileID: 7368636752827551075}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &3722989440703097326
 LODGroup:
@@ -67,6 +67,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1629157186702446629}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d906f92354d9c994c9ae07487e972c09,
@@ -126,12 +127,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: d906f92354d9c994c9ae07487e972c09,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d1c2f54687a0d47468322847706da985, type: 2}
     - target: {fileID: -7511558181221131132, guid: d906f92354d9c994c9ae07487e972c09,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: ca31b61979e62e247a8611f213c4b8ce, type: 2}
     - target: {fileID: 919132149155446097, guid: d906f92354d9c994c9ae07487e972c09,
@@ -140,6 +141,9 @@ PrefabInstance:
       value: ArvoreSavana2LOD1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d906f92354d9c994c9ae07487e972c09, type: 3}
 --- !u!4 &120981873631168604 stripped
 Transform:
@@ -158,6 +162,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1629157186702446629}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fb9efd088ccf3fd4eb5df69e6b3aabe5,
@@ -217,20 +222,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: fb9efd088ccf3fd4eb5df69e6b3aabe5,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fb9efd088ccf3fd4eb5df69e6b3aabe5,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d1c2f54687a0d47468322847706da985, type: 2}
     - target: {fileID: -7511558181221131132, guid: fb9efd088ccf3fd4eb5df69e6b3aabe5,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: ca31b61979e62e247a8611f213c4b8ce, type: 2}
+    - target: {fileID: -7511558181221131132, guid: fb9efd088ccf3fd4eb5df69e6b3aabe5,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: fb9efd088ccf3fd4eb5df69e6b3aabe5,
         type: 3}
       propertyPath: m_Name
       value: ArvoreSavana2LOD0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb9efd088ccf3fd4eb5df69e6b3aabe5, type: 3}
 --- !u!4 &5584539072814880131 stripped
 Transform:
@@ -249,6 +267,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1629157186702446629}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 31254f1f176864643bf822a7aba71b51,
@@ -308,12 +327,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 31254f1f176864643bf822a7aba71b51,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ca31b61979e62e247a8611f213c4b8ce, type: 2}
     - target: {fileID: -7511558181221131132, guid: 31254f1f176864643bf822a7aba71b51,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: d1c2f54687a0d47468322847706da985, type: 2}
     - target: {fileID: 919132149155446097, guid: 31254f1f176864643bf822a7aba71b51,
@@ -322,6 +341,9 @@ PrefabInstance:
       value: ArvoreSavana2LOD2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31254f1f176864643bf822a7aba71b51, type: 3}
 --- !u!4 &7368636752827551075 stripped
 Transform:

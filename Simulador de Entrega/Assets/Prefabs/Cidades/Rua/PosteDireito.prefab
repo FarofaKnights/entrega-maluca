@@ -24,6 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4606235571679580379}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.122734, y: 8.164151, z: 66.9195}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,7 +34,6 @@ Transform:
   - {fileID: 6002035501154595354}
   - {fileID: 3145413372568690029}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &6159604407992653372
 LODGroup:
@@ -67,6 +67,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2919592884154116759}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ae3fe64885275f64a863a5db329edff4,
@@ -124,12 +125,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ae3fe64885275f64a863a5db329edff4,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ae3fe64885275f64a863a5db329edff4,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: ae3fe64885275f64a863a5db329edff4,
         type: 3}
       propertyPath: m_Name
       value: PosteDeLuzFiosLadoDireitoLOD0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae3fe64885275f64a863a5db329edff4, type: 3}
 --- !u!23 &988116355001509516 stripped
 MeshRenderer:
@@ -148,6 +162,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2919592884154116759}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8f8b99404cf1c264da18f15c3737ef6a,
@@ -211,6 +226,9 @@ PrefabInstance:
       value: PosteDeLuzFiosLadoDireitoLOD2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f8b99404cf1c264da18f15c3737ef6a, type: 3}
 --- !u!4 &3145413372568690029 stripped
 Transform:
@@ -229,6 +247,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2919592884154116759}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2ffd74deee6f248469da3b854af017e5,
@@ -292,6 +311,9 @@ PrefabInstance:
       value: PosteDeLuzFiosLadoDireitoLOD1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ffd74deee6f248469da3b854af017e5, type: 3}
 --- !u!23 &4828051903806278005 stripped
 MeshRenderer:

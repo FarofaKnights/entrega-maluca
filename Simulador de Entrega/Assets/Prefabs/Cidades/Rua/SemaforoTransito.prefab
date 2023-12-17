@@ -25,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4239554354397704243}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.558096, y: 7.4367986, z: 53.627865}
   m_LocalScale: {x: 2, y: 2, z: 2}
@@ -34,7 +35,6 @@ Transform:
   - {fileID: 7945962541209397337}
   - {fileID: 8699636844474639363}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &7111558078718451679
 LODGroup:
@@ -71,9 +71,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4239554354397704243}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.5348358, y: 3.6320238, z: 0.72735214}
   m_Center: {x: -0.036917686, y: 1.1405437, z: 0.0151462555}
 --- !u!1001 &5144724197017602838
@@ -81,6 +89,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4239554354397704240}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 67233d1b67661234eb509443a0c7f3ee,
@@ -140,15 +149,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 67233d1b67661234eb509443a0c7f3ee,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 67233d1b67661234eb509443a0c7f3ee,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0b934fd9a758c6941a52a5374899107f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 67233d1b67661234eb509443a0c7f3ee,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d9b5e077fa28ba6408e06c2f64b1c9e8, type: 2}
     - target: {fileID: 919132149155446097, guid: 67233d1b67661234eb509443a0c7f3ee,
         type: 3}
       propertyPath: m_Name
       value: SemaforoTransitoLOD0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67233d1b67661234eb509443a0c7f3ee, type: 3}
 --- !u!4 &4678960854059330813 stripped
 Transform:
@@ -167,6 +189,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4239554354397704240}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e06eb70567bedf84c9b84a726d6645ca,
@@ -226,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e06eb70567bedf84c9b84a726d6645ca,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0b934fd9a758c6941a52a5374899107f, type: 2}
     - target: {fileID: 919132149155446097, guid: e06eb70567bedf84c9b84a726d6645ca,
@@ -235,6 +258,9 @@ PrefabInstance:
       value: SemaforoTransitoLOD1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e06eb70567bedf84c9b84a726d6645ca, type: 3}
 --- !u!4 &7945962541209397337 stripped
 Transform:
@@ -253,6 +279,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4239554354397704240}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e273169f70c33eb40bbde0b36744f568,
@@ -312,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e273169f70c33eb40bbde0b36744f568,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0b934fd9a758c6941a52a5374899107f, type: 2}
     - target: {fileID: 919132149155446097, guid: e273169f70c33eb40bbde0b36744f568,
@@ -321,6 +348,9 @@ PrefabInstance:
       value: SemaforoTransitoLOD2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e273169f70c33eb40bbde0b36744f568, type: 3}
 --- !u!23 &7561681499491164012 stripped
 MeshRenderer:
