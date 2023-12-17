@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2756282054643395653}
   - component: {fileID: 2756282054643395649}
   - component: {fileID: 6599584884116964957}
+  - component: {fileID: 3199504636059315898}
   m_Layer: 0
   m_Name: ArmadilhaDeUrso
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -369.9, y: 0.03, z: -149.4}
-  m_LocalScale: {x: 2.5379, y: 0.056184176, z: 2.5379}
+  m_LocalScale: {x: 4.130432, y: 0.091439754, z: 4.130432}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7863070445726688508}
@@ -54,8 +55,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.46539336
-  m_Center: {x: 0.022390058, y: 0, z: -0.00000009394325}
+  m_Radius: 0.11444892
+  m_Center: {x: 0.022390058, y: 0, z: -0.00000009394326}
 --- !u!114 &2756282054643395649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barulho: {fileID: 6599584884116964957}
-  tempo: 2
+  tempo: 1
+  anim: {fileID: 3199504636059315898}
+  hasAnim: 1
 --- !u!82 &6599584884116964957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -167,6 +170,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &3199504636059315898
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756282054643395648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9c3842edb6620f9459efd782e7d62d71, type: 3}
+  m_Controller: {fileID: 9100000, guid: 51313a1de2c660e42b540120e04601c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7680191616825688855
 PrefabInstance:
   m_ObjectHideFlags: 0

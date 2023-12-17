@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2756282054643395653}
   - component: {fileID: 2756282054643395649}
   - component: {fileID: 6599584884116964957}
+  - component: {fileID: 6963605893004080385}
   m_Layer: 0
   m_Name: Ratoeira
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -369.9, y: 0.03, z: -149.4}
-  m_LocalScale: {x: 2.5379, y: 0.056184176, z: 2.5379}
+  m_LocalScale: {x: 4.1979403, y: 0.21157409, z: 4.1979403}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6379137831156354893}
@@ -54,8 +55,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.26199886
-  m_Center: {x: 0.000000059604638, y: 0, z: -0.00000008940697}
+  m_Radius: 0.16
+  m_Center: {x: -0.15, y: 0, z: -0.00000008940697}
 --- !u!114 &2756282054643395649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barulho: {fileID: 6599584884116964957}
-  tempo: 2
+  tempo: 1
+  anim: {fileID: 6963605893004080385}
+  hasAnim: 1
 --- !u!82 &6599584884116964957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -167,6 +170,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &6963605893004080385
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756282054643395648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: af34d087ce793a74685a4d0209240436, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1cbc66e731534eb4983772c766b0cb84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6849404877696264358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,6 +264,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: af34d087ce793a74685a4d0209240436,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8155
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: af34d087ce793a74685a4d0209240436,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 119.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: af34d087ce793a74685a4d0209240436,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.15
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af34d087ce793a74685a4d0209240436,
         type: 3}

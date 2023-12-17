@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2756282054643395652}
-  - component: {fileID: 2756282054643395653}
   - component: {fileID: 2756282054643395649}
   - component: {fileID: 6599584884116964957}
   - component: {fileID: 8575478803071893993}
@@ -30,33 +29,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -369.9, y: 0.03, z: -149.4}
-  m_LocalScale: {x: 2.5379, y: 0.056184176, z: 2.5379}
+  m_LocalScale: {x: 5.140009, y: 0.11378981, z: 5.140009}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1161030810057340054}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2756282054643395653
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2756282054643395648}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.26199886
-  m_Center: {x: 0.000000059604638, y: 0, z: -0.00000008940697}
 --- !u!114 &2756282054643395649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barulho: {fileID: 6599584884116964957}
   tempo: 2
+  anim: {fileID: 0}
+  hasAnim: 0
 --- !u!82 &6599584884116964957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -183,7 +163,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
