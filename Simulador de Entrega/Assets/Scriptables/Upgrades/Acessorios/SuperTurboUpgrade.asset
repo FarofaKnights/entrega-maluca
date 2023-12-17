@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: SuperTurboUpgrade
   m_EditorClassIdentifier: 
-  nome: Super Turbo
+  nome: Super Turbo Dourado
   descricao: "Infelizmente, \xE9 apenas\_estetico"
   custo: 300
   icone: {fileID: 21300000, guid: 536d2bf679e6f6c41974562fd140e225, type: 3}

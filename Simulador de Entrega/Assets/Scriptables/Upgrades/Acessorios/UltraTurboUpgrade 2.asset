@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
+  m_Name: UltraTurboUpgrade 2
+  m_EditorClassIdentifier: 
+  nome: Ultra Turbo Bronze
+  descricao: "Pelo formato deles, tem mais chances de voc\xEA tocar um jazz perfeito
+    enquanto dirige, do que de fato\_ganhar\_um\_turbo"
+  custo: 300
+  icone: {fileID: 21300000, guid: 023d938f4bd8a9a4798cfa2683d9a31f, type: 3}
+  exclusivo: 1
+  ativavel: 1
+  acessorioPrefab: {fileID: 7583131998510569575, guid: 2651426be8f00d946be17e0562dded30,
+    type: 3}
+  localizacao: 2

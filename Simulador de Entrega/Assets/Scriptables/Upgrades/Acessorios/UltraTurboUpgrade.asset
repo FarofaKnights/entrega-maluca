@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: UltraTurboUpgrade
   m_EditorClassIdentifier: 
-  nome: Ultra Turbo
+  nome: Ultra Turbo Dourado
   descricao: "Pelo formato deles, tem mais chances de voc\xEA tocar um jazz perfeito
     enquanto dirige, do que de fato\_ganhar\_um\_turbo"
   custo: 300

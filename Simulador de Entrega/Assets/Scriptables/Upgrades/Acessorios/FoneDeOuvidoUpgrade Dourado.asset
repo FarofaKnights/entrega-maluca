@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
+  m_Name: FoneDeOuvidoUpgrade Dourado
+  m_EditorClassIdentifier: 
+  nome: Fone de Ouvido Cinza
+  descricao: "Para aqueles dias aonde o radio do seu carro n\xE3o \xE9 o suficiente
+    e voc\xEA \xE9 um ser\_humano\_decente"
+  custo: 270
+  icone: {fileID: 21300000, guid: 12cd79f35962d7945a5b13c2c58aa913, type: 3}
+  exclusivo: 1
+  ativavel: 1
+  acessorioPrefab: {fileID: 2229257995643324862, guid: 10f518ec282dbb34b8cc188ab301484c,
+    type: 3}
+  localizacao: 0

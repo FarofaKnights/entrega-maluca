@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
+  m_Name: ChifreDeVacaUpgrade 1
+  m_EditorClassIdentifier: 
+  nome: Chifre de Diabo
+  descricao: "Diferente de guaxinins, de fato existe vacas gigantes...  Mas esse
+    chifre ainda\_\xE9\_sintetico"
+  custo: 100
+  icone: {fileID: 21300000, guid: 64622bb9ad3256c4995a1b024749484b, type: 3}
+  exclusivo: 1
+  ativavel: 1
+  acessorioPrefab: {fileID: 627482295114320476, guid: 29ef1f7922c0c524baa5a9ae1ee6e277,
+    type: 3}
+  localizacao: 0

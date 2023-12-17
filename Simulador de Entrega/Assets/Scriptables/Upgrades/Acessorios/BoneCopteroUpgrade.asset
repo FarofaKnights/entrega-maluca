@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
   m_Name: BoneCopteroUpgrade
   m_EditorClassIdentifier: 
-  nome: "Bon\xE9Coptero"
+  nome: "Bon\xE9Coptero Vermelho"
   descricao: "Sempre quis um desses quando crian\xE7a, mas sempre s\xF3 achei esses
     que\_cabem\_em\_carro"
   custo: 200

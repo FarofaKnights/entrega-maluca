@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
+  m_Name: CapaceteRomanoUpgrade 1
+  m_EditorClassIdentifier: 
+  nome: Capacete Romano Prata
+  descricao: "Dizem que os maiores guerreiros do passado usaram isso, provavelmente
+    \xE9 verdade porque tem que ser bem grande\_pra\_caber\_nele"
+  custo: 400
+  icone: {fileID: 21300000, guid: d55ebf79ac08c5a49b83a614357195c6, type: 3}
+  exclusivo: 1
+  ativavel: 1
+  acessorioPrefab: {fileID: 3468004534534196467, guid: 62346636d8513b04c863da42a3ddb6f2,
+    type: 3}
+  localizacao: 0

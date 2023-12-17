@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bf7b7aa45f035438507b386532aea3, type: 3}
+  m_Name: OrelhasDeGatoUpgrade Preto
+  m_EditorClassIdentifier: 
+  nome: Orelhas de Gato Preto
+  descricao: Prrrrrrrrrrrrrrrrrrrrrr
+  custo: 150
+  icone: {fileID: 21300000, guid: a1e0122274ea8af46b47e6fac871686e, type: 3}
+  exclusivo: 1
+  ativavel: 1
+  acessorioPrefab: {fileID: 7389599475546295960, guid: 4bd274bf72fd08845bb6336f371c30ef,
+    type: 3}
+  localizacao: 0
