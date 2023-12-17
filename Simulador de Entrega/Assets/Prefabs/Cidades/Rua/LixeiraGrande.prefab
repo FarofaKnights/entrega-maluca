@@ -25,16 +25,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490978376501144347}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3501674074414715008}
   - {fileID: 2123839302738846590}
   - {fileID: 548493289183243117}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &6236756087015577127
 LODGroup:
@@ -50,15 +50,15 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.19363669
+  - screenRelativeHeight: 0.042162657
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2365338511922490351}
-  - screenRelativeHeight: 0.076325625
+  - screenRelativeHeight: 0.013855625
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 950901960232196113}
-  - screenRelativeHeight: 0.018331407
+  - screenRelativeHeight: 0.0014861686
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1717999430234017794}
@@ -71,9 +71,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490978376501144347}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 2.281952, y: 1.5244408, z: 1.1060103}
   m_Center: {x: 0.008234501, y: 0.06846428, z: -0.000000059604645}
 --- !u!1001 &6221865480522886
@@ -81,6 +89,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1598607555402162661}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6bdcff2534d34f141b995bae63326b2f,
@@ -144,6 +153,9 @@ PrefabInstance:
       value: LixeiraGrandeLOD2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bdcff2534d34f141b995bae63326b2f, type: 3}
 --- !u!4 &548493289183243117 stripped
 Transform:
@@ -162,6 +174,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1598607555402162661}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4ef109193e66725418527514f2288b36,
@@ -225,6 +238,9 @@ PrefabInstance:
       value: LixeiraGrandeLOD1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ef109193e66725418527514f2288b36, type: 3}
 --- !u!23 &950901960232196113 stripped
 MeshRenderer:
@@ -243,6 +259,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1598607555402162661}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6c2d362866e399f458bb2f9a0d64083d,
@@ -306,6 +323,9 @@ PrefabInstance:
       value: LixeiraGrandeLOD0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c2d362866e399f458bb2f9a0d64083d, type: 3}
 --- !u!23 &2365338511922490351 stripped
 MeshRenderer:
