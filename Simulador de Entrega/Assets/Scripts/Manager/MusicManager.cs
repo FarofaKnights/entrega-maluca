@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource[] parqueAudios;
 
     public AudioSource[] currentPlaylist;
-    public AudioSource currentAudioSource;
+    public AudioSource currentAudioSource, nextAnterior;
     public bool isGotico;
     private void Start()
     {
@@ -22,7 +22,7 @@ public class MusicManager : MonoBehaviour
             int l = Random.Range(0, normalAudios.Length);
             currentAudioSource = normalAudios[l];
             currentPlaylist = normalAudios;
-            Invoke("ChangeSong", currentAudioSource.clip.length - 1.25f);
+            Invoke("ChangeSong", currentAudioSource.clip.length - 3f);
         }
 
         else if (isGotico)
@@ -30,7 +30,7 @@ public class MusicManager : MonoBehaviour
             int l = Random.Range(0, goticoAudios.Length);
             currentAudioSource = goticoAudios[l];
             currentPlaylist = goticoAudios;
-            Invoke("ChangeSong", currentAudioSource.clip.length - 1.25f);
+            Invoke("ChangeSong", currentAudioSource.clip.length - 3f);
         }
 
         currentAudioSource.Play();
@@ -41,23 +41,28 @@ public class MusicManager : MonoBehaviour
         do
         {
             i = Random.Range(0, currentPlaylist.Length);
-        } while (currentPlaylist[i] == currentAudioSource);
-        Fade(currentAudioSource, currentPlaylist[i]);
-        Invoke("ChangeSong", currentAudioSource.clip.length - 1.25f);
+        } while (currentAudioSource == currentPlaylist[i]);
+        StartCoroutine(Fade(currentAudioSource, currentPlaylist[i]));
     }
     IEnumerator Fade(AudioSource currentAudio, AudioSource nextAudio)
     {
-        float timeToFade = 1.25f;
-        float timeElapsed = 0;
+        float t = 0;
+        float maxt = 2f;
         nextAudio.Play();
-        nextAudio.volume = 0;
-        while(timeElapsed < timeToFade)
+        if(nextAnterior != null)
         {
-            currentAudio.volume = Mathf.Lerp(1, 0, timeElapsed/timeToFade);
-            nextAudio.volume = Mathf.Lerp(0, 1, timeElapsed / timeToFade);
-            timeElapsed += Time.deltaTime;
+            nextAnterior.Stop();
         }
+        while(t < maxt)
+        {
+            nextAudio.volume = Mathf.Lerp(0, 1, t/maxt);
+            currentAudio.volume = Mathf.Lerp(1, 0, t/maxt);
+            t += Time.deltaTime;
+        }
+        nextAnterior = nextAudio;
+        currentAudio.Stop();
         currentAudio = nextAudio;
-        return null;
+        Invoke("ChangeSong", currentAudioSource.clip.length - 5f);
+        yield return null;
     }
 }

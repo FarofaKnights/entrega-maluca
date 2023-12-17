@@ -13,27 +13,44 @@ public class TriggerMusica : MonoBehaviour
         {
             if (thisTipo == Tipo.Gotico)
             {
-                MusicManager.instance.currentPlaylist = MusicManager.instance.goticoAudios;
-                MusicManager.instance.CancelInvoke();
-                MusicManager.instance.ChangeSong();
+                if (MusicManager.instance.currentPlaylist != MusicManager.instance.goticoAudios)
+                {
+                    MusicManager.instance.currentPlaylist = MusicManager.instance.goticoAudios;
+                    MusicManager.instance.CancelInvoke();
+                    MusicManager.instance.StopAllCoroutines();
+                    MusicManager.instance.ChangeSong();
+                }
             }
             else if (thisTipo == Tipo.Normal)
             {
-                MusicManager.instance.currentPlaylist = MusicManager.instance.normalAudios;
-                MusicManager.instance.CancelInvoke();
-                MusicManager.instance.ChangeSong();
+                if (MusicManager.instance.currentPlaylist != MusicManager.instance.normalAudios)
+                {
+                    MusicManager.instance.currentPlaylist = MusicManager.instance.normalAudios;
+                    MusicManager.instance.CancelInvoke();
+                    MusicManager.instance.StopAllCoroutines();
+                    MusicManager.instance.ChangeSong();
+                }
             }
             else if (thisTipo == Tipo.Praia)
             {
-                MusicManager.instance.currentPlaylist = MusicManager.instance.praiaAudios;
-                MusicManager.instance.CancelInvoke();
-                MusicManager.instance.ChangeSong();
+                if (MusicManager.instance.currentPlaylist != MusicManager.instance.praiaAudios)
+                {
+                    MusicManager.instance.currentPlaylist = MusicManager.instance.praiaAudios;
+                    MusicManager.instance.CancelInvoke();
+                    MusicManager.instance.StopAllCoroutines();
+                    MusicManager.instance.ChangeSong();
+                }
             }
             else if (thisTipo == Tipo.Parque)
             {
-                MusicManager.instance.currentPlaylist = MusicManager.instance.parqueAudios;
-                MusicManager.instance.CancelInvoke();
-                MusicManager.instance.ChangeSong();
+                if(MusicManager.instance.currentPlaylist != MusicManager.instance.parqueAudios)
+                {
+                    MusicManager.instance.currentPlaylist = MusicManager.instance.parqueAudios;
+                    MusicManager.instance.CancelInvoke();
+                    MusicManager.instance.StopAllCoroutines();
+                    MusicManager.instance.ChangeSong();
+
+                }
             }
         }
     }
