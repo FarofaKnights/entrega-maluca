@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 603485290696430642}
   - component: {fileID: 8971355291089549633}
   - component: {fileID: 9045177518327770819}
-  - component: {fileID: 5873210262712126533}
   m_Layer: 0
   m_Name: MilkShake
   m_TagString: Untagged
@@ -109,8 +108,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.11549579, y: 0.16086197, z: 0.11808777}
-  m_Center: {x: 0.0040749945, y: -0.0024471283, z: 0.0022354126}
+  m_Size: {x: 0.108480565, y: 0.1634903, z: 0.11808777}
+  m_Center: {x: 0.00056738034, y: -0.0037612915, z: 0.0022354126}
 --- !u!135 &8971355291089549633
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -229,27 +228,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &5873210262712126533
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2605344064478435976}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.015558243, y: 0.060691833, z: 0.019821167}
-  m_Center: {x: 0.0017290115, y: 0.11719513, z: 0.0011367798}
 --- !u!1001 &5229155793055231897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 1fa121743e5f81d42a317fb88f1812d6,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: 1fa121743e5f81d42a317fb88f1812d6,

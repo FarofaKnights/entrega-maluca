@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 7639500627448091198}
   - component: {fileID: 8433002608649319098}
   - component: {fileID: 261103328845003127}
-  - component: {fileID: 2890933186309170737}
-  - component: {fileID: 8735093915470149171}
+  - component: {fileID: 1299978465713189083}
   m_Layer: 7
   m_Name: Lustre
   m_TagString: Entrega
@@ -228,9 +227,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.0018306971, y: 0.4793715, z: 0.015708566}
---- !u!65 &2890933186309170737
+  m_Size: {x: 2.3241806, y: 1.0969315, z: 2.544159}
+  m_Center: {x: 0.059720993, y: -0.053211212, z: 0.033096313}
+--- !u!65 &1299978465713189083
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,29 +248,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.009800911, y: -0.5300312, z: 0.015708566}
---- !u!65 &8735093915470149171
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237737930637544366}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.0018306971, y: 1.3893661, z: -0.013244629}
+  m_Size: {x: 2.117073, y: 1.0004082, z: 1}
+  m_Center: {x: 0.027801514, y: 1.0056667, z: 0}
 --- !u!1001 &472876246478003815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 758d710d7edf9fa44b038eb3212c3c72,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: 758d710d7edf9fa44b038eb3212c3c72,

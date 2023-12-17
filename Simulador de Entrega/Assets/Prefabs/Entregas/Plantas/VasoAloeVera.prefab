@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8987017391303902682}
   - component: {fileID: 6107407549935541155}
   - component: {fileID: 6237854687929172823}
-  - component: {fileID: 6407384662611492250}
   m_Layer: 7
   m_Name: VasoAloeVera
   m_TagString: Entrega
@@ -227,29 +226,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.05288595, y: 0.06425667, z: 0.010040283}
---- !u!65 &6407384662611492250
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3571206755232331613}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.008448601, y: 0.18864822, z: -0.011203542}
+  m_Size: {x: 0.36815262, y: 0.8414955, z: 0.34817505}
+  m_Center: {x: -0.05207634, y: 0.056253433, z: 0.001663208}
 --- !u!1001 &2393434818059303742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7819158274606841082, guid: 22ceb17c27f8ca14c890ec7d858e4b5e,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: -1351022180155040607, guid: 22ceb17c27f8ca14c890ec7d858e4b5e,
@@ -325,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1351022180155040607, guid: 22ceb17c27f8ca14c890ec7d858e4b5e,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: 22ceb17c27f8ca14c890ec7d858e4b5e,

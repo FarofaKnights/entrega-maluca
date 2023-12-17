@@ -14,9 +14,7 @@ GameObject:
   - component: {fileID: 4001263980979252645}
   - component: {fileID: 48860910908370133}
   - component: {fileID: 6616168328440102032}
-  - component: {fileID: 191639965816548812}
-  - component: {fileID: 5049507306482460746}
-  - component: {fileID: 716321798984155934}
+  - component: {fileID: 4635187985966600350}
   m_Layer: 7
   m_Name: Gargua
   m_TagString: Entrega
@@ -229,9 +227,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.0018307567, y: -0.3316002, z: -0.03491211}
---- !u!65 &191639965816548812
+  m_Size: {x: 0.5988865, y: 1.1167755, z: 0.8362427}
+  m_Center: {x: -0.0019960403, y: 0.0230484, z: 0.049316406}
+--- !u!65 &4635187985966600350
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,50 +248,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.006901741, y: 0.21625328, z: 0.06211853}
---- !u!65 &5049507306482460746
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282097779950690317}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.356596, y: 0.45552063, z: 0}
---- !u!65 &716321798984155934
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282097779950690317}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -0.36, y: 0.45552063, z: 0}
+  m_Size: {x: 1.1786003, y: 0.42386627, z: 0.19918823}
+  m_Center: {x: -0.02016449, y: 0.46090317, z: 0.02015686}
 --- !u!1001 &2140614704928675389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: fddec8a639537a343a40af516a55a44f,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: fddec8a639537a343a40af516a55a44f,

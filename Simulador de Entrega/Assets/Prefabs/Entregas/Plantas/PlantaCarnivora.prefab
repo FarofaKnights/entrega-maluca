@@ -226,8 +226,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0.0006933212, y: 0.027645111, z: 0.011338189}
+  m_Size: {x: 0.36278152, y: 0.93833923, z: 0.37091064}
+  m_Center: {x: 0.001701355, y: 0.05815506, z: -0.00390625}
 --- !u!1001 &1875819147687981405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: df28f75aa46e0c841b6ad3bfe623a17d,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: df28f75aa46e0c841b6ad3bfe623a17d,
