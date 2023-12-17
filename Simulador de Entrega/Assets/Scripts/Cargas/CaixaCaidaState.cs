@@ -23,6 +23,7 @@ public class CaixaCaidaState : IState {
         caixa.trigger.onTriggerEnter += OnTriggerEnter;
         caixa.trigger.onTriggerExit += OnTriggerExit;
         caixa.trigger.onTriggerStay += OnTriggerStay;
+        caixa.collision.onCollisionEnter += OnCollisionEnter;
 
         controls = new Controls();
         controls.Game.Recuperar.performed += Recuperar;
@@ -75,6 +76,7 @@ public class CaixaCaidaState : IState {
         caixa.trigger.onTriggerEnter -= OnTriggerEnter;
         caixa.trigger.onTriggerExit -= OnTriggerExit;
         caixa.trigger.onTriggerStay -= OnTriggerStay;
+        caixa.collision.onCollisionEnter -= OnCollisionEnter;
 
         controls.Game.Recuperar.performed -= Recuperar;
 
@@ -103,5 +105,19 @@ public class CaixaCaidaState : IState {
         if (other.gameObject.name != "Veiculo") return;
 
         indicador.SetActive(true);
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (Player.instance.GetState() is EncaixeState) return;
+        if (collision.gameObject.name == "Veiculo" || collision.gameObject.tag == gameObject.tag) return;
+
+        float velocity = caixa.GetComponent<Rigidbody>().velocity.magnitude;
+        caixa.carga.fragilidade -= velocity;
+        caixa.BarulhoBater();
+        if (caixa.carga.fragilidade <= 0) {
+            caixa.Explodir();
+        } else {
+            caixa.SetState(new CaixaCaidaState(caixa));
+        }
     }
 }

@@ -13,6 +13,7 @@ public class Carga {
     public Endereco destinatario;
     public Caixa cx;
     public GameObject prefab;
+    bool destruida = false;
 
     public float fragilidadeInicial {
         get {
@@ -54,6 +55,14 @@ public class Carga {
         }
 
         return valor;
+    }
+
+    public void Destruida() {
+        destruida = true;
+    }
+
+    public bool EstaDestruida() {
+        return destruida;
     }
 
     public virtual float GetMaxValor() {

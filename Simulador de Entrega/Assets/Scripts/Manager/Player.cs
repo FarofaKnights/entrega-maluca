@@ -124,7 +124,7 @@ public class Player : MonoBehaviour {
                     carga.cx = null;
                 }
                 
-                cargasCaidas.Remove(carga);
+                // cargasCaidas.Remove(carga);
             }
         }
 

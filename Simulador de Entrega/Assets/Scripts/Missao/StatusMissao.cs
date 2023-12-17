@@ -7,17 +7,20 @@ public class StatusCarga {
     public string nome;
     public float porcentagem;
     public float valor;
+    public bool entregue = true;
 
-    public StatusCarga(string nome, float porcentagem, float valor) {
+    public StatusCarga(string nome, float porcentagem, float valor, bool entregue) {
         this.nome = nome;
         this.porcentagem = porcentagem;
         this.valor = valor;
+        this.entregue = entregue;
     }
 
-    public StatusCarga(Carga carga) {
+    public StatusCarga(Carga carga, bool entregue) {
         nome = carga.nome;
         porcentagem = carga.fragilidade / carga.fragilidadeInicial;
         valor = carga.GetValor();
+        this.entregue = entregue;
     }
 }
 
@@ -37,33 +40,34 @@ public class StatusMissao {
         List<Carga> caixasCaidas = Player.instance.GetCargasCaidas();
 
         Carga[] cargasEntregues = missao.GetCargasEntregues();
-        cargas = new StatusCarga[cargasEntregues.Length + caixasCaidas.Count];
+        List<StatusCarga> cargasStatus = new List<StatusCarga>();
         dinheiro = 0;
-
-        //Debug.Log("Cargas entregues: " + cargasEntregues.Length);
-        //Debug.Log("Cargas caidas: " + caixasCaidas.Count);
         
         float porcentagem = 0;
-        int i = 0;
 
-        for (i = 0; i < cargasEntregues.Length; i++) {
-            cargas[i] = new StatusCarga(cargasEntregues[i]);
-            porcentagem += cargas[i].porcentagem;
-            dinheiro += cargas[i].valor;
+        for (int i = 0; i < cargasEntregues.Length; i++) {
+            StatusCarga carga = new StatusCarga(cargasEntregues[i], true);
+            porcentagem += carga.porcentagem;
+            dinheiro += carga.valor;
+
+            cargasStatus.Add(carga);
 
             if (caixasCaidas.Contains(cargasEntregues[i])) caixasCaidas.Remove(cargasEntregues[i]);
         }
 
-        //Debug.Log("i: " + i);
-
         foreach (Carga carga in caixasCaidas) {
-            cargas[i] = new StatusCarga(carga.nome, 0, 0);
-            i++;
+            StatusCarga carga1;
+
+            if (carga.EstaDestruida()) carga1 = new StatusCarga(carga.nome, 0, 0, false);
+            else carga1 = new StatusCarga(carga, false);
+            cargasStatus.Add(carga1);
         }
+
+        cargas = cargasStatus.ToArray();
 
         porcentagem /= cargas.Length;
 
         avaliacao = (int) Math.Round(porcentagem * 4, MidpointRounding.AwayFromZero) + 1; // Valor de 1 a 5
-        tempo = 1;
+        tempo = MissaoManager.instance.GetTempoMissao();
     }
 }

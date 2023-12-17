@@ -33,6 +33,7 @@ public class CutsceneUI : MonoBehaviour {
 
 
     public void ShowFala(PersonagemObject personagem, FalaPersonagens fala, System.Action next) {
+        MissaoManager.instance.PausarTimer();
         gameObject.SetActive(true);
 
         nome.text = personagem.nome;
@@ -74,6 +75,8 @@ public class CutsceneUI : MonoBehaviour {
         }
 
         Esconder();
+
+        MissaoManager.instance.ContinuarTimer();
 
         if (OnNext != null){
             OnNext();

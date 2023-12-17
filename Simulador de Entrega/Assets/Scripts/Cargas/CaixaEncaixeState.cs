@@ -27,7 +27,7 @@ public class CaixaEncaixeState : IState {
 
         for (int i = 0; i < renderer.materials.Length; i++)
         {
-            if (renderer.materials[i].name == "Outline (Instance)")
+            if (renderer.materials[i].name == "Outline3 (Instance)" || renderer.materials[i].name == "Outline4 (Instance)")
             {
                 outline = renderer.materials[i];
             }

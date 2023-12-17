@@ -59,6 +59,8 @@ public class Missao: Iniciavel {
         iterator.Reset();
         iterator = null;
 
+        MissaoManager.instance.PausarTimer();
+
         concluida = true;
         CalculaStatus();
         MissaoManager.instance.HandleMissaoConcluida(this);

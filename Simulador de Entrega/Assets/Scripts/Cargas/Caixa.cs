@@ -50,6 +50,8 @@ public class Caixa : MonoBehaviour {
         GameObject explosion = Instantiate(clashEffect, transform.position, transform.rotation);
         Destroy(explosion, 0.75f);
 
+        carga.Destruida();
+
         Player.instance.RemoverCarga(carga);
         Destroy(gameObject);
     }

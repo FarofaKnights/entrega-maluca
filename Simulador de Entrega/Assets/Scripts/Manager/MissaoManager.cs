@@ -17,6 +17,8 @@ public class MissaoManager : MonoBehaviour {
 
     [System.NonSerialized]
     public Missao missaoAtual = null;
+    float tempoMissao = 0;
+    bool timerRodando = false;
 
     public EnderecoFalso enderecoFalso {
         get {
@@ -36,6 +38,12 @@ public class MissaoManager : MonoBehaviour {
         }
 
         CarregarMissaoInicial();
+    }
+
+    void FixedUpdate() {
+        if (timerRodando) {
+            tempoMissao += Time.fixedDeltaTime;
+        }
     }
 
     public MissaoData GetMissaoData()
@@ -112,6 +120,8 @@ public class MissaoManager : MonoBehaviour {
             missaoAtual.Parar();
         }
 
+        IniciarTimer();
+
         Player.instance.ZerarCargas();
         SetEstado(Estado.Entrega);
         missaoAtual = missao;
@@ -125,6 +135,8 @@ public class MissaoManager : MonoBehaviour {
     public void PararMissao() {
         if (missaoAtual == null) return;
         missaoAtual.Parar();
+
+        EncerrarTimer();
 
         Player.instance.ZerarCargas();
         UIController.diretriz.Close(missaoAtual);
@@ -148,6 +160,8 @@ public class MissaoManager : MonoBehaviour {
 
         Player.instance.ZerarCargas();
         SetEstado(Estado.SemMissao);
+
+        EncerrarTimer();
 
         if (OficinaController.instance != null)
             OficinaController.instance.AtivarOficina();
@@ -182,6 +196,9 @@ public class MissaoManager : MonoBehaviour {
                 UIController.HUD.FalhaMissao(missao);
                 
             }, inicial);
+        } else {
+            UIController.HUD.FalhaMissao(missaoAtual);
+            PararMissao();
         }
     }
 
@@ -262,4 +279,26 @@ public class MissaoManager : MonoBehaviour {
 
 
     #endregion
+
+    public void EncerrarTimer() {
+        timerRodando = false;
+        tempoMissao = 0;
+    }
+
+    public void IniciarTimer() {
+        timerRodando = true;
+        tempoMissao = 0;
+    }
+
+    public void PausarTimer() {
+        timerRodando = false;
+    }
+
+    public void ContinuarTimer() {
+        timerRodando = true;
+    }
+
+    public float GetTempoMissao() {
+        return tempoMissao;
+    }
 }

@@ -34,6 +34,7 @@ public class TelaVitoriaUI : MonoBehaviour {
     }
 
     IEnumerator GerarRelatorioCoroutine() {
+        ClearAvaliacao();
         tempoCampo.HideValues();
         dinheiroFixoCampo.HideValues();
         cabecalhoCampo.HideValues();
@@ -42,7 +43,11 @@ public class TelaVitoriaUI : MonoBehaviour {
             Destroy(child.gameObject);
         }
         
-        yield return StartCoroutine(tempoCampo.ShowValueAnimation(0, status.tempo));
+        if (status.tempo < 0) {
+            tempoCampo.SetValor("Não se aplica");
+        } else yield return StartCoroutine(tempoCampo.ShowValueAnimation(0, status.tempo));
+
+
         yield return StartCoroutine(dinheiroFixoCampo.ShowValueAnimation(0, status.dinheiro));
         yield return StartCoroutine(cabecalhoCampo.ScaleDownAnimation());
 
@@ -59,6 +64,12 @@ public class TelaVitoriaUI : MonoBehaviour {
     void SelecionarAvaliacao(int avaliacao) {
         for (int i = 0; i < avaliacaoSelecionada.Length; i++) {
             avaliacaoSelecionada[i].SetActive(i == avaliacao - 1);
+        }
+    }
+
+    void ClearAvaliacao() {
+        for (int i = 0; i < avaliacaoSelecionada.Length; i++) {
+            avaliacaoSelecionada[i].SetActive(false);
         }
     }
 

@@ -28,7 +28,8 @@ public class CampoNomeValor : MonoBehaviour {
 
     public class FormatoPorcentagem: FormatadorDeValor {
         public string Formatar(float valor) {
-            return valor.ToString("P");
+            Color cor = Color.Lerp(Color.red, Color.green, valor);
+            return "<color=#" + ColorUtility.ToHtmlStringRGB(cor) + ">" + valor.ToString("P") + "</color>";
         }
     }
 
