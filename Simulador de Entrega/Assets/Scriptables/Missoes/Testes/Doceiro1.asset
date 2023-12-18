@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
+  m_Name: Doceiro1
+  m_EditorClassIdentifier: 
+  nome: Entrega para o Vlad.
+  descricao: Entregar para o Vamp... Vlad.
+  descricaoGrande: asdasd
+  personagem: {fileID: 11400000, guid: 6f134d7106f17e248b109ed8971ab81d, type: 2}
+  dialogo: {fileID: 11400000, guid: b4920239f7a4aa948b317ea0ee1ea33b, type: 2}
+  objetivoInicial:
+    endereco: Doceiro
+    cargas:
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: CasaVlad
+      prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: CasaVlad
+      prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: CasaVlad
+      prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
+        type: 3}
+    permiteReceber: 0
+    diretriz:
+      texto: Textototoo
+      limitacoes:
+      - tempo: 800
+  conjuntos: []
+  missoesDesbloqueadas: []
+  gerarAleatoriaNoFinal: 0
+  timeline:
+  - tipo: 0
+    objetivo:
+      endereco: Doceiro
+      cargas:
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: CasaVlad
+        prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: CasaVlad
+        prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: CasaVlad
+        prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
+          type: 3}
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: Textototoo
+      limitacoes:
+      - tempo: 800
+    cutscenes: []
+    mostrandoFilhos: 1
