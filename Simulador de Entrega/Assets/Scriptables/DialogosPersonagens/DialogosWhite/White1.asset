@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: White1
   m_EditorClassIdentifier: 
   falaInicial:
-    fala: "Oi!  Voc\xEA poderia buscar alguns ingredientes para mim? \xC9 urgente.
+    fala: "Oi!  Voc\xEA poderia entregar alguns ingredientes para mim? \xC9 urgente.
       Por favorzinho"
     audio: {fileID: 0}
-    anim: {fileID: 0}
+    animacao: 2
   falaConclusao:
-    fala: "Muito Obrigado! Voc\xEA \xE9 um santo"
+    fala: "Muito Obrigado! Voc\xEA \xE9 um santo."
     audio: {fileID: 0}
-    anim: {fileID: 0}
+    animacao: 2

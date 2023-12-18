@@ -1,0 +1,193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
+  m_Name: Padeiro
+  m_EditorClassIdentifier: 
+  nome: Hotel da Praiano
+  descricao: Entregue no hotel perto da praia.
+  descricaoGrande: "Estas entregas devem ser feitas naquele hotel branco perto da
+    praia. N\xE3o demore!!"
+  personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
+  dialogo: {fileID: 11400000, guid: 25f82bd8805c83048b0ccbeaadb1db0f, type: 2}
+  objetivoInicial:
+    endereco: Padaria
+    cargas:
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: HotelPraia
+      prefab: {fileID: 7325728623558377598, guid: a5aa968327ec2944bba45e4dde7b2467,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: HotelPraia
+      prefab: {fileID: 6238212496558555456, guid: 5963b930397c87648bdcbce6d45e0b97,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: HotelPraia
+      prefab: {fileID: 8941034242207417458, guid: 050067f9fb61ea84e9d8aa648bd0db53,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: HotelPraia
+      prefab: {fileID: 8328495466044111982, guid: 3fd0ab63514e13d4981819ffada04aaf,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: HotelPraia
+      prefab: {fileID: 3251404989790461122, guid: 77592c3a4842bb74382c9b369c2fef4c,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: HotelPraia
+      prefab: {fileID: 9059475752022982050, guid: eae30ba24cef3c64abb0b245ced1ddb1,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: HotelPraia
+      prefab: {fileID: 543099322893297268, guid: 341c83d79e2ca52469f54b6cd67bad2d,
+        type: 3}
+    permiteReceber: 0
+    diretriz:
+      texto: Entregas no Hotel Branco
+      limitacoes: []
+  conjuntos:
+  - objetivos:
+    - endereco: HotelPraia
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: "V\xE1 no Hotel"
+        limitacoes:
+        - tempo: 120
+    sequencial: 1
+    diretriz:
+      texto: Lista de entregas
+      limitacoes: []
+  missoesDesbloqueadas: []
+  gerarAleatoriaNoFinal: 0
+  timeline:
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: Lista de entregas
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 0
+    objetivo:
+      endereco: Padaria
+      cargas:
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: HotelPraia
+        prefab: {fileID: 7325728623558377598, guid: a5aa968327ec2944bba45e4dde7b2467,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: HotelPraia
+        prefab: {fileID: 6238212496558555456, guid: 5963b930397c87648bdcbce6d45e0b97,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: HotelPraia
+        prefab: {fileID: 8941034242207417458, guid: 050067f9fb61ea84e9d8aa648bd0db53,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: HotelPraia
+        prefab: {fileID: 8328495466044111982, guid: 3fd0ab63514e13d4981819ffada04aaf,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: HotelPraia
+        prefab: {fileID: 3251404989790461122, guid: 77592c3a4842bb74382c9b369c2fef4c,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: HotelPraia
+        prefab: {fileID: 9059475752022982050, guid: eae30ba24cef3c64abb0b245ced1ddb1,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: HotelPraia
+        prefab: {fileID: 543099322893297268, guid: 341c83d79e2ca52469f54b6cd67bad2d,
+          type: 3}
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: Entregas no Hotel Branco
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 0
+    objetivo:
+      endereco: HotelPraia
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: "V\xE1 no Hotel"
+      limitacoes:
+      - tempo: 120
+    cutscenes: []
+    mostrandoFilhos: 1

@@ -10,42 +10,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: ConcluiRapido
+  m_Name: Vlad
   m_EditorClassIdentifier: 
-  nome: Concluir Rapidamente
-  descricao: "Quer concluir uma miss\xE3o rapido para teste?"
-  descricaoGrande: 
-  personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
-  dialogo: {fileID: 0}
+  nome: Padeiro
+  descricao: Entrege  para o padeiro no final da montanha.
+  descricaoGrande: "Fa\xE7a essas entregas para o padeiro"
+  personagem: {fileID: 11400000, guid: b58e25147a96fe64caa9f3c83512b583, type: 2}
+  dialogo: {fileID: 11400000, guid: e9b35503d07ee494abe6ddc9738fb409, type: 2}
   objetivoInicial:
-    endereco: Mecanica
+    endereco: CasaVlad
     cargas:
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: Mecanica
-      prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
+      destinatario: Padaria
+      prefab: {fileID: 8618855653913858751, guid: ab545f08a6b1da44b8854659f5d41aa3,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Padaria
+      prefab: {fileID: 7132089510442174675, guid: 47dae519b2ceb4d43878fcc48a0a8f93,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Padaria
+      prefab: {fileID: 6204723927642070729, guid: df5561e6803cb5f479043fef2fbcc971,
         type: 3}
     permiteReceber: 0
     diretriz:
-      texto: Uma diretriz para o objetivo inicial?
+      texto: Entregas para o Padeiro
       limitacoes: []
   conjuntos:
   - objetivos:
-    - endereco: Mecanica
+    - endereco: Padaria
       cargas: []
-      permiteReceber: 1
+      permiteReceber: 0
       diretriz:
-        texto: Diretriz de 30 segundos...
+        texto: "V\xE1 para a Padaria"
         limitacoes:
-        - tempo: 3000
+        - tempo: 180
     sequencial: 1
     diretriz:
-      texto: Uma diretriz pai
+      texto: Lista de entregas
       limitacoes: []
-  missoesDesbloqueadas:
-  - {fileID: 11400000, guid: f98976360baa5eb48919a0a6fca00e83, type: 2}
-  - {fileID: 11400000, guid: 0aeff25981698a146b91ad1a559dc9f0, type: 2}
+  missoesDesbloqueadas: []
   gerarAleatoriaNoFinal: 0
   timeline:
   - tipo: 1
@@ -57,19 +67,31 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Uma diretriz pai
+      texto: Lista de entregas
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Hamburgue
+      endereco: CasaVlad
       cargas:
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: Mecanica
-        prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
+        destinatario: Padaria
+        prefab: {fileID: 8618855653913858751, guid: ab545f08a6b1da44b8854659f5d41aa3,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Padaria
+        prefab: {fileID: 7132089510442174675, guid: 47dae519b2ceb4d43878fcc48a0a8f93,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Padaria
+        prefab: {fileID: 6204723927642070729, guid: df5561e6803cb5f479043fef2fbcc971,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -89,15 +111,15 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Uma diretriz para o objetivo inicial?
+      texto: Entregas para o Padeiro
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Mecanica
+      endereco: Padaria
       cargas: []
-      permiteReceber: 1
+      permiteReceber: 0
       diretriz:
         texto: 
         limitacoes: []
@@ -115,8 +137,8 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Diretriz de 30 segundos...
+      texto: "V\xE1 para a Padaria"
       limitacoes:
-      - tempo: 3000
+      - tempo: 180
     cutscenes: []
     mostrandoFilhos: 1

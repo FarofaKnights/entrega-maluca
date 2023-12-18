@@ -10,54 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: Doceiro1
+  m_Name: Frank1
   m_EditorClassIdentifier: 
-  nome: Entrega para o Vlad.
-  descricao: Entregar para o Vamp... Vlad.
-  descricaoGrande: "Entrague esses doces para o Grande Vlad. Ele est\xE1 precisando
-    MUITO dessa A\xE7\xFAcar."
-  personagem: {fileID: 11400000, guid: 6f134d7106f17e248b109ed8971ab81d, type: 2}
-  dialogo: {fileID: 11400000, guid: b4920239f7a4aa948b317ea0ee1ea33b, type: 2}
+  nome: "Meca...Mec\xE2nica "
+  descricao: "Entrege  para a mec\xE2nica  da cidade"
+  descricaoGrande: "Entregue essas engenhocas para a mec\xE2nica l\xE1 no final da
+    montanha."
+  personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
+  dialogo: {fileID: 11400000, guid: 1dcf58ab94883c042a8aa8d36feb5af0, type: 2}
   objetivoInicial:
-    endereco: Doceiro
+    endereco: CasaFrank
     cargas:
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
+      destinatario: Mecanica
+      prefab: {fileID: 8576679293286444733, guid: f291258abcff42a4e95c52d1b80aa836,
         type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 8852812794093655827, guid: 7c986f53b8f7c814b9bb8f715eaab409,
-        type: 3}
-    - peso: 0
-      fragilidade: 0
-      tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
-        type: 3}
-    - peso: 0
-      fragilidade: 0
-      tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+      destinatario: Mecanica
+      prefab: {fileID: 3572057352560240082, guid: c663c73a60f723240a130333b7961c63,
         type: 3}
     permiteReceber: 0
     diretriz:
-      texto: Entregas para o Vlad
+      texto: "Entregas para a Mec\xE2nica"
       limitacoes: []
   conjuntos:
   - objetivos:
-    - endereco: CasaVlad
+    - endereco: Mecanica
       cargas: []
       permiteReceber: 0
       diretriz:
-        texto: "V\xE1 at\xE9 a casa do Vlad"
+        texto: "V\xE1 para a Mec\xE2nica"
         limitacoes:
-        - tempo: 160
+        - tempo: 240
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -80,31 +68,19 @@ MonoBehaviour:
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Doceiro
+      endereco: CasaFrank
       cargas:
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
+        destinatario: Mecanica
+        prefab: {fileID: 8576679293286444733, guid: f291258abcff42a4e95c52d1b80aa836,
           type: 3}
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 8852812794093655827, guid: 7c986f53b8f7c814b9bb8f715eaab409,
-          type: 3}
-      - peso: 0
-        fragilidade: 0
-        tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
-          type: 3}
-      - peso: 0
-        fragilidade: 0
-        tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+        destinatario: Mecanica
+        prefab: {fileID: 3572057352560240082, guid: c663c73a60f723240a130333b7961c63,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -124,13 +100,13 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Entregas para o Vlad
+      texto: "Entregas para a Mec\xE2nica"
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: CasaVlad
+      endereco: Mecanica
       cargas: []
       permiteReceber: 0
       diretriz:
@@ -150,8 +126,8 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: "V\xE1 at\xE9 a casa do Vlad"
+      texto: "V\xE1 para a Mec\xE2nica"
       limitacoes:
-      - tempo: 160
+      - tempo: 240
     cutscenes: []
     mostrandoFilhos: 1
