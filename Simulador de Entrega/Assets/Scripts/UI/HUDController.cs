@@ -65,7 +65,7 @@ public class HUDController : MonoBehaviour {
 
             tituloMissao.text = objetivoInicial.missao.info.nome;
             descricaoMissao.text = objetivoInicial.missao.info.descricao;
-            imagemMissao.sprite = objetivoInicial.missao.info.GetEnderecoInicial().GetImagem();
+            imagemMissao.sprite = objetivoInicial.missao.info.GetEnderecoFinal().GetImagem();
         } else {
             this.objetivo = null;
         }

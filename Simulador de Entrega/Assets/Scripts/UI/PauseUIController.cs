@@ -126,7 +126,7 @@ public class PauseUIController : MonoBehaviour {
 
         descricao.text = missao.info.descricao;
         descricaoGrandeMissao.text = (missao.info.descricaoGrande != null && missao.info.descricaoGrande!="") ? missao.info.descricaoGrande : "Estou precisando de um serviço de entrega, entre em contato para mais informações.";
-        enderecoMissao.sprite = missao.info.GetEnderecoInicial().GetImagem();
+        enderecoMissao.sprite = missao.info.GetEnderecoFinal().GetImagem();
 
 
         string texto = "Os itens a serem entregues são:\n";
