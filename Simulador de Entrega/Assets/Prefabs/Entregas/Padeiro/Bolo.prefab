@@ -301,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bolo
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dffcf10ea3a7a2d4b8eab4c285440e7e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

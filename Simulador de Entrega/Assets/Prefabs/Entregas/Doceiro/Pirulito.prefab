@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1685132514340322388}
   - component: {fileID: 2819089346253272426}
   - component: {fileID: 2005078468137003945}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pirulito
-  m_TagString: Untagged
+  m_TagString: Entrega
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,13 +320,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e6787bd8e0d966547aef7a76eb75d49e,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: e6787bd8e0d966547aef7a76eb75d49e,
         type: 3}
       propertyPath: m_Name
       value: Pirulito
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6787bd8e0d966547aef7a76eb75d49e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

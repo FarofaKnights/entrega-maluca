@@ -286,6 +286,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7705670468958693459, guid: 9add3ef20e2cb454ebfd9b29bda175e8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1297907811108543518, guid: 9add3ef20e2cb454ebfd9b29bda175e8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -438324619420287904, guid: 9add3ef20e2cb454ebfd9b29bda175e8,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -310,6 +320,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VasoPlantaBruxa
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9add3ef20e2cb454ebfd9b29bda175e8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

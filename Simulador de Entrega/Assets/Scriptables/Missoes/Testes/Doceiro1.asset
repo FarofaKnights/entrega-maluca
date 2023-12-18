@@ -26,27 +26,39 @@ MonoBehaviour:
       destinatario: CasaVlad
       prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
         type: 3}
-    - peso: 0
-      fragilidade: 0
-      tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
-        type: 3}
-    - peso: 0
-      fragilidade: 0
-      tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
-        type: 3}
     permiteReceber: 0
     diretriz:
-      texto: Textototoo
-      limitacoes:
-      - tempo: 800
-  conjuntos: []
+      texto: qweqweqwe
+      limitacoes: []
+  conjuntos:
+  - objetivos:
+    - endereco: CasaVlad
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: qweqeqe
+        limitacoes:
+        - tempo: 900
+    sequencial: 1
+    diretriz:
+      texto: asdasdasd
+      limitacoes: []
   missoesDesbloqueadas: []
   gerarAleatoriaNoFinal: 0
   timeline:
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: asdasdasd
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
   - tipo: 0
     objetivo:
       endereco: Doceiro
@@ -56,18 +68,6 @@ MonoBehaviour:
         tipo: 0
         destinatario: CasaVlad
         prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
-          type: 3}
-      - peso: 0
-        fragilidade: 0
-        tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
-          type: 3}
-      - peso: 0
-        fragilidade: 0
-        tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -87,8 +87,34 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Textototoo
+      texto: qweqweqwe
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 0
+    objetivo:
+      endereco: CasaVlad
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 1
+    objetivo:
+      endereco: 
+      cargas: []
+      permiteReceber: 0
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: qweqeqe
       limitacoes:
-      - tempo: 800
+      - tempo: 900
     cutscenes: []
     mostrandoFilhos: 1

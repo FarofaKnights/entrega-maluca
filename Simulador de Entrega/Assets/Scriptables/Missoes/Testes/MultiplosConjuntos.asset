@@ -15,7 +15,9 @@ MonoBehaviour:
   nome: Multiplos Conjuntos
   descricao: "Essa miss\xE3o foi feita para testar funcionalidades em miss\xF5es
     com multiplos conjuntos e a diferen\xE7a entre eles"
+  descricaoGrande: 
   personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
+  dialogo: {fileID: 0}
   objetivoInicial:
     endereco: Mecanica
     cargas:
@@ -382,6 +384,19 @@ MonoBehaviour:
         limitacoes: []
     diretriz:
       texto: Retorne as origens
+      limitacoes: []
+    cutscenes: []
+    mostrandoFilhos: 1
+  - tipo: 0
+    objetivo:
+      endereco: Posto
+      cargas: []
+      permiteReceber: 1
+      diretriz:
+        texto: 
+        limitacoes: []
+    diretriz:
+      texto: 
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1

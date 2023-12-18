@@ -315,13 +315,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a40b73b983cf0e84f8f7423a76835c4d,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: a40b73b983cf0e84f8f7423a76835c4d,
         type: 3}
       propertyPath: m_Name
       value: Foice
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a40b73b983cf0e84f8f7423a76835c4d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

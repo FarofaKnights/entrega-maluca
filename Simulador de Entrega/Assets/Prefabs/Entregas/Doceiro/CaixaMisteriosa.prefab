@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5366850595132319489}
   - component: {fileID: 8815452281159951023}
   - component: {fileID: 2667481239637207811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CaixaMisteriosa
-  m_TagString: Untagged
+  m_TagString: Entrega
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,6 +305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CaixaMisteriosa
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ec87560f2c144c44b7344d160738957,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

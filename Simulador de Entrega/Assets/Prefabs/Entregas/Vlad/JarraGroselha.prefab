@@ -301,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JarraGroselha
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 093415ddcbb75b94bb7aeb5aa9b3cd98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8844712352455941213}
   - component: {fileID: 1035284426997739822}
   - component: {fileID: 1105726818339628716}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JarraDePirulito
-  m_TagString: Untagged
+  m_TagString: Entrega
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,6 +305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JarraDePirulito
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 349b974340f052245906de82104d430d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

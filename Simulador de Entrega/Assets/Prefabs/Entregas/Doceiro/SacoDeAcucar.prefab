@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3095574542246381710}
   - component: {fileID: 1934742097740434720}
   - component: {fileID: 5011273311539823756}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SacoDeAcucar
-  m_TagString: Untagged
+  m_TagString: Entrega
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,25 +298,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 66908cd5568b6fd4fa08241eb64e3ca2,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: -876546973899608171, guid: 66908cd5568b6fd4fa08241eb64e3ca2,
         type: 3}
     - target: {fileID: -7511558181221131132, guid: 66908cd5568b6fd4fa08241eb64e3ca2,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 4325646135807657019, guid: 66908cd5568b6fd4fa08241eb64e3ca2,
         type: 3}
     - target: {fileID: -7511558181221131132, guid: 66908cd5568b6fd4fa08241eb64e3ca2,
         type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: afd8fb5d229270844a57f05e97c1db24, type: 2}
     - target: {fileID: 919132149155446097, guid: 66908cd5568b6fd4fa08241eb64e3ca2,
         type: 3}
       propertyPath: m_Name
       value: SacoDeAcucar
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66908cd5568b6fd4fa08241eb64e3ca2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6425947088868155708}
   - component: {fileID: 4585748390160935669}
   - component: {fileID: 7323634841991934559}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,9 +99,9 @@ GameObject:
   - component: {fileID: 5500866120845195564}
   - component: {fileID: 7733922147545416233}
   - component: {fileID: 6944405049004610215}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pa
-  m_TagString: Untagged
+  m_TagString: Entrega
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

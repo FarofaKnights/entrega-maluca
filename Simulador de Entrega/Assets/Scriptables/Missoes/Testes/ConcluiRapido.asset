@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Concluir Rapidamente
   descricao: "Quer concluir uma miss\xE3o rapido para teste?"
+  descricaoGrande: 
   personagem: {fileID: 11400000, guid: e6f49980502197f49b4bebf2b7888e76, type: 2}
+  dialogo: {fileID: 0}
   objetivoInicial:
     endereco: Mecanica
     cargas:
@@ -61,7 +63,7 @@ MonoBehaviour:
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Mecanica
+      endereco: Hamburgue
       cargas:
       - peso: 0
         fragilidade: 0
