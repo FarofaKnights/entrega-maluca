@@ -64,7 +64,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323697460149445851}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0007985759, y: -0.17923342, z: -0.00035173935, w: 0.9838062}
+  m_LocalRotation: {x: -0.0007968863, y: -0.17923163, z: -0.00034921773, w: 0.9838065}
   m_LocalPosition: {x: -361.5, y: -0, z: -171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -116,11 +116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 100
-  maxVelocidade: 100
+  maxVelocidade: 120
   aceleracao: 1
   maxRe: 1000
   freio: 90000
-  forca: 1000
+  forca: 1350
   maxAngulo: 25
   rodaFrenteDir: {fileID: 2904850288709125336}
   rodaFrenteEsq: {fileID: 2679251861761120592}
@@ -452,7 +452,7 @@ GameObject:
   m_Name: AncoraVisao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2145918900990194560
@@ -486,7 +486,7 @@ GameObject:
   m_Name: RodaTraseiraEsq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2880521959139595128
@@ -5472,7 +5472,7 @@ GameObject:
   m_Name: PortaDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1384407565525831270
@@ -5717,7 +5717,7 @@ GameObject:
   m_Name: RodaFrenteEsq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1956252228416438961
@@ -5839,7 +5839,7 @@ GameObject:
   m_Name: AncoraChapeu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1099617763835488556
@@ -5873,7 +5873,7 @@ GameObject:
   m_Name: 'PortaCarroceria '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5298965365273049038
@@ -15706,7 +15706,7 @@ GameObject:
   m_Name: RodaFrenteEsq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2679251861761120592
@@ -15740,7 +15740,7 @@ GameObject:
   m_Name: RodaFrenteDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8179032712016823433
@@ -16017,7 +16017,7 @@ GameObject:
   m_Name: AncoraTraseira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3949186300432239738
@@ -16116,7 +16116,7 @@ GameObject:
   m_Name: RodaTraseiraDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6882964677999601809
@@ -16674,7 +16674,7 @@ GameObject:
   m_Name: RodaFrenteDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2904850288709125336
@@ -16709,7 +16709,7 @@ GameObject:
   m_Name: CarroceriaCarro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3330957724511431470
@@ -16959,7 +16959,7 @@ GameObject:
   m_Name: ParabrisaCarro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3383941588261736578
@@ -17043,7 +17043,7 @@ GameObject:
   m_Name: CapoCarro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6791226469778102376
@@ -17156,7 +17156,7 @@ GameObject:
   m_Name: AncoraFrontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7729711791497081190
@@ -17236,7 +17236,7 @@ GameObject:
   m_Name: CabineCarro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2687109255149560684
@@ -17265,7 +17265,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738711390635754360}
-  m_Mesh: {fileID: 6586646306063484501, guid: 08f411ecc7988994999e6db3df3d0d3f, type: 3}
+  m_Mesh: {fileID: 6586646306063484501, guid: 17f4fcede9b9ef944a31559e94907026, type: 3}
 --- !u!23 &654364276482492250
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17329,7 +17329,7 @@ GameObject:
   m_Name: RodaTraseiraEsq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4318616024362962976
@@ -17360,7 +17360,7 @@ GameObject:
   m_Name: RodaTraseiraDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2766412725920720564
