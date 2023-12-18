@@ -56,7 +56,7 @@ public class TelaVitoriaUI : MonoBehaviour {
             yield return StartCoroutine(go.GetComponent<CargaRelatorioUI>().ShowValueAnimation(statusCarga));
         }
 
-        concluirBtn.SetActive(status.avaliacao > 1); // Caso avaliação menor que 1, não mostra botão de concluir
+        concluirBtn.SetActive(true); // Caso avaliação menor que 1, não mostra botão de concluir
 
         SelecionarAvaliacao(status.avaliacao);
     }

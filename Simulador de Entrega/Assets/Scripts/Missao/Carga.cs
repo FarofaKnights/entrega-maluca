@@ -59,6 +59,7 @@ public class Carga {
 
     public void Destruida() {
         destruida = true;
+        cx = null;
     }
 
     public bool EstaDestruida() {

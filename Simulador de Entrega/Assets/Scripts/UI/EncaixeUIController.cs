@@ -18,6 +18,11 @@ public class EncaixeUIController : MonoBehaviour {
                 encaixeState.onRotateChange += CheckRotate;
             }
         };
+
+        if (UIController.HUD.gameObject.activeSelf) {
+            Debug.Log("HUD está ligado logo eu vou desligar ele!!!!");
+            UIController.HUD.gameObject.SetActive(false);
+        }
     }
 
     void CheckRotate(bool estaRodando) {

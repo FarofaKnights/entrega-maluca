@@ -54,6 +54,8 @@ public class Caixa : MonoBehaviour {
 
         Player.instance.RemoverCarga(carga);
         Destroy(gameObject);
+
+        Player.instance.CargaDestruida(carga);
     }
 
     public void BarulhoBater() {

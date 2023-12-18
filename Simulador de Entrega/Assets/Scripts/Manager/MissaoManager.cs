@@ -182,7 +182,7 @@ public class MissaoManager : MonoBehaviour {
         obj.Concluir();
     }
 
-    public void FalharMissao() {
+    public void FalharMissao(string motivo = "Eita! Você falhou na missão!") {
         if (missaoAtual == null) return;
 
         if (missaoAtual.info.dialogo != null) {
@@ -190,27 +190,25 @@ public class MissaoManager : MonoBehaviour {
             Endereco inicial = missaoAtual.GetObjetivoInicial().endereco;
             Missao missao = missaoAtual;
 
-            PararMissao();
-
             cutscene.Play(() => {
-                UIController.HUD.FalhaMissao(missao);
-                
+                UIController.HUD.FalhaMissao(missao,motivo);
+                PararMissao();
             }, inicial);
         } else {
-            UIController.HUD.FalhaMissao(missaoAtual);
+            UIController.HUD.FalhaMissao(missaoAtual,motivo);
             PararMissao();
         }
     }
 
     public void SetEstado(Estado estado) {
+        Debug.Log("Estado: " + estado + " (antes: " + this.estado + ")");
         Estado estadoAntigo = this.estado;
 
         this.estado = estado;
 
         bool mostrar = estado == Estado.SemMissao;
-        bool mostrarAntigo = estadoAntigo == Estado.SemMissao;
 
-        if (mostrar != mostrarAntigo) {
+        if (estado != estadoAntigo) {
             foreach (Missao missao in missoesDisponiveis) {
                 missao.ShowObjetivoInicial(mostrar);
             }
@@ -277,6 +275,9 @@ public class MissaoManager : MonoBehaviour {
         return objetivosAtivos[0];
     }
 
+    public Objetivo[] GetObjetivosAtivos() {
+        return objetivosAtivos.ToArray();
+    }
 
     #endregion
 

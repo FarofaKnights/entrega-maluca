@@ -36,6 +36,6 @@ public class LimiteTempo: Limitacao {
     public void Falhar() {
         falhou = true;
         Debug.Log("Limite de tempo atingido");
-        pai.Falhar();
+        pai.Falhar("Eita! Você passou do tempo!");
     }
 }

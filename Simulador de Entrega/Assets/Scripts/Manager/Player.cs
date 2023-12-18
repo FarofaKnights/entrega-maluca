@@ -71,6 +71,13 @@ public class Player : MonoBehaviour {
         SetState(new EncaixeState(this, cargasNovas, cargaAtual));
     }
 
+    public void PararCompletamente() {
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+    public void Retomar() {
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
+
     #region SistemaDeDinheiro
 
     public void AdicionarDinheiro(float valor) {
@@ -189,6 +196,69 @@ public class Player : MonoBehaviour {
             cargaAtual.Remove(carga);
             if (!cargasCaidas.Contains(carga))
                 cargasCaidas.Add(carga);
+        }
+
+       ChecarSeCargasDestruidas(carga);
+    }
+
+    void ChecarSeCargasDestruidas(Carga carga) {
+        if (cargaAtual.Contains(carga)) {
+            Debug.Log("Não falha: caixa ainda tá com o player");
+            return;
+        }
+
+        // Se uma caixa quebra checa se todas as caixas com o mesmo remetente foram destruídas também
+        bool todasCargasDestruidas = true;
+        foreach (Carga cargaAtual in cargaAtual) {
+            if (cargaAtual.destinatario == carga.destinatario) {
+                Debug.Log("Não falha: ainda tem caixa com o mesmo remetente");
+                Debug.Log(cargaAtual.nome);
+                todasCargasDestruidas = false;
+                break;
+            }
+        }
+
+        foreach (Carga cargaAtual in cargasCaidas) {
+            if (cargaAtual.destinatario == carga.destinatario && cargaAtual.cx != null) {
+                Debug.Log("Não falha: ainda tem caixa com o mesmo remetente (caída)");
+                Debug.Log(cargaAtual.nome);
+                todasCargasDestruidas = false;
+                break;
+            }
+        }
+        if (!todasCargasDestruidas) {
+            return;
+        }
+
+        // Se sim, e se o endereço for um objetivo
+        Objetivo objetivoDoEndereco = null;
+
+        foreach (Objetivo objetivo in MissaoManager.instance.GetObjetivosAtivos()) {
+            if (objetivo.endereco == carga.destinatario) {
+                objetivoDoEndereco = objetivo;
+                break;
+            }
+        }
+
+        string motivo = "Eita! Você destruiu todas as caixas!";
+
+        if (objetivoDoEndereco == null) {
+            // Caso não seja um objetivo, falha mesmo assim
+            Debug.Log("Falha destruição: não acho objetivo com o endereço");
+            MissaoManager.instance.FalharMissao(motivo);
+            return;
+        }
+
+        // checa se há mais objetivo. 
+        int objetivosAtivos = MissaoManager.instance.GetObjetivosAtivos().Length;
+        if (objetivosAtivos > 1) {
+            // Se sim, conclui o objetivo
+            Debug.Log("Falha destruição: conclui um dos multiplos");
+            objetivoDoEndereco.Concluir();
+        } else {
+            // Se não, falha a missão
+            Debug.Log("Falha destruição: unico objetivo");
+            MissaoManager.instance.FalharMissao(motivo);
         }
     }
 

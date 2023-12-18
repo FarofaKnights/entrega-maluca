@@ -3608,8 +3608,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Algu\xE9m aqui j\xE1 me decepcionou? N\xE3o? Ah sim, \xE9 porque quem
-    me decepciona nunca \xE9 encontrado\""
+  m_text: "Dica dos desenvolvedores: na pr\xF3xima vez aconselhamos que voc\xEA tente
+    ser melhor!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20a280d1e2b45f04a9cc1e00c1e2f550, type: 2}
   m_sharedMaterial: {fileID: 2731131756248673416, guid: 20a280d1e2b45f04a9cc1e00c1e2f550,
@@ -13496,7 +13496,6 @@ MonoBehaviour:
   relatorioTempo: {fileID: 4109164931529775327}
   descricaoGrandeMissao: {fileID: 4109164930416130408}
   enderecoMissao: {fileID: 4109164931189452187}
-  imagemSemEndereco: {fileID: 21300000, guid: 8b1bad305350ee640864001783f83b14, type: 3}
 --- !u!114 &4109164931081652843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21735,6 +21734,7 @@ MonoBehaviour:
     diretriz:
       texto: 
   tituloMissao: {fileID: 4109164931751242251}
+  motivoDaFalha: {fileID: 4109164931100660706}
   descricaoMissao: {fileID: 4109164931314447101}
   imagemMissao: {fileID: 4109164930025730632}
   timer: {fileID: 4109164931957062645}

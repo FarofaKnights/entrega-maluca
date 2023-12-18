@@ -16,7 +16,7 @@ public class HUDController : MonoBehaviour {
     Missao missao;
     Timer currentTimer = null;
 
-    public TextMeshProUGUI tituloMissao;
+    public TextMeshProUGUI tituloMissao, motivoDaFalha;
     public Text descricaoMissao;
     public Image imagemMissao;
 
@@ -36,6 +36,11 @@ public class HUDController : MonoBehaviour {
         missaoPanel.SetActive(false);
 
         UIController.dinheiro.AtualizarDinheiro();
+
+        if (UIController.encaixe.gameObject.activeSelf) {
+            Debug.Log("Encaxie está ligado logo eu vou me desligar!!!");
+            gameObject.SetActive(false);
+        }
     }
 
     public void ChamaVitoria(Missao missao, StatusMissao status) {
@@ -79,10 +84,12 @@ public class HUDController : MonoBehaviour {
         MostrarMissaoInfo(null, false);
     }
 
-    public void FalhaMissao(Missao missao) {
+    public void FalhaMissao(Missao missao, string motivo) {
         this.missao = missao;
         telaFalha.SetActive(true);
         Time.timeScale = 0;
+
+        motivoDaFalha.text = motivo;
     }
 
     public void SairFalhaMissao() {

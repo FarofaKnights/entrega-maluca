@@ -18,6 +18,8 @@ public class CutsceneUI : MonoBehaviour {
     string sentence = "";
     IEnumerator currentWriting = null;
 
+    bool rodando = false;
+
     public void ShowCutscene(Cutscene cutscene, System.Action nextTrue) {
         System.Action next = () => {
             if (cutscene.proximaCutscene != null) {
@@ -33,7 +35,9 @@ public class CutsceneUI : MonoBehaviour {
 
 
     public void ShowFala(PersonagemObject personagem, FalaPersonagens fala, System.Action next) {
+        Player.instance.PararCompletamente();
         MissaoManager.instance.PausarTimer();
+        rodando = true;
         gameObject.SetActive(true);
 
         nome.text = personagem.nome;
@@ -75,9 +79,10 @@ public class CutsceneUI : MonoBehaviour {
         }
 
         Esconder();
+        
 
         MissaoManager.instance.ContinuarTimer();
-
+        rodando = false;
         if (OnNext != null){
             OnNext();
             OnNext = null;
@@ -92,5 +97,7 @@ public class CutsceneUI : MonoBehaviour {
     public void Esconder() {
         tela.Esconder();
         tela.GetVizinho("HUD")?.Mostrar();
+
+        if (rodando) Player.instance.Retomar();
     }
 }

@@ -48,9 +48,9 @@ public class Diretriz: Iniciavel {
         }
     }
     
-    public void Falhar() {
+    public void Falhar(string motivo) {
         Parar();
-        MissaoManager.instance.FalharMissao();
+        MissaoManager.instance.FalharMissao(motivo);
     }
 
     public int GetNivel() {

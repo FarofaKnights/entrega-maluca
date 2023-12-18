@@ -50,7 +50,7 @@ public class DiretrizUI : MonoBehaviour {
         portrait.sprite = null;
         
         foreach (Transform child in diretrizItemHolder.transform) {
-            if (child.GetComponent<TextoDiretriz>() == null) continue;
+            if (child.gameObject == informativoPopup) continue;
             Destroy(child.gameObject);
         }
 

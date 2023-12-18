@@ -54,6 +54,7 @@ public class EncaixeState : IPlayerState {
 
         // TODO: Ter um jeito de habilitar e desabilitar o player no próprio player
         player.GetComponent<Rigidbody>().isKinematic = true;
+        Debug.Log("bbbbbbbbbbb");
 
         player.cameras[0].gameObject.SetActive(false);
         player.cameras[1].gameObject.SetActive(true);

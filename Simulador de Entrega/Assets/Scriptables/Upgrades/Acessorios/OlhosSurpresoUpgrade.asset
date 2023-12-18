@@ -20,4 +20,4 @@ MonoBehaviour:
   ativavel: 1
   acessorioPrefab: {fileID: 7894223891930714327, guid: 1b13c13ef7f1a3942a6b444b8453630a,
     type: 3}
-  localizacao: 1
+  localizacao: 3
