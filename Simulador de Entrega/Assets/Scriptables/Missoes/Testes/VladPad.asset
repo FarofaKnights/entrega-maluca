@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: MecaParq
+  m_Name: VladPad
   m_EditorClassIdentifier: 
-  nome: Parquinho da praia
-  descricao: Entrege  no parquinho da praia.
-  descricaoGrande: "Fa\xE7a essas entregas no parque"
+  nome: Entregue na Padaria
+  descricao: Entregue na padaria
+  descricaoGrande: "Fa\xE7a essas entregas na padaria na regi\xE3o da cidade"
   personagem: {fileID: 11400000, guid: b58e25147a96fe64caa9f3c83512b583, type: 2}
   dialogo: {fileID: 11400000, guid: e9b35503d07ee494abe6ddc9738fb409, type: 2}
   objetivoInicial:
@@ -38,6 +38,18 @@ MonoBehaviour:
       destinatario: Padaria
       prefab: {fileID: 6204723927642070729, guid: df5561e6803cb5f479043fef2fbcc971,
         type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Padaria
+      prefab: {fileID: 4151035272072844720, guid: 733655ed6c91c93488573dcb82a6709a,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Doceiro
+      prefab: {fileID: 1180106726026599310, guid: 62d7053dbaec9734982a7a1a740420bf,
+        type: 3}
     permiteReceber: 0
     diretriz:
       texto: Entregas para o Padeiro
@@ -50,7 +62,7 @@ MonoBehaviour:
       diretriz:
         texto: "V\xE1 para a Padaria"
         limitacoes:
-        - tempo: 180
+        - tempo: 280
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -92,6 +104,18 @@ MonoBehaviour:
         tipo: 0
         destinatario: Padaria
         prefab: {fileID: 6204723927642070729, guid: df5561e6803cb5f479043fef2fbcc971,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Padaria
+        prefab: {fileID: 4151035272072844720, guid: 733655ed6c91c93488573dcb82a6709a,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Doceiro
+        prefab: {fileID: 1180106726026599310, guid: 62d7053dbaec9734982a7a1a740420bf,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -139,6 +163,6 @@ MonoBehaviour:
     diretriz:
       texto: "V\xE1 para a Padaria"
       limitacoes:
-      - tempo: 180
+      - tempo: 280
     cutscenes: []
     mostrandoFilhos: 1

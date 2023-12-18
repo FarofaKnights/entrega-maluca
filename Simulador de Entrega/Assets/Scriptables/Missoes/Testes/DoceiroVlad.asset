@@ -45,6 +45,12 @@ MonoBehaviour:
       destinatario: CasaVlad
       prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
         type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: CasaVlad
+      prefab: {fileID: 282097779950690317, guid: 7f09d81d8dbe10e4097302b325a3be4b,
+        type: 3}
     permiteReceber: 0
     diretriz:
       texto: Entregas para o Vlad
@@ -57,7 +63,7 @@ MonoBehaviour:
       diretriz:
         texto: "V\xE1 at\xE9 a casa do Vlad"
         limitacoes:
-        - tempo: 240
+        - tempo: 280
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -106,6 +112,12 @@ MonoBehaviour:
         destinatario: CasaVlad
         prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
           type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: CasaVlad
+        prefab: {fileID: 282097779950690317, guid: 7f09d81d8dbe10e4097302b325a3be4b,
+          type: 3}
       permiteReceber: 0
       diretriz:
         texto: 
@@ -152,6 +164,6 @@ MonoBehaviour:
     diretriz:
       texto: "V\xE1 at\xE9 a casa do Vlad"
       limitacoes:
-      - tempo: 240
+      - tempo: 280
     cutscenes: []
     mostrandoFilhos: 1

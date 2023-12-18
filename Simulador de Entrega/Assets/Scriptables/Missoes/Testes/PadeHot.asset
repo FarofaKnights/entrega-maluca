@@ -75,7 +75,7 @@ MonoBehaviour:
       diretriz:
         texto: "V\xE1 no Hotel"
         limitacoes:
-        - tempo: 120
+        - tempo: 140
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -188,6 +188,6 @@ MonoBehaviour:
     diretriz:
       texto: "V\xE1 no Hotel"
       limitacoes:
-      - tempo: 120
+      - tempo: 140
     cutscenes: []
     mostrandoFilhos: 1

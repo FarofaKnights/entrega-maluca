@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: PadVlad 1
+  m_Name: MordDoc
   m_EditorClassIdentifier: 
   nome: Entregua para o Doceiro
   descricao: Entregue para o Doceiro.
@@ -39,6 +39,12 @@ MonoBehaviour:
       destinatario: Doceiro
       prefab: {fileID: 8442753475838122332, guid: 20433ff96a32b864096588e6a69a96d1,
         type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Doceiro
+      prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+        type: 3}
     permiteReceber: 0
     diretriz:
       texto: Entregas para o Doceiro
@@ -51,7 +57,7 @@ MonoBehaviour:
       diretriz:
         texto: "V\xE1 para a praia"
         limitacoes:
-        - tempo: 240
+        - tempo: 260
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -93,6 +99,12 @@ MonoBehaviour:
         tipo: 0
         destinatario: Doceiro
         prefab: {fileID: 8442753475838122332, guid: 20433ff96a32b864096588e6a69a96d1,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Doceiro
+        prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -140,6 +152,6 @@ MonoBehaviour:
     diretriz:
       texto: "V\xE1 para a praia"
       limitacoes:
-      - tempo: 240
+      - tempo: 260
     cutscenes: []
     mostrandoFilhos: 1
