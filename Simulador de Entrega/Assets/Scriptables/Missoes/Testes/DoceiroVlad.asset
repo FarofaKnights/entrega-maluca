@@ -10,25 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: ConcluiRapido
+  m_Name: DoceiroVlad
   m_EditorClassIdentifier: 
   nome: Entrega para o Vlad.
-  descricao: "Entregue para o Vlad\t"
-  descricaoGrande: Entregue essas mercadorias para o Vamp... o Vlad
+  descricao: Entregar para o Vamp... Vlad.
+  descricaoGrande: "Entrague esses doces para o Grande Vlad. Ele est\xE1 precisando
+    MUITO dessa A\xE7\xFAcar."
   personagem: {fileID: 11400000, guid: 6f134d7106f17e248b109ed8971ab81d, type: 2}
   dialogo: {fileID: 11400000, guid: b4920239f7a4aa948b317ea0ee1ea33b, type: 2}
   objetivoInicial:
-    endereco: HotelPraia
+    endereco: Doceiro
     cargas:
     - peso: 0
       fragilidade: 0
       tipo: 0
       destinatario: CasaVlad
-      prefab: {fileID: 1180106726026599310, guid: 62d7053dbaec9734982a7a1a740420bf,
+      prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
         type: 3}
-    permiteReceber: 1
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: CasaVlad
+      prefab: {fileID: 8852812794093655827, guid: 7c986f53b8f7c814b9bb8f715eaab409,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: CasaVlad
+      prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: CasaVlad
+      prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+        type: 3}
+    permiteReceber: 0
     diretriz:
-      texto: Uma diretriz para o objetivo inicial?
+      texto: Entregas para o Vlad
       limitacoes: []
   conjuntos:
   - objetivos:
@@ -36,9 +55,9 @@ MonoBehaviour:
       cargas: []
       permiteReceber: 1
       diretriz:
-        texto: Diretriz de 30 segundos...
+        texto: "V\xE1 at\xE9 a casa do Vlad"
         limitacoes:
-        - tempo: 3000
+        - tempo: 240
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -61,15 +80,33 @@ MonoBehaviour:
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: CasaVlad
+      endereco: Doceiro
       cargas:
       - peso: 0
         fragilidade: 0
         tipo: 0
         destinatario: CasaVlad
-        prefab: {fileID: 1180106726026599310, guid: 62d7053dbaec9734982a7a1a740420bf,
+        prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
           type: 3}
-      permiteReceber: 1
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: CasaVlad
+        prefab: {fileID: 8852812794093655827, guid: 7c986f53b8f7c814b9bb8f715eaab409,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: CasaVlad
+        prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: CasaVlad
+        prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+          type: 3}
+      permiteReceber: 0
       diretriz:
         texto: 
         limitacoes: []
@@ -87,7 +124,7 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Uma diretriz para o objetivo inicial?
+      texto: Entregas para o Vlad
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
@@ -113,8 +150,8 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Diretriz de 30 segundos...
+      texto: "V\xE1 at\xE9 a casa do Vlad"
       limitacoes:
-      - tempo: 3000
+      - tempo: 240
     cutscenes: []
     mostrandoFilhos: 1

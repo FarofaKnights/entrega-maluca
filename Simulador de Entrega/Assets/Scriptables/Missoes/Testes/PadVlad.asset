@@ -10,54 +10,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: Doceiro1
+  m_Name: PadVlad
   m_EditorClassIdentifier: 
-  nome: Entrega para o Vlad.
-  descricao: Entregar para o Vamp... Vlad.
-  descricaoGrande: "Entrague esses doces para o Grande Vlad. Ele est\xE1 precisando
-    MUITO dessa A\xE7\xFAcar."
-  personagem: {fileID: 11400000, guid: 6f134d7106f17e248b109ed8971ab81d, type: 2}
-  dialogo: {fileID: 11400000, guid: b4920239f7a4aa948b317ea0ee1ea33b, type: 2}
+  nome: Entregua do mordomo.
+  descricao: Entregue para o mordomo.
+  descricaoGrande: "O mordomo mora em alguma regi\xE3o da montanha, fa\xE7a essa
+    entrega para ekle"
+  personagem: {fileID: 11400000, guid: 9b04091288c3fee49ac499a214051864, type: 2}
+  dialogo: {fileID: 11400000, guid: 916e7c0be90193d4ea8b7910637c7659, type: 2}
   objetivoInicial:
-    endereco: Doceiro
+    endereco: Mecanica
     cargas:
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
+      destinatario: CasaGoticaGenerica
+      prefab: {fileID: 1384330550075591027, guid: 357a105dab05c7a4abd8b0ad6c6fa7a1,
         type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 8852812794093655827, guid: 7c986f53b8f7c814b9bb8f715eaab409,
+      destinatario: CasaGoticaGenerica
+      prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
         type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
-        type: 3}
-    - peso: 0
-      fragilidade: 0
-      tipo: 0
-      destinatario: CasaVlad
-      prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+      destinatario: CasaGoticaGenerica
+      prefab: {fileID: 282097779950690317, guid: 7f09d81d8dbe10e4097302b325a3be4b,
         type: 3}
     permiteReceber: 0
     diretriz:
-      texto: Entregas para o Vlad
+      texto: Entregas para o Mordomo
       limitacoes: []
   conjuntos:
   - objetivos:
-    - endereco: CasaVlad
+    - endereco: CasaGoticaGenerica
       cargas: []
-      permiteReceber: 0
+      permiteReceber: 1
       diretriz:
-        texto: "V\xE1 at\xE9 a casa do Vlad"
+        texto: "V\xE1 para a regi\xE3o g\xF3tica"
         limitacoes:
-        - tempo: 160
+        - tempo: 180
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -80,31 +74,25 @@ MonoBehaviour:
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Doceiro
+      endereco: Mecanica
       cargas:
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 6266392976703869671, guid: 4a21b378507def046ae8887c2bb04701,
+        destinatario: CasaGoticaGenerica
+        prefab: {fileID: 1384330550075591027, guid: 357a105dab05c7a4abd8b0ad6c6fa7a1,
           type: 3}
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 8852812794093655827, guid: 7c986f53b8f7c814b9bb8f715eaab409,
+        destinatario: CasaGoticaGenerica
+        prefab: {fileID: 1384330550075591027, guid: 0e0959b70923f8e4d9c98c041d03228f,
           type: 3}
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 5373087370809474760, guid: 492191ca480ae5747b944452b5d14f51,
-          type: 3}
-      - peso: 0
-        fragilidade: 0
-        tipo: 0
-        destinatario: CasaVlad
-        prefab: {fileID: 7507226372484615673, guid: 0cc51617b82957a41a45c9f737837565,
+        destinatario: CasaGoticaGenerica
+        prefab: {fileID: 282097779950690317, guid: 7f09d81d8dbe10e4097302b325a3be4b,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -124,15 +112,15 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: Entregas para o Vlad
+      texto: Entregas para o Mordomo
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: CasaVlad
+      endereco: CasaGoticaGenerica
       cargas: []
-      permiteReceber: 0
+      permiteReceber: 1
       diretriz:
         texto: 
         limitacoes: []
@@ -150,8 +138,8 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: "V\xE1 at\xE9 a casa do Vlad"
+      texto: "V\xE1 para a regi\xE3o g\xF3tica"
       limitacoes:
-      - tempo: 160
+      - tempo: 180
     cutscenes: []
     mostrandoFilhos: 1

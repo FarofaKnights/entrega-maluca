@@ -10,42 +10,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: Frank1
+  m_Name: MecaParq
   m_EditorClassIdentifier: 
-  nome: "Meca...Mec\xE2nica "
-  descricao: "Entrege  para a mec\xE2nica  da cidade"
-  descricaoGrande: "Entregue essas engenhocas para a mec\xE2nica l\xE1 no final da
-    montanha."
-  personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
-  dialogo: {fileID: 11400000, guid: 1dcf58ab94883c042a8aa8d36feb5af0, type: 2}
+  nome: Parquinho da praia
+  descricao: Entrege  no parquinho da praia.
+  descricaoGrande: "Fa\xE7a essas entregas no parque"
+  personagem: {fileID: 11400000, guid: b58e25147a96fe64caa9f3c83512b583, type: 2}
+  dialogo: {fileID: 11400000, guid: e9b35503d07ee494abe6ddc9738fb409, type: 2}
   objetivoInicial:
-    endereco: CasaFrank
+    endereco: CasaVlad
     cargas:
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: Mecanica
-      prefab: {fileID: 8576679293286444733, guid: f291258abcff42a4e95c52d1b80aa836,
+      destinatario: Padaria
+      prefab: {fileID: 8618855653913858751, guid: ab545f08a6b1da44b8854659f5d41aa3,
         type: 3}
     - peso: 0
       fragilidade: 0
       tipo: 0
-      destinatario: Mecanica
-      prefab: {fileID: 3572057352560240082, guid: c663c73a60f723240a130333b7961c63,
+      destinatario: Padaria
+      prefab: {fileID: 7132089510442174675, guid: 47dae519b2ceb4d43878fcc48a0a8f93,
+        type: 3}
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Padaria
+      prefab: {fileID: 6204723927642070729, guid: df5561e6803cb5f479043fef2fbcc971,
         type: 3}
     permiteReceber: 0
     diretriz:
-      texto: "Entregas para a Mec\xE2nica"
+      texto: Entregas para o Padeiro
       limitacoes: []
   conjuntos:
   - objetivos:
-    - endereco: Mecanica
+    - endereco: Padaria
       cargas: []
-      permiteReceber: 0
+      permiteReceber: 1
       diretriz:
-        texto: "V\xE1 para a Mec\xE2nica"
+        texto: "V\xE1 para a Padaria"
         limitacoes:
-        - tempo: 240
+        - tempo: 180
     sequencial: 1
     diretriz:
       texto: Lista de entregas
@@ -68,19 +73,25 @@ MonoBehaviour:
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: CasaFrank
+      endereco: CasaVlad
       cargas:
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: Mecanica
-        prefab: {fileID: 8576679293286444733, guid: f291258abcff42a4e95c52d1b80aa836,
+        destinatario: Padaria
+        prefab: {fileID: 8618855653913858751, guid: ab545f08a6b1da44b8854659f5d41aa3,
           type: 3}
       - peso: 0
         fragilidade: 0
         tipo: 0
-        destinatario: Mecanica
-        prefab: {fileID: 3572057352560240082, guid: c663c73a60f723240a130333b7961c63,
+        destinatario: Padaria
+        prefab: {fileID: 7132089510442174675, guid: 47dae519b2ceb4d43878fcc48a0a8f93,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Padaria
+        prefab: {fileID: 6204723927642070729, guid: df5561e6803cb5f479043fef2fbcc971,
           type: 3}
       permiteReceber: 0
       diretriz:
@@ -100,15 +111,15 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: "Entregas para a Mec\xE2nica"
+      texto: Entregas para o Padeiro
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Mecanica
+      endereco: Padaria
       cargas: []
-      permiteReceber: 0
+      permiteReceber: 1
       diretriz:
         texto: 
         limitacoes: []
@@ -126,8 +137,8 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: "V\xE1 para a Mec\xE2nica"
+      texto: "V\xE1 para a Padaria"
       limitacoes:
-      - tempo: 240
+      - tempo: 180
     cutscenes: []
     mostrandoFilhos: 1

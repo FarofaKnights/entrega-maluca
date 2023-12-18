@@ -10,78 +10,67 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: "Miss\xE3o02Timeline"
+  m_Name: missao1 1
   m_EditorClassIdentifier: 
-  nome: Parque da cidade
-  descricao: "Estou precisando que voc\xEA leve essas caixas para o dono do carrinho
-    de cachorro quente. V\xE1 o mais r\xE1pido poss\xEDvel!!"
+  nome: Concluir Rapidamente
+  descricao: "Quer concluir uma miss\xE3o rapido para teste?"
   descricaoGrande: 
-  personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
-  dialogo: {fileID: 11400000, guid: 74f00f020f6a6954cbc0c7d283449a69, type: 2}
+  personagem: {fileID: 11400000, guid: 6f134d7106f17e248b109ed8971ab81d, type: 2}
+  dialogo: {fileID: 11400000, guid: b4920239f7a4aa948b317ea0ee1ea33b, type: 2}
   objetivoInicial:
-    endereco: Mecanica
+    endereco: Doceiro
     cargas:
-    - peso: 50
-      fragilidade: 10
-      tipo: 2
-      destinatario: Parque
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Mecanica
       prefab: {fileID: 4151035272072844720, guid: 733655ed6c91c93488573dcb82a6709a,
-        type: 3}
-    - peso: 50
-      fragilidade: 10
-      tipo: 2
-      destinatario: Parque
-      prefab: {fileID: 3688980439469585619, guid: ff1728b85c10f024b962116b3055508d,
         type: 3}
     permiteReceber: 0
     diretriz:
-      texto: 
+      texto: Uma diretriz para o objetivo inicial?
       limitacoes: []
   conjuntos:
   - objetivos:
-    - endereco: Parque
+    - endereco: Mecanica
       cargas: []
       permiteReceber: 1
       diretriz:
-        texto: 
-        limitacoes: []
-    sequencial: 0
+        texto: Diretriz de 30 segundos...
+        limitacoes:
+        - tempo: 3000
+    sequencial: 1
     diretriz:
-      texto: "Entregue no parque de divers\xE3o"
-      limitacoes:
-      - tempo: 100
-  missoesDesbloqueadas: []
+      texto: Uma diretriz pai
+      limitacoes: []
+  missoesDesbloqueadas:
+  - {fileID: 11400000, guid: f98976360baa5eb48919a0a6fca00e83, type: 2}
+  - {fileID: 11400000, guid: 0aeff25981698a146b91ad1a559dc9f0, type: 2}
   gerarAleatoriaNoFinal: 0
   timeline:
-  - tipo: 0
+  - tipo: 1
     objetivo:
-      endereco: Mecanica
-      cargas:
-      - peso: 50
-        fragilidade: 10
-        tipo: 2
-        destinatario: Parque
-        prefab: {fileID: 4151035272072844720, guid: 733655ed6c91c93488573dcb82a6709a,
-          type: 3}
-      - peso: 50
-        fragilidade: 10
-        tipo: 2
-        destinatario: Parque
-        prefab: {fileID: 3688980439469585619, guid: ff1728b85c10f024b962116b3055508d,
-          type: 3}
+      endereco: 
+      cargas: []
       permiteReceber: 0
       diretriz:
         texto: 
         limitacoes: []
     diretriz:
-      texto: 
+      texto: Uma diretriz pai
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
-  - tipo: 2
+  - tipo: 0
     objetivo:
-      endereco: 
-      cargas: []
+      endereco: Doceiro
+      cargas:
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Mecanica
+        prefab: {fileID: 4151035272072844720, guid: 733655ed6c91c93488573dcb82a6709a,
+          type: 3}
       permiteReceber: 0
       diretriz:
         texto: 
@@ -100,14 +89,13 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: "Entregue no parque de divers\xE3o"
-      limitacoes:
-      - tempo: 100
+      texto: Uma diretriz para o objetivo inicial?
+      limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Parque
+      endereco: Mecanica
       cargas: []
       permiteReceber: 1
       diretriz:
@@ -118,7 +106,7 @@ MonoBehaviour:
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
-  - tipo: 3
+  - tipo: 1
     objetivo:
       endereco: 
       cargas: []
@@ -127,7 +115,8 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: 
-      limitacoes: []
+      texto: Diretriz de 30 segundos...
+      limitacoes:
+      - tempo: 3000
     cutscenes: []
     mostrandoFilhos: 1

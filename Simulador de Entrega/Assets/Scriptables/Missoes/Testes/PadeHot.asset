@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: Padeiro
+  m_Name: PadeHot
   m_EditorClassIdentifier: 
   nome: Hotel da Praiano
   descricao: Entregue no hotel perto da praia.
@@ -71,7 +71,7 @@ MonoBehaviour:
   - objetivos:
     - endereco: HotelPraia
       cargas: []
-      permiteReceber: 0
+      permiteReceber: 1
       diretriz:
         texto: "V\xE1 no Hotel"
         limitacoes:
@@ -168,7 +168,7 @@ MonoBehaviour:
     objetivo:
       endereco: HotelPraia
       cargas: []
-      permiteReceber: 0
+      permiteReceber: 1
       diretriz:
         texto: 
         limitacoes: []

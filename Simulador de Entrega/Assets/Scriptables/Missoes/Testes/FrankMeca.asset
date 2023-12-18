@@ -10,78 +10,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f148c5fb686d85c4f854c4b72183f28e, type: 3}
-  m_Name: "Miss\xE3o02Timeline"
+  m_Name: FrankMeca
   m_EditorClassIdentifier: 
-  nome: Parque da cidade
-  descricao: "Estou precisando que voc\xEA leve essas caixas para o dono do carrinho
-    de cachorro quente. V\xE1 o mais r\xE1pido poss\xEDvel!!"
-  descricaoGrande: 
+  nome: "Meca...Mec\xE2nica "
+  descricao: "Entrege  para a mec\xE2nica  da cidade"
+  descricaoGrande: "Entregue essas engenhocas para a mec\xE2nica l\xE1 no final da
+    montanha."
   personagem: {fileID: 11400000, guid: f33a69a14f47be842839a79a5df725ef, type: 2}
-  dialogo: {fileID: 11400000, guid: 74f00f020f6a6954cbc0c7d283449a69, type: 2}
+  dialogo: {fileID: 11400000, guid: 1dcf58ab94883c042a8aa8d36feb5af0, type: 2}
   objetivoInicial:
-    endereco: Mecanica
+    endereco: CasaFrank
     cargas:
-    - peso: 50
-      fragilidade: 10
-      tipo: 2
-      destinatario: Parque
-      prefab: {fileID: 4151035272072844720, guid: 733655ed6c91c93488573dcb82a6709a,
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Mecanica
+      prefab: {fileID: 8576679293286444733, guid: f291258abcff42a4e95c52d1b80aa836,
         type: 3}
-    - peso: 50
-      fragilidade: 10
-      tipo: 2
-      destinatario: Parque
-      prefab: {fileID: 3688980439469585619, guid: ff1728b85c10f024b962116b3055508d,
+    - peso: 0
+      fragilidade: 0
+      tipo: 0
+      destinatario: Mecanica
+      prefab: {fileID: 3572057352560240082, guid: c663c73a60f723240a130333b7961c63,
         type: 3}
     permiteReceber: 0
     diretriz:
-      texto: 
+      texto: "Entregas para a Mec\xE2nica"
       limitacoes: []
   conjuntos:
   - objetivos:
-    - endereco: Parque
+    - endereco: Mecanica
       cargas: []
       permiteReceber: 1
       diretriz:
-        texto: 
-        limitacoes: []
-    sequencial: 0
+        texto: "V\xE1 para a Mec\xE2nica"
+        limitacoes:
+        - tempo: 180
+    sequencial: 1
     diretriz:
-      texto: "Entregue no parque de divers\xE3o"
-      limitacoes:
-      - tempo: 100
+      texto: Lista de entregas
+      limitacoes: []
   missoesDesbloqueadas: []
   gerarAleatoriaNoFinal: 0
   timeline:
-  - tipo: 0
+  - tipo: 1
     objetivo:
-      endereco: Mecanica
-      cargas:
-      - peso: 50
-        fragilidade: 10
-        tipo: 2
-        destinatario: Parque
-        prefab: {fileID: 4151035272072844720, guid: 733655ed6c91c93488573dcb82a6709a,
-          type: 3}
-      - peso: 50
-        fragilidade: 10
-        tipo: 2
-        destinatario: Parque
-        prefab: {fileID: 3688980439469585619, guid: ff1728b85c10f024b962116b3055508d,
-          type: 3}
+      endereco: 
+      cargas: []
       permiteReceber: 0
       diretriz:
         texto: 
         limitacoes: []
     diretriz:
-      texto: 
+      texto: Lista de entregas
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
-  - tipo: 2
+  - tipo: 0
     objetivo:
-      endereco: 
-      cargas: []
+      endereco: CasaFrank
+      cargas:
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Mecanica
+        prefab: {fileID: 8576679293286444733, guid: f291258abcff42a4e95c52d1b80aa836,
+          type: 3}
+      - peso: 0
+        fragilidade: 0
+        tipo: 0
+        destinatario: Mecanica
+        prefab: {fileID: 3572057352560240082, guid: c663c73a60f723240a130333b7961c63,
+          type: 3}
       permiteReceber: 0
       diretriz:
         texto: 
@@ -100,14 +100,13 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: "Entregue no parque de divers\xE3o"
-      limitacoes:
-      - tempo: 100
+      texto: "Entregas para a Mec\xE2nica"
+      limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
   - tipo: 0
     objetivo:
-      endereco: Parque
+      endereco: Mecanica
       cargas: []
       permiteReceber: 1
       diretriz:
@@ -118,7 +117,7 @@ MonoBehaviour:
       limitacoes: []
     cutscenes: []
     mostrandoFilhos: 1
-  - tipo: 3
+  - tipo: 1
     objetivo:
       endereco: 
       cargas: []
@@ -127,7 +126,8 @@ MonoBehaviour:
         texto: 
         limitacoes: []
     diretriz:
-      texto: 
-      limitacoes: []
+      texto: "V\xE1 para a Mec\xE2nica"
+      limitacoes:
+      - tempo: 180
     cutscenes: []
     mostrandoFilhos: 1
