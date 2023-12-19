@@ -42,6 +42,8 @@ public class WNPCControllerEditor : Editor {
         int i = -1;
         List<int> indicesNulos = new List<int>();
         foreach(NodoIA outroNodo in nodo.nodosConectados){
+            i++;
+
             if (outroNodo == null) {
                 indicesNulos.Add(i);
                 continue;
@@ -51,6 +53,8 @@ public class WNPCControllerEditor : Editor {
             outroNodo.nodosConectados.Add(nodo);
             corrigidas++;
         }
+
+        indicesNulos.Reverse();
 
         foreach(int index in indicesNulos){
             nodo.nodosConectados.RemoveAt(index);
