@@ -129,13 +129,17 @@ public class PauseUIController : MonoBehaviour {
         enderecoMissao.sprite = missao.info.GetEnderecoFinal().GetImagem();
 
 
-        string texto = "Os itens a serem entregues são:\n";
         Carga[] cargas = missao.info.GetAllCargas();
-        foreach (Carga carga in cargas) {
-            texto += " - " + carga.nome + "\n";
-        }
 
-        descricao.text += "\n\n" + texto;
+        if (cargas != null && cargas.Length > 0) {
+            string texto = "Os itens a serem entregues são:\n";        
+            foreach (Carga carga in cargas) {
+                string nome = carga.nome != null ? carga.nome : carga.prefab.GetComponent<Caixa>().carga.nome;
+                texto += " - " + nome + "\n";
+            }
+
+            descricao.text += "\n\n" + texto;
+        }
 
         missaoSelecionadaRelatorio.SetActive(missao.melhorStatus != null);
         if (missao.melhorStatus != null) {

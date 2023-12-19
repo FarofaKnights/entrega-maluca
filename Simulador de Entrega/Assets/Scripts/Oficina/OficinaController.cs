@@ -102,6 +102,8 @@ public class OficinaController : MonoBehaviour {
         player.transform.localPosition = Vector3.zero;
         player.transform.localRotation = Quaternion.identity;
 
+        player.GetComponent<WhellControler>().PararCarro();
+
         player.GetComponent<Player>().cameras[0].gameObject.SetActive(false);
         cameraOficina.gameObject.SetActive(true);
 
@@ -138,6 +140,8 @@ public class OficinaController : MonoBehaviour {
         controls.Oficina.Disable();
 
         naOficina = false;
+
+        player.GetComponent<WhellControler>().PararCarro();
     }
 
     #region Upgrades
