@@ -14,6 +14,9 @@ public class CaixaEncaixeState : IState {
 
     MeshRenderer renderer;
     Material outline;
+    IEnumerator piscarVermelhoCoroutine;
+
+    bool selecionada = false;
 
     public CaixaEncaixeState(Caixa caixa, Transform spawnPoint) {
         this.caixa = caixa;
@@ -49,6 +52,13 @@ public class CaixaEncaixeState : IState {
     public void Selecionar() {
         if (rb == null) rb = caixa.GetComponent<Rigidbody>();
 
+        selecionada = true;
+
+        if (piscarVermelhoCoroutine != null) {
+            caixa.EndCoroutine(piscarVermelhoCoroutine);
+            piscarVermelhoCoroutine = null;
+        }
+
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -58,8 +68,39 @@ public class CaixaEncaixeState : IState {
     }
 
     public void Deselecionar() {
+        selecionada = false;
+
+        if (piscarVermelhoCoroutine != null) {
+            caixa.EndCoroutine(piscarVermelhoCoroutine);
+            piscarVermelhoCoroutine = null;
+        }
+
         outline.SetColor("_OutlineColor", Color.black);
         Soltar();
+    }
+
+    public void PiscarVermelho() {
+        if (piscarVermelhoCoroutine == null) {
+            piscarVermelhoCoroutine = PiscarVermelhoCoroutine();
+            caixa.RunCoroutine(piscarVermelhoCoroutine);
+        }
+    }
+
+    IEnumerator PiscarVermelhoCoroutine() {
+        outline.SetColor("_OutlineColor", Color.red);
+        yield return new WaitForSeconds(0.2f);
+        Color cor = selecionada ? Color.yellow : Color.black;
+
+        // Transition to the next color
+        float t = 0;
+        float duration = 0.2f;
+        while (outline.GetColor("_OutlineColor") != cor) {
+            t += Time.deltaTime / duration;
+            outline.SetColor("_OutlineColor", Color.Lerp(outline.GetColor("_OutlineColor"), cor, t));
+            yield return null;
+        }
+        
+        piscarVermelhoCoroutine = null;
     }
 
     public void Levantar() {

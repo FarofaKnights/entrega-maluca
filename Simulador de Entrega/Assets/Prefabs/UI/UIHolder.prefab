@@ -2947,6 +2947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botaoConfirm: {fileID: 4109164930514500901}
+  desativadoColor: {r: 0.1764706, g: 0.3882353, b: 0.050980393, a: 1}
+  normalColor: {r: 0.25490198, g: 0.6784314, b: 0, a: 1}
   tutorialEncaixeMovimento: {fileID: 4109164930371745107}
   wasdText: {fileID: 4109164930780596439}
   rotacionarText: {fileID: 4109164930556448314}

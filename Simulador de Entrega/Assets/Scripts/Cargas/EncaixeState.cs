@@ -14,6 +14,7 @@ public class EncaixeState : IPlayerState {
     bool subiu = false;
 
     GameObject gizmos;
+    Camera currentCamera;
 
     public CaixaEncaixeState caixaAtual {
         get {
@@ -54,10 +55,11 @@ public class EncaixeState : IPlayerState {
 
         // TODO: Ter um jeito de habilitar e desabilitar o player no próprio player
         player.GetComponent<Rigidbody>().isKinematic = true;
-        Debug.Log("bbbbbbbbbbb");
 
         player.cameras[0].gameObject.SetActive(false);
         player.cameras[1].gameObject.SetActive(true);
+
+        currentCamera = player.cameras[1].GetComponent<Camera>();
 
         player.cacambaTrigger.onTriggerEnter += OnTriggerEnter;
         player.cacambaTrigger.onTriggerExit += OnTriggerExit;
@@ -68,14 +70,31 @@ public class EncaixeState : IPlayerState {
 
         Selecionar(0);
         UIController.dinheiro.gameObject.SetActive(false);
+
+        UpdateEncaixeButton();
     }
 
     public void Execute(float dt) {
-        if (!subiu) return;
+        if (subiu) {
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
+            Mover(new Vector2(h,v), dt);
+        }
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        Mover(new Vector2(h,v), dt);
+        if (Input.GetMouseButtonDown(0)) {
+            //send out a raycast from the camera to the mouse position
+            Ray ray = currentCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            LayerMask mask = GameManager.instance.caixaLayer;
+
+            if (Physics.Raycast(ray, out hit, 100, mask)) {
+                Caixa caixa = hit.collider.gameObject.GetComponent<Caixa>();
+                if (caixa == null) return;
+                if (caixa.carga == null) return;
+
+                Selecionar(caixa.carga);
+            }
+        }
     }
 
     public void Exit() {
@@ -150,6 +169,15 @@ public class EncaixeState : IPlayerState {
         return caixa;
     }
 
+    public void Selecionar(Carga carga) {
+        if (carga == null) return;
+        if (!cargasAEncaixar.Contains(carga)) return;
+        int index = cargasAEncaixar.IndexOf(carga);
+        if (index < 0) return;
+
+        Selecionar(index, true);
+    }
+
     public void Selecionar(Vector2 dir) {
         int i = currentSelected;
         if (dir.x > 0) i++;
@@ -161,14 +189,14 @@ public class EncaixeState : IPlayerState {
         Selecionar(i);
     }
 
-    public void Selecionar(int i) {
+    public void Selecionar(int i, bool click = false) {
         i %= cargasAEncaixar.Count;
         i = i < 0 ? cargasAEncaixar.Count + i : i;
         i %= cargasAEncaixar.Count;
         caixaAtual?.Deselecionar();
         SetRodando(false);
 
-        if (currentSelected == i && cargasAEncaixar.Count > 1) {
+        if (!click && currentSelected == i && cargasAEncaixar.Count > 1) {
             i++;
             i %= cargasAEncaixar.Count;
             i = i < 0 ? cargasAEncaixar.Count + i : i;
@@ -241,6 +269,7 @@ public class EncaixeState : IPlayerState {
         if (cargasEncaixadas.Contains(carga)) return;
 
         cargasEncaixadas.Add(carga);
+        UpdateEncaixeButton();
     }
 
     void OnTriggerExit(Collider other) {
@@ -251,6 +280,15 @@ public class EncaixeState : IPlayerState {
         if (!cargasEncaixadas.Contains(carga)) return;
 
         cargasEncaixadas.Remove(carga);
+        UpdateEncaixeButton();
+    }
+
+    void UpdateEncaixeButton() {
+        UIController.encaixe.UpdateButtonState(IsAllEncaixadas());
+    }
+
+    public bool IsAllEncaixadas() {
+        return cargasEncaixadas.Count == cargasAEncaixar.Count;
     }
 
     public void CheckConcluido() {
@@ -259,6 +297,16 @@ public class EncaixeState : IPlayerState {
             cargasAnteriores.AddRange(cargasEncaixadas);
             player.SetState(new DirigindoState(player));
             // cargasAtuais[r].gameObject.transform.SetParent(null); // acho que não precisa
+        } else {
+            MostrarCaixasNaoEncaixadas();
+        }
+    }
+
+    public void MostrarCaixasNaoEncaixadas() {
+        foreach (Carga carga in cargasAEncaixar) {
+            if (!cargasEncaixadas.Contains(carga)) {
+                carga.cx.GetEncaixeState().PiscarVermelho();
+            }
         }
     }
 }

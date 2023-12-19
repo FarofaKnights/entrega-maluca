@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class EncaixeUIController : MonoBehaviour {
     public Button botaoConfirm;
+    public Color desativadoColor, normalColor;
     public GameObject tutorialEncaixeMovimento;
 
     public Text wasdText, rotacionarText;
@@ -33,6 +34,10 @@ public class EncaixeUIController : MonoBehaviour {
             wasdText.text = "Mover";
             rotacionarText.text = "Ativar rotação";
         }
+    }
+
+    public void UpdateButtonState(bool liberado) {
+        botaoConfirm.GetComponent<Image>().color = liberado ? normalColor : desativadoColor;
     }
 
     public void Confirm() {

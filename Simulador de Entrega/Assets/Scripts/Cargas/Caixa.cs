@@ -61,4 +61,12 @@ public class Caixa : MonoBehaviour {
     public void BarulhoBater() {
         baterSom.Play();
     }
+
+    public void RunCoroutine(IEnumerator coroutine) {
+        StartCoroutine(coroutine);
+    }
+
+    public void EndCoroutine(IEnumerator coroutine) {
+        StopCoroutine(coroutine);
+    }
 }

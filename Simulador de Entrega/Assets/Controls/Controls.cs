@@ -708,15 +708,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""e27b2543-1063-41ac-af73-21297d29f54e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""EfetuarAcao"",
                     ""type"": ""Button"",
                     ""id"": ""1355be9c-1966-482b-9635-71908bf086f2"",
@@ -869,17 +860,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Selecionar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d046c935-9ec3-424b-b596-a2427c6d4a08"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
@@ -1041,7 +1021,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Encaixe_Resetar = m_Encaixe.FindAction("Resetar", throwIfNotFound: true);
         m_Encaixe_Mover = m_Encaixe.FindAction("Mover", throwIfNotFound: true);
         m_Encaixe_Selecionar = m_Encaixe.FindAction("Selecionar", throwIfNotFound: true);
-        m_Encaixe_Newaction = m_Encaixe.FindAction("New action", throwIfNotFound: true);
         m_Encaixe_EfetuarAcao = m_Encaixe.FindAction("EfetuarAcao", throwIfNotFound: true);
         // Oficina
         m_Oficina = asset.FindActionMap("Oficina", throwIfNotFound: true);
@@ -1313,7 +1292,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Encaixe_Resetar;
     private readonly InputAction m_Encaixe_Mover;
     private readonly InputAction m_Encaixe_Selecionar;
-    private readonly InputAction m_Encaixe_Newaction;
     private readonly InputAction m_Encaixe_EfetuarAcao;
     public struct EncaixeActions
     {
@@ -1324,7 +1302,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Resetar => m_Wrapper.m_Encaixe_Resetar;
         public InputAction @Mover => m_Wrapper.m_Encaixe_Mover;
         public InputAction @Selecionar => m_Wrapper.m_Encaixe_Selecionar;
-        public InputAction @Newaction => m_Wrapper.m_Encaixe_Newaction;
         public InputAction @EfetuarAcao => m_Wrapper.m_Encaixe_EfetuarAcao;
         public InputActionMap Get() { return m_Wrapper.m_Encaixe; }
         public void Enable() { Get().Enable(); }
@@ -1350,9 +1327,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Selecionar.started += instance.OnSelecionar;
             @Selecionar.performed += instance.OnSelecionar;
             @Selecionar.canceled += instance.OnSelecionar;
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
             @EfetuarAcao.started += instance.OnEfetuarAcao;
             @EfetuarAcao.performed += instance.OnEfetuarAcao;
             @EfetuarAcao.canceled += instance.OnEfetuarAcao;
@@ -1375,9 +1349,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Selecionar.started -= instance.OnSelecionar;
             @Selecionar.performed -= instance.OnSelecionar;
             @Selecionar.canceled -= instance.OnSelecionar;
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
             @EfetuarAcao.started -= instance.OnEfetuarAcao;
             @EfetuarAcao.performed -= instance.OnEfetuarAcao;
             @EfetuarAcao.canceled -= instance.OnEfetuarAcao;
@@ -1534,7 +1505,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnResetar(InputAction.CallbackContext context);
         void OnMover(InputAction.CallbackContext context);
         void OnSelecionar(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
         void OnEfetuarAcao(InputAction.CallbackContext context);
     }
     public interface IOficinaActions

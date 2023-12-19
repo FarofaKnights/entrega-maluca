@@ -686,15 +686,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "e27b2543-1063-41ac-af73-21297d29f54e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "EfetuarAcao",
                     "type": "Button",
                     "id": "1355be9c-1966-482b-9635-71908bf086f2",
@@ -847,17 +838,6 @@
                     "action": "Selecionar",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "d046c935-9ec3-424b-b596-a2427c6d4a08",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
