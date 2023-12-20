@@ -932,6 +932,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TPUp",
+                    "type": "Button",
+                    "id": "753ff2f8-674d-478c-bb6c-e148d5a8f047",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TPEndereco",
+                    "type": "Button",
+                    "id": "dca1e123-482f-4bd4-86fe-1d50e2410c73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TimeScale",
+                    "type": "Button",
+                    "id": "6da3b8f4-bf4d-4865-9ef2-3fbc7e2d9cea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -965,6 +992,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dinheiro",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd9b4460-2e46-47b2-baa9-07ba2eaaeb42",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TPUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ad6eaaf-9b83-47fd-8c3d-fa1fa609fb3a",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TPEndereco",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a55f69b-e003-47cb-bf69-6805f23c111c",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TimeScale",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   descricao: Entregue para o mordomo.
   descricaoGrande: "O mordomo mora em alguma regi\xE3o da montanha, fa\xE7a essa
     entrega para ekle"
+  valorFixo: 0
   personagem: {fileID: 11400000, guid: 9b04091288c3fee49ac499a214051864, type: 2}
   dialogo: {fileID: 11400000, guid: 916e7c0be90193d4ea8b7910637c7659, type: 2}
   objetivoInicial:
@@ -56,7 +57,8 @@ MonoBehaviour:
     diretriz:
       texto: Lista de entregas
       limitacoes: []
-  missoesDesbloqueadas: []
+  missoesDesbloqueadas:
+  - {fileID: 11400000, guid: 48a9c91103cff1248879b33375cb871c, type: 2}
   gerarAleatoriaNoFinal: 0
   timeline:
   - tipo: 1

@@ -47,7 +47,7 @@ public class Carga {
                 valor = 20;
                 break;
             case TipoCarga.Importante:
-                valor = 30;
+                valor = 3000;
                 break;
             case TipoCarga.Especial:
                 valor = 40;

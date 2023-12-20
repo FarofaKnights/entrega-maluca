@@ -41,7 +41,7 @@ public class StatusMissao {
 
         Carga[] cargasEntregues = missao.GetCargasEntregues();
         List<StatusCarga> cargasStatus = new List<StatusCarga>();
-        dinheiro = 0;
+        dinheiro = missao.info.valorFixo;
         
         float porcentagem = 0;
 
@@ -69,5 +69,7 @@ public class StatusMissao {
 
         avaliacao = (int) Math.Round(porcentagem * 4, MidpointRounding.AwayFromZero) + 1; // Valor de 1 a 5
         tempo = MissaoManager.instance.GetTempoMissao();
+
+        if (cargas.Length == 0) avaliacao = 5;
     }
 }

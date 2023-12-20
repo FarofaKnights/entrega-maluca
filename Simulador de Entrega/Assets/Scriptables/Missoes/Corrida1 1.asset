@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16f3249f233634f9bd2d36c922f183, type: 3}
+  m_Name: Corrida1 1
+  m_EditorClassIdentifier: 
+  falaInicial:
+    fala: "Ae, valeu pela \xFAltima entrega, mas dessa vez eu quero ver voc\xEA correr.
+      Se voc\xEA conseguir chegar a tempo, tenho uma recompensa que ir\xE1 valer
+      seu esfor\xE7o."
+    audio: {fileID: 0}
+    animacao: 2
+  falaConclusao:
+    fala: "Uau, voc\xEA conseguiu. Parab\xE9ns! O que? Esperava algo a mais? Ok,
+      toma essa merreca."
+    audio: {fileID: 0}
+    animacao: 2

@@ -10,6 +10,7 @@ public class Endereco : MonoBehaviour {
     public GameObject indicadorBotao;
     public GameObject personagemHolder;
     GameObject personagemObj;
+    bool playerIn = false;
 
     public string nome;
     public Sprite imagem;
@@ -32,18 +33,30 @@ public class Endereco : MonoBehaviour {
     void OnEnable() {
         if (controls != null)
             controls.Game.Enable();
+        else {
+            controls = new Controls();
+            controls.Game.Enable();
+        }
+
+        if(!playerIn) indicadorBotao.SetActive(false);
     }
 
     void OnDisable() {
+        playerIn = false;
+
         objetivo = null;
+        indicadorBotao.SetActive(false);
 
         if (controls != null) {
             controls.Game.EfetuarAcao.performed -= EfetuarAcao;
             controls.Game.Disable();
+            controls = null;
         }
     }
 
     public void EfetuarAcao() {
+        if (!playerIn) return;
+
         objetivo.Concluir();
         UIController.HUD.MostrarBotaoAcao(null, false);
         UIController.HUD.MostrarMissaoInfo(null, false);
@@ -103,6 +116,8 @@ public class Endereco : MonoBehaviour {
     }
 
     public void HandleTrigger(bool entrou) {
+        playerIn = entrou;
+
         if (objetivo != null) {
             objetivo.HandleObjetivoTrigger(entrou);
             if (objetivo is ObjetivoInicial) indicadorBotao.SetActive(false);
@@ -110,6 +125,10 @@ public class Endereco : MonoBehaviour {
         }
 
         if (entrou) {
+            if (controls == null) {
+                controls = new Controls();
+                controls.Game.Enable();
+            }
             controls.Game.EfetuarAcao.performed += EfetuarAcao;
         } else {
             controls.Game.EfetuarAcao.performed -= EfetuarAcao;

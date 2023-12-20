@@ -156,7 +156,7 @@ public class PauseUIController : MonoBehaviour {
 
     public void HandleTentarNovamenteMissao(){
         if (mostrandoMissao == null) return;
-
+        GameManager.instance.Despausar();
         MissaoManager.instance.ReiniciarMissao(mostrandoMissao);
     }
 

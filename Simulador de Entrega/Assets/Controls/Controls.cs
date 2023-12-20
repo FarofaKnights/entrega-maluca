@@ -954,6 +954,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TPUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""753ff2f8-674d-478c-bb6c-e148d5a8f047"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TPEndereco"",
+                    ""type"": ""Button"",
+                    ""id"": ""dca1e123-482f-4bd4-86fe-1d50e2410c73"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TimeScale"",
+                    ""type"": ""Button"",
+                    ""id"": ""6da3b8f4-bf4d-4865-9ef2-3fbc7e2d9cea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -987,6 +1014,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dinheiro"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd9b4460-2e46-47b2-baa9-07ba2eaaeb42"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TPUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ad6eaaf-9b83-47fd-8c3d-fa1fa609fb3a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TPEndereco"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a55f69b-e003-47cb-bf69-6805f23c111c"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TimeScale"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1030,6 +1090,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Cheat_TP = m_Cheat.FindAction("TP", throwIfNotFound: true);
         m_Cheat_Sair = m_Cheat.FindAction("Sair", throwIfNotFound: true);
         m_Cheat_Dinheiro = m_Cheat.FindAction("Dinheiro", throwIfNotFound: true);
+        m_Cheat_TPUp = m_Cheat.FindAction("TPUp", throwIfNotFound: true);
+        m_Cheat_TPEndereco = m_Cheat.FindAction("TPEndereco", throwIfNotFound: true);
+        m_Cheat_TimeScale = m_Cheat.FindAction("TimeScale", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1422,6 +1485,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Cheat_TP;
     private readonly InputAction m_Cheat_Sair;
     private readonly InputAction m_Cheat_Dinheiro;
+    private readonly InputAction m_Cheat_TPUp;
+    private readonly InputAction m_Cheat_TPEndereco;
+    private readonly InputAction m_Cheat_TimeScale;
     public struct CheatActions
     {
         private @Controls m_Wrapper;
@@ -1429,6 +1495,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @TP => m_Wrapper.m_Cheat_TP;
         public InputAction @Sair => m_Wrapper.m_Cheat_Sair;
         public InputAction @Dinheiro => m_Wrapper.m_Cheat_Dinheiro;
+        public InputAction @TPUp => m_Wrapper.m_Cheat_TPUp;
+        public InputAction @TPEndereco => m_Wrapper.m_Cheat_TPEndereco;
+        public InputAction @TimeScale => m_Wrapper.m_Cheat_TimeScale;
         public InputActionMap Get() { return m_Wrapper.m_Cheat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1447,6 +1516,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dinheiro.started += instance.OnDinheiro;
             @Dinheiro.performed += instance.OnDinheiro;
             @Dinheiro.canceled += instance.OnDinheiro;
+            @TPUp.started += instance.OnTPUp;
+            @TPUp.performed += instance.OnTPUp;
+            @TPUp.canceled += instance.OnTPUp;
+            @TPEndereco.started += instance.OnTPEndereco;
+            @TPEndereco.performed += instance.OnTPEndereco;
+            @TPEndereco.canceled += instance.OnTPEndereco;
+            @TimeScale.started += instance.OnTimeScale;
+            @TimeScale.performed += instance.OnTimeScale;
+            @TimeScale.canceled += instance.OnTimeScale;
         }
 
         private void UnregisterCallbacks(ICheatActions instance)
@@ -1460,6 +1538,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dinheiro.started -= instance.OnDinheiro;
             @Dinheiro.performed -= instance.OnDinheiro;
             @Dinheiro.canceled -= instance.OnDinheiro;
+            @TPUp.started -= instance.OnTPUp;
+            @TPUp.performed -= instance.OnTPUp;
+            @TPUp.canceled -= instance.OnTPUp;
+            @TPEndereco.started -= instance.OnTPEndereco;
+            @TPEndereco.performed -= instance.OnTPEndereco;
+            @TPEndereco.canceled -= instance.OnTPEndereco;
+            @TimeScale.started -= instance.OnTimeScale;
+            @TimeScale.performed -= instance.OnTimeScale;
+            @TimeScale.canceled -= instance.OnTimeScale;
         }
 
         public void RemoveCallbacks(ICheatActions instance)
@@ -1516,5 +1603,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnTP(InputAction.CallbackContext context);
         void OnSair(InputAction.CallbackContext context);
         void OnDinheiro(InputAction.CallbackContext context);
+        void OnTPUp(InputAction.CallbackContext context);
+        void OnTPEndereco(InputAction.CallbackContext context);
+        void OnTimeScale(InputAction.CallbackContext context);
     }
 }

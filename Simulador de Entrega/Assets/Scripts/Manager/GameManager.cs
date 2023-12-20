@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
     public GameObject caixaCaidaIndicador;
     public Sprite imagemSemEndereco;
 
+    public GameObject enderecoHolder;
+
     void Awake() {
         instance = this;
         controls = new Controls();
@@ -111,6 +113,9 @@ public class GameManager : MonoBehaviour {
         controls.Cheat.Enable();
         controls.Cheat.TP.performed += ctx => TPCheat();
         controls.Cheat.Dinheiro.performed += ctx => DinheiroCheat();
+        controls.Cheat.TPUp.performed += ctx => TPUp();
+        controls.Cheat.TPEndereco.performed += ctx => TPToEndereco();
+        controls.Cheat.TimeScale.performed += ctx => TimeScaleToggle();
         controls.Cheat.Sair.performed += ctx => DisableCheats();
         UIController.instance.ShowCheatsIcon();
         Debug.Log("Cheats enabled");
@@ -122,11 +127,11 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Cheats disabled");
     }
 
-    void TPCheat() {
-        if (MissaoManager.instance.missaoAtual == null) return;
+    List<(Carga, Transform)> cargasTransforms = null;
 
+    void SecureCargaOnTp(){
         List<Carga> cargas = Player.instance.cargaAtual;
-        List<(Carga, Transform)> cargasTransforms = new List<(Carga, Transform)>();
+        cargasTransforms = new List<(Carga, Transform)>();
 
         foreach (Carga carga in cargas) {
             if (carga.cx != null) {
@@ -134,11 +139,11 @@ public class GameManager : MonoBehaviour {
                 carga.cx.transform.SetParent(Player.instance.transform);
             }
         }
+    }
 
-        Objetivo objetivo = MissaoManager.instance.GetCurrentObjetivo();
-        Endereco endereco = objetivo.endereco;
-        endereco.TeleportToHere();
-
+    void UnsecureCarga() {
+        List<Carga> cargas = Player.instance.cargaAtual;
+        
         foreach (Carga carga in cargas) {
             if (carga.cx != null) {
                 foreach ((Carga, Transform) cargaTransform in cargasTransforms) {
@@ -148,6 +153,43 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
+
+        cargasTransforms = null;
+    }
+
+    void TPCheat() {
+        if (MissaoManager.instance.missaoAtual == null) return;
+
+        SecureCargaOnTp();
+
+        Objetivo objetivo = MissaoManager.instance.GetCurrentObjetivo();
+        Endereco endereco = objetivo.endereco;
+        endereco.TeleportToHere();
+
+        UnsecureCarga();
+    }
+
+    void TPUp() {
+        SecureCargaOnTp();
+        Player.instance.transform.position += Vector3.up * 5;
+        UnsecureCarga();
+    }
+
+
+    int tpEnderecoIndex = 0;
+
+    void TPToEndereco() {
+        SecureCargaOnTp();
+        if (tpEnderecoIndex >= enderecoHolder.transform.childCount) tpEnderecoIndex = 0;
+        GameObject endereco = enderecoHolder.transform.GetChild(tpEnderecoIndex).gameObject;
+        Player.instance.transform.position = endereco.transform.position + Vector3.up * 2;
+        tpEnderecoIndex++;
+        UnsecureCarga();
+    }
+
+    void TimeScaleToggle() {
+        if (Time.timeScale == 0) Time.timeScale = 1;
+        else Time.timeScale = 0;
     }
 
     void DinheiroCheat() {

@@ -201,7 +201,6 @@ public class MissaoManager : MonoBehaviour {
     }
 
     public void SetEstado(Estado estado) {
-        Debug.Log("Estado: " + estado + " (antes: " + this.estado + ")");
         Estado estadoAntigo = this.estado;
 
         this.estado = estado;

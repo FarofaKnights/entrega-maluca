@@ -11,6 +11,7 @@ public class MissaoObject : ScriptableObject {
     public string nome;
     public string descricao;
     public string descricaoGrande;
+    public float valorFixo = 0f;
     public PersonagemObject personagem;
     public DialogoPersonagens dialogo;
 
