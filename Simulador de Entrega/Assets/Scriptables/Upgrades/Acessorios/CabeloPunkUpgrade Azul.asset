@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Cabelo Punk Azul
   descricao: "Uma quantidade n\xE3o saud\xE1vel de gel foi usada pra fazer ele ficar\_sempre\_em\_p\xE9"
-  custo: 300
+  custo: 30
   icone: {fileID: 21300000, guid: 6b96ce5f57e0f664c93627b6b83bf95e, type: 3}
   exclusivo: 1
   ativavel: 1

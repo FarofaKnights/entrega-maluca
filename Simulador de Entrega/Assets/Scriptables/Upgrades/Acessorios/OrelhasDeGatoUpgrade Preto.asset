@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Orelhas de Gato Preto
   descricao: Prrrrrrrrrrrrrrrrrrrrrr
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: a1e0122274ea8af46b47e6fac871686e, type: 3}
   exclusivo: 1
   ativavel: 1

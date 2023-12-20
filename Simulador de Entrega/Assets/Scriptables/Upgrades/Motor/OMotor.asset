@@ -16,6 +16,8 @@ MonoBehaviour:
   descricao: "Voc\xEA vai sonhar que um dia este motor ser\xE1 seu, e esse dia nunca
     ir\xE1 chegar. A nata da sociedade de consumo."
   custo: 500
+  icone: {fileID: 0}
   exclusivo: 1
+  ativavel: 1
   maxSpeed: 200
   acelleration: 4

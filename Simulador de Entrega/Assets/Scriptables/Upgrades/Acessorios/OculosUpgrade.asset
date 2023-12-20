@@ -16,7 +16,7 @@ MonoBehaviour:
   descricao: "Ironicamente, mais barato do que comprar lentes de astigmatismo na
     vida real, as lentes tamb\xE9m tem grau! Mas como esse jogo \xE9 so na terceira
     pessoa, voc\xEA nunca vai poder comprovar se isso \xE9\_verdade\_ou\_n\xE3o"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: f6c77ca21018c4b4c89ac518658696c3, type: 3}
   exclusivo: 1
   ativavel: 1

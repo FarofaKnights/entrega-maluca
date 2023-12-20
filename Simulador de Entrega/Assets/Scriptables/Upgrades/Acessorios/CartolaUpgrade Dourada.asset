@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Cartola
   descricao: "Extremamente populares entre a burguesia, por isso\_custa\_t\xE3o\_caro"
-  custo: 500
+  custo: 50
   icone: {fileID: 21300000, guid: 53754f1bb2345384581bb982818dfb74, type: 3}
   exclusivo: 1
   ativavel: 1

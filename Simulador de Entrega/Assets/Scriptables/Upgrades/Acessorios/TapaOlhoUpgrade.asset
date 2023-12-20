@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Tapa-Olho
   descricao: "Para os caras mais barra pesada\_dos\_correios"
-  custo: 140
+  custo: 14
   icone: {fileID: 21300000, guid: 220c1afd75ebc154aa8b5d44ace0e23a, type: 3}
   exclusivo: 1
   ativavel: 1

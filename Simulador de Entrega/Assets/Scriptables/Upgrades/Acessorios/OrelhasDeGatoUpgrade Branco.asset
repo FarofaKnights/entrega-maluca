@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Orelhas de Gato Branco
   descricao: Prrrrrrrrrrrrrrrrrrrrrr
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: deb2177a009537d44a90fa80a66770a3, type: 3}
   exclusivo: 1
   ativavel: 1

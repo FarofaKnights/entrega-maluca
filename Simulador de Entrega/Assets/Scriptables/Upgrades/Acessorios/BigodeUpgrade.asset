@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Bigode
   descricao: "Feito de material 100% sint\xE9tico, esse bigode imp\xF5e respeito
     em qualquer conversa que voc\xEA\_estiver\_tendo"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: c1be80d2b9c16774ea90ecd72f00449e, type: 3}
   exclusivo: 1
   ativavel: 1

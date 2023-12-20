@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: "Aur\xE9ola dourada"
   descricao: "Um item divino e angelical, que pode te tirar de qualquer enrascada
     por apenas ter um, so n\xE3o questione sua falta\_de\_gravidade"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: ee2785580b5d9cc42bef9750ac183830, type: 3}
   exclusivo: 1
   ativavel: 1

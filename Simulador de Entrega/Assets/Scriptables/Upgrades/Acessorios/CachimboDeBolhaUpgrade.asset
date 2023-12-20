@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Cachimbo de Bolha
   descricao: "Se coloc\xE1ssemos um cachimbo de verdade, ter\xEDamos que aumentar
     a classifica\xE7\xE3o indicativa\_do\_jogo"
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: 6ad343f3af8aabb48b682933d900213e, type: 3}
   exclusivo: 1
   ativavel: 1

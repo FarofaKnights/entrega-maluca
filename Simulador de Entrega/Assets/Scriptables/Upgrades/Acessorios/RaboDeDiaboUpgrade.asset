@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Rabo de Diabo
   descricao: "Para as pessoas que s\xF3 querem ver o circo\_pegar\_fogo"
-  custo: 145
+  custo: 15
   icone: {fileID: 21300000, guid: 31cf2c5d8ee95194c9927c85f9f3a891, type: 3}
   exclusivo: 1
   ativavel: 1

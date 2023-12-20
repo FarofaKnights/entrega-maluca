@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Fone de Ouvido Cinza
   descricao: "Para aqueles dias aonde o radio do seu carro n\xE3o \xE9 o suficiente
     e voc\xEA \xE9 um ser\_humano\_decente"
-  custo: 270
+  custo: 27
   icone: {fileID: 21300000, guid: 12cd79f35962d7945a5b13c2c58aa913, type: 3}
   exclusivo: 1
   ativavel: 1

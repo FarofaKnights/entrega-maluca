@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Mochila
   descricao: "Deveria te ajudar a carregar mais entregas, mas acho que nada que voc\xEA
     entrega cabe nela, ent\xE3o \xE9 s\xF3 decorativo\_mesmo"
-  custo: 100
+  custo: 10
   icone: {fileID: 21300000, guid: 7d35725ce20c339469bcdc468188bac5, type: 3}
   exclusivo: 1
   ativavel: 1

@@ -16,6 +16,8 @@ MonoBehaviour:
   descricao: "Uma coisa \xE9 comprar por necessidade, outra coisa \xE9 o Sr. Motor.
     N\xE3o \xE9 um simples motor, \xE9 o Sr. Motor"
   custo: 450
+  icone: {fileID: 0}
   exclusivo: 1
+  ativavel: 1
   maxSpeed: 150
   acelleration: 3

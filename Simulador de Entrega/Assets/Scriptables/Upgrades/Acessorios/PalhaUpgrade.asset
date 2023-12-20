@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Palha
   descricao: "Essa palha gigante \xE9 a comida da vaca gigante que eu mencionei\_agora\_a\_pouco"
-  custo: 70
+  custo: 7
   icone: {fileID: 21300000, guid: a97f24e81c329a44ba142e49c79a041e, type: 3}
   exclusivo: 1
   ativavel: 1

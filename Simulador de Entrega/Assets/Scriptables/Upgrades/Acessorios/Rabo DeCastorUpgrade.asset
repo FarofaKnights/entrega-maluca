@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Rabo de Castor
   descricao: "N\xE3o use ele perto de outros castores, pois \xE9 feito\_de\_madeira"
-  custo: 100
+  custo: 10
   icone: {fileID: 21300000, guid: 611615047ec5c7c4cb305f5411f6d33d, type: 3}
   exclusivo: 1
   ativavel: 1

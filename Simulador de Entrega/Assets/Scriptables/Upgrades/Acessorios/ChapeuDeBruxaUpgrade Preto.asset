@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: "Chap\xE9u de Bruxa Preto"
   descricao: "Mesmo que sua carta da escola verruga de porco nunca tenha chegado,
     nada na lei te impede de usar\_esse\_chap\xE9u"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: 9191204d35fd8bd418c2c38df079c95f, type: 3}
   exclusivo: 1
   ativavel: 1

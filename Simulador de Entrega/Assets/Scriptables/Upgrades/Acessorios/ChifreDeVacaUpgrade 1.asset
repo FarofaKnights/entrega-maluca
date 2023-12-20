@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Chifre de Diabo
   descricao: "E pensar que a diferen\xE7a da vaca pro Diabo \xE9 um material vermelho"
-  custo: 100
+  custo: 10
   icone: {fileID: 21300000, guid: 64622bb9ad3256c4995a1b024749484b, type: 3}
   exclusivo: 1
   ativavel: 1

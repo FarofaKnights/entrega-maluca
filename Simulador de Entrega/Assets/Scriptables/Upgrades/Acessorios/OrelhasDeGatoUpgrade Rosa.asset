@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Orelhas de Gato Rosa
   descricao: Prrrrrrrrrrrrrrrrrrrrrr
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: bfaaa12a293422f4091b3f25aaae682c, type: 3}
   exclusivo: 1
   ativavel: 1

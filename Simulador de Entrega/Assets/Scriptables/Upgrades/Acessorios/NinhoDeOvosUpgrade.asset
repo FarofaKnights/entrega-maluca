@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Ninho de Ovos
   descricao: "Espero nunca me encontrar com o responsavel por botar um ovo\_desse\_tamanho"
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: adf7802f1764e78498a474c0c02d7607, type: 3}
   exclusivo: 1
   ativavel: 1

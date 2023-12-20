@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Ultra Turbo Bronze
   descricao: "Pelo formato deles, tem mais chances de voc\xEA tocar um jazz perfeito
     enquanto dirige, do que de fato\_ganhar\_um\_turbo"
-  custo: 300
+  custo: 30
   icone: {fileID: 21300000, guid: 023d938f4bd8a9a4798cfa2683d9a31f, type: 3}
   exclusivo: 1
   ativavel: 1

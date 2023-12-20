@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Super Turbo Dourado
   descricao: "Infelizmente, \xE9 apenas\_estetico"
-  custo: 300
+  custo: 30
   icone: {fileID: 21300000, guid: 536d2bf679e6f6c41974562fd140e225, type: 3}
   exclusivo: 1
   ativavel: 1

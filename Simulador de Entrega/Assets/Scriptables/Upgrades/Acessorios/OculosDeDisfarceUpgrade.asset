@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: "\xD3culos de Disfarce"
   descricao: "Com esses \xF3culos, voc\xEA pode fingir ser outro carro! S\xF3 que
     n\xE3o, ja que aparentemente voc\xEA \xE9 o unico caminh\xE3o de entregas\_dessa\_cidade"
-  custo: 300
+  custo: 30
   icone: {fileID: 21300000, guid: d613dfec766dbc94195b8e8536d78ce2, type: 3}
   exclusivo: 1
   ativavel: 1

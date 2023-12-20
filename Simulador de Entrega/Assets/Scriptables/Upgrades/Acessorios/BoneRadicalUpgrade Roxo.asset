@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: "Bon\xE9 Radical Roxo"
   descricao: "Um bon\xE9 virado para tr\xE1s para mostrar o qu\xE3o radical voc\xEA
     \xE9, mas n\xE3o esconde\_sua\_velhice"
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: b6f042b4792595f499c910d14853a9d3, type: 3}
   exclusivo: 1
   ativavel: 1

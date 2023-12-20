@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: "Chap\xE9u de Drinks Vermelho"
   descricao: "Agora voc\xEA pode beber e ficar com as duas m\xE3os livres! .......
     parando pra pensar, o canudo deveria levar para o tanque do carro, n\xE3o\_pro\_para-lamas"
-  custo: 310
+  custo: 31
   icone: {fileID: 21300000, guid: 5507592c6e22b1842899a0efc241fe70, type: 3}
   exclusivo: 1
   ativavel: 1

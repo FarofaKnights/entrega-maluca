@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Capacete Romano Prata
   descricao: "Dizem que os maiores guerreiros do passado usaram isso, provavelmente
     \xE9 verdade porque tem que ser bem grande\_pra\_caber\_nele"
-  custo: 400
+  custo: 40
   icone: {fileID: 21300000, guid: d55ebf79ac08c5a49b83a614357195c6, type: 3}
   exclusivo: 1
   ativavel: 1

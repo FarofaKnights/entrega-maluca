@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "Presas de M\xE1rmore"
   descricao: "Use elas para mostrar as outras pessoas sua furia\_animalistica"
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: e77d834bdfdf7364eae6715d75a835fc, type: 3}
   exclusivo: 1
   ativavel: 1

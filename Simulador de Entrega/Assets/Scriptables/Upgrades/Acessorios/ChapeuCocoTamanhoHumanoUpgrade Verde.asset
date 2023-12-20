@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "Chap\xE9u Coco de Humano Verde"
   descricao: "Um chap\xE9u de humano? N\xE3o sei como foi parar aqui, mas se pagar\_ele\_\xE9\_todo\_seu"
-  custo: 20
+  custo: 2
   icone: {fileID: 21300000, guid: 5c7062d30fc527e4ca77332a5bbdacb7, type: 3}
   exclusivo: 1
   ativavel: 1

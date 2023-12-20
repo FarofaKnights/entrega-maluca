@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Olhos Esbugalhados
   descricao: "Para as situa\xE7\xF5es em que voc\xEA precisa de fingir estar supreso
     depois de contarem uma noticia que\_voc\xEA\_ja\_sabia"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: 7bf4820b232783d488cfc6ecb7483a93, type: 3}
   exclusivo: 1
   ativavel: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Rabo de Lagarto
   descricao: "Vindo diretamente da idade\_da\_pedra"
-  custo: 180
+  custo: 18
   icone: {fileID: 21300000, guid: fcb7a02d8300eb043b22a5ad9efae796, type: 3}
   exclusivo: 1
   ativavel: 1

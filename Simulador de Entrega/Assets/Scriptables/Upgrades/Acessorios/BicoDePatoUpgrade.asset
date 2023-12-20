@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Bico de pato
   descricao: Quack!
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: acf1d15f4cb0f99468ee154328c5dbf7, type: 3}
   exclusivo: 1
   ativavel: 1

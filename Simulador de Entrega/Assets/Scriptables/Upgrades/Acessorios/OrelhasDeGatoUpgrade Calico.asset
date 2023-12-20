@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Orelhas de Gato Calico
   descricao: Prrrrrrrrrrrrrrrrrrrrrr
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: 3a955dbe89746124d8ab9b1915f9d424, type: 3}
   exclusivo: 1
   ativavel: 1

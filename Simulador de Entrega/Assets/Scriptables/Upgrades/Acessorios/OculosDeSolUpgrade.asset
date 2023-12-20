@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: "\xD3culos De Sol"
   descricao: "Supostamente, poderiam te deixar mais legal, mas o que te torna legal
     s\xE3o suas atitudes"
-  custo: 201
+  custo: 21
   icone: {fileID: 21300000, guid: 562cece105c457642a8ebc8c964b02a1, type: 3}
   exclusivo: 1
   ativavel: 1

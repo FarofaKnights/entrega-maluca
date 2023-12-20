@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Presas de Marfim
   descricao: "Use elas para mostrar as outras pessoas sua furia\_animalistica"
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: da626242314a5d745a72f63d5979dc55, type: 3}
   exclusivo: 1
   ativavel: 1

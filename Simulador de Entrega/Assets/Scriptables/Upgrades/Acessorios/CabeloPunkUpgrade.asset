@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Cabelo Punk Verde
   descricao: "Uma quantidade n\xE3o saud\xE1vel de gel foi usada pra fazer ele ficar\_sempre\_em\_p\xE9"
-  custo: 300
+  custo: 30
   icone: {fileID: 21300000, guid: 528ae1636dc10b74e9528bb33c70bb55, type: 3}
   exclusivo: 1
   ativavel: 1

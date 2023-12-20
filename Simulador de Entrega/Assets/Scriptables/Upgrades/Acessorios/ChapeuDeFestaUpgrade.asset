@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "Chap\xE9u de Festa Roxo"
   descricao: AEEEEEEEEEJSKXNSPAJRNCKZOSJDNDKSOFBFKDANKAISNAIWIRRURTCNSAJDDJ
-  custo: 120
+  custo: 12
   icone: {fileID: 21300000, guid: 181efda9ca2bd4346969c362cd2f362e, type: 3}
   exclusivo: 1
   ativavel: 1

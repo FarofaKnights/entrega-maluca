@@ -16,7 +16,7 @@ MonoBehaviour:
   descricao: "Literalmente o mesmo que o chap\xE9u de humano, mas agora grande o
     suficiente pra caber num carro, literalmente o mesmo chap\xE9u, s\xF3 peguei
     o modelo 3D no blender\_e\_dei\_scale"
-  custo: 220
+  custo: 22
   icone: {fileID: 21300000, guid: 6cf4ef3fcf5656440aba4cc63c16255f, type: 3}
   exclusivo: 1
   ativavel: 1

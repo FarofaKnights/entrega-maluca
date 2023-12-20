@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "Chap\xE9u de Guaxinim"
   descricao: "Feito de pelo 100% sintetico, pois AINDA BEM que n\xE3o existe guaxinins\_desse\_tamanho"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: ae967c33a880ea44a9644211cf5cabf9, type: 3}
   exclusivo: 1
   ativavel: 1

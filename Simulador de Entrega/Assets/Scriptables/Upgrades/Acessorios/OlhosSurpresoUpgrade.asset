@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Olhos Surpresos
   descricao: "Para as situa\xE7\xF5es onde voc\xEA realmente esta\_surpreso!"
-  custo: 250
+  custo: 25
   icone: {fileID: 21300000, guid: 3c642c41bd8459044abd7f36c21ec384, type: 3}
   exclusivo: 1
   ativavel: 1

@@ -16,6 +16,8 @@ MonoBehaviour:
   descricao: "Uma hora ou outra voc\xEA iria precisar de trocar de motor... Bem vindo
     ao capitalismo."
   custo: 250
+  icone: {fileID: 0}
   exclusivo: 1
+  ativavel: 1
   maxSpeed: 120
   acelleration: 2

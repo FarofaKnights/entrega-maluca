@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Presas de Cobalto
   descricao: "Use elas para mostrar as outras pessoas sua furia\_animalistica"
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: a065cc28f723b8a4b9c50585baee2c53, type: 3}
   exclusivo: 1
   ativavel: 1

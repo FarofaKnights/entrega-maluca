@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Visor Futurista Azul-Branco
   descricao: "O capitalismo n\xE3o conhece limites, criaram uma m\xE1quina do tempo
     apenas para poderem vender um acess\xF3rio em outra \xE9poca"
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: dcbe0eee1c994aa479a6d232f003e4d2, type: 3}
   exclusivo: 1
   ativavel: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Spoiler Dourado
   descricao: "Descri\xE7\xE3o fechada at\xE9 eu pensar numa boa piada envolvendo
     spoiler\_de\_filme"
-  custo: 270
+  custo: 27
   icone: {fileID: 21300000, guid: 130a1cac4ec191841a4b829354832baf, type: 3}
   exclusivo: 1
   ativavel: 1

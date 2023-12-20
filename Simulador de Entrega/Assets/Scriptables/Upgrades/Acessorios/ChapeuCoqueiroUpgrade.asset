@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "Chap\xE9u Coqueiro"
   descricao: "Bem natural e praiano, e de quebra, cresce cocos\_naturais"
-  custo: 100
+  custo: 10
   icone: {fileID: 21300000, guid: 62c5da2e22397694e9594f59057564ec, type: 3}
   exclusivo: 0
   ativavel: 1

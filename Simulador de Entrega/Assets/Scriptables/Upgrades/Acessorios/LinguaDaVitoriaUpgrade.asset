@@ -15,7 +15,7 @@ MonoBehaviour:
   nome: Lingua da Vitoria
   descricao: "Utilizada por um lendario carro a pelo menos 17 anos atr\xE1s para
     ganhar uma grande corrida, agora voc\xEA tamb\xE9m pode usa-la para seus afazeres\_linguisticos."
-  custo: 150
+  custo: 15
   icone: {fileID: 21300000, guid: e0dc956b031ffc343b48f3dc11b6d3fe, type: 3}
   exclusivo: 1
   ativavel: 1

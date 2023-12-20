@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "Chap\xE9u de Frutas"
   descricao: "Arranjei ele um\_dia\_no\_sacol\xE3o"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: 48b1ca96d803354439727aadd381398c, type: 3}
   exclusivo: 1
   ativavel: 1

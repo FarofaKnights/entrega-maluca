@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: "Chap\xE9u de Cowboy Marrom"
   descricao: "O certo seria vaqueiro, mas comercialmente falando,\_cowboy\_\xE9\_melhor"
-  custo: 200
+  custo: 20
   icone: {fileID: 21300000, guid: d5a18a3cfd223d444bf1c007e64841b8, type: 3}
   exclusivo: 1
   ativavel: 1
